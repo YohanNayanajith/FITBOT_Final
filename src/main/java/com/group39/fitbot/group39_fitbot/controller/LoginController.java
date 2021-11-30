@@ -88,9 +88,11 @@ public class LoginController extends HttpServlet {
                     case "admin":
                         out.print("6");
                         break;
+                    case "Maintainer":
+                        out.print("7");
                     default:
                         //                        out.print("You can't log now..please contact our administration");
-                        out.print("7");
+                        out.print("8");
                         break;
                 }
             }else {
