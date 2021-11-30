@@ -380,20 +380,23 @@ $(document).ready(function (){
 
                 }else if(result == "2"){
                     //virtual member
-                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
                 }else if(result == "3"){
                     //instructor
-                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
                 }else if(result == "4"){
                     //manager
-                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
                 }else if(result == "5"){
                     //owner
-                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
-                }else if(result == "6"){
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                }else if(result == "6") {
                     //admin
-                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
-                }else if(result == '7'){
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                }else if(result == "7"){
+                    //admin
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                }else if(result == '8'){
                     Swal.fire({
                         icon: 'error',
                         title: 'Login unsuccessfully!',
