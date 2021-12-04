@@ -201,4 +201,13 @@
         <url-pattern>/physicalMember/Message</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PhysicalMessageInsert</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.PhysicalMemberInsertMessageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PhysicalMessageInsert</servlet-name>
+        <url-pattern>/physicalMember/InsertMessage</url-pattern>
+    </servlet-mapping>
+
 </web-app>
