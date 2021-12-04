@@ -73,3 +73,8 @@
     border:1px solid white;
     color:white;
 }
+
+/*appoinment popup*/
+.appointment_require,#appointment_date_error,#appointment_start_time_error,#appointment_finish_time_error{
+    color:red;
+}

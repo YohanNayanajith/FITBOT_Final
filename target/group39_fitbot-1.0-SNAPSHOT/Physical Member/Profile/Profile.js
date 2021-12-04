@@ -22,7 +22,7 @@ function edit_profile_submit(){
     let date_of_birth = $('#edit_profile_container_detail_dob').val().trim();
     let contact_number = $('#edit_profile_container_detail_last_conatct').val().trim();
 
-    alert(first_name);
+    // alert(first_name);
 }
 
 function close_edit_profile_Popup(){

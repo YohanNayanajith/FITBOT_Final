@@ -209,5 +209,23 @@
         <servlet-name>PhysicalMessageInsert</servlet-name>
         <url-pattern>/physicalMember/InsertMessage</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>PhysicalAppointment</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.PhysicalAppointmentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PhysicalAppointment</servlet-name>
+        <url-pattern>/physicalMember/appointment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PhysicalAppointmentInsert</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.PhysicalAppointmentInsertController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PhysicalAppointmentInsert</servlet-name>
+        <url-pattern>/physicalMember/appointmentInsert</url-pattern>
+    </servlet-mapping>
 
 </web-app>
