@@ -97,7 +97,7 @@
 
 .payment_cal_date {
     display: flex;
-    background-color:yelow;
+    /*background-color:yellow;*/
     /* width: 100%; */
     /* flex: 40%; */
 }
@@ -232,7 +232,7 @@
 .payment_detail_container_input label, .payment_detail_container_input input{
     font-size: 18px;
     color: black;
-    font-weight: none;
+    font-weight: 0;
 }
 .payment_detail_container_input{
     padding: 6px 0;

@@ -385,7 +385,8 @@ $(document).ready(function(){
       if(statusTxt == "error") {
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
-
+      getAppointmentData();
+        // $('#appointment_details_popup').hide();
       });
       load[9] += 1;
     }else if(sideBar_links_variable == "#physical_member_appoinments"){
@@ -631,7 +632,6 @@ function getRegisterDetails(){
       $('#profile_physical_container_member').append(
           '<span>'+'Weight - '+result.weight+' cm'+'</span><br>'
       );
-
       console.log(result);
     },
     error: function(error){
@@ -641,7 +641,6 @@ function getRegisterDetails(){
 }
 
 //instructors
-
 function instructorGetData(){
   $.ajax({
     method:'POST',
@@ -721,7 +720,7 @@ function searchInstructors(){
           console.log(str_ins_id);
 
             $('#messages_physical_container_left').append(
-                '<div class="messages_physical_container_left_my_chats" onClick="selected_instructor_physical('+number+')">'+
+                '<div class="messages_physical_container_left_my_chats message_number'+number+'" onClick="selected_instructor_physical('+number+')">'+
                 '<div class="messages_physical_container_left_my_chats_image">'+
                 '<img src='+'"'+ x["profile_image_url"]+'"'+' alt="instructor image">'+
                 '</div>'+
@@ -813,5 +812,68 @@ function displayPaymentsData(){
     alert("Error");
     console.log(a,b,err);
   });
+}
 
+//appointments
+function getAppointmentData(){
+  $('#appointment_container_table').hide();
+  $.ajax({
+    method:'POST',
+    url:"physicalMember/appointmentInsert",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    let countVal = 0;
+    let date = new Date();
+    console.log(result);
+    $.map(result,function(x){
+      $('.edit_profile_container_detail_input4_btn1').attr("disabled", false);
+      if(countVal == 0){
+        alert("Yanavada1");
+        if(!(x.appointment_date["year"] == date.getFullYear())){
+          // alert("Yanavada2");
+          countVal++;
+        }
+        if(!(x.appointment_date["month"] == (date.getMonth()+1)) || countVal != 0){
+          console.log(x.appointment_date["month"]);
+          console.log(date.getMonth());
+          // alert("Yanavada3");
+          countVal++;
+        }
+        if (!(x.appointment_date["day"] >= date.getDate()) || countVal != 0){
+          // alert("Yanavada4");
+          countVal++;
+        }
+        if(countVal == 0){
+          // alert("Yanavada5");
+          let appoin_date = x.appointment_date["year"]+"-"+("0" + x.appointment_date["month"]).slice(-2)+"-"+("0" + x.appointment_date["day"]).slice(-2);
+          let appoin_time = ("0" + x.start_time["hour"]).slice(-2)+":"+("0" + x.start_time["minute"]).slice(-2)+":"+("0" + x.start_time["second"]).slice(-2);
+          $('#no_appointment').html('Has Appointment');
+          $('#appointment_date').html(appoin_date);
+          $('#appointment_time').html(appoin_time);
+          $('.edit_profile_container_detail_input4_btn1').attr("disabled", true);
+          $('#appointment_button_div').css("border", "2px solid grey");
+          $('.edit_profile_container_detail_input4_btn1').css("border", "2px solid grey");
+          $('#appointment_button_div').css("background-color", "grey");
+          $('.edit_profile_container_detail_input4_btn1').css("background-color", "grey");
+        }
+      }
+      $('#appointment_container_table').append(
+          '<tr class="payment_history_container_row">'+
+          '<td>'+x.appointment_date["year"]+"-"+("0" + x.appointment_date["month"]).slice(-2)+"-"+("0" + x.appointment_date["day"]).slice(-2)+'</td>'+
+          '<td>'+("0" + x.start_time["hour"]).slice(-2)+":"+("0" + x.start_time["minute"]).slice(-2)+":"+("0" + x.start_time["second"]).slice(-2)+'</td>'+
+          '<td>'+("0" + x.finish_time["hour"]).slice(-2)+":"+("0" + x.finish_time["minute"]).slice(-2)+":"+("0" + x.finish_time["second"]).slice(-2)+'</td>'+
+          '<td>'+x.equipment+'</td>'+
+          '<td>'+'<a href="#" class="show_more_button">SHOW MORE</a>'+'</td>'+
+          '</tr>'
+      );
+      countVal += 1;
+    });
+
+    // alert(result);
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+  $('#appointment_container_table').show();
 }

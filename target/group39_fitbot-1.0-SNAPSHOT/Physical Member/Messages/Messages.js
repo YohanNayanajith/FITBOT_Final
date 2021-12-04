@@ -30,18 +30,25 @@ function selected_instructor_physical(number) {
     }
     console.log(number);
 
-
     if (count_msg == 0) {
-        // $('#messages_physical_container_right_header').show();
-        // $('#messages_of_physical_member').hide();
-
         $('#messages_physical_container_right_typing_area').show();
         $('#messages_of_physical_member').show();
 
+        $('.message_number' + number).css("background-color","#7CD0FF");
+        $('.message_number' + number).css("color","white");
     } else {
         // $('.message'+count_msg).hide();
         $('.receive_messages_of_physical_member_chat1').hide();
         $('.receive_messages_of_physical_member_chat2').hide();
+
+        let str_ins_id = globalInstructorID.slice(4).toString();
+        let number_previous = parseInt(str_ins_id);
+
+        $('.message_number' + number_previous).css("background-color","white");
+        $('.message_number' + number_previous).css("color","black");
+
+        $('.message_number' + number).css("background-color","#7CD0FF");
+        $('.message_number' + number).css("color","white");
     }
 
     let instructor_id = "Ins_" + number;
@@ -54,7 +61,6 @@ function selected_instructor_physical(number) {
 
     // $('#messages_of_physical_member').show();
     // $('#send_messages_of_physical_member').show();
-
 
     count_msg = number;
 
@@ -125,7 +131,7 @@ function messageReadAJAX(instructor_id,number){
 
                 } else if (y["message_status"].toString().trim() == "0") {
                     $('#send_messages_of_physical_member').append(
-                        '<div class="receive_messages_of_physical_member_chat2 message+' + number + '+">' +
+                        '<div class="receive_messages_of_physical_member_chat2 message+' + number + '">' +
                         // '<div class="receive_messages_of_physical_member_chat2">'+
                         '<div>' + y["message_description"] + '</div>' +
                         '</div>'
