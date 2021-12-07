@@ -238,7 +238,7 @@ function getRegisterDetails(){
                 '<span>'+'Age - '+year_age+'</span><br>'
             );
             $('#profile_physical_container_member').append(
-                '<span>'+'Height - '+result.height+' Kg'+'</span><br>'
+                '<div class="profile_physical_container_member_div"><span>'+'Height - '+result.height+' Kg'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button></div>'
             );
             $('#profile_physical_container_member').append(
                 '<span>'+'Weight - '+result.weight+' cm'+'</span><br>'
@@ -250,4 +250,107 @@ function getRegisterDetails(){
             console.log(error+"edit profile");
         }
     });
+}
+function update_weight(){
+    $('#edit_weight_detail_container_error').hide();
+    $('#profile_change_weight').replaceWith($('#edit_weight_detail_container').show());
+}
+function close_edit_weight_Popup(){
+    $('#edit_weight_detail_container').replaceWith($('#profile_change_weight').show());
+    // $('#edit_weight_detail_container').replaceWith($('#profile_change_weight'));
+    // $('#edit_weight_detail_container').hide();
+    // $('#profile_change_weight').show();
+}
+
+let dateCount = 0;
+let todayDateNew;
+function close_edit_weight_submit(){
+    let weightVal = $('#edit_weight_detail').val();
+    let currentDate = new Date();
+    let previous_weight = parseInt(checkUpdateWeight());
+
+    if(weightVal.length == 0 ){
+        $('#edit_weight_detail_container_error').show();
+        $('#edit_weight_detail_container_error').css("color","red");
+        return;
+    }
+    if(previous_weight == 0){
+        $.ajax({
+            method:"POST",
+            url:"memberDetails",
+            dataType:"json",
+            // contentType:"application/json",
+            success: function (result){
+                // alert(result);
+                previous_weight = parseInt(result.weight);
+                console.log(result);
+
+            },
+            error: function(error){
+                console.log(error+"edit profile");
+            }
+        });
+    }
+    currentDate = currentDate.getFullYear()+"-"+("0"+currentDate.getMonth()).slice(-2)+"-"+("0"+currentDate.getDate()).slice(-2);
+    if(dateCount == 1 || todayDateNew == currentDate){
+        $('#edit_weight_detail_container_error').show();
+        $('#edit_weight_detail_container_error').html("**Could be updated only once");
+        $('#edit_weight_detail_container_error').css("color","red");
+        return;
+    }
+    $.ajax({
+        method:"POST",
+        url:"updateWeight",
+        data:{weightVal:weightVal,currentDate:currentDate,previous_weight:previous_weight},
+        // dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            console.log(result);
+            if(result.trim().toString() == "1"){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Update Weight',
+                    // text: 'Password is successfully updated!',
+                    confirmButtonText:"Ok",
+                    confirmButtonColor: '#0E2C4B',
+                })
+            }else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Try Again',
+                    text: 'Update unsuccessfully!',
+                    confirmButtonText:"Ok",
+                    confirmButtonColor: '#932828',
+                })
+            }
+        },
+        error: function(error){
+            console.log(error+"edit profile");
+        }
+    });
+    document.getElementById("edit_weight_detail").value = "";
+}
+
+function checkUpdateWeight(){
+
+    let previous_weight = 0;
+    $.ajax({
+        method:"POST",
+        url:"updateWeightRetrive",
+        dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            console.log(result);
+            if(result != null) {
+                previous_weight = result[0].new_weight;
+                todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
+                dateCount = result[0].daily_count;
+            }
+        },
+        error: function(error){
+            console.log(error+"edit profile");
+        }
+    });
+
+    return previous_weight;
 }

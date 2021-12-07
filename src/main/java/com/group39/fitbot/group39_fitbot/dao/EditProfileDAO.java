@@ -1,10 +1,14 @@
 package com.group39.fitbot.group39_fitbot.dao;
 
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
+import com.group39.fitbot.group39_fitbot.model.PhysicalPayment;
 import com.group39.fitbot.group39_fitbot.model.Registartion;
+import com.group39.fitbot.group39_fitbot.model.UpdateWeight;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditProfileDAO {
     public static boolean updateMemberDetails(Registartion registartion) throws SQLException, ClassNotFoundException {
@@ -57,5 +61,46 @@ public class EditProfileDAO {
         } else {
             return null;
         }
+    }
+
+    public static boolean updateWeightDetails(UpdateWeight updateWeight) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "INSERT INTO weight_update(member_id,update_date,daily_count,previous_weight,new_weight) VALUES(?,?,?,?,?)";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1,updateWeight.getMember_id());
+        pst.setDate(2,Date.valueOf(updateWeight.getUpdate_date()));
+        pst.setInt(3,updateWeight.getDaily_count());
+        pst.setDouble(4,updateWeight.getPrevious_weight());
+        pst.setDouble(5,updateWeight.getNew_weight());
+
+        return pst.executeUpdate() > 0;
+    }
+
+    public static List<UpdateWeight> retriveUpdateWeight(String member_id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        String query = "SELECT * FROM weight_update WHERE member_id= ? ORDER BY update_date DESC";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, member_id);
+//        pst.setString(3,login.getUserType());
+        List<UpdateWeight> updateWeightList = new ArrayList<>();
+
+        ResultSet resultSet = pst.executeQuery();
+
+        while(resultSet.next()) {
+            if (resultSet != null) {
+                updateWeightList.add(
+                      new  UpdateWeight(
+                              resultSet.getInt(1),
+                              resultSet.getString(2),
+                              resultSet.getDate(3).toLocalDate(),
+                              resultSet.getInt(4),
+                              resultSet.getDouble(5),
+                              resultSet.getDouble(6)
+                      )
+                );
+            }
+        }
+        return updateWeightList;
     }
 }

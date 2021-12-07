@@ -395,7 +395,7 @@
     background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     width: 200px;
     height:30px;
@@ -421,4 +421,59 @@
 .edit_profile_container_detail_input4_btn2, .edit_profile_container_detail_input4_btn1:hover {
     background-color:#0E2C4B;
     color:#FFFFFF;
+}
+
+/*change weight*/
+.profile_change_weight{
+    display: inline-block;
+    background-color: white;
+    border: 1px solid #0E2C4B;
+    padding: 0 0.5rem;
+    margin: 0.5rem 1rem;
+    border-radius: 5px;
+    color:#0E2C4B;
+    /*margin-left: 1rem;*/
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+}
+.profile_change_weight:hover {
+    /*border: 1px solid white;*/
+    /*text-indent: 1rem;*/
+    color:white;
+    background-color: #0E2C4B;
+}
+
+.profile_physical_container_member_div{
+    display:flex;
+    /*justify-content:space-evenly;*/
+    gap: 1rem;
+}
+.edit_weight_detail_container{
+    display: flex;
+    font-size: 16px;
+    color:black;
+    display:none;
+}
+.close_btn_forgot{
+    color: red;
+}
+.edit_weight_detail_container input {
+    font-size:16px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 100px;
+    height:30px;
+}
+#edit_weight_detail_submit{
+    display: inline-block;
+    padding: 0 0.5rem;
+    margin: 0.5rem 1rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: 1px solid white;
+    color:white;
+    background-color: #0E2C4B;
 }

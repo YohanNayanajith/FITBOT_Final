@@ -1,16 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Reports.css">
-    <title>Reports</title>
-</head>
-<body>
+
     <div class="reports_physical" id="reports_physical">
-        <h1>report</h1>
+        <div class="reports_physical_header">
+            <span>User Reports</span>
+        </div>
+
+        <div class="reports_physical_big_container">
+<!--            calender-->
+            <div class="reports_physical_container">
+                <div class="reports_physical_container_header">
+                    <span>Calender</span>
+                </div>
+                <div class="reports_physical_container_chart1">
+<!--                    <canvas class="reports_physical_container_canvas" id="myChart0"></canvas>-->
+                    <div id="calendar" class="reports_physical_container_chart1_calender">
+
+                    </div>
+                </div>
+            </div>
+
+<!--            weight vs time-->
+            <div class="reports_physical_container">
+                <div class="reports_physical_container_header">
+                    <span>Weight vs Time</span>
+                </div>
+                <div class="reports_physical_container_chart1">
+                    <canvas class="reports_physical_container_canvas" id="myChart"></canvas>
+                </div>
+            </div>
+<!--            BMI-->
+            <div class="reports_physical_container">
+                <div class="reports_physical_container_header">
+                    <span>BMI</span>
+                </div>
+                <div class="reports_physical_container_chart1">
+                    <canvas class="reports_physical_container_canvas" id="myChart1"></canvas>
+                </div>
+            </div>
+
+<!--            calories burned-->
+            <div class="reports_physical_container">
+                <div class="reports_physical_container_header">
+                    <span>Calories Burned</span>
+                </div>
+                <div class="reports_physical_container_chart1">
+                    <canvas class="reports_physical_container_canvas" id="myChart2"></canvas>
+                </div>
+            </div>
+<!--            workout plan-->
+            <div class="reports_physical_container">
+                <div class="reports_physical_container_header">
+                    <span>Workout Plan Report</span>
+                </div>
+                <div class="reports_physical_container_chart1">
+                    <canvas class="reports_physical_container_canvas" id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-<script src="./Reports.js"></script>
-</html>

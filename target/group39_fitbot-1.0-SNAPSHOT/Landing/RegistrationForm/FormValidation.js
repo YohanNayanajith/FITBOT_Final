@@ -298,6 +298,9 @@ $(document).ready(function () {
         let date_of_birth = $('#date_of_birth').val();
         console.log("date of birth"+date_of_birth);
         let phone_number = $('#phone_number').val();
+        if(phone_number[0] == '+'){
+            phone_number = "0"+phone_number.slice(3);
+        }
         let address = $('#address').val();
         let gender = $('#gender').val();
         let membership_type = $('#membership_type').val();
@@ -318,9 +321,9 @@ $(document).ready(function () {
         if ((usernameError == true) && (passwordError == true) && (confirmPasswordError == true) && (emailError == true) && (dobError == true) && (phoneNumberError == true) && (heightError == true) && (weightError == true)) {
             console.log("Form submit success");
             const date = new Date();
-            let fullDate = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
+            let fullDate = date.getFullYear()+"-"+("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
             let new_expire_date = parseInt(date.getFullYear())+1;
-            new_expire_date = new_expire_date + "-" +date.getMonth()+"-"+date.getDate();
+            new_expire_date = new_expire_date + "-" +("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
             e.preventDefault();
             $.ajax({
                 method:'POST',
@@ -353,8 +356,8 @@ $(document).ready(function () {
                     }
                 }
             }).fail(function(a,b,err){
-                e.preventDefault();
-                alert(err);
+                // e.preventDefault();
+                // alert(err);
                 Swal.fire({
                     icon: 'error',
                     title: "Can't register...",

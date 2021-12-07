@@ -227,5 +227,40 @@
         <servlet-name>PhysicalAppointmentInsert</servlet-name>
         <url-pattern>/physicalMember/appointmentInsert</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>physicalBranchMessages</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.PhysicalBranchMessagesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>physicalBranchMessages</servlet-name>
+        <url-pattern>/physicalMember/branchMessages</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>virtualMember</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.VirtualMemberController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>virtualMember</servlet-name>
+        <url-pattern>/virtualMember</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateWeight</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.MemberUpdateWeight</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateWeight</servlet-name>
+        <url-pattern>/updateWeight</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateWeightRetrive</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.UpdateWeightGetData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateWeightRetrive</servlet-name>
+        <url-pattern>/updateWeightRetrive</url-pattern>
+    </servlet-mapping>
 </web-app>

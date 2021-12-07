@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Physical Member/Profile/Profile.css">
-    <title>Profile</title>
-</head>
-<body>
+
     <div class="profile_physical" id="profile_physical">
         <div class="profile_physical_big_container">
             <div class="profile_physical_container">
@@ -41,12 +32,16 @@
                     <!-- <div id="myPlot" style="width:100%;max-width:700px;"></div> -->
                 </div>
             </div>
-
-
-
-
         </div>
 
+<!--        popup weight-->
+        <div class="edit_weight_detail_container" id="edit_weight_detail_container">
+            <label for="edit_weight_detail">Enter weight(Kg)</label>
+            <input type="number" name="edit_weight_detail" id="edit_weight_detail"/>
+            <input type="submit" name="edit_weight_detail_submit" id="edit_weight_detail_submit" onclick="close_edit_weight_submit()" value="Submit"/>
+            <i class='bx bx-x close_btn_forgot' onclick="close_edit_weight_Popup()"></i><br>
+            <h5 id="edit_weight_detail_container_error">**Value is missing</h5>
+        </div>
         <!-- pop-up model -->
         <div class="profile_physical_container_edit_profile" id="profile_physical_container_edit_profile">
             <div class="edit_profile_container" id="edit_profile_container">
@@ -141,7 +136,3 @@
             </div>
         </div>
     </div>
-    <script src="Physical Member/Profile/Profile.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</body>
-</html>
