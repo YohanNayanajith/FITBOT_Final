@@ -19,7 +19,6 @@ public class PhysicalMemberController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Physical Member get method called");
-//        session.getAttribute("userName");
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("Physical Member/FullSidebar.html");
         requestDispatcher.forward(req, resp);
@@ -27,8 +26,6 @@ public class PhysicalMemberController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Physical Member/FullSidebar.html");
-//        requestDispatcher.forward(req, resp);
         PrintWriter out = resp.getWriter();
         System.out.println("Physical Member post method called");
         HttpSession session = req.getSession();
@@ -40,7 +37,6 @@ public class PhysicalMemberController extends HttpServlet {
         login.setMember_id(memberID);
         login.setUser_name(userName);
         login.setUserType(memberType);
-//        System.out.println(userName);
 
         try {
             Member member = MemberDAO.retriveMember(login);

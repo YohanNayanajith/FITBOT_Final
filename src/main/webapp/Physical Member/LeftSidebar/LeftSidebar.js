@@ -342,6 +342,11 @@ $(document).ready(function(){
       if(statusTxt == "error") {
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
+      getCalender();
+      viewReport();
+      viewBMI();
+      viewCaloriesBurned();
+      viewWorkoutPlanReports();
 
       });
       load[7] += 1;
@@ -364,6 +369,7 @@ $(document).ready(function(){
       if(statusTxt == "error") {
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
+      getBranchMessages();
 
       });
       load[8] += 1;
@@ -630,9 +636,10 @@ function getRegisterDetails(){
           '<span>'+'Height - '+result.height+' Kg'+'</span><br>'
       );
       $('#profile_physical_container_member').append(
-          '<span>'+'Weight - '+result.weight+' cm'+'</span><br>'
+          '<span>'+'Weight - '+result.weight+' cm'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button>'
       );
       console.log(result);
+
     },
     error: function(error){
       console.log(error+"edit profile");
@@ -829,7 +836,7 @@ function getAppointmentData(){
     $.map(result,function(x){
       $('.edit_profile_container_detail_input4_btn1').attr("disabled", false);
       if(countVal == 0){
-        alert("Yanavada1");
+        // alert("Yanavada1");
         if(!(x.appointment_date["year"] == date.getFullYear())){
           // alert("Yanavada2");
           countVal++;
@@ -876,4 +883,165 @@ function getAppointmentData(){
     console.log(a,b,err);
   });
   $('#appointment_container_table').show();
+}
+
+//branch messages
+function getBranchMessages(){
+  $.ajax({
+    method:'POST',
+    url:"physicalMember/branchMessages",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+    $.map(result,function(x){
+      $('#branch_messages_physical_container').append(
+          '<div class="branch_messages_physical_container_message">'+
+            '<div class="branch_messages_physical_container_message_title">'+x["title"]+'</div>'+
+            '<div class="branch_messages_physical_container_message_div">'+
+              '<div class="branch_messages_physical_container_message_description">'+x["description"]+'</div>'+
+              '<div class="branch_messages_physical_container_message_div_div">'+
+                '<div class="branch_messages_physical_container_message_date">'+x.dates["year"]+"-"+("0"+x.dates["month"]).slice(-2)+"-"+("0"+x.dates["day"]).slice(-2)+'</div>'+
+                '<div class="branch_messages_physical_container_message_branch">'+x["branch_name"]+'</div>'+
+              '</div>'+
+            '</div>'+
+          '</div>'
+      );
+    });
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+}
+
+//reports
+function viewReport(){
+    let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+          borderColor: "red",
+          fill: false
+        }, {
+          data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+          borderColor: "green",
+          fill: false
+        }, {
+          data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+          borderColor: "blue",
+          fill: false
+        }]
+      },
+      options: {
+        legend: {display: false}
+      }
+    });
+}
+function getCalender(){
+  // alert("Calender");
+  // document.addEventListener('DOMContentLoaded', function() {
+    let calendarEl = document.getElementById("calendar");
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      headerToolbar: { center: 'dayGridMonth,timeGridWeek' }, // buttons for switching between views
+
+      views: {
+        dayGridMonth: { // name of view
+          titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+          // other view-specific options here
+        },
+        timeGridWeek: { // name of view
+          titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+          // other view-specific options here
+        }
+      }
+    });
+    calendar.batchRendering(function() {
+      calendar.changeView('dayGridMonth');
+      calendar.addEvent({ title: 'new event', start: '2021-12-08' });
+    });
+    calendar.render();
+  // });
+}
+function viewBMI(){
+  let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("myChart1", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}
+function viewCaloriesBurned(){
+  let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("myChart2", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}
+function viewWorkoutPlanReports(){
+  let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("myChart3", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
 }

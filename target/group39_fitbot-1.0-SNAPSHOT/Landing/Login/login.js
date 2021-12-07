@@ -380,7 +380,16 @@ $(document).ready(function (){
 
                 }else if(result == "2"){
                     //virtual member
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully login',
+                        text: 'Virtual Member!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/virtualMember';
+                    }, 2000);
                 }else if(result == "3"){
                     //instructor
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
