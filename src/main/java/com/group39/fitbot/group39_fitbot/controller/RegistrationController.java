@@ -104,8 +104,8 @@ public class RegistrationController extends HttpServlet {
                             confirm_password,
                             membership_type,
                             membership_category,
-                            height,
                             weight,
+                            height,
                             member_id,
                             email,
                             branch_type
