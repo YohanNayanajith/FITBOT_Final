@@ -55,8 +55,8 @@ public class EditProfileDAO {
             register.setLast_name(resultSet.getString(2));
             register.setDate_of_birth((resultSet.getDate(3)).toLocalDate());
             register.setContact_number(resultSet.getInt(4));
-            register.setWeight(resultSet.getInt(5));
-            register.setHeight(resultSet.getInt(6));
+            register.setHeight(resultSet.getInt(5));
+            register.setWeight(resultSet.getInt(6));
             return register;
         } else {
             return null;
@@ -102,5 +102,15 @@ public class EditProfileDAO {
             }
         }
         return updateWeightList;
+    }
+
+    public static boolean updateRegisterWeight(String member_id, double weight) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "UPDATE register SET weight=? WHERE member_id=?";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setDouble(1,weight);
+        pst.setString(2,member_id);
+
+        return pst.executeUpdate() > 0;
     }
 }

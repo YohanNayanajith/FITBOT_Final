@@ -42,10 +42,12 @@ public class MemberUpdateWeight extends HttpServlet {
         updateWeight.setDaily_count(1);
 
         boolean accept;
+        boolean accept_new;
         try {
             accept = EditProfileDAO.updateWeightDetails(updateWeight);
+            accept_new = EditProfileDAO.updateRegisterWeight(memberID,weightVal);
 
-            if(accept){
+            if(accept && accept_new){
                 out.print("1");
             }else {
                 out.print("0");

@@ -238,10 +238,10 @@ function getRegisterDetails(){
                 '<span>'+'Age - '+year_age+'</span><br>'
             );
             $('#profile_physical_container_member').append(
-                '<div class="profile_physical_container_member_div"><span>'+'Height - '+result.height+' Kg'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button></div>'
+                '<div class="profile_physical_container_member_div"><span>'+'Weight - '+result.weight+' Kg'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button></div>'
             );
             $('#profile_physical_container_member').append(
-                '<span>'+'Weight - '+result.weight+' cm'+'</span><br>'
+                '<span>'+'Height - '+result.height+' cm'+'</span>'
             );
 
             console.log(result);
@@ -262,42 +262,121 @@ function close_edit_weight_Popup(){
     // $('#profile_change_weight').show();
 }
 
-let dateCount = 0;
-let todayDateNew;
+// function checkUpdateWeight(){
+//     let previous_weight = 0;
+//     let dateCount = 0;
+//     let todayDateNew;
+//     let arr = new Array(0,0,null);
+//     $.ajax({
+//         method:"POST",
+//         url:"updateWeightRetrive",
+//         dataType:"json",
+//         // contentType:"application/json",
+//         success: function (result){
+//             console.log(result);
+//             if(result[0] != null) {
+//                 previous_weight = result[0].new_weight;
+//                 todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
+//                 dateCount = result[0].daily_count;
+//                 console.log(previous_weight," ",todayDateNew," ",dateCount);
+//                 arr[0] = previous_weight;
+//                 arr[1] = dateCount;
+//                 arr[2] = todayDateNew;
+//                 console.log(arr[0]," ",arr[1]," ",arr[2]);
+//             }else {
+//                 previous_weight = 0;
+//                 todayDateNew = null;
+//                 dateCount = 0;
+//             }
+//         },
+//         error: function(error){
+//             console.log(error+"edit profile");
+//             return previous_weight;
+//         }
+//     });
+//
+//     console.log("previous weight"+arr);
+//     return arr;
+// }
+
 function close_edit_weight_submit(){
+    // let arr_new = new Array();
+    // arr_new = checkUpdateWeight();
     let weightVal = $('#edit_weight_detail').val();
+
+    if(weightVal.length == 0){
+        $('#edit_weight_detail_container_error').show();
+        $('#edit_weight_detail_container_error').css("color","red");
+        document.getElementById("edit_weight_detail").value = "";
+        // alert("length is zero")
+        return;
+    }
     let currentDate = new Date();
-    let previous_weight = parseInt(checkUpdateWeight());
+    currentDate = currentDate.getFullYear()+"-"+("0"+(currentDate.getMonth()+1)).slice(-2)+"-"+("0"+currentDate.getDate()).slice(-2);
 
-    if(weightVal.length == 0 ){
-        $('#edit_weight_detail_container_error').show();
-        $('#edit_weight_detail_container_error').css("color","red");
-        return;
-    }
-    if(previous_weight == 0){
-        $.ajax({
-            method:"POST",
-            url:"memberDetails",
-            dataType:"json",
-            // contentType:"application/json",
-            success: function (result){
-                // alert(result);
-                previous_weight = parseInt(result.weight);
-                console.log(result);
+    // let arr = new Array(0,0,null);
+    let countNew = 0;
+    let newWeightChange = 0;
+    $.ajax({
+        method:"POST",
+        url:"updateWeightRetrive",
+        dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            console.log(result);
+            let previous_weight = result[0].new_weight;
+            let todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
+            let dateCount = result[0].daily_count;
+            if(result[0] != null) {
+                console.log(previous_weight," ",todayDateNew," ",dateCount);
 
-            },
-            error: function(error){
-                console.log(error+"edit profile");
+                console.log("todayDateNew"+todayDateNew+" currentDate"+currentDate);
+                if(todayDateNew == currentDate ){
+                    $('#edit_weight_detail_container_error').show();
+                    $('#edit_weight_detail_container_error').html("**Could be updated only once");
+                    $('#edit_weight_detail_container_error').css("color","red");
+                    // alert("alert")
+                    // return;
+
+                }else{
+                    updateRealWeight(weightVal,currentDate,previous_weight);
+                }
+                // else if(parseInt(previous_weight) == 0){
+                //     newWeightChange+=1;
+                // }
+                countNew += 1;
+
+            }else {
+                countNew = 0;
+                newWeightChange = 0;
+
+                $.ajax({
+                    method:"POST",
+                    url:"memberDetails",
+                    dataType:"json",
+                    // contentType:"application/json",
+                    success: function (result){
+                        // alert(result);
+                        let previous_weight_new = parseFloat(result.weight);
+                        updateRealWeight(weightVal,currentDate,previous_weight_new);
+                        console.log(result);
+                        console.log(previous_weight);
+                    },
+                    error: function(error){
+                        console.log(error+"edit profile");
+                    }
+                });
             }
-        });
-    }
-    currentDate = currentDate.getFullYear()+"-"+("0"+currentDate.getMonth()).slice(-2)+"-"+("0"+currentDate.getDate()).slice(-2);
-    if(dateCount == 1 || todayDateNew == currentDate){
-        $('#edit_weight_detail_container_error').show();
-        $('#edit_weight_detail_container_error').html("**Could be updated only once");
-        $('#edit_weight_detail_container_error').css("color","red");
-        return;
-    }
+        },
+        error: function(error){
+            console.log(error+"edit profile");
+        }
+    });
+
+    document.getElementById("edit_weight_detail").value = "";
+}
+
+function updateRealWeight(weightVal,currentDate,previous_weight){
     $.ajax({
         method:"POST",
         url:"updateWeight",
@@ -314,6 +393,10 @@ function close_edit_weight_submit(){
                     confirmButtonText:"Ok",
                     confirmButtonColor: '#0E2C4B',
                 })
+                $('#edit_profile_container_detail').find("input[type=text], input[type=number], input[type=date], input[type=tel]").val("");
+                $('#edit_profile_container').hide();
+
+                getRegisterDetails();
             }else {
                 Swal.fire({
                     icon: 'error',
@@ -328,29 +411,4 @@ function close_edit_weight_submit(){
             console.log(error+"edit profile");
         }
     });
-    document.getElementById("edit_weight_detail").value = "";
-}
-
-function checkUpdateWeight(){
-
-    let previous_weight = 0;
-    $.ajax({
-        method:"POST",
-        url:"updateWeightRetrive",
-        dataType:"json",
-        // contentType:"application/json",
-        success: function (result){
-            console.log(result);
-            if(result != null) {
-                previous_weight = result[0].new_weight;
-                todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
-                dateCount = result[0].daily_count;
-            }
-        },
-        error: function(error){
-            console.log(error+"edit profile");
-        }
-    });
-
-    return previous_weight;
 }

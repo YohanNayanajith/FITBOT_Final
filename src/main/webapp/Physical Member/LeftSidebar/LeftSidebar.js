@@ -633,10 +633,10 @@ function getRegisterDetails(){
           '<span>'+'Age - '+year_age+'</span><br>'
       );
       $('#profile_physical_container_member').append(
-          '<span>'+'Height - '+result.height+' Kg'+'</span><br>'
+          '<div class="profile_physical_container_member_div"><span>'+'Weight - '+result.weight+' Kg'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button></div>'
       );
       $('#profile_physical_container_member').append(
-          '<span>'+'Weight - '+result.weight+' cm'+'</span><button class="profile_change_weight" id="profile_change_weight" onclick="update_weight()">Change Weight</button>'
+          '<span>'+'Height - '+result.height+' cm'+'</span>'
       );
       console.log(result);
 
@@ -916,30 +916,48 @@ function getBranchMessages(){
 
 //reports
 function viewReport(){
-    let xValues = [100,200,300,400,500,600,700,800,900,1000];
+  $.ajax({
+    method:"POST",
+    url:"updateWeightRetrive",
+    dataType:"json",
+    // contentType:"application/json",
+    success: function (result){
+      console.log(result);
+      let arrDate = new Array();
+      let arrWeight = new Array();
+      let todayDateNew;
+      let i = 0;
 
-    new Chart("myChart", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [{
-          data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-          borderColor: "red",
-          fill: false
-        }, {
-          data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-          borderColor: "green",
-          fill: false
-        }, {
-          data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-          borderColor: "blue",
-          fill: false
-        }]
-      },
-      options: {
-        legend: {display: false}
-      }
-    });
+      $.map(result,function(x){
+        todayDateNew = x.update_date["year"]+"-"+("0"+x.update_date["month"]).slice(-2)+"-"+("0"+x.update_date["day"]).slice(-2);
+        // arrDate[i] = x["update_date"];
+        arrDate[i] = todayDateNew;
+        arrWeight[i] = x["new_weight"];
+        i += 1;
+      });
+
+      // let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+      new Chart("myChart", {
+        type: "line",
+        data: {
+          labels: arrDate,
+          datasets: [{
+            // data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+            data: arrWeight,
+            borderColor: "red",
+            fill: false
+          }]
+        },
+        options: {
+          legend: {display: true}
+        }
+      });
+    },
+    error: function(error){
+      console.log(error+"edit profile");
+    }
+  });
 }
 function getCalender(){
   // alert("Calender");
@@ -968,28 +986,80 @@ function getCalender(){
   // });
 }
 function viewBMI(){
-  let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
-  new Chart("myChart1", {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [{
-        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-        borderColor: "red",
-        fill: false
-      }, {
-        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-        borderColor: "green",
-        fill: false
-      }, {
-        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-        borderColor: "blue",
-        fill: false
-      }]
+  $.ajax({
+    method:"POST",
+    url:"updateWeightRetrive",
+    dataType:"json",
+    // contentType:"application/json",
+    success: function (result){
+      console.log(result);
+      let arrDate = new Array();
+      let arrWeight = new Array();
+      let todayDateNew;
+      let i = 0;
+
+      $.map(result,function(x){
+        todayDateNew = x.update_date["year"]+"-"+("0"+x.update_date["month"]).slice(-2)+"-"+("0"+x.update_date["day"]).slice(-2);
+        // arrDate[i] = x["update_date"];
+        arrDate[i] = todayDateNew;
+        arrWeight[i] = x["new_weight"];
+        i += 1;
+      });
+
+      $.ajax({
+        method:"POST",
+        url:"memberDetails",
+        dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+          console.log(result);
+          let height = parseFloat(result.height);
+          let BMI;
+          let arrBMI = new Array();
+          arrWeight.forEach(calculateBMI);
+          function calculateBMI(value, index, array){
+            BMI = (parseFloat(value)*100*100)/(height*height)
+            arrBMI[index] = BMI.toFixed(4);
+          }
+
+          new Chart("myChart1", {
+            type: "line",
+            data: {
+              labels: arrWeight,
+              datasets: [{
+                // data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                data: arrBMI,
+                borderColor: "blue",
+                fill: false
+              }]
+            },
+            options: {
+              legend: {display: true},
+              scales: {
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'BMI'
+                  }
+                }],
+                xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Weight'
+                  }
+                }]
+              }
+            }
+          });
+        },
+        error: function(error){
+          console.log(error+"edit profile");
+        }
+      });
     },
-    options: {
-      legend: {display: false}
+    error: function(error){
+      console.log(error+"edit profile");
     }
   });
 }
