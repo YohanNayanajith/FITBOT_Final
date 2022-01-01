@@ -263,4 +263,31 @@
         <servlet-name>UpdateWeightRetrive</servlet-name>
         <url-pattern>/updateWeightRetrive</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>VirtualWorkout</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.VirtualWorkoutPlanController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VirtualWorkout</servlet-name>
+        <url-pattern>/physicalMember/virtualWorkoutPlan</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Notification</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.NotificationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Notification</servlet-name>
+        <url-pattern>/notification</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NotificationUpdate</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.UpdateNotificationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NotificationUpdate</servlet-name>
+        <url-pattern>/notificationUpdate</url-pattern>
+    </servlet-mapping>
 </web-app>

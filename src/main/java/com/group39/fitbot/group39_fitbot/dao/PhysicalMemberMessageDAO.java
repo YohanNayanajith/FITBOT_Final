@@ -22,8 +22,10 @@ public class PhysicalMemberMessageDAO {
         int chatID = 0;
         if (resultSet.next()) {
             chatID = resultSet.getInt(1);
+        }else {
+            chatID = -1;
         }
-
+        System.out.println("Chat ID" + chatID);
         return chatID;
     }
 
@@ -64,8 +66,9 @@ public class PhysicalMemberMessageDAO {
 
         int chatID = getChatData(globalInstructorID, member_id);
 
-        if(chatID == 0){
+        if(chatID == -1){
             boolean b = insertMessageDetails(member_id, globalInstructorID);
+            chatID = getChatData(globalInstructorID, member_id);
             if(!b){
                 return false;
             }

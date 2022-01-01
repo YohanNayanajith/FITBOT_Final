@@ -1,9 +1,7 @@
 package com.group39.fitbot.group39_fitbot.controller;
 
 import com.google.gson.Gson;
-import com.group39.fitbot.group39_fitbot.dao.MemberDAO;
 import com.group39.fitbot.group39_fitbot.dao.WorkoutDAO;
-import com.group39.fitbot.group39_fitbot.model.Member;
 import com.group39.fitbot.group39_fitbot.model.Workout;
 
 import javax.servlet.RequestDispatcher;
@@ -12,28 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutController extends HttpServlet {
+public class VirtualWorkoutPlanController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Workout get method called");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Physical Member/Workout_Plans/Workout_Plan.html");
-        requestDispatcher.forward(req,resp);
+        System.out.println("Virtual Workout Get method called");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Physical Member/FullSidebar.html");
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter out = new PrintWriter();
-        System.out.println("Workout post method called");
+        System.out.println("Virtual Workout Post method called");
 
-        Workout workout = new Workout();
+        int package_id = Integer.parseInt(req.getParameter("num_plan"));
+//        Workout virtual_workout = new Workout();
         try {
             List<Workout> all_workouts = new ArrayList<>();
-            all_workouts = WorkoutDAO.getWorkout();
+            all_workouts = WorkoutDAO.getVirtualWorkout(package_id,"virtual");
 //            System.out.println(all_workouts);
             Gson gson = new Gson();
             String workoutJSON = gson.toJson(all_workouts);
@@ -45,6 +42,5 @@ public class WorkoutController extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }

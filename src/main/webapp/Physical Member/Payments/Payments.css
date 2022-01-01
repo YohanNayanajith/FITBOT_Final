@@ -125,15 +125,9 @@
 }
 .payment_history_container_table{
     width:92%;
-    /* width:100vw; */
-    /* margin-top:10px; */
-    /*border-collapse: collapse;*/
     margin: 10px 4% 10px;
     border-collapse:separate;
     border-spacing:0 15px;
-    
-    /* background-color: white; */
-    /* border-radius: 30px; */
 }
 
 .payment_history_container_row, .payment_history_container_table_header  {

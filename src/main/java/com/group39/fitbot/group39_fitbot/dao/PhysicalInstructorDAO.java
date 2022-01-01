@@ -41,21 +41,6 @@ public class PhysicalInstructorDAO {
                         resultSet.getString(11),
                         resultSet.getString(12)
                         ));
-
-//                physicalInstructor.setInstructor_id(resultSet.getString(1));
-//                physicalInstructor.setFirst_name(resultSet.getString(2));
-//                physicalInstructor.setLast_name(resultSet.getString(3));
-//                physicalInstructor.setGender(resultSet.getString(4));
-//                physicalInstructor.setEmail(resultSet.getString(5));
-//                physicalInstructor.setNic(resultSet.getString(6));
-//                physicalInstructor.setDob(resultSet.getDate(7));
-//                physicalInstructor.setAddress(resultSet.getString(8));
-//                physicalInstructor.setPrimary_contact(resultSet.getInt(9));
-//                physicalInstructor.setSecondary_contact(resultSet.getInt(10));
-//                physicalInstructor.setMain_skill(resultSet.getString(11));
-//
-//
-//                physicalInstructorList.add(physicalInstructor);
             }
         }
         System.out.println(physicalInstructorList);

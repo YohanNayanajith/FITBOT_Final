@@ -42,8 +42,11 @@ $(document).ready(function(){
   $('#click_me').click(function () {
     if(right_load == 0) {
       $('#right_side_bar_view').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/RightSidebar/RightSidebar.html #right_side_nav', function (responseTxt, statusTxt, xhr) {
-        if (statusTxt == "error")
+        if (statusTxt == "error") {
           alert("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+        // viewMonthlyGoalReports();
+        getRightSidebarDetail();
       });
 
     }else {
@@ -138,6 +141,7 @@ $(document).ready(function(){
   if(statusTxt == "error")
       alert("Error: " + xhr.status + ": " + xhr.statusText);
   });
+  viewBMI("viewBMI");
   load[0] += 1;
 });
 
@@ -164,7 +168,7 @@ $(document).ready(function(){
       page_select(sideBar_links_variable);
       sideBar_links_variable = "#physical_member_profile";
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Profile/Profile.html #profile_physical',function(responseTxt, statusTxt, xhr){
-      
+
       if(statusTxt == "error") {
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
@@ -239,44 +243,15 @@ $(document).ready(function(){
       sideBar_links_variable = "#physical_member_workout_plans";
 
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Workout_Plans/Workout_Plan.html #workout_plan_physical',function(responseTxt, statusTxt, xhr){
-        if(statusTxt == "error")
+        if(statusTxt == "error") {
           alert("Error: " + xhr.status + ": " + xhr.statusText);
-        // alert(responseTxt);
-        // alert(statusTxt);
-        // alert(xhr.workout_id);
+        }
 
-        $.ajax({
-          method:'POST',
-          url:"workout",
-          dataType:'json',
-          // contentType:"application/json",
-        }).done(function(result){
-          // const data_object = JSON.parse(result);
-          // $.map(result,function(post,i){
-          let total_reps_phy = result.total_reps;
-          // alert(total_reps_phy);
-
-          // console.log(result);
-          $.map(result,function(x){
-            $('#workout_container_table').append(
-
-                '<tr class="payment_history_container_row">'+
-                  '<td>'+x.exercise+'</td>'+
-                  '<td>'+x.workout_type+'</td>'+
-                  '<td>'+x.total_reps+'</td>'+
-                  '<td>'+x.duration+'</td>'+
-                  '<td>'+'<input type="checkbox">'+'</td>'+
-                '</tr>'
-            );
-          });
-
-          // alert(result);
-        }).fail(function(a,b,err){
-          alert("Error");
-          console.log(a,b,err);
-        });
+        checkWorkoutData();
       });
       load[4] += 1;
+
+      //window.history.pushState("object or string", "Title", "/group39_fitbot_war_exploded/physicalMember/virtual_workout_plan");
 
     }else if(sideBar_links_variable == "#physical_member_workout_plans"){
       return;
@@ -344,7 +319,7 @@ $(document).ready(function(){
       }
       getCalender();
       viewReport();
-      viewBMI();
+      viewBMI("myChart1");
       viewCaloriesBurned();
       viewWorkoutPlanReports();
 
@@ -487,6 +462,42 @@ function closeNav() {
 
 var user_name;
 
+//rightsidebar detail
+function getRightSidebarDetail(){
+    $.ajax({
+        method:"POST",
+        url:"memberDetails",
+        dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            let rightData = result["first_name"];
+            let rightDatalast = result["last_name"];
+            $('#right_sideBar_name').append(
+                `<h2><span>${rightData[0]}</span>${rightData.slice(1)} <span>${rightDatalast[0]}</span>${rightDatalast.slice(1)}</h2>`
+            );
+            $('#height_profile').append(
+                `<span class="height">Height</span><br>
+                 <span class="height_value">${result["height"]}</span>`
+            );
+            let date = new Date();
+            console.log(date);
+            let age = date.getFullYear()-result.date_of_birth["year"];
+            $('#age_profile').append(
+                `<span class="age">Age</span><br>
+                 <span class="age_value">${age}</span>`
+            );
+            $('#weight_profile').append(
+                `<span class="weight">Weight</span><br>
+                 <span class="weight_value">${result["weight"]}Kg</span>`
+            );
+          viewMonthlyGoalReports();
+        },
+        error: function(error){
+            console.log(error+"edit profile");
+        }
+    });
+}
+
 $(document).ready(function(){
 
   $.ajax({
@@ -540,6 +551,7 @@ $(document).ready(function(){
 
 // logout
 function log_out_function(){
+  window.history.pushState("object or string", "Title", "/group39_fitbot_war_exploded/physicalMember");
   $.ajax({
     method:"POST",
     url:"logout",
@@ -608,6 +620,8 @@ $(document).ready(function(){
   $('#new_btn_notify').hide();
   $('#top_bar_notification_white_icon').click(function(){
     $('#notification_messages_big_div').toggle();
+
+    getNotification();
 
     $('#new_btn_notify').hide();
     $('#notification_messages_box_i').click(function(){
@@ -747,6 +761,35 @@ function searchInstructors(){
         alert("Physical Instructor Error");
         console.log(a,b,err);
     });
+}
+//workout
+function checkWorkoutData(){
+  $.ajax({
+    method:'POST',
+    url:"workout",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    let total_reps_phy = result.total_reps;
+    // console.log(result);
+    $.map(result,function(x){
+      $('#workout_container_table').append(
+
+          '<tr class="payment_history_container_row">'+
+          '<td>'+x.exercise+'</td>'+
+          '<td>'+x.workout_type+'</td>'+
+          '<td>'+x.total_reps+'</td>'+
+          '<td>'+x.duration+'</td>'+
+          '<td>'+'<input type="checkbox">'+'</td>'+
+          '</tr>'
+      );
+    });
+
+    // alert(result);
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
 }
 
 //payments
@@ -985,7 +1028,7 @@ function getCalender(){
     calendar.render();
   // });
 }
-function viewBMI(){
+function viewBMI(chartName){
 
   $.ajax({
     method:"POST",
@@ -1023,7 +1066,7 @@ function viewBMI(){
             arrBMI[index] = BMI.toFixed(4);
           }
 
-          new Chart("myChart1", {
+          new Chart(chartName, {
             type: "line",
             data: {
               labels: arrWeight,
@@ -1063,6 +1106,7 @@ function viewBMI(){
     }
   });
 }
+
 function viewCaloriesBurned(){
   let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
@@ -1114,4 +1158,32 @@ function viewWorkoutPlanReports(){
       legend: {display: false}
     }
   });
+}
+
+function viewMonthlyGoalReports(){
+    alert("mama load venava");
+    let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+    new Chart("monthly_goal_chart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                borderColor: "red",
+                fill: false
+            }, {
+                data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+                borderColor: "green",
+                fill: false
+            }, {
+                data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+                borderColor: "blue",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: false}
+        }
+    });
 }
