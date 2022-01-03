@@ -290,4 +290,58 @@
         <servlet-name>NotificationUpdate</servlet-name>
         <url-pattern>/notificationUpdate</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberInstructorDetail</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.MemberInstructorDetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberInstructorDetail</servlet-name>
+        <url-pattern>/memberInstructorDetail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberInstructorDescription</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.InstructorDescriptionViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberInstructorDescription</servlet-name>
+        <url-pattern>/memberInstructorDescription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberInstructorLanguage</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.InstructorLanguagesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberInstructorLanguage</servlet-name>
+        <url-pattern>/memberInstructorLanguage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberInstructorSkills</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.InstructorSkillsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberInstructorSkills</servlet-name>
+        <url-pattern>/memberInstructorSkills</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InstructorRating</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.InstructorRatingController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InstructorRating</servlet-name>
+        <url-pattern>/instructorRating</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InstructorGetRating</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.InstructorRatingGetController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InstructorGetRating</servlet-name>
+        <url-pattern>/instructorGetRating</url-pattern>
+    </servlet-mapping>
 </web-app>

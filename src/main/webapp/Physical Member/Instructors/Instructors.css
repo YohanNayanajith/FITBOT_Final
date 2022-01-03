@@ -144,30 +144,150 @@
 }
 
 /* instructor popup */
-.instructors_physical_container_detail_popup {
-    padding: 20px;
-    background-color:#F2F2F2;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+/*.instructors_physical_container_detail_popup {*/
+/*    padding: 20px;*/
+/*    background-color:#F2F2F2;*/
+/*    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);*/
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    justify-content: center;
+/*    position: fixed;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    width: 800px;*/
+/*    z-index: 100;*/
+/*    border-radius: 5px;*/
+/*    display: none;*/
+/*    -webkit-animation: fadeIn 2s;*/
+/*    animation: fadeIn 1s;*/
+/*}*/
+/*@-webkit-keyframes fadeIn {*/
+/*    from {opacity: 0;}*/
+/*    to {opacity: 1;}*/
+/*}*/
+
+/*@keyframes fadeIn {*/
+/*    from {opacity: 0;}*/
+/*    to {opacity:1 ;}*/
+/*}*/
+
+/*instructor view*/
+.instructor_view {
+    margin: 30px 72px;
+}
+
+.instructors_physical_container_detail_popup_header{
+    display: flex;
+    justify-content:space-between;
     align-items: center;
-    width: 800px;
-    z-index: 100;
-    border-radius: 5px;
-    display: none;
-    -webkit-animation: fadeIn 2s;
-    animation: fadeIn 1s;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+.instructors_physical_container_detail_h1 h1{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.instructors_physical_container_detail_btn input,
+.instructors_physical_container_detail_rate_section input{
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color:#0E2C4B;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.instructors_physical_container_detail_btn input:hover,
+.instructors_physical_container_detail_rate_section input:hover{
+    background-color:white;
+    border: 1px solid #0E2C4B;
+    color:#0E2C4B;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+.instructors_physical_container_detail_image_section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.instructors_physical_container_detail_image img{
+    width:275px;
+    /*max-height:275px;*/
+    height:275px;
+    border-radius: 50%;
+}
+.instructors_physical_container_detail_line_new {
+    position: relative;
+    border:3px solid black;
+    background-color: black;
+    border-radius: 5px;
+    width: 16%;
+    transform: rotate(90deg);
+    /*margin: 0 0 10px;*/
+}
+.instructors_physical_container_detail_view_section_header,
+.instructors_physical_container_detail_bio_section_h1,
+.instructors_physical_container_detail_offers_section_header,
+.instructors_physical_container_detail_review_section div{
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.instructors_physical_container_detail_view_section_box{
+    background-color: #F2F2F2;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.instructors_physical_container_detail_view_section_box_detail{
+    padding: 20px;
+    display:grid;
+    grid-template-columns: auto auto;
+}
+.instructors_physical_container_detail_view_section_box_detail div{
+    padding:10px 20px;
+    text-align:left;
+}
+
+.instructors_physical_container_detail_bio_section,
+.instructors_physical_container_detail_offers_section{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.instructors_physical_container_detail_bio_section_detail {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.instructors_physical_container_detail_offers_section_skils {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 15px;
+}
+.instructors_physical_container_detail_offers_section_skils div{
+    display:inline-block;
+    padding: 10px 15px;
+    text-align: center;
+    color:#616161;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    border-radius: 5px;
+    background-color:#DDD8D8;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.instructors_physical_container_detail_review_section_des{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    /* background-color: #0E2C4B; */
+}
+
+.instructors_physical_container_detail_rate_section{
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }

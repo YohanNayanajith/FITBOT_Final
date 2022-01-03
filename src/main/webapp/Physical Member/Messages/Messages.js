@@ -190,7 +190,9 @@ function messageSend() {
             // selected_instructor_physical();
             $('.receive_messages_of_physical_member_chat1').hide();
             $('.receive_messages_of_physical_member_chat2').hide();
-            messageReadAJAX(globalInstructorID,count_msg);
+            setInterval(function () {
+                messageReadAJAX(globalInstructorID,count_msg);
+            }, 1000);
         }
     });
 }

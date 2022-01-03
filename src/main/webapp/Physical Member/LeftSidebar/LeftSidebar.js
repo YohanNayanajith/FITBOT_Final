@@ -195,7 +195,8 @@ $(document).ready(function(){
       if(statusTxt == "error") {
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
-        instructorGetData();
+        checkInstructorBelongs();
+
       });
       load[2] += 1;
     }else if(sideBar_links_variable == "#physical_member_instructors"){
@@ -621,7 +622,9 @@ $(document).ready(function(){
   $('#top_bar_notification_white_icon').click(function(){
     $('#notification_messages_big_div').toggle();
 
-    getNotification();
+    setInterval(function () {
+      getNotification();
+    }, 1000);
 
     $('#new_btn_notify').hide();
     $('#notification_messages_box_i').click(function(){
@@ -693,6 +696,138 @@ function instructorGetData(){
           '</div>'+
           '</div>'
       );
+    });
+
+    // alert(result);
+  }).fail(function(a,b,err){
+    alert("Physical Instructor Error");
+    console.log(a,b,err);
+  });
+}
+
+function checkInstructorBelongs(){
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorDetail",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+    // let result_val = result["instructor_id"];
+    // if(Object.entries(result).length === 0){
+    if(result.toString().trim() == "1"){
+      alert("instructorGetData");
+      instructorGetData();
+    }else{
+      // alert("instructorFullDetailView");
+      // $('#instructors_physical_container_header').hide();
+      $('#instructors_physical_container_second').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Instructors/InstructorProfile.html #instructors_physical_container_detail_popup_new',function(responseTxt, statusTxt, xhr){
+
+        if(statusTxt == "error") {
+          alert("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+        instructorFullDetailView(result["instructor_id"]);
+        instructorLanguageDetail(result["instructor_id"]);
+        instructorSkillsDetail(result["instructor_id"]);
+        instructorGetOtherViewDetail(result["instructor_id"]);
+      });
+    }
+    // alert(result);
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
+}
+function instructorFullDetailView(instructor_id){
+  // alert("Man call venava");
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorDescription",
+    data:{instructor_id:instructor_id},
+    // dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+    instructorRating(instructor_id);
+    // $('#instructors_physical_container_first').hide();
+    // $('#instructors_physical_container_detail_popup').show();
+    $('#instructors_physical_container_header_h1').html("Your Personal Instructor");
+
+    $('#instructors_physical_container_detail_view_section_box_detail_country').html(result["country"]);
+
+    $('#instructors_physical_container_detail_view_section_box_detail_payment').html(result["price"]);
+    $('#instructors_physical_container_detail_view_section_box_detail_duration').html(result["duration"]);
+    $('#instructors_physical_container_detail_bio_section_detail').html(result["description"]);
+
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
+}
+function instructorLanguageDetail(instructor_id){
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorLanguage",
+    data:{instructor_id:instructor_id},
+    // dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+
+    let language_detail = "";
+    let lan_count = 1;
+    $.map(result,function(x){
+      if(lan_count == 1){
+        language_detail = language_detail+result[0]["language"];
+      }else{
+        language_detail = language_detail+","+result[0]["language"];
+      }
+      lan_count += 1;
+    });
+    $('#instructors_physical_container_detail_view_section_box_language').html(language_detail);
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
+}
+
+function instructorSkillsDetail(instructor_id){
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorSkills",
+    data:{instructor_id:instructor_id},
+    // dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+
+    $.map(result,function(x){
+      $('#instructors_physical_container_detail_offers_section_skils').append(
+          `<div>${result[0]["language"]}</div>`
+      );
+    });
+
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
+}
+
+function instructorGetOtherViewDetail(instructor_id){
+  $.ajax({
+    method:'POST',
+    url:"physicalInstructor",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+    // alert("This is physical instructor");
+    $.map(result,function(x){
+      if(x["instructor_id"].toString() == instructor_id){
+        $('#instructors_physical_container_detail_view_section_header').html(x["first_name"]+" "+x["last_name"]);
+        $('#instructors_physical_container_detail_offers_section_header').html("What "+x["first_name"]+" "+x["last_name"] +" offers");
+
+        $('#instructors_physical_container_detail_image').append(
+            `<img src="${x["profile_image_url"]}" alt="instructor image">`
+        );
+
+      }
     });
 
     // alert(result);
