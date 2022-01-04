@@ -1206,6 +1206,7 @@ function viewBMI(chartName){
             data: {
               labels: arrWeight,
               datasets: [{
+                label: 'BMI ',
                 // data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
                 data: arrBMI,
                 borderColor: "blue",
@@ -1213,6 +1214,10 @@ function viewBMI(chartName){
               }]
             },
             options: {
+              title: {
+                display: true,
+                text: "BMI vs Weight"
+              },
               legend: {display: true},
               scales: {
                 yAxes: [{
@@ -1296,7 +1301,7 @@ function viewWorkoutPlanReports(){
 }
 
 function viewMonthlyGoalReports(){
-    alert("mama load venava");
+    // alert("mama load venava");
     let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
     new Chart("monthly_goal_chart", {

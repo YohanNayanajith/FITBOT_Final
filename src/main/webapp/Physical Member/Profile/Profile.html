@@ -1,6 +1,6 @@
 
     <div class="profile_physical" id="profile_physical">
-        <div class="profile_physical_big_container">
+        <div class="profile_physical_big_container" id="profile_physical_big_container">
             <div class="profile_physical_container">
                 <div class="profile_physical_container_header">
                     <h1>My Profile</h1>
@@ -12,7 +12,7 @@
 
             <div class="profile_physical_container_details">
                 <div class="profile_physical_container_details_image">
-                    <img src="http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/profile_image.jpg" alt="profile_image">
+                    <img src="http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/profile_image.jpg" alt="profile_image" id="imgshow">
                 </div>
                 <div class="profile_physical_container_member_details">
                     <div class="profile_physical_container_member_details_line"></div>
@@ -32,6 +32,8 @@
                     <!-- <div id="myPlot" style="width:100%;max-width:700px;"></div> -->
                 </div>
             </div>
+
+            <div id="profile_physical_big_container_background" class="profile_physical_big_container_background"></div>
         </div>
 
 <!--        popup weight-->
@@ -67,30 +69,41 @@
 
                         <div class="edit_profile_container_detail_input2">
                             <div>
-                                <label for="edit_profile_container_detail_weight">Weight</label><br>
-                                <input type="number" name="edit_profile_container_detail_weight" class="edit_profile_container_detail_weight" id="edit_profile_container_detail_weight">
-                                <h5 id="edit_profile_error_weight"></h5>
-                            </div>
-
-                            <div>
-                                <label for="edit_profile_container_detail_last_height">Height</label><br>
-                                <input type="number" name="edit_profile_container_detail_last_height" class="edit_profile_container_detail_last_height" id="edit_profile_container_detail_last_height">
-                                <h5 id="edit_profile_error_height"></h5>
-                            </div>
-                        </div>
-
-                        <div class="edit_profile_container_detail_input3">
-                            <div>
-                                <label for="edit_profile_container_detail_dob">Date of Birth</label><br>
-                                <input type="date" name="edit_profile_container_detail_dob" class="edit_profile_container_detail_dob" id="edit_profile_container_detail_dob">
-                                <h5 id="edit_profile_error_dob"></h5>
-                            </div>
-
-                            <div>
                                 <label for="edit_profile_container_detail_last_conatct">Contact Number</label><br>
                                 <input type="tel" name="edit_profile_container_detail_last_conatct" class="edit_profile_container_detail_last_conatct" id="edit_profile_container_detail_last_conatct">
                                 <h5 id="edit_profile_error_contact_number"></h5>
                             </div>
+                            <div>
+                                <label for="edit_profile_container_detail_last_profile_image">Profile Image</label><br>
+                                <input type="file" name="edit_profile_container_detail_last_profile_image" class="edit_profile_container_detail_last_profile_image" id="edit_profile_container_detail_last_profile_image">
+                                <h5 id="edit_profile_error_profile_image"></h5>
+                            </div>
+<!--                            <div>-->
+<!--                                <label for="edit_profile_container_detail_weight">Weight</label><br>-->
+<!--                                <input type="number" name="edit_profile_container_detail_weight" class="edit_profile_container_detail_weight" id="edit_profile_container_detail_weight">-->
+<!--                                <h5 id="edit_profile_error_weight"></h5>-->
+<!--                            </div>-->
+
+<!--                            <div>-->
+<!--                                <label for="edit_profile_container_detail_last_height">Height</label><br>-->
+<!--                                <input type="number" name="edit_profile_container_detail_last_height" class="edit_profile_container_detail_last_height" id="edit_profile_container_detail_last_height">-->
+<!--                                <h5 id="edit_profile_error_height"></h5>-->
+<!--                            </div>-->
+                        </div>
+
+                        <div class="edit_profile_container_detail_input3">
+                            <h5>Noted: Every field is not compulsory to fill</h5>
+<!--                            <div>-->
+<!--                                <label for="edit_profile_container_detail_dob">Date of Birth</label><br>-->
+<!--                                <input type="date" name="edit_profile_container_detail_dob" class="edit_profile_container_detail_dob" id="edit_profile_container_detail_dob">-->
+<!--                                <h5 id="edit_profile_error_dob"></h5>-->
+<!--                            </div>-->
+
+<!--                            <div>-->
+<!--                                <label for="edit_profile_container_detail_last_conatct">Contact Number</label><br>-->
+<!--                                <input type="tel" name="edit_profile_container_detail_last_conatct" class="edit_profile_container_detail_last_conatct" id="edit_profile_container_detail_last_conatct">-->
+<!--                                <h5 id="edit_profile_error_contact_number"></h5>-->
+<!--                            </div>-->
                         </div>
 
                         <div class="edit_profile_container_detail_input4">

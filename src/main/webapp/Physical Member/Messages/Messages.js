@@ -188,11 +188,16 @@ function messageSend() {
             // messageReadAJAX(globalInstructorID,count_msg);
             // count_msg = 0;
             // selected_instructor_physical();
+
+            // setInterval(function () {
+            //     $('.receive_messages_of_physical_member_chat1').hide();
+            //     $('.receive_messages_of_physical_member_chat2').hide();
+            //     messageReadAJAX(globalInstructorID,count_msg);
+            // }, 1000);
+
             $('.receive_messages_of_physical_member_chat1').hide();
             $('.receive_messages_of_physical_member_chat2').hide();
-            setInterval(function () {
-                messageReadAJAX(globalInstructorID,count_msg);
-            }, 1000);
+            messageReadAJAX(globalInstructorID,count_msg);
         }
     });
 }

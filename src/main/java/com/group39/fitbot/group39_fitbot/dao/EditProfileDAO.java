@@ -13,28 +13,29 @@ import java.util.List;
 public class EditProfileDAO {
     public static boolean updateMemberDetails(Registartion registartion) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE register SET first_name=?,last_name=?,dob=?,phone_number=?,height=?,weight=? WHERE member_id=?";
+//        String query = "UPDATE register SET first_name=?,last_name=?,dob=?,phone_number=?,height=?,weight=? WHERE member_id=?";
+        String query = "UPDATE register SET first_name=?,last_name=?,phone_number=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
         pst.setString(1,registartion.getFirst_name());
         pst.setString(2,registartion.getLast_name());
-        pst.setDate(3, Date.valueOf(registartion.getDate_of_birth()));
-        pst.setInt(4,registartion.getContact_number());
-        pst.setInt(5,registartion.getHeight());
-        pst.setInt(6,registartion.getWeight());
-        pst.setString(7,registartion.getMember_id());
+//        pst.setDate(3, Date.valueOf(registartion.getDate_of_birth()));
+        pst.setInt(3,registartion.getContact_number());
+//        pst.setInt(5,registartion.getHeight());
+//        pst.setInt(6,registartion.getWeight());
+        pst.setString(4,registartion.getMember_id());
 
         System.out.println("Edit profile DAO");
         return pst.executeUpdate() > 0;
     }
 
-    public static boolean updateLoginDetails(Registartion registartion) throws SQLException, ClassNotFoundException {
+    public static boolean updateLoginDetails(Registartion registartion,String edit_profile_container_detail_last_profile_image) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE users SET user_name=? WHERE member_id=?";
+        String query = "UPDATE users SET user_image_url=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
-        pst.setString(1,registartion.getFirst_name());
+//        pst.setString(1,registartion.getFirst_name());
+        pst.setString(1,edit_profile_container_detail_last_profile_image);
         pst.setString(2,registartion.getMember_id());
 
-//        System.out.println("Edit profile  DAO");
         return pst.executeUpdate() > 0;
     }
 
