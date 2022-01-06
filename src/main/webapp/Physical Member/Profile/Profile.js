@@ -12,6 +12,7 @@ function physical_member_profile(){
 function edit_profile_popup(){
     // alert("profile image");
     $('#edit_profile_container').show();
+    editProfileBackgroundOn();
 }
 
 function edit_profile_submit(){
@@ -27,15 +28,18 @@ function edit_profile_submit(){
 
 function close_edit_profile_Popup(){
     $('#edit_profile_container').hide();
+    editProfileBackgroundOff();
 }
 
 function edit_profile_change_password(){
     $('#edit_profile_container').hide();
     $('#edit_profile_change_password_container').show();
+    editProfileBackgroundOn();
 }
 
 function close_edit_profile_change_password_Popup(){
     $('#edit_profile_change_password_container').hide();
+    editProfileBackgroundOff();
 }
 
 function edit_profile_change_password_back(){
@@ -55,18 +59,28 @@ function edit_profile_change_password_submit(){
 //     });
 // });
 
+function editProfileBackgroundOn(){
+    $('#profile_physical_big_container_background').css('display','block');
+}
+function editProfileBackgroundOff(){
+    $('#profile_physical_big_container_background').css('display','none');
+}
+
 function edit_profile_submit(){
     let edit_profile_container_detail_name = $('#edit_profile_container_detail_name').val().trim();
     let edit_profile_container_detail_last_name = $('#edit_profile_container_detail_last_name').val().trim();
-    let edit_profile_container_detail_weight = $('#edit_profile_container_detail_weight').val().trim();
-    let edit_profile_container_detail_last_height = $('#edit_profile_container_detail_last_height').val().trim();
-    let edit_profile_container_detail_dob = $('#edit_profile_container_detail_dob').val().trim();
+    // let edit_profile_container_detail_weight = $('#edit_profile_container_detail_weight').val().trim();
+    // let edit_profile_container_detail_last_height = $('#edit_profile_container_detail_last_height').val().trim();
+    // let edit_profile_container_detail_dob = $('#edit_profile_container_detail_dob').val().trim();
     let edit_profile_container_detail_last_conatct = $('#edit_profile_container_detail_last_conatct').val().trim();
+    let edit_profile_container_detail_last_profile_image = null;
+
+    console.log("Image type: "+edit_profile_container_detail_last_profile_image);
 
     var completed_flag = "1";
     var result_object;
 
-    if(edit_profile_container_detail_name == '' && edit_profile_container_detail_last_name == '' && edit_profile_container_detail_weight == '' && edit_profile_container_detail_last_height == '' && edit_profile_container_detail_dob == '' && edit_profile_container_detail_last_conatct == ''){
+    if(edit_profile_container_detail_name == '' && edit_profile_container_detail_last_name == '' &&  edit_profile_container_detail_last_profile_image == '' && edit_profile_container_detail_last_conatct == ''){
         Swal.fire({
             icon: 'error',
             title: 'Update Unsuccessfully!',
@@ -90,6 +104,7 @@ function edit_profile_submit(){
                 result_object = result;
                 console.log(result_object.weight);
                 console.log(typeof(result_object));
+
             },
             error: function(error){
                 console.log(error+"edit profile");
@@ -97,9 +112,10 @@ function edit_profile_submit(){
         });
 
         $('#edit_profile_error_contact_number').hide();
-        $('#edit_profile_error_weight').hide();
-        $('#edit_profile_error_height').hide();
+        // $('#edit_profile_error_weight').hide();
+        // $('#edit_profile_error_height').hide();
         $('#edit_profile_error_dob').hide();
+        $('#edit_profile_error_profile_image').hide();
 
         // alert(result_object);
         console.log(result_object);
@@ -111,36 +127,35 @@ function edit_profile_submit(){
             edit_profile_container_detail_last_name = result_object.last_name.toString();
         }
 
-        if(edit_profile_container_detail_weight == ''){
-            edit_profile_container_detail_weight = result_object.weight.toString();
-        }else if(edit_profile_container_detail_weight <= 25 || edit_profile_container_detail_weight >= 170){
-            $('#edit_profile_error_weight').show();
-            $('#edit_profile_error_weight').html("**Your weight should be 25kg to 170kg");
-            $('#edit_profile_error_weight').css("color", "red");
-            return false;
-        }
+        // if(edit_profile_container_detail_last_profile_image == ''){
+        //     edit_profile_container_detail_last_profile_image = result_object.weight.toString();
+        // }else if(edit_profile_container_detail_last_profile_image <= 25 || edit_profile_container_detail_last_profile_image >= 170){
+        //     $('#edit_profile_error_profile_image').show();
+        //     $('#edit_profile_error_profile_image').html("**Your image size should be less than 1MB");
+        //     $('#edit_profile_error_profile_image').css("color", "red");
+        //     return false;
+        // }
 
-        if(edit_profile_container_detail_last_height == ''){
-            edit_profile_container_detail_last_height = result_object.height.toString();
-        }else if(edit_profile_container_detail_last_height <= 55 || edit_profile_container_detail_last_height >= 272){
-            $('#edit_profile_error_height').show();
-            $('#edit_profile_error_height').html("**Your height should be 55cm to 272cm");
-            $('#edit_profile_error_height').css("color", "red");
-            return false;
-        }
+        let image_value = $("#edit_profile_container_detail_last_profile_image").val();
+        if (image_value.files && image_value.files[0]) {
+            let reader = new FileReader();
 
-        let arr_date = edit_profile_container_detail_dob.split('-');
-        const date = new Date();
-        let year_age = date.getFullYear() - arr_date[0];
+            edit_profile_container_detail_last_profile_image = "http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/"+this.files[0]["name"];
 
-        if(edit_profile_container_detail_dob == ''){
-            edit_profile_container_detail_dob = result_object.year.toString()+"-"+result_object.month.toString()+"-"+result_object.day.toString();
-        }else if(year_age < 14 || year_age > 80){
-            $('#edit_profile_error_dob').show();
-            $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
-            $('#edit_profile_error_dob').css("color", "red");
-            return false;
+            console.log(image_value.files[0]);
+            console.log(image_value.files[0]["name"]);
+            console.log(image_value.files[0]["type"]);
+            console.log(image_value.files[0]["size"]);
+
+            reader.onload = function (e) {
+                $('#imgshow').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(image_value.files[0]);
         }
+        // $("#edit_profile_container_detail_last_profile_image").change(function () {
+        //
+        //
+        // });
 
         let regexPattern = new RegExp(/^[0-9-+]+$/);
         if(edit_profile_container_detail_last_conatct == ''){
@@ -165,10 +180,9 @@ function edit_profile_submit(){
             data: {
                 edit_profile_container_detail_name: edit_profile_container_detail_name,
                 edit_profile_container_detail_last_name: edit_profile_container_detail_last_name,
-                edit_profile_container_detail_weight: edit_profile_container_detail_weight,
-                edit_profile_container_detail_last_height: edit_profile_container_detail_last_height,
-                edit_profile_container_detail_dob: edit_profile_container_detail_dob,
-                edit_profile_container_detail_last_conatct: edit_profile_container_detail_last_conatct
+
+                edit_profile_container_detail_last_conatct: edit_profile_container_detail_last_conatct,
+                edit_profile_container_detail_last_profile_image: edit_profile_container_detail_last_profile_image
             },
             // dataType:"json",
             // contentType:"application/json",
@@ -180,6 +194,7 @@ function edit_profile_submit(){
                 console.log(typeof (result));
                 if (result.trim() == "1") {
                     // alert(result);
+                    editProfileBackgroundOff();
                     Swal.fire({
                         icon: 'success',
                         title: 'Successfully Updated',
@@ -193,6 +208,7 @@ function edit_profile_submit(){
                     $('#edit_profile_container_detail').find("input[type=text], input[type=number], input[type=date], input[type=tel]").val("");
                     $('#edit_profile_container').hide();
 
+                    //after update data profile page update
                     getRegisterDetails();
 
                 } else {

@@ -98,12 +98,6 @@ public class LoginController extends HttpServlet {
             }else {
                 out.print("8");
             }
-            //            Gson gson = new Gson();
-//            String memberJSON = gson.toJson(loginData);
-//            resp.setContentType("application/json");
-//            resp.setCharacterEncoding("UTF-8");
-//            resp.getWriter().write(memberJSON);
-//            System.out.println("Member json:"+memberJSON);
 
         } catch (SQLException e) {
             e.printStackTrace();

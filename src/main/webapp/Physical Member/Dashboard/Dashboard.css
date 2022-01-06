@@ -244,3 +244,6 @@
     color: white;
     /* box-shadow: 5px 0 0 0 gray; */
 }
+#reports_physical_container {
+    margin: 30px;
+}

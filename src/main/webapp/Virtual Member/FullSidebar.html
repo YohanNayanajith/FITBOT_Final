@@ -10,12 +10,16 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+
     <!-- css-file -->
-    <link rel="stylesheet" href="Physical Member/LeftSidebar/LeftSidebar.css">
+    <link rel="stylesheet" href="Virtual Member/LeftSidebar/LeftSidebar.css">
+
     <link rel="stylesheet" href="Physical Member/RightSidebar/RightSidebar.css">
     <link rel="stylesheet" href="Physical Member/Dashboard/Dashboard.css">
+    <link rel="stylesheet" href="Virtual Member/Dashboard/Dashboard.css">
+
     <link rel="stylesheet" href="Physical Member/Payments/Payments.css">
-    <link rel="stylesheet" href="Physical Member/Appoinments/Appoinments.css">
+<!--    <link rel="stylesheet" href="Physical Member/Appoinments/Appoinments.css">-->
     <link rel="stylesheet" href="Physical Member/Workout_Plans/Workout_Plan.css">
     <link rel="stylesheet" href="Physical Member/Diet_Plans/Diet_Plans.css">
 
@@ -26,6 +30,8 @@
     <link rel="stylesheet" href="Physical Member/Profile/Profile.css">
     <link rel="stylesheet" href="Physical Member/Reports/Reports.css">
     <link rel="stylesheet" href="Physical Member/Settings/Settings.css">
+<!--    <link rel="stylesheet" href="Physical Member/BranchMessages/BranchMessages.css">-->
+    <link rel="stylesheet" href="asserts/Calender/lib/main.css">
 
     <title>Physical Member</title>
 </head>
@@ -53,7 +59,7 @@
             <span class="tooltip">Dashboard</span>
           </li>
           <li>
-          <a href="#" class="side_bar_anchor_tag" onclick="physical_member_profile()" id="phy_mem_profile">
+          <a class="side_bar_anchor_tag" onclick="physical_member_profile()" id="phy_mem_profile">
             <i class='bx bx-user side_icon' id="phy_mem_profile_i"></i>
             <span class="links_name" id="physical_member_profile_text">Profile</span>
           </a>
@@ -102,20 +108,20 @@
           </a>
           <span class="tooltip">Reports</span>
         </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_branch_messages()" id="phy_mem_branch_messages">
-          <i class='bx bx-podcast side_icon' id="phy_mem_branch_messages_i"></i>
-            <span class="links_name" id="physical_member_branch_messages_text">Branch Messages</span>
-          </a>
-          <span class="tooltip">Branch Messages</span>
-        </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_appointments()" id="phy_mem_appointments">
-              <i class='bx bxs-book-open side_icon' id="phy_mem_appointments_i"></i>
-              <span class="links_name" id="physical_member_appointments_text">Appointments</span>
-          </a>
-          <span class="tooltip">Appointments</span>
-        </li>
+<!--        <li>-->
+<!--          <a class="side_bar_anchor_tag" onclick="physical_member_branch_messages()" id="phy_mem_branch_messages">-->
+<!--          <i class='bx bx-podcast side_icon' id="phy_mem_branch_messages_i"></i>-->
+<!--            <span class="links_name" id="physical_member_branch_messages_text">Branch Messages</span>-->
+<!--          </a>-->
+<!--          <span class="tooltip">Branch Messages</span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a class="side_bar_anchor_tag" onclick="physical_member_appointments()" id="phy_mem_appointments">-->
+<!--              <i class='bx bxs-book-open side_icon' id="phy_mem_appointments_i"></i>-->
+<!--              <span class="links_name" id="physical_member_appointments_text">Appointments</span>-->
+<!--          </a>-->
+<!--          <span class="tooltip">Appointments</span>-->
+<!--        </li>-->
         <li>
           <div class="social_media_icons_width_menu">
             <a class="side_bar_anchor_tag">
@@ -176,7 +182,7 @@
             <div class="top_bar_navigation_profile">
               <div class="profile_my_money">
                 <div class='bx bx-money' id="money"> 
-                  <span>Rs. 5000</span>
+<!--                  <span>Rs. 5000</span>-->
                 </div>
                 <!-- <h6 class='bx bx-money side_icon'> Rs. 5000</h6> -->
               </div>
@@ -301,12 +307,15 @@
           </div>
       </section>
   </div>
-  <script src="Physical Member/LeftSidebar/LeftSidebar.js" defer></script>
+  <script src="Virtual Member/LeftSidebar/LeftSidebar.js" defer></script>
+
   <script src="Physical Member/Dashboard/Dashboard.js" defer></script>
+  <script src="Virtual Member/Dashboard/Dashboard.js" defer></script>
+
   <script src="Physical Member/Payments/Payments.js" defer></script>
   <script src="Physical Member/Payments/PayherePayment.js" defer></script>
 
-  <script src="Physical Member/Appoinments/Appoinments.js" defer></script>
+<!--  <script src="Physical Member/Appoinments/Appoinments.js" defer></script>-->
   <script src="Physical Member/Workout_Plans/Workout_Plan.js" defer></script>
   <script src="Physical Member/Diet_Plans/Diet_Plans.js" defer></script>
 
@@ -317,12 +326,10 @@
   <script src="Physical Member/Profile/Profile.js" defer></script>
   <script src="Physical Member/Reports/Reports.js" defer></script>
   <script src="Physical Member/Settings/Settings.js" defer></script>
+<!--  <script src="Physical Member/BranchMessages/BranchMessages.js" defer></script>-->
 
   <script src="Physical Member/RightSidebar/RightSidebar.js" defer></script>
   <script src="asserts/JSLibrary/sweetalert2.all.min.js" defer></script>
-<!--  <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js" defer></script>-->
-
+  <script src="asserts/Calender/lib/main.js" defer></script>
   </body>
-
-  <!-- <script src="http://127.0.0.1:5500/Physical%20Member/RightSidebar/RightSidebar.js"></script> -->
 </html>

@@ -7,7 +7,7 @@ function physical_member_instructors(){
     instructors_text.style.color = "black";
 }
 function open_instructor_details(){
-    $('#instructors_physical_container_detail_popup').toggle();
+    // $('#instructors_physical_container_detail_popup').toggle();
 }
 
 // $(document).ready(function(){

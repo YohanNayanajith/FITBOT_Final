@@ -28,22 +28,14 @@ $(document).ready(function(){
                 //     'Your file has been deleted.',
                 //     'success'
                 // )
-                window.location.href = "http://localhost:8080/group39_fitbot_war_exploded/register";
+                window.location.href = "http://localhost:8080/group39_fitbot_war_exploded/login";
             }else if (result.isDenied){
                 Swal.fire('Changes are not saved', '', 'info')
             }
         })
-        // Swal.fire({
-        //     icon: 'success',
-        //     title: 'Successfully Updated',
-        //     text: 'Profile Updated!',
-        //     confirmButtonText: "Ok",
-        //     confirmButtonColor: '#0E2C4B',
-        // })
     });
 
     $('#form_container').submit(function(e){
-        // alert('medical form');
         e.preventDefault();
 
         let form_data = $("form").serializeArray();
@@ -51,60 +43,89 @@ $(document).ready(function(){
 
         let data = {};
         $.each(form_data, function(i, field){
-            // $("#results").append(field.name + ":" + field.value + " ");
             data[field.name] = field.value;
         });
         console.log("Data"+data);
 
-        $.ajax({
-            method:"POST",
-            url:"medical",
-            data: data,
-            // dataType:"json",
-            // contentType:"application/json",
-            success: function (result){
-                if(result.trim() == "1"){
-                    // alert(result);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successfully Register',
-                        // text: 'Physical Member!',
-                        confirmButtonText:"Ok",
-                        confirmButtonColor: '#0E2C4B',
-                    })
-                    // setTimeout(function() {
-                    //     window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/';
-                    // }, 2000);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Registration are not completed,You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#0E2C4B',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, complete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    method:"POST",
+                    url:"medical",
+                    data: data,
+                    // dataType:"json",
+                    // contentType:"application/json",
+                    success: function (result){
+                        if(result.trim() == "1"){
+                            // alert(result);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Successfully Register',
+                                // text: 'Physical Member!',
+                                confirmButtonText:"Ok",
+                                confirmButtonColor: '#0E2C4B',
+                            })
 
-                }else if(result.trim() == "2"){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Registration Unsuccessfully!',
-                        text: 'You have to complete previous form!',
-                        confirmButtonText:"Ok",
-                        confirmButtonColor: '#932828',
-                    })
-                }else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Registration Unsuccessfully!',
-                        text: 'Registration cannot completed!',
-                        confirmButtonText:"Ok",
-                        confirmButtonColor: '#932828',
-                    })
-                }
+                            setTimeout(function() {
+                                window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/login';
+                            }, 1000);
 
-            },
-            error: function(error){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Registration Unsuccessfully!',
-                    text: 'Cannot resolve, System issue!!',
-                    confirmButtonText:"Ok",
-                    confirmButtonColor: '#932828',
-                })
+                        }else if(result.trim() == "2"){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Registration Unsuccessfully!',
+                                text: 'You have to complete previous form!',
+                                confirmButtonText:"Ok",
+                                confirmButtonColor: '#932828',
+                            })
+                            setTimeout(function() {
+                                window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded';
+                            }, 1000);
+                        }else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Registration Unsuccessfully!',
+                                text: 'Registration cannot completed!',
+                                confirmButtonText:"Ok",
+                                confirmButtonColor: '#932828',
+                            })
+                            setTimeout(function() {
+                                window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded';
+                            }, 1000);
+                        }
+
+                    },
+                    error: function(error){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Registration Unsuccessfully!',
+                            text: 'Cannot resolve, System issue!!',
+                            confirmButtonText:"Ok",
+                            confirmButtonColor: '#932828',
+                        })
+                        setTimeout(function() {
+                            window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded';
+                        }, 1000);
+                    }
+                });
+                // window.location.href = "http://localhost:8080/group39_fitbot_war_exploded/register";
+            }else if (result.isDenied){
+                Swal.fire('Changes are not saved', '', 'info')
+                setTimeout(function() {
+                    window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded';
+                }, 1000);
             }
-        });
+        })
+
+
         // if(form_data.length == 6){
         //     alert('length is 6');
         //     console.log(form_data.medical_first_question14);
@@ -131,28 +152,5 @@ $(document).ready(function(){
         // $('#first_question_12').val().trim();
         // $('#first_question_13').val().trim();
         // $('#first_question_14').val().trim();
-
-
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "Registration are not completed,You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0E2C4B',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, complete!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Swal.fire(
-                //     'Success!',
-                //     'Your file has been deleted.',
-                //     'success'
-                // )
-                window.location.href = "http://localhost:8080/group39_fitbot_war_exploded/register";
-            }else if (result.isDenied){
-                Swal.fire('Changes are not saved', '', 'info')
-            }
-        })
     });
 });

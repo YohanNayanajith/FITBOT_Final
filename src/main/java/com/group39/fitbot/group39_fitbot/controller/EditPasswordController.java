@@ -29,10 +29,11 @@ public class EditPasswordController extends HttpServlet {
         resp.setContentType("text/plain");
         String edit_profile_container_detail_name = req.getParameter("edit_profile_container_detail_name");
         String edit_profile_container_detail_last_name = req.getParameter("edit_profile_container_detail_last_name");
-        int edit_profile_container_detail_weight = Integer.parseInt(req.getParameter("edit_profile_container_detail_weight"));
-        int edit_profile_container_detail_last_height = Integer.parseInt(req.getParameter("edit_profile_container_detail_last_height"));
-        LocalDate edit_profile_container_detail_dob = LocalDate.parse(req.getParameter("edit_profile_container_detail_dob"));
+//        int edit_profile_container_detail_weight = Integer.parseInt(req.getParameter("edit_profile_container_detail_weight"));
+//        int edit_profile_container_detail_last_height = Integer.parseInt(req.getParameter("edit_profile_container_detail_last_height"));
+//        LocalDate edit_profile_container_detail_dob = LocalDate.parse(req.getParameter("edit_profile_container_detail_dob"));
         int edit_profile_container_detail_last_conatct = Integer.parseInt(req.getParameter("edit_profile_container_detail_last_conatct"));
+        String edit_profile_container_detail_last_profile_image = req.getParameter("edit_profile_container_detail_last_profile_image");
 
         System.out.println(edit_profile_container_detail_name);
         System.out.println(edit_profile_container_detail_last_name);
@@ -45,9 +46,9 @@ public class EditPasswordController extends HttpServlet {
 
         registartion.setFirst_name(edit_profile_container_detail_name);
         registartion.setLast_name(edit_profile_container_detail_last_name);
-        registartion.setWeight(edit_profile_container_detail_weight);
-        registartion.setHeight(edit_profile_container_detail_last_height);
-        registartion.setDate_of_birth(edit_profile_container_detail_dob);
+//        registartion.setWeight(edit_profile_container_detail_weight);
+//        registartion.setHeight(edit_profile_container_detail_last_height);
+//        registartion.setDate_of_birth(edit_profile_container_detail_dob);
         registartion.setContact_number(edit_profile_container_detail_last_conatct);
 
         System.out.println(registartion);
@@ -56,7 +57,7 @@ public class EditPasswordController extends HttpServlet {
         boolean accept_new;
         try {
             accept = EditProfileDAO.updateMemberDetails(registartion);
-            accept_new = EditProfileDAO.updateLoginDetails(registartion);
+            accept_new = EditProfileDAO.updateLoginDetails(registartion,edit_profile_container_detail_last_profile_image);
 
             if(accept && accept_new){
                 out.print("1");

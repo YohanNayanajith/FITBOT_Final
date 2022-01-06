@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
-    <link rel="stylesheet" href="Physical Member/Payments/Payments.css">
-    <link rel="stylesheet" href="Physical Member/Workout_Plans/Workout_Plan.css">
-    <title>Workout Plans</title>
-</head>
-<body>
+
     <div class="workout_plan_physical" id="workout_plan_physical">
 
         <div class="workout_plan_physical_btn_group">
@@ -23,9 +11,16 @@
         </div>
         <div class="payment_history">
             <div class="payment_history_container">
-                <div class="payment_history_container_header">
-                    <span>Current Physical Workout Plan</span>
-                    <div id="workout_container_header"></div>
+
+                <div class="workout_container_header_search">
+                    <div class="payment_history_container_header">
+                        <span>Current Physical Workout Plan</span>
+                        <div id="workout_container_header"></div>
+                    </div>
+                    <div class="workout_physical_container_left_search">
+                        <div class="workout_plan_virtual_search"><input type="text" id="workout_physical_container_left_search_text_input" onclick="searchWorkout()"></div>
+                        <div class="messages_physical_container_left_search_icon"><i class='bx bx-search-alt'></i></div>
+                    </div>
                 </div>
 
                 <div class="payment_history_container_details" id="workout_container_details">
@@ -58,19 +53,19 @@
                 <div class="virtual_workout_packages_male_text"><i class='bx bx-caret-right'></i>For Male</div>
                 <div class="virtual_workout_packages_male_text_con">
                     <div class="virtual_workout_packages_male_text_con1 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Lose weight and keep fit</a>
+                        <div onclick="open_virtual_workout_plan('Lose weight and keep fit',1)"><i class='bx bx-minus'></i>Lose weight and keep fit</div>
                     </div>
                     <div class="virtual_workout_packages_male_text_con2 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Leg workout</a>
+                        <div onclick="open_virtual_workout_plan('Leg workout',2)"><i class='bx bx-minus'></i>Leg workout</div>
                     </div>
                     <div class="virtual_workout_packages_male_text_con3 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Arm and Chest workout</a>
+                        <div onclick="open_virtual_workout_plan('Arm and Chest workout',3)"><i class='bx bx-minus'></i>Arm and Chest workout</div>
                     </div>
                     <div class="virtual_workout_packages_male_text_con4 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Abs and six pack</a>
+                        <div onclick="open_virtual_workout_plan('Abs and six pack',4)"><i class='bx bx-minus'></i>Abs and six pack</div>
                     </div>
                     <div class="virtual_workout_packages_male_text_con5 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Body building and strength</a>
+                        <div onclick="open_virtual_workout_plan('Body building and strength',5)"><i class='bx bx-minus'></i>Body building and strength</div>
                     </div>
                 </div>
             </div>
@@ -80,19 +75,19 @@
                 </div>
                 <div class="virtual_workout_packages_female_text_con">
                     <div class="virtual_workout_packages_female_text_con1 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Lose weight and keep fit</a>
+                        <div onclick="open_virtual_workout_plan('Lose weight and keep fit',6)" id="virtual_male1"><i class='bx bx-minus'></i>Lose weight and keep fit</div>
                     </div>
                     <div class="virtual_workout_packages_female_text_con2 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Leg workout</a>
+                        <div onclick="open_virtual_workout_plan('Butt lift and leg workout',7)" id="virtual_male2"><i class='bx bx-minus'></i>Butt lift and leg workout</div>
                     </div>
                     <div class="virtual_workout_packages_female_text_con3 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Arm and Chest workout</a>
+                        <div onclick="open_virtual_workout_plan('Arm and upper body',8)" id="virtual_male3"><i class='bx bx-minus'></i>Arm and upper body</div>
                     </div>
                     <div class="virtual_workout_packages_female_text_con4 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Abs and six pack</a>
+                        <div onclick="open_virtual_workout_plan('Abs and lose belly fat',9)" id="virtual_male4"><i class='bx bx-minus'></i>Abs and lose belly fat</div>
                     </div>
                     <div class="virtual_workout_packages_female_text_con5 workout_packages">
-                        <a href="#"><i class='bx bx-minus'></i>Body building and strength</a>
+                        <div onclick="open_virtual_workout_plan('Build muscle and  strength',10)" id="virtual_male5"><i class='bx bx-minus'></i>Build muscle and  strength</div>
                     </div>
                 </div>
             </div>
@@ -155,8 +150,3 @@
         </div>
 
     </div>
-    <script src="Physical Member/Workout_Plans/Workout_Plan.js" defer></script>
-    <script src="Physical Member/LeftSidebar/LeftSidebar.js" defer></script>
-</body>
-
-</html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Boxicons icons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="./RightSidebar/RightSidebar.html" rel="import" /> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,6 +23,7 @@
 
     <link rel="stylesheet" href="Physical Member/Conditions/Conditions.css">
     <link rel="stylesheet" href="Physical Member/Instructors/Instructors.css">
+    <link rel="stylesheet" href="Physical Member/Instructors/Instructor_Rate.css">
     <link rel="stylesheet" href="Physical Member/Payments/Payments.css">
     <link rel="stylesheet" href="Physical Member/Messages/Messages.css">
     <link rel="stylesheet" href="Physical Member/Profile/Profile.css">
@@ -259,30 +261,30 @@
 <!--      notification-->
       <section>
           <div class="notification_messages_big_div" id="notification_messages_big_div">
-              <div class="notification_messages">
+              <div class="notification_messages" id="notification_messages">
                   <div class="notification_messages_header"><h1>Notifications</h1></div>
                   <div class="notification_messages_header_icon"><i class='bx bx-dots-horizontal-rounded bx-burst bx-flip-horizontal' id="notification_messages_box_i"></i></div>
               </div>
 
-              <div class="notification_messages_box">
-                  <div class="notification_messages_box_icon">
-                      <i class='bx bx-message-dots bx-tada notify_icon'></i>
-                  </div>
-                  <div class="notification_messages_box_messages">
-                      <span class="notification_messages_box_messages_text1">Notification 1</span><br>
-                      <span class="notification_messages_box_messages_text2">25 minutes ago</span>
-                  </div>
-              </div>
+<!--              <div class="notification_messages_box">-->
+<!--                  <div class="notification_messages_box_icon">-->
+<!--                      <i class='bx bx-message-dots bx-tada notify_icon'></i>-->
+<!--                  </div>-->
+<!--                  <div class="notification_messages_box_messages">-->
+<!--                      <span class="notification_messages_box_messages_text1">Notification 1</span><br>-->
+<!--                      <span class="notification_messages_box_messages_text2">25 minutes ago</span>-->
+<!--                  </div>-->
+<!--              </div>-->
 
-              <div class="notification_messages_box">
-                  <div class="notification_messages_box_icon">
-                      <i class='bx bx-message-dots bx-tada notify_icon' ></i>
-                  </div>
-                  <div class="notification_messages_box_messages">
-                      <span class="notification_messages_box_messages_text1">Notification 1</span><br>
-                      <span class="notification_messages_box_messages_text2">25 minutes ago</span>
-                  </div>
-              </div>
+<!--              <div class="notification_messages_box">-->
+<!--                  <div class="notification_messages_box_icon">-->
+<!--                      <i class='bx bx-message-dots bx-tada notify_icon' ></i>-->
+<!--                  </div>-->
+<!--                  <div class="notification_messages_box_messages">-->
+<!--                      <span class="notification_messages_box_messages_text1">Notification 1</span><br>-->
+<!--                      <span class="notification_messages_box_messages_text2">25 minutes ago</span>-->
+<!--                  </div>-->
+<!--              </div>-->
 
           </div>
 
@@ -315,6 +317,7 @@
 
   <script src="Physical Member/Conditions/Conditions.js" defer></script>
   <script src="Physical Member/Instructors/Instructors.js" defer></script>
+  <script src="Physical Member/Instructors/Instructor_Rate.js" defer></script>
   <script src="Physical Member/Payments/Payments.js" defer></script>
   <script src="Physical Member/Messages/Messages.js" defer></script>
   <script src="Physical Member/Profile/Profile.js" defer></script>
@@ -325,6 +328,9 @@
   <script src="Physical Member/RightSidebar/RightSidebar.js" defer></script>
   <script src="asserts/JSLibrary/sweetalert2.all.min.js" defer></script>
   <script src="asserts/Calender/lib/main.js" defer></script>
+
+  <script src="Physical Member/Workout_Plans/Workout_Drag_N_Drop.js" defer></script>
+  <script src="Physical Member/Notification/notification.js" defer></script>
 <!--  <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js" defer></script>-->
 
   </body>

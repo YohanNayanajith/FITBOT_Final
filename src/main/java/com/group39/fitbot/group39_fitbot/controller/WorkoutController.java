@@ -34,7 +34,7 @@ public class WorkoutController extends HttpServlet {
         try {
             List<Workout> all_workouts = new ArrayList<>();
             all_workouts = WorkoutDAO.getWorkout();
-            System.out.println(all_workouts);
+//            System.out.println(all_workouts);
             Gson gson = new Gson();
             String workoutJSON = gson.toJson(all_workouts);
             resp.setContentType("application/json");

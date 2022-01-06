@@ -63,7 +63,7 @@ public class RegistrationController extends HttpServlet {
         int payment_id = 0;
         int membership_id = 0;
 
-        int renewal = checkMembershipFee(membership_category);
+        int renewal = 0;
         System.out.println("Renewal "+renewal);
 
         String has_instructor = "0";
@@ -73,7 +73,14 @@ public class RegistrationController extends HttpServlet {
         try {
             int memberCount = GetMemberCountDAO.getMemberCount();
 //            System.out.println(memberCount);
-            member_id = "Phy"+(memberCount+1);
+            if(Objects.equals(membership_type, "virtual_member")){
+                member_id = "Vir"+(memberCount+1);
+                renewal = 5000;
+            }else {
+                member_id = "Phy"+(memberCount+1);
+                renewal = checkMembershipFee(membership_category);
+            }
+//            member_id = "Phy"+(memberCount+1);
             payment_id = memberCount+1;
             membership_id = memberCount+1;
 
