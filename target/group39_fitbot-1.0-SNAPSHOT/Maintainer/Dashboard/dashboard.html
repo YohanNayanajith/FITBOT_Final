@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Dashboard/dashboard.css">
+    <link rel="stylesheet" href="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Maintainer_Form/maintainer_form.css">
+
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+
+<div class ="dashboard_maintainer" id="dashboard_maintainer">
+  <div class="dashboard_maintainer_header_name" id="dashboard_maintainer_header_name">
+
+  </div>
+  <div class="dashboard_cont">
+    <div class="left_cont">
+
+      <div class="request_content_box_dash">
+          <div class="new_req_box">
+            <div class="iconSet">
+              <i class='bx bxs-comment-dots bx-tada' ></i>
+            </div>
+            <div class="contentSet">
+              <div class="box_header">New Request</div>
+              <div class="horizontal_line"></div>
+              <p>Last 24 hours</p>
+              <div class="new_req_value">01</div>
+            </div>
+          </div>
+
+          <div class="progress_req_box">
+            <div class="iconSet">
+              <i class='bx bxs-chevrons-down bx-fade-down' ></i>
+            </div>
+            <div class="contentSet">
+              <div class="box_header">Current Progress</div>
+              <div class="horizontal_line"></div>
+              <p>Not completed</p>
+              <div class="prog_req_value">02</div>
+            </div>
+          </div>
+
+          <div class="completed_req_box">
+            <div class="iconSet">
+              <i class='bx bxs-check-square' ></i>
+            </div>
+            <div class="contentSet">
+              <div class="box_header">Completed</div>
+              <div class="horizontal_line"></div>
+              <p>Last 30 days</p>
+              <div class="compt_req_value">08</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="activityChart">
+<!--        <p>Activity Chart<br><br><br>A summary of his maintain history.<br>Line Chart</p>-->
+        <div class="reports_physical_container">
+          <div class="reports_physical_container_header">
+            <span>Activity Chart</span>
+          </div>
+          <div class="reports_physical_container_chart1">
+            <canvas class="reports_physical_container_canvas" id="myChart2"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="right_cont">
+
+      <div class="calendar_maint">
+        <p>Calendar</p>
+      </div>
+
+      <div class="upcome_t">
+        <p>Upcoming Task</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!--calender-->
+
+  <div class="reports_physical_container">
+    <div class="reports_physical_container_header">
+      <span>Calender</span>
+    </div>
+    <div class="reports_physical_container_chart1">
+      <!--                    <canvas class="reports_physical_container_canvas" id="myChart0"></canvas>-->
+      <div id="calendar_maintainer" class="reports_physical_container_chart1_calender">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+<script src="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Maintainer_Form/maintainer_form.js" defer></script>
+<script src="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Dashboard/dashboard.js" defer></script>
+<script src="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/LeftSidebar/LeftSidebar.js" defer></script>
+</body>
+</html>

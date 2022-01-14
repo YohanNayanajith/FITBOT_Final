@@ -49,7 +49,7 @@ public class LoginController extends HttpServlet {
             e.printStackTrace();
         }
 
-//        System.out.println(login_password);
+        System.out.println(login_password);
 //        System.out.println(login_username);
 
         Login login = new Login();
@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
                     case "virtual_member":
                         out.print("2");
                         break;
-                    case "Instructor":
+                    case "instructor":
                         out.print("3");
                         break;
                     case "Manager":
@@ -88,10 +88,11 @@ public class LoginController extends HttpServlet {
                     case "admin":
                         out.print("6");
                         break;
-                    case "Maintainer":
+                    case "maintainer":
                         out.print("7");
+                        break;
                     default:
-                        //                        out.print("You can't log now..please contact our administration");
+                        // out.print("You can't log now..please contact our administration");
                         out.print("8");
                         break;
                 }

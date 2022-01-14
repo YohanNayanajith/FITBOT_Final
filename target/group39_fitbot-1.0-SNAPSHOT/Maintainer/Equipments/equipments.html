@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Equipments/equipments.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+
+      <section class="home-section">
+          <div class="equipment_view_maintainer" id="equipment_view_maintainer">
+
+              <div class="Ins_header_equipmentsPage">All Equipment</div>
+
+              <div class="all_equipments">
+                  <div class="title_equipments">
+
+                      <div class="search-container">
+                          <form action="">
+                              <input type="text" placeholder="Search for an equipment" name="search_equipment_by_ID" id="search_equipment_by_ID">
+                              <!-- <button type="submit" onclick=""><i class='bx bx-search'></i></button> -->
+                          </form>
+                      </div>
+                      <div class="search-container">
+                          <form action="">
+                              <select name="select_Filter_List" onchange="dataLoadEquipments(this.value)" class="select_Filter_List" id="select_Filter_List">
+                                  <option value="all">All Branch</option>
+
+                              </select>
+                              <!-- <input type="text" placeholder="Search for a branch" name="search_equipment"> -->
+                              <!-- <button type="submit" onclick=""><i class='bx bx-search'></i></button> -->
+                          </form>
+                      </div>
+                      <div class="search-container">
+                          <form action="">
+                              <select name="select_Filter_List_order" onchange="dataLoadEquipments(this.value)" class="select_Filter_List_order" id="select_Filter_List_order">
+                                  <option value="ascending">Ascending Order</option>
+                                  <option value="descending">Descending Order</option>
+                              </select>
+                          </form>
+                      </div>
+                      <div>
+                          <!-- <button type="submit" onclick=""><i class='bx bx-search'></i></button> -->
+                          <button type="submit" onclick="searchEquipmentsList()">Search<i class='bx bx-search'></i></button>
+                      </div>
+
+                  </div>
+
+                  <div class="equipment-details">
+                      <table>
+                          <tr class="equipment_info">
+                              <th>Equipment ID</th>
+                              <th>Type</th>
+                              <th>Branch</th>
+                              <th>Last Modified</th>
+                              <th>Next Maintenance Date</th>
+
+                          </tr>
+                          <tbody class="maintain_equipments_tab_body" id="maintain_equipments_tab_body" >
+                          <tr class ="equipment_info" id="equipment_info">
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                          </tbody>
+
+                      </table>
+
+                  </div>
+              </div>
+          </div>
+      </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+    <script src="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Equipments/equipments.js" defer></script>
+</body>
+</html>

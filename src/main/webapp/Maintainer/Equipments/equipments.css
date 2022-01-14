@@ -1,0 +1,113 @@
+/* robot-google-fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.equipment_view_maintainer{
+  margin:30px 72px;
+  /* background-color: blueviolet; */
+}
+
+.Ins_header_equipmentsPage{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.all_equipments {
+  /* margin:30px 72px; */
+  background-color:#d7d5d5;
+  /* background-color: aquamarine; */
+  border-radius: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+.all_equipments .title_equipments {
+  margin: 35px 4% 10px;
+  padding-top: 45px;
+  width:92%;
+  display:flex;
+  text-align: center;
+  justify-content: space-between;
+  color:#0E2C4B;
+}
+
+.all_equipments .title_equipments input[type=text]{
+  padding: 6px;
+  /* margin-top: 8px; */
+  font-size: 17px;
+  border: none;
+  width: 100%;
+}
+
+.all_equipments .select_Filter_List , .select_Filter_List_order{
+  padding: 6px;
+  /* margin-top: 8px; */
+  font-size: 17px;
+  border: none;
+  width: 100%;
+}
+/*.all_equipments .select_Filter_List , select_Filter_List_order{*/
+/*  padding: 6px;*/
+/*  !* margin-top: 8px; *!*/
+/*  font-size: 17px;*/
+/*  border: none;*/
+/*  width: 100%;*/
+/*}*/
+
+.all_equipments .title_equipments button{
+  padding: 6px 10px;
+  /* margin-top: 8px;
+  margin-right: 16px; */
+  color: #FFF;
+  background: #0E2C4B;
+  font-size: 17px;
+  border: none;
+  filter: drop-shadow(0px 4px 4px #000057);
+  cursor: pointer;
+}
+.all_equipments .title_equipments button:hover{
+  filter: drop-shadow(0px 4px 4px #000033);
+}
+.all_gym_equipments {
+  font-weight: 500;
+  font-size:25px;
+  color: #0E2C4B;
+  font-size: 24px;
+  background-color: aqua;
+}
+
+/* .home-section .all_equipments .title_equipments .Add {
+  font-weight:500;
+  display: flex;
+  gap:5px;
+  color:#0E2C4B ;
+}
+
+.home-section .all_equipments .title_equipments .Add i{
+  font-weight:500;
+  font-size:20px;
+} */
+
+.all_equipments table{
+  width:92%;
+  border-collapse: collapse;
+  margin: 35px 4% 10px;
+  border-collapse:separate;
+  border-spacing:0 15px;
+
+}
+
+/* .home-section .all_equipments table td, th {
+    border-bottom: 15px solid white;
+    text-align: center;
+    padding: 10px;
+} */
+
+.home-section .all_equipments table .equipment_info{
+  background-color: white;
+  height: 60px;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}

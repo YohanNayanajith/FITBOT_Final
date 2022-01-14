@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Instroctor_leave.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Leave Form</title>
+</head>
+<body>
+<div class="leave_Ins_form" id="leave_Ins_form">
+    <div class="header_and_leave_form">
+        <div class="old_leave_ins_head">
+            <h2>Leave Histroy</h2>
+        </div>
+        <div class="new_leave_form">
+            <h2><i class='bx bxs-plus-circle' onclick = "OpenInsLeaveForm()"></i>New Leave Form</h2>
+        </div>
+    </div>
+
+    <div class="old_leave_form_side">
+        <div class="leave_request_details">
+            <table>
+                <tr class="Ins_leave_info">
+                    <th>Request Date</th>
+                    <th>Reason</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <!-- <th>Next Maintenance Date</th> -->
+                </tr>
+                <tbody class="Ins_leave_request_tab_body" id="Ins_leave_request_tab_body">
+<!--                <tr class ="Ins_leave_info" id="Ins_leave_info">-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                    <td></td>-->
+<!--                </tr>-->
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="leave_form_side" id="leave_form_side">
+        <noscript>
+            <span class="javascript_enable_error_message">JavaScript is blocked, Please enable the javaScript</span><br>
+            <span class="javascript_enable">In Google chrome browser software => Go to Settings => In “Privacy and security” Section => Site Settings => JavaScript</span><br>
+            <span class="javascript_enable">In Firefox, type “about:config” in browser address bar => Click on “Accept the risk and continue” => Type “JavaScript” in the “Search” box => Double-click the “JavaScript.enabled”</span>
+        </noscript>
+        <div class="leave_close_btn_form">
+            <i class='bx bx-x' onclick="close_leave_form()"></i>
+        </div>
+        <h1>Employee Leave Request Form</h1>
+
+        <!-- form -->
+        <form class="form_container_for_Ins" id="form_container_for_Ins" method="post">
+            <!--                    <span class="require_star">*</span>-->
+            <div class="employeeName_date">
+                <div class="employeeName">
+                    <label for="employeeName_first">1. Employee Name </label><br>
+                    <input type="text" id="employeeName_first" name="employeeName_first" class="form_label employeeName_first" placeholder="Enter your answer"><br>
+                </div>
+                <div class="leaveDate">
+                    <label for="leave_date_second">2. Date</label><br>
+                    <input type="date" id="leave_date_second" name="leave_date_second" class="form_label leave_date_second" placeholder="Enter your answer"><br>
+                </div>
+            </div>
+
+            <label for="branch_name_third">3. Branch</label><br>
+            <input type="text" id="branch_name_third" name="branch_name_third" class="form_label branch_name_third" placeholder="Enter your answer"><br>
+
+            <label >4. Reason For Leave</label><br>
+            <div class="leave_form_question_reason_fourth">
+<!--                <div class="leave_form_question">-->
+                    <input type="radio" id="radioBtn1" name="reasonBtn" value="Vacation">
+                    <label for="radioBtn1"> Vacation</label><br>
+
+                    <input type="radio" id="radioBtn2" name="reasonBtn" value="Civil Leave">
+                    <label for="radioBtn2"> Civil Leave</label><br>
+
+                    <input type="radio" id="radioBtn3" name="reasonBtn" value="Family and Medical">
+                    <label for="radioBtn3"> Family and Medical</label><br>
+
+                    <input type="radio" id="radioBtn4" name="reasonBtn" value="Funeral">
+                    <label for="radioBtn4"> Funeral</label><br>
+
+                    <div class="leave_form_question"><input type="radio" id="radioBtn5" name="reasonBtn" class="form_label" value=""><input type="text" id="second_question_6" name="medical_second_question6" class="form_label_first_q" placeholder="Other"></div>
+                    
+
+<!--                    <input type="checkbox" id="first_question_1" name="medical_first_question1" class="form_label" value="Vacation"> Vacation</div>-->
+<!--                    <div class="leave_form_question"><input type="checkbox" id="first_question_2" name="medical_first_question2" class="form_label" value="Civil Leave"> Civil Leave</div>-->
+<!--                    <div class="leave_form_question"><input type="checkbox" id="first_question_3" name="medical_first_question8" class="form_label" value="Family and Medical"> Family and Medical</div>-->
+<!--                    <div class="leave_form_question"><input type="checkbox" id="first_question_4" name="medical_first_question9" class="form_label" value="Funeral"> Funeral</div>-->
+<!--                    <div class="leave_form_question"><input type="checkbox" id="first_question_5" name="medical_first_question9" class="form_label" value=""><input type="text" id="second_question_6" name="medical_second_question6" class="form_label_first_q" placeholder="Other"></div>-->
+            </div>
+            <br>
+
+
+            <label>5. Leave Requested </label><br>
+            <div class="employeeName_date">
+                <label >From </label>
+                <div class="employeeName">
+                    <label for="employeeFrom_Date">Date </label>
+                    <input type="date" id="employeeFrom_Date" name="employeeFrom_Date_name" class="form_label employeeFrom_Date_class"><br>
+                </div>
+
+                <div class="leaveDate">
+                    <label for="employeeFrom_Time">Time </label>
+                    <input type="time" id="employeeFrom_Time" name="employeeFrom_Time_name" class="form_label employeeFrom_Time_class"><br>
+                </div>
+            </div>
+
+            <div class="employeeName_date" id="employeeName_date">
+                <label>To </label>
+                <div class="employeeName">
+                    <label for="employeeTo_Date">Date </label>
+                    <input type="date" id="employeeTo_Date" name="employeeTo_Date_name" class="form_label employeeTo_Date_class"><br>
+                </div>
+                <div class="leaveDate">
+                    <label for="employeeTo_Time">Time </label>
+                    <input type="time" id="employeeTo_Time" name="employeeTo_Time_name" class="form_label employeeTo_Time_class"><br>
+                </div>
+            </div>
+
+            <br>
+            <div class="ins_leave_form_btn_group">
+                <div>
+                    <button type="button" class="btn_previous" id="leave_back_btn">Clear</button><br>
+                </div>
+                <div>
+                    <button type="submit" class="btn_leave_form_submit" id="btn_leave_form_submit" onclick="clickSubmitBtnLeave()" >Submit</button><br>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+<!--<script src="Instroctor_leave.js" defer></script>-->
+
+</body>
+</html>

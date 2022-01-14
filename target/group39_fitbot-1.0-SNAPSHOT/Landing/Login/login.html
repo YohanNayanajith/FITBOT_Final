@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<!--    google-API-->
+    <meta name="google-signin-client_id" content="219280247391-n1pfanqvg278plmfef472rhbc43m7s0g.apps.googleusercontent.com">
+
+    <link rel="stylesheet" href="Landing/Login/login.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="model" id="fitbot_login_modal">
+        <div class="login_module login_animation">
+            <div class="login_close_btn_x">
+                <span onclick="close_model()" class="login_close_btn" title="Close Modal">&times;</span>
+            </div>
+            <div class="login_header">
+                <div class="login_hader_name">
+                    Log In
+                </div>
+                <div class="login_header_image">
+                    <img src="Landing/Images/Fitbot_logo.png" alt="firbot_logo">
+                </div>
+            </div>
+            <div class="login_header_detail">
+                Welcome back! Log In with your Email Log in to your account
+            </div>
+
+
+            <form method="post" action="login" class="login_form_submit" id="login_form_submit">
+                <label for="login_username" class="login_username_label"><b>Email address</b></label>
+                <input type="text" id="login_username" class="login_username_input" placeholder="Enter your Email" name="login_username"><br>
+    
+                <label for="login_password" class="login_password_label"><b>Password</b></label>
+                <input type="password" id="login_password" class="login_password_input" placeholder="Enter Password" name="login_password">
+            
+                
+                <div class="login_detail_container">
+                    <label><input type="checkbox" checked="checked" name="remember" class="login_remember_me" id="login_remember_me"> Remember me</label>
+                    <!-- <button type="button" onclick="login_cancel()" class="login_cancel_btn">Cancel</button> -->
+                    <span class="login_forgot_password"><a onclick="togglePopup()">Forgot password?</a></span>
+                </div>
+                <div class="login_button_div">
+                    <input type="submit" class="login_button" id="login_button" value="Login" onclick="lsRememberMe()">
+                </div>
+            </form>
+
+
+            <div class="login_bottom_detail">
+                Why Create an Account?  Create new account and <a href="register">Register Now</a>
+            </div>
+            <div class="login_social_media">
+                <div class="login_social_media_google">
+                    <img src="Landing/Icons/login_search.svg" alt="Google">
+                    <p>Google</p>
+                </div>
+                <div class="login_social_media_facebook">
+                    <img src="Landing/Icons/login_facebook.svg" alt="Facebook">
+                    <p>Facebook</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="forget_password_container" id="forget_password_container">
+
+        <!-- div containing the popup -->
+        <div class="reset_password_container" id="reset_password_container">
+            <div onclick="close_reset_password_Popup()" class="close_reset_btn_forget_password">
+                <i class='bx bx-x close_btn_forgot'></i>
+            </div>
+
+            <div>
+                <h3 class="reset_password_container_header">Reset Password</h3>
+            </div>
+
+            <div class="reset_password_text">
+                Enter the contact number associated with your account, and we'll send and a message with instructions to reset your password.
+            </div>
+
+            <div class="reset_password_text_input">
+                <label for="reset_password_contact_number">Enter contact number</label><br>
+                <input type="tel" class="reset_password_contact_number" id="reset_password_contact_number" name="reset_password_contact_number"><br>
+                <h5 id="reset_password_text_input_h5">Enter value must be a contact number</h5>
+                <div class="submit_reset_password_div"><input type="submit" class="submit_reset_password" id="submit_reset_password" onclick="open_OTP_password_Popup()" value="Send OTP"></div>
+            </div>
+        </div>
+
+<!--        OTP number-->
+        <div class="reset_password_container" id="OTP_password_container">
+            <div onclick="close_OTP_password_Popup()" class="close_reset_btn_forget_password">
+                <i class='bx bx-x close_btn_forgot'></i>
+            </div>
+
+            <div>
+                <h3 class="reset_password_container_header">OTP Number</h3>
+            </div>
+
+            <div class="reset_password_text">
+                Enter the OTP number associated with your account and we'll send a message with instructors to reset your password.
+            </div>
+
+            <div class="reset_password_text_input">
+                <label for="reset_password_contact_number">Enter OTP number</label><br>
+                <input type="tel" class="reset_password_contact_number" id="OTP_password_number" name="reset_password_contact_number"><br>
+                <h5 id="OTP_password_text_input_h5">Enter OTP number invalid</h5>
+                <div class="submit_reset_password_div"><input type="submit" class="submit_reset_password" id="submit_OTP_password" onclick="open_new_password_Popup()" value="Reset Password"></div>
+            </div>
+        </div>
+
+<!--        reset-password-->
+        <div class="reset_new_password_container" id="reset_new_password_container">
+            <div onclick="close_new_password_Popup()" class="close_reset_btn_forget_password">
+                <i class='bx bx-x close_btn_forgot'></i>
+            </div>
+            <div>
+                <h3 class="reset_password_container_header">Create New Password</h3>
+            </div>
+
+            <div class="reset_password_container_content">
+                Your new password must be different from previous used passwords.
+            </div>
+
+            <div class="reset_password_text_input">
+                <div>
+                    <label for="craete_new_password_forget_password">Password</label><br>
+                    <input type="password" class="craete_new_password_forget_password" id="craete_new_password_forget_password" name="craete_new_password_forget_password"><br>
+                    <h5 class="reset_password_text_input_warning">Must be at least 4 characters</h5>
+                    <br>
+                </div>
+
+                <div>
+                    <label for="confirm_new_password_forget_password">Confirm Password</label><br>
+                    <input type="password" class="confirm_new_password_forget_password" id="confirm_new_password_forget_password" name="confirm_new_password_forget_password"><br>
+                    <h5 class="reset_password_text_input_warning">Both passwords must match</h5>
+                    <br>
+                </div>
+                <div class="submit_new_reset_password_div"><input type="submit" class="submit_new_reset_password" id="submit_new_reset_password" onclick="open_confirm_password_Popup()"></div>
+            </div>
+        </div>
+    </div>
+    <script src="Landing/Login/login.js" defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="asserts/JSLibrary/sweetalert2.all.min.js" defer></script>
+</body>
+
+</html>
