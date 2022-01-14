@@ -1,0 +1,197 @@
+
+/* --------------------------------boxes--------------------------- */
+
+.maintainer_request_home{
+    margin: 30px 72px 30px 72px;
+}
+
+.request_title{
+    display: inline-block;
+    /*background-color: white;*/
+    font-size: 24px;
+}
+
+.request_title a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*------------------------table---------------------------*/
+
+.manager_request_maintainer {
+    background-color:#d6d4d4;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    /*margin: 30px 72px 30px 72px;*/
+}
+
+.title_man_request_maintainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.title_request_name_maintainer{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-top: 30px;
+}
+
+.title_request_name_maintainer span{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ins_manager_request_details {
+    overflow-x: auto;
+}
+.manager_request_table{
+    width:92%;
+    margin: 35px 4% 10px;
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+
+.manager_request_row, .manager_request_header  {
+    background-color: white;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.manager_request_row:hover {
+    background-color:#75CDFF;
+    color: white;
+}
+
+
+/*-----------------------------pop up---------------------------------*/
+.request_title_btn_a{
+    padding: 10px 15px;
+    background-color:#0E2C4B;
+    color:white;
+    border-radius:5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.request_title_btn_a:hover{
+    background-color:white;
+    color:#0E2C4B;
+    border: 1.5px solid #0E2C4B;
+}
+
+.add_request_container {
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    z-index: 100;
+    border-radius: 5px;
+    display: none;
+    -webkit-animation: fadeIn 2s;
+    animation: fadeIn 1s;
+}
+
+.close_add_request_btn {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}
+.close_add_request_btn i {
+    font-size: 24px;
+    color:red;
+}
+
+/*----------------------pop up form-----------------------------*/
+.title_name{
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.request_form_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    margin: auto;
+    padding: 25px;
+    align-items:center;
+    font-size: 18px;
+    width: fit-content;
+    box-shadow: 0px 5px 5px 5px gray;
+}
+
+.maintainer_request_form .form_label{
+    margin:15px 0;
+    display:inline-block;
+    padding:6px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: transparent;
+    border-bottom: 2px solid #0E2C4B;
+    width: 500px;
+}
+
+.form_label_new{
+    margin:15px 0;
+    display:inline-block;
+    padding:6px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: transparent;
+    border-bottom: 2px solid #0E2C4B;
+    width: 250px;
+}
+
+.req_timedate{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+    margin-right: 15px;
+    /*flex-direction: column;*/
+}
+
+option{
+    overflow: scroll;
+}
+
+/* -------------------submit button----------------------- */
+.btn_submit {
+    margin:10px 0;
+    display:inline-block;
+    /*padding:10px;*/
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #0E2C4B;
+    color: white;
+    padding:10px 25px;
+    width: 100px;
+}
+
+.submit_btn_class{
+    text-align: center;
+}
+
+.btn_submit:hover {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    color: #0E2C4B;
+    border-color: #0E2C4B;
+}
+
+.validation_label {
+    color: red;
+}
