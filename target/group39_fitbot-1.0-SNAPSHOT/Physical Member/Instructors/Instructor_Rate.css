@@ -1,0 +1,60 @@
+
+.success-box {
+    /* margin:50px 0; */
+    margin-top:20px;
+    /*padding:0;*/
+    /* padding-top:10px; */
+    display: flex;
+    column-gap: 10px;
+    justify-content:center;
+    padding: 10px;
+    /* background-color: aqua; */
+    /* border:1px solid #eee; */
+    /* background:#ad5d5d; */
+    align-items: center;
+}
+
+.success-box div img {
+
+    display:inline-block;
+    width:32px;
+    vertical-align:middle;
+    /* background-color: #FFCC36; */
+}
+
+.text-message span{
+
+    /* vertical-align:middle; */
+    color:black;
+    /* align-items: center; */
+    font-size:18px;
+    /* text-align: center; */
+}
+
+
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+    list-style-type:none;
+    padding:0;
+}
+.rating-stars ul > li.star {
+    display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+    font-size:2em; /* Change the size of the stars */
+    color:rgb(70, 70, 70); /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+    color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+    color:#FF912C;
+}

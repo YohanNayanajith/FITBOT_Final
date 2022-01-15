@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Requests/requests.css">
+      <link rel="stylesheet" href="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Maintainer_Form/maintainer_form.css">
+      <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+
+<body>
+        <!-- Content below the header -->
+        <div class="maintain_requests_view" id="maintain_requests_view">
+            <div class="request_content_box_dash">
+                <div class="new_req_box">
+                    <div class="iconSet">
+                        <i class='bx bxs-comment-dots bx-tada' ></i>
+                    </div>
+                    <div class="contentSet">
+                        <div class="box_header">New Request</div>
+                        <div class="horizontal_line"></div>
+                        <p>Last 24 hours</p>
+                        <div class="new_req_value" id="new_req_value"></div>
+                    </div>
+                </div>
+
+                <div class="progress_req_box">
+                    <div class="iconSet">
+                        <i class='bx bxs-chevrons-down bx-fade-down' ></i>
+                    </div>
+                    <div class="contentSet">
+                        <div class="box_header">Current Progress</div>
+                        <div class="horizontal_line"></div>
+                        <p>Not completed</p>
+                        <div class="prog_req_value" id="prog_req_value"></div>
+                    </div>
+                </div>
+
+                <div class="completed_req_box">
+                    <div class="iconSet">
+                        <i class='bx bxs-check-square' ></i>
+                    </div>
+                    <div class="contentSet">
+                        <div class="box_header">Completed</div>
+                        <div class="horizontal_line"></div>
+                        <p>Last 30 days</p>
+                        <div class="compt_req_value" id="compt_req_value"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content below the header -->
+            <div class="all_maint_requests">
+
+                <div class="title_maint_requests">
+                    <div class="all_maint_gym_requests">
+                        All Maintenance Requests
+                    </div>
+                    <div class="search-container">
+                        <form action="">
+                            <input type="text" placeholder="Search by branch" name="search_branch_requests">
+                            <button type="submit" onclick=""><i class='bx bx-search'></i></button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="maint_request-details">
+                    <table class="maintain_requ_tab" id="maintain_requ_tab">
+                        <tr class ="maint_request_info">
+                            <th>Branch </th>
+                            <th>Equipment Type</th>
+                            <th>Re-Date</th>
+                            <th>Co-Date</th>
+                            <th>Status</th>
+                            <th>Accepted</th>
+                            <th></th>
+                        </tr>
+                        <tbody class="maintain_requ_tab_body" id="maintain_requ_tab_body" >
+                            <tr class ="request_details_row" id="request_details_row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <section>
+
+                <div class="formPop" id="formPop">
+                    <!-- <div class="test">
+                    </div> -->
+
+
+                    <div class="maintainer_form" id="maintainer_form" >
+
+                        <noscript>
+                            <span class="javascript_enable_error_message">JavaScript is blocked, Please enable the javaScript</span><br>
+                            <span class="javascript_enable">In Google chrome browser software => Go to Settings => In “Privacy and security” Section => Site Settings => JavaScript</span><br>
+                            <span class="javascript_enable">In Firefox, type “about:config” in browser address bar => Click on “Accept the risk and continue” => Type “JavaScript” in the “Search” box => Double-click the “JavaScript.enabled”</span>
+                        </noscript>
+                        <div class="login_close_btn_form">
+                            <span onclick="close_form_Popup()" class="close_edit_profile_btn" title="Close Modal"><i class='bx bx-x' ></i></span>
+                        </div>
+
+
+                        <form class="form_maintainer_con" id="form_maintainer_con">
+                            <div class="detail_content">
+                                <div class="form_header">
+                                    <h1>Maintenance Completion Form</h1>
+                                    <div class="headerLine"></div>
+                                </div>
+                                <div class="branch_manager_con">
+
+                                    <div class="first_header_label">
+                                        <h1>Request Details</h1><br>
+                                        <p>Only branch manager</p>
+                                    </div>
+                                    <div class="details_label_b">
+                                        <label for="branch_id_inForm">01. Branch : </label><span id="branch_id_inForm" name="branch_id_inForm" class="branch_id_inForm"> </span><br>
+                                        <!-- <div id="branch_id_inForm" name="branch_id_inForm" class="branch_id_inForm"></div> <br> -->
+
+
+                                        <label for="equipment_type_inForm">02. Equipment Type : </label><span id="equipment_type_inForm" name="equipment_type_inForm" class="equipment_type_inForm"></span><br>
+                                        <!-- <div id="equipment_type_inForm" name="equipment_type_inForm" class="equipment_type_inForm"></div> <br> -->
+
+
+                                        <label for="problem_dis">03. Description : </label><span id="problem_dis" name="problem_dis" class="problem_dis"></span><br>
+                                        <!-- <div id="problem_dis" name="problem_dis" class="problem_dis"></div> <br> -->
+
+                                        <!--<input type="textarea" id="problem_dis" name="problem_dis" class="form_label problem_dis" placeholder="Discrib the problem"><br>-->
+
+                                        <div class="dateTime">
+                                            <div class="dateAdd">
+                                                <label for="req_date">04. Request Send <br>Date : </label><br>
+                                                <div id="req_date" name="req_date" class="req_date"></div> <br>
+
+
+                                                <!--<input type="date" id="req_date" name="req_date" class="form_label req_date" placeholder="Enter date"><br>-->
+                                            </div>
+                                            <div class="timeAdd">
+                                                <label for="req_time">05. Request Send <br>Time : </label><br>
+                                                <div id="req_time" name="req_time" class="req_time"></div> <br>
+                                                <!--                                                    <input type="time" id="req_time" name="req_time" class="form_label req_time" placeholder="Enter date"><br>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hoLine"></div>
+                                <div class="maintainer_add_con">
+                                    <div class="first_header_label">
+                                        <h1>Completed Details</h1><br>
+                                        <p>Only maintainer</p>
+                                    </div>
+                                    <div class="details_label_m">
+                                        <label for="complet_dis">06. Add Note</label><br>
+                                        <div class="completed_form_data1" id="completed_form_data1"><input type="text" id="complet_dis" name="complet_dis" class="form_label complet_dis" placeholder="Add note about equipment"></div><br>
+                                        <br>
+
+                                        <label for="complet_img">07. Image after maintained<span class="require_star"></span></label><br>
+                                        <div class="completed_form_data2" id="completed_form_data2"><input type="file" id="complet_img" name="complet_img" class="complet_img" ></div><br>
+                                        <!-- <h5 class="dob_check hidden_validate_text" id="dob_check"></h5> -->
+                                        <!-- <h5 class="age_check hidden_validate_text" id="age_check">**Your age should be 14 to 80</h5> -->
+
+
+                                        <div class="dateTime">
+                                            <div class="dateAdd">
+                                                <label for="comp_date">08. Completed Date<span class="require_star">*</span></label><br>
+                                                <div class="completed_form_data3" id="completed_form_data3"><input type="date" id="comp_date" name="comp_date" class="form_label comp_date" placeholder="Enter date"></div><br>
+                                            </div>
+                                            <div class="timeAdd">
+                                                <label for="comp_time">09. Send Time<span class="require_star">*</span></label><br>
+                                                <div class="completed_form_data4" id="completed_form_data4"><input type="time" id="comp_time" name="comp_time" class="form_label comp_time" placeholder="Enter date"></div><br>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="btnFeeld">
+                                    <div class="cancelBtn"><a>Cancel</a></div>
+                                    <div class="sendBtn"><button class="submitPopFormId" id="submitPopFormId" >submit</button></div>
+                                    <!-- <input type="submit" value="submit"  class="sendBtn" id="sendBtn">-->
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+
+            </section>
+
+    </div>
+
+
+
+      <script src="http://localhost:8080/group39_fitbot_war_exploded/Maintainer/Requests/requests.js" defer></script>
+      </body>
+      </html>
