@@ -105,7 +105,7 @@ function updateequipmenttable() {
                 '<td>' + x.purchase_date + '</td>' +
                 '<td>' + x.last_modified_date + '</td>' +
                 '<td>' + x.next_maintenance_date + '</td>' +
-                '<td>' + '<div class="button_row"><div class="add_btn_class"><input type="button" class="btn_add" value="Update" onClick=""></div> <div class="reject_btn_class"><input type="button" class="btn_reject" value="Delete" onClick=""></div></div>' + '</td>' +
+                '<td>' + '<div class="button_row"><div class="add_btn_class"><input type="button" class="btn_add" value="Update" onclick=""></div> <div class="reject_btn_class"><input type="button" class="btn_reject" value="Disable" onClick=""></div></div>' + '</td>' +
                 '</tr>'
             );
         });

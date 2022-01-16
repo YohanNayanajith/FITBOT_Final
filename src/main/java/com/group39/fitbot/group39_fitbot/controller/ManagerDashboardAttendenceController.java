@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,10 @@ public class ManagerDashboardAttendenceController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("ManagerDashboardAttendence post method called");
 
+        LocalDate fullDate = LocalDate.parse(req.getParameter("fullDate"));
+        LocalDate firstdate = LocalDate.parse(req.getParameter("firstdate"));
+        LocalDate lastdate = LocalDate.parse(req.getParameter("lastdate"));
+
         HttpSession session = req.getSession();
         String branchID = (String) session.getAttribute("BranchID");
         System.out.println(branchID);
@@ -35,7 +40,7 @@ public class ManagerDashboardAttendenceController extends HttpServlet {
         List<ManagerDashboardAttendence> dash_attendence = new ArrayList<>();
 
         try{
-            dash_attendence = ManagerDashboardAttendenceDAO.getManagerDashboardAttendence(branchID);
+            dash_attendence = ManagerDashboardAttendenceDAO.getManagerDashboardAttendence(branchID,firstdate,lastdate,fullDate);
             System.out.println(dash_attendence);
             Gson gson = new Gson();
             String attendenceJSON = gson.toJson(dash_attendence);

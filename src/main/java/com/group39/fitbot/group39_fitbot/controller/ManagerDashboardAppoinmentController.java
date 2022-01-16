@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +28,15 @@ public class ManagerDashboardAppoinmentController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("ManagerDashboardAppoinmentController post method called");
 
+        LocalDate today = LocalDate.parse(req.getParameter("today"));
+
         HttpSession session = req.getSession();
         String branchID = (String) session.getAttribute("BranchID");
         System.out.println(branchID);
 
         List<ManagerDashboardAppoinment> dash_appoinment = new ArrayList<>();
         try{
-            dash_appoinment = ManagerDashboardAppoinmentDAO.getManagerDashboardAppoinment(branchID);
+            dash_appoinment = ManagerDashboardAppoinmentDAO.getManagerDashboardAppoinment(branchID,today);
             System.out.println(dash_appoinment);
             Gson gson = new Gson();
             String appoinmentJSON = gson.toJson(dash_appoinment);

@@ -5,12 +5,14 @@ public class ManagerDashboardAttendence {
     private int member_attendence_count;
     private int instructor_attendence_count;
     private int appoinment_count;
+    private int new_member_count;
 
-    public ManagerDashboardAttendence(int branch_revenue, int member_attendence_count, int instructor_attendence_count, int appoinment_count) {
+    public ManagerDashboardAttendence(int branch_revenue, int member_attendence_count, int instructor_attendence_count, int appoinment_count, int new_member_count) {
         this.branch_revenue = branch_revenue;
         this.member_attendence_count = member_attendence_count;
         this.instructor_attendence_count = instructor_attendence_count;
         this.appoinment_count = appoinment_count;
+        this.new_member_count = new_member_count;
     }
 
     public int getBranch_revenue() {
@@ -45,6 +47,14 @@ public class ManagerDashboardAttendence {
         this.appoinment_count = appoinment_count;
     }
 
+    public int getNew_member_count() {
+        return new_member_count;
+    }
+
+    public void setNew_member_count(int new_member_count) {
+        this.new_member_count = new_member_count;
+    }
+
     @Override
     public String toString() {
         return "ManagerDashboardAttendence{" +
@@ -52,6 +62,9 @@ public class ManagerDashboardAttendence {
                 ", member_attendence_count=" + member_attendence_count +
                 ", instructor_attendence_count=" + instructor_attendence_count +
                 ", appoinment_count=" + appoinment_count +
+                ", new_member_count=" + new_member_count +
                 '}';
     }
 }
+
+

@@ -125,6 +125,7 @@ $(document).ready(function(){
     dashboardattendence();
     managerdashboard();
     dashboardappoinment();
+    manager_branch_revenue();
   });
 });
 
@@ -145,15 +146,33 @@ function branchidsession(){
 }
 
 function dashboardattendence(){
+  const date = new Date();
+  let fullDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+  console.log(fullDate);
+
+  let firstdate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("01");
+  console.log(firstdate);
+
+  let month = (date.getMonth()+1);
+  console.log(month);
+
+  var lastday = function(y,m){
+    return  new Date(y, m, 0).getDate();
+  }
+
+  console.log(lastday(date.getFullYear(),month));
+
+  let lastdate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+(lastday(date.getFullYear(),month));
+  console.log(lastdate);
+
   $.ajax({
     method: 'POST',
     url: "mandashboardattendence",
     dataType: 'json',
+    data:{fullDate:fullDate,firstdate:firstdate,lastdate:lastdate},
+
   }).done(function (result) {
     console.log(result);
-    // const date = new Date();
-    // let fullDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
-    // console.log(fullDate);
 
     $('#revenue_number').append(
         '<p>'+ 'Rs: ' + result[0].branch_revenue  + '</p>'
@@ -171,6 +190,10 @@ function dashboardattendence(){
         '<p>'+ result[0].appoinment_count  + '</p>'
     );
 
+    $('#new_member_number').append(
+        '<p>'+ result[0].new_member_count  + '</p>'
+    );
+
   }).fail(function (a, b, err) {
     alert("Error");
     console.log(a, b, err);
@@ -178,10 +201,15 @@ function dashboardattendence(){
 }
 
 function dashboardappoinment(){
+  const date = new Date();
+  let today = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+  console.log(today);
+
   $.ajax({
     method: 'POST',
     url: "mandashboardappoinment",
     dataType: 'json',
+    data:{today:today},
   }).done(function (result) {
     console.log(result);
 
@@ -417,6 +445,11 @@ $('#man_request').click(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Manager/BRANCH_MANAGER_REPORTS/MANAGER_REPORT.html #manager_report',function(responseTxt, statusTxt, xhr){
       if(statusTxt == "error")
           alert("Error: " + xhr.status + ": " + xhr.statusText);
+
+        manager_branch_revenue_report();
+        DuePaymentReport();
+        MaintainenceReport();
+
       });
       load[7] += 1;
     }else{
@@ -573,7 +606,7 @@ function member_view(){
       $('#ins_manager_mem_details_table_tbody').append(
           '<tr class="manager_member_row">' +
           '<td>' + (x.firstname + " " + x.lastname) + '</td>' +
-          '<td>' + x.membertype + '</td>' +
+          '<td>' + ((x.membertype).replace("_", " ")) + '</td>' +
           '<td>' + x.intructorname + '</td>' +
           '<td>' + '<input type="checkbox" class="atte"/>' +
           '</td>' +
@@ -601,7 +634,7 @@ function managerpayment_view(){
           '<tr class="payment_request_row">' +
           '<td>' + (x.firstname + " " + x.lastname ) + '</td>' +
           '<td>' + x.payment + '</td>' +
-          '<td>' + x.membership_category + '</td>' +
+          '<td>' + ((x.membership_category).replace("_", " ")) + '</td>' +
           '<td>' + '<div class="button_row">\n' +
           '<div class="add_btn_class"><input type="button" class="btn_add" value="Accept" onclick=""></div>\n' +
           '<div class="reject_btn_class"><input type="button" class="btn_reject" value="Reject" onclick=""></div>\n' +
@@ -779,5 +812,98 @@ function nextbuttons(array_get,chunk_get) {
 }
 
 
+function manager_branch_revenue(){
+  let xValues = ['January','February','March','April','May','june','July','August','September','October','November','December'];
+
+  new Chart("revenue_manager", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}
 
 
+function manager_branch_revenue_report(){
+  let xValues = ['January','February','March','April','May','june','July','August','September','October','November','December'];
+
+  new Chart("revenue_manager_report", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}
+
+
+
+
+function DuePaymentReport(){
+  let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("man_chart2", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}
+
+function MaintainenceReport(){
+  let xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("man_chart3", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  });
+}

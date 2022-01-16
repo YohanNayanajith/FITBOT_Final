@@ -101,7 +101,7 @@ function updateNoticeTable(){
         dataType:'json',
     }).done(function(result){
         console.log(result);
-        let chunk = 2;
+        let chunk = 5;
         nextbuttons(result,chunk);
         initiateNextButtons(result,chunk)
         $("#manager_notice_table_tbody").html(' ')

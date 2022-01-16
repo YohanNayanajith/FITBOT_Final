@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Landing/Login/login.html" value="file://$PROJECT_DIR$/src/main/webapp/Landing/Login" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Landing/PricingPlan/PricingPlan.css" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Manager/BRANCH_MANAGER_INSTRUCTOR/MANAGER_INSTRUCTOR.html" value="file://$PROJECT_DIR$/src/main/webapp/Manager/BRANCH_MANAGER_INSTRUCTOR" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Physical Member/FullSidebar.html" value="file://$PROJECT_DIR$/src/main/webapp/Physical Member" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Physical Member/Payments/Payments.html" value="file://$PROJECT_DIR$/src/main/webapp/Physical Member/Payments" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Physical Member/Workout_Plans/Virtual_Workout_Plans.html" value="file://$PROJECT_DIR$/src/main/webapp/Physical Member/Workout_Plans" />
