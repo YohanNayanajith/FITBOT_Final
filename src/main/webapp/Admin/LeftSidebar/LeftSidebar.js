@@ -1,4 +1,5 @@
 
+let maintainercount =0;
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
@@ -430,6 +431,7 @@ $(document).ready(function() {
 
         if (load[4] == 0) {
           $("#adm_add_employees").load('http://localhost:8080/group39_fitbot_war_exploded/Admin/AddEmployees/employee_add.html #add_employee_view', function (responseTxt, statusTxt, xhr) {
+            printbranchesemployeeform ();
             $("#validation_employee_id").hide();
             $("#validation_branch").hide();
             $("#validation_first_name").hide();
@@ -440,10 +442,12 @@ $(document).ready(function() {
             $("#validation_contactno1").hide();
             $("#validation_contactno2").hide();
             $("#validation_dob").hide();
+            // employeeid();
+            // alert(maintainercount);
             if (statusTxt == "error")
               alert(`Error: ${xhr.status}: ${xhr.statusText}`);
           });
-
+          alert(maintainercount);
 
           $(document).on('submit', '#employee_form', function (e) {
             // alert("Faalil");
@@ -452,7 +456,7 @@ $(document).ready(function() {
 
             let designation = $("#designation").val();
             let employee_id = $("#employee_id").val();
-            let branch_name = $("#branch_name").val();
+            let branch_name = $("#employee_branch_name").val();
             let first_name_employee = $("#first_name_employee").val();
             let last_name_employee = $("#last_name_employee").val();
             let gender_employee = $("#gender_employee").val();
@@ -475,23 +479,23 @@ $(document).ready(function() {
             let contactno2_error = false;
 
             //Branch_name validation
-            if (branch_name.length == "" && designation != "Maintainer") {
-              // alert("faalil");
-              $("#validation_branch").show();
-              branch_name_error = true;
-            } else {
-              $("#validation_branch").hide();
-            }
+            // if (branch_name.length == "" && designation != "Maintainer") {
+            //   // alert("faalil");
+            //   $("#validation_branch").show();
+            //   branch_name_error = true;
+            // } else {
+            //   $("#validation_branch").hide();
+            // }
 
             //validation of employee_id
             if (employee_id.length == "") {
               $("#validation_employee_id").show();
               employee_id_error = true;
-            } else if (employee_id.length != 7) {
-              $('#validation_employee_id').html("**length of the employee id must be 7");
-              $('#validation_employee_id').css("color", "red");
-              $("#validation_employee_id").show();
-              employee_id_error = true;
+            // } else if (employee_id.length != 7) {
+            //   $('#validation_employee_id').html("**length of the employee id must be 7");
+            //   $('#validation_employee_id').css("color", "red");
+            //   $("#validation_employee_id").show();
+            //   employee_id_error = true;
             } else {
               $("#validation_employee_id").hide();
             }
@@ -675,5 +679,10 @@ $(document).ready(function() {
       return true;
     }
   }
+
+  // function employeeid (){
+  //   alert(maintainercount);
+  //   document.getElementById("employee_id").defaulValue = maintainercount;
+  // }
 
 

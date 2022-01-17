@@ -48,7 +48,6 @@ public class EmployeeAddController extends HttpServlet {
         String primarycontact = req.getParameter("contact_no1_employee");
         String secondarycontact =req.getParameter("contact_no2_employee");
         LocalDate date_joined = LocalDate.now();
-        Integer status = 1;
 
 
 
@@ -65,7 +64,7 @@ public class EmployeeAddController extends HttpServlet {
         if (Objects.equals(type, "Maintainer")){
             System.out.println("intomaintainer");
             try {
-                String reg_password = toHexStr(obtainSHA(employee_id));
+                String reg_password = toHexStr(obtainSHA(nic));
                 added = EmployeeAddDAO.addMaintainer(new Employee(
                         employee_id,
                         first_name,
@@ -77,8 +76,7 @@ public class EmployeeAddController extends HttpServlet {
                         address,
                         primarycontact,
                         secondarycontact,
-                        date_joined,
-                        status
+                        date_joined
 
 
                 ));
@@ -97,7 +95,7 @@ public class EmployeeAddController extends HttpServlet {
         else if (Objects.equals(type, "Instructor")){
             System.out.println("intoinstructor");
             try {
-                String reg_password = toHexStr(obtainSHA(employee_id));
+                String reg_password = toHexStr(obtainSHA(nic));
                 added = EmployeeAddDAO.addInstructor(new Employee(
                         employee_id,
                         branch_name,
@@ -110,8 +108,7 @@ public class EmployeeAddController extends HttpServlet {
                         address,
                         primarycontact,
                         secondarycontact,
-                        date_joined,
-                        status
+                        date_joined
 
 
                 ));
@@ -143,8 +140,7 @@ public class EmployeeAddController extends HttpServlet {
                         address,
                         primarycontact,
                         secondarycontact,
-                        date_joined,
-                        status
+                        date_joined
 
 
                 ));

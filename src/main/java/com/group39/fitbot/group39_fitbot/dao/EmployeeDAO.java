@@ -10,16 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
-
-
 
 public class EmployeeDAO {
     // Function to retrieve all employees
     public static List<Employee> getEmployee() throws SQLException, ClassNotFoundException{
         List<Employee> employees = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query= "SELECT b.branchmanager_id, br.branch_name, b.first_name, b.last_name, b.gender, b.email, b.nic, b.dob, b.address, b.primary_contact, b.secondary_contact, b.joined_date, b.status,\"Branch Manager\" as type FROM branch_manager b INNER JOIN branch br ON br.branch_id=b.branch_id INNER JOIN users u ON u.member_id=b.branchmanager_id where b.`status`=1 UNION SELECT i.instructor_id, br.branch_name, i.first_name, i.last_name, i.gender, i.email, i.nic, i.dob, i.address, i.primary_contact, i.secondary_contact, i.joined_date, i.status, \"Instructor\" as type FROM instructor i INNER JOIN branch br ON br.branch_id=i.branch_id INNER JOIN users u ON u.member_id=i.instructor_id where i.`status`=1";
+        String query= "SELECT b.branchmanager_id, br.branch_name, b.first_name, b.last_name, b.gender, b.email, b.nic, b.dob, b.address, b.primary_contact, b.secondary_contact, b.joined_date,\"Branch Manager\" as type FROM branch_manager b INNER JOIN branch br ON br.branch_id=b.branch_id INNER JOIN users u ON u.member_id=b.branchmanager_id where u.`status`=1 UNION SELECT i.instructor_id, br.branch_name, i.first_name, i.last_name, i.gender, i.email, i.nic, i.dob, i.address, i.primary_contact, i.secondary_contact, i.joined_date, \"Instructor\" as type FROM instructor i INNER JOIN branch br ON br.branch_id=i.branch_id INNER JOIN users u ON u.member_id=i.instructor_id where u.`status`=1";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();
@@ -40,15 +37,13 @@ public class EmployeeDAO {
                         resultSet.getString(10),
                         resultSet.getString(11),
                         resultSet.getDate(12).toLocalDate(),
-                        resultSet.getInt(13),
-                        resultSet.getString(14)
-
+                        resultSet.getString(13)
 
                 ));
 
             }
         }
-        String query1= "SELECT m.maintainer_id, m.first_name, m.last_name, m.gender, m.email, m.nic, m.dob, m.address, m.primary_contact, m.secondary_contact, m.joined_date, m.status,\"Maintainer\" as type FROM maintainer m INNER JOIN users u ON u.member_id=m.maintainer_id where m.`status`=1 ";
+        String query1= "SELECT m.maintainer_id, m.first_name, m.last_name, m.gender, m.email, m.nic, m.dob, m.address, m.primary_contact, m.secondary_contact, m.joined_date, \"Maintainer\" as type FROM maintainer m INNER JOIN users u ON u.member_id=m.maintainer_id where u.`status`=1 ";
         PreparedStatement pst1 = connection.prepareStatement(query1);
 
         ResultSet resultSet1 = pst1.executeQuery();
@@ -68,8 +63,7 @@ public class EmployeeDAO {
                         resultSet1.getString(9),
                         resultSet1.getString(10),
                         resultSet1.getDate(11).toLocalDate(),
-                        resultSet1.getInt(12),
-                        resultSet1.getString(13)
+                        resultSet1.getString(12)
 
 
                 ));
@@ -104,8 +98,7 @@ public class EmployeeDAO {
                         resultSet.getString(9),
                         resultSet.getString(10),
                         resultSet.getString(11),
-                        resultSet.getDate(12).toLocalDate(),
-                        resultSet.getInt(13)
+                        resultSet.getDate(12).toLocalDate()
 
 
 
@@ -140,8 +133,7 @@ public class EmployeeDAO {
                         resultSet.getString(9),
                         resultSet.getString(10),
                         resultSet.getString(11),
-                        resultSet.getDate(12).toLocalDate(),
-                        resultSet.getInt(13)
+                        resultSet.getDate(12).toLocalDate()
 
 
 
@@ -155,7 +147,7 @@ public class EmployeeDAO {
     //Remove Instructor
     public static boolean removeinstructor(String employee_id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE instructor SET status=? WHERE instructor_id=?";
+        String query = "UPDATE users SET status=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setInt(1,0);
@@ -169,7 +161,7 @@ public class EmployeeDAO {
     //Remove Instructor
     public static boolean removemaintainer(String employee_id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE maintainer SET status=? WHERE maintainer_id=?";
+        String query = "UPDATE users SET status=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setInt(1,0);
@@ -183,7 +175,7 @@ public class EmployeeDAO {
     //Remove BranchManager
     public static boolean removebranchmanager(String employee_id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE branch_manager SET status=? WHERE branchmanager_id=?";
+        String query = "UPDATE users SET status=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setInt(1,0);
@@ -221,8 +213,7 @@ public class EmployeeDAO {
                         resultSet.getString(10),
                         resultSet.getString(11),
                         resultSet.getDate(12).toLocalDate(),
-                        resultSet.getInt(13),
-                        resultSet.getString(14)
+                        resultSet.getString(13)
 
 
                 ));
@@ -255,8 +246,7 @@ public class EmployeeDAO {
                         resultSet.getString(10),
                         resultSet.getString(11),
                         resultSet.getDate(12).toLocalDate(),
-                        resultSet.getInt(13),
-                        resultSet.getString(14)
+                        resultSet.getString(13)
 
 
 
@@ -270,7 +260,7 @@ public class EmployeeDAO {
     public static List<Employee> getMaintainers() throws SQLException, ClassNotFoundException{
         List<Employee> maintainers = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = " select * FROM maintainer";
+        String query = " select *, \"Maintainer\" as designation FROM maintainer";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();
@@ -291,7 +281,7 @@ public class EmployeeDAO {
                         resultSet.getString(9),
                         resultSet.getString(10),
                         resultSet.getDate(11).toLocalDate(),
-                        resultSet.getInt(12)
+                        resultSet.getString(12)
 
 
 

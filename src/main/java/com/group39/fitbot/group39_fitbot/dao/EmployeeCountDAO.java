@@ -17,9 +17,9 @@ public class EmployeeCountDAO {
             EmployeeCount employeecount = new EmployeeCount();
             Connection connection = DBConnection.getInstance().getConnection();
             String query = "SELECT\n" +
-                    "\t( SELECT count(*) FROM maintainer where status =1 ) AS column1,\n" +
-                    "\t( SELECT count(*) FROM instructor where status =1 ) AS column2,\n" +
-                    "\t( SELECT count(*) FROM branch_manager where status =1 ) AS column3";
+                    "\t( SELECT count(*) FROM maintainer m INNER JOIN users u ON m.maintainer_id=u.member_id where u.status =1 ) AS column1,\n" +
+                    "\t( SELECT count(*) FROM instructor i INNER JOIN users u ON i.instructor_id=u.member_id where u.status =1 ) AS column2,\n" +
+                    "\t( SELECT count(*) FROM branch_manager br INNER JOIN users u ON br.branchmanager_id=u.member_id where u.status =1 ) AS column3";
             PreparedStatement pst = connection.prepareStatement(query);
 
             ResultSet resultSet = pst.executeQuery();

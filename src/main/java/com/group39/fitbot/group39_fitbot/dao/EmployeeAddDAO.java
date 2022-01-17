@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class EmployeeAddDAO {
     public static boolean addMaintainer (Employee employee) throws SQLException, ClassNotFoundException{
         Connection connection=DBConnection.getInstance().getConnection();
-        String query = "INSERT INTO maintainer VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO maintainer VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setString(1,employee.getEmployee_id());
@@ -25,9 +25,6 @@ public class EmployeeAddDAO {
         pst.setString(9, employee.getPrimarycontact());
         pst.setString(10,employee.getSecondarycontact());
         pst.setDate(11,Date.valueOf(employee.getDate_joined()));
-        pst.setInt(12,employee.getStatus());
-
-
 
         return pst.executeUpdate()>0;
 
@@ -36,7 +33,7 @@ public class EmployeeAddDAO {
 
     public static boolean addInstructor (Employee employee) throws SQLException, ClassNotFoundException{
         Connection connection=DBConnection.getInstance().getConnection();
-        String query = "INSERT INTO instructor VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO instructor VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setString(1,employee.getEmployee_id());
@@ -51,7 +48,6 @@ public class EmployeeAddDAO {
         pst.setString(10, employee.getPrimarycontact());
         pst.setString(11,employee.getSecondarycontact());
         pst.setDate(12,Date.valueOf(employee.getDate_joined()));
-        pst.setInt(13,employee.getStatus());
 
 
         return pst.executeUpdate()>0;
@@ -61,7 +57,7 @@ public class EmployeeAddDAO {
 
     public static boolean addbranchmanager (Employee employee) throws SQLException, ClassNotFoundException{
         Connection connection=DBConnection.getInstance().getConnection();
-        String query = "INSERT INTO branch_manager VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO branch_manager VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setString(1,employee.getEmployee_id());
@@ -76,7 +72,6 @@ public class EmployeeAddDAO {
         pst.setString(10, employee.getPrimarycontact());
         pst.setString(11,employee.getSecondarycontact());
         pst.setDate(12,Date.valueOf(employee.getDate_joined()));
-        pst.setInt(13,employee.getStatus());
 
         return pst.executeUpdate()>0;
 

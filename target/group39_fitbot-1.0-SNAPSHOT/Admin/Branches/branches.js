@@ -1,5 +1,5 @@
 function accord() {
-  alert("faalil");
+  // alert("faalil");
   var acc = document.getElementsByClassName("list_accordion");
   var i;
 
@@ -30,7 +30,7 @@ function adm_branches() {
 
 //function to print branch name and branch id
 function printbranches (){
-  alert('Faalil');
+  // alert('Faalil');
   $.ajax({
     method:'POST',
     url:"branch",

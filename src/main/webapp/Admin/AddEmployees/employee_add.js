@@ -21,3 +21,28 @@ function Branchvisibility(){
     document.getElementById("branch_name_employee").style.opacity=1;
   }
 }
+
+//function to print branch name and branch id
+function printbranchesemployeeform (){
+  // alert('Faalil');
+  $.ajax({
+    method:'POST',
+    url:"branch",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    $('#branch_detail_list').html('')
+    console.log(result);
+    $.map(result,function(x){
+
+      $('#employee_branch_name').append(
+          `<option value=${x.branch_id}>${x.branch_name}</option>`
+      );
+    });
+
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+
+}

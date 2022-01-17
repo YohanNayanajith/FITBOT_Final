@@ -21,6 +21,7 @@ function employeecount(){
     $('#branchmanagercount').html('');
     $('#totalemployee').html('');
 
+    maintainercount = result.maintainer_count;
       $('#instructorcount').append(
 
           `<p>${result.instructor_count}</p>`
@@ -104,7 +105,7 @@ function employeeview_popup(name){
             `<ul><li>${x.firstname + ' ' + x.lastname}</li><li>${x.nic}</li><li>${x.gender}</li><li>${x.email}</li><li>${x.primarycontact}</li><li>${x.dob}</li><li>24</li><li>${x.branch_id}</li><li>${x.designation}</li></ul>`
         );
         $('#remove_button').append(
-            `<input type="button" class ="rem_button" value="Remove" onclick="removeemployee('${x.employee_id}','${x.designation}')">`
+            `<input type="button" class ="rem_button" value="Disable" onclick="removeemployee('${x.employee_id}','${x.designation}')">`
         );
       }
     });

@@ -19,15 +19,13 @@ public class Employee {
     private String secondarycontact;
     private String designation;
     private LocalDate date_joined;
-    private int status;
-
 
     public Employee() {
     }
 
 
     //constructor for retrieval with the designation
-    public Employee(String employee_id, String branch_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact,  LocalDate date_joined, int status,String designation) {
+    public Employee(String employee_id, String branch_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact,  LocalDate date_joined,String designation) {
         this.employee_id = employee_id;
         this.branch_id = branch_id;
         this.firstname = firstname;
@@ -41,11 +39,10 @@ public class Employee {
         this.secondarycontact = secondarycontact;
         this.designation = designation;
         this.date_joined = date_joined;
-        this.status = status;
     }
 
     //constructor for addition of instructor and branchmanager
-    public Employee(String employee_id, String branch_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact, LocalDate date_joined, int status) {
+    public Employee(String employee_id, String branch_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact, LocalDate date_joined) {
         this.employee_id = employee_id;
         this.branch_id = branch_id;
         this.firstname = firstname;
@@ -58,11 +55,10 @@ public class Employee {
         this.primarycontact = primarycontact;
         this.secondarycontact = secondarycontact;
         this.date_joined = date_joined;
-        this.status = status;
     }
 
     //Constructor for Maintainer
-    public Employee(String employee_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact, LocalDate date_joined, int status) {
+    public Employee(String employee_id, String firstname, String lastname, String gender, String email, String nic, String dob, String address, String primarycontact, String secondarycontact, LocalDate date_joined) {
         this.employee_id = employee_id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -74,7 +70,6 @@ public class Employee {
         this.primarycontact = primarycontact;
         this.secondarycontact = secondarycontact;
         this.date_joined = date_joined;
-        this.status = status;
     }
 
     public String getEmployee_id() {
@@ -190,13 +185,6 @@ public class Employee {
         this.date_joined = date_joined;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     @Override
     public String toString() {
@@ -214,7 +202,6 @@ public class Employee {
                 ", secondarycontact='" + secondarycontact + '\'' +
                 ", designation='" + designation + '\'' +
                 ", date_joined=" + date_joined +
-                ", status='" + status + '\'' +
                 '}';
     }
 }
