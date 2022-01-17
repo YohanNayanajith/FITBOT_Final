@@ -130,6 +130,9 @@ function updaterequest_table() {
         dataType: 'json',
     }).done(function (result) {
         console.log(result);
+        let chunk = 5;
+        nextbuttons(result,chunk);
+        initiateRequestNextButtons(result,chunk);
         $("#manager_request_table_tbody").html(' ')
         $.map(result, function (x) {
             $('#manager_request_table_tbody').append(
@@ -148,3 +151,29 @@ function updaterequest_table() {
     });
 
 }
+
+
+
+
+function initiateRequestNextButtons(result,chunk) {
+    //initiate the buttons
+    $(`[id^=next-button]*`).each(function () {
+        console.log(this)
+        $(this).on("click", function () {
+            // console.log($(this).html())
+            let pageno = parseInt($(this).html());
+            $("#manager_request_table_tbody").html(' ')
+            $.map(result.slice(pageno * chunk - chunk, pageno * chunk), function (x) {
+                $('#manager_request_table_tbody').append(
+                    '<tr class="manager_request_row">' +
+                    '<td>' + x.equipment_id + '</td>' +
+                    '<td>' + x.category + '</td>' +
+                    '<td>' + x.status + '</td>' +
+                    '<td>' + x.next_maintenance_date + '</td>' +
+                    '</tr>'
+                );
+            })
+        })
+    })
+}
+

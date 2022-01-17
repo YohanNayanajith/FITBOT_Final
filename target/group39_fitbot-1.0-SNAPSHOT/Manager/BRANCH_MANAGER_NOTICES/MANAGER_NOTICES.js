@@ -127,13 +127,10 @@ function updateNoticeTable(){
 
 function initiateNextButtons(result,chunk) {
     //initiate the buttons
-    console.log("deeeeeee");
     $(`[id^=next-button]*`).each(function () {
         console.log(this)
         $(this).on("click", function () {
             // console.log($(this).html())
-            console.log("nsaath");
-
             let pageno = parseInt($(this).html());
             $("#manager_notice_table_tbody").html(' ')
             $.map(result.slice(pageno * chunk - chunk, pageno * chunk), function (x) {

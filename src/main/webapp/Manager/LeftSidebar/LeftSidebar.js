@@ -686,11 +686,9 @@ function updateNoticeTable(){
     dataType:'json',
   }).done(function(result){
     console.log(result);
-
     $("#manager_notice_table_tbody").html(' ')
     $.map(result,function(x){
       $('#manager_notice_table_tbody').append(
-
           '<tr class="manager_notice_row">'+
           '<td>'+x.title+'</td>'+
           '<td>'+x.dates+'</td>'+

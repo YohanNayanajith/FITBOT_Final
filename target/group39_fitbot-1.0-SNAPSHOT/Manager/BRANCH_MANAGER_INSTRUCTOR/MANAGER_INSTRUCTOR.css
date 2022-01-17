@@ -1,4 +1,14 @@
+.boxcolour1{
+    background-color: #9BDBFF;
+}
 
+.boxcolour2{
+    background-color:#F66B6B;
+}
+
+.boxcolour3{
+    background-color:#D7904F;
+}
 /* ----------------------------------------------------home ---------------------------------------- */
 
 .overview_boxes_manager_instructor_sachi {
@@ -27,7 +37,7 @@
     align-items: center;
     border-radius:12px;
     box-shadow: 5px 5px 5px #888888;
-    background-color: #FBFAFA;
+    /*background-color: #FBFAFA;*/
     text-align: right;
 }
 .instructor_manager_home .overview_boxes_manager_instructor_sachi .box-topic {
@@ -50,7 +60,6 @@
     line-height:50px;
     text-align:center;
     border-radius:12px;
-
 }
 
 /* -------------------------------search bar--------------------------- */
@@ -66,22 +75,6 @@
     border-radius: 10px;
     width: 300px;
 }
-
-/*.man_search_box_sachi button{*/
-/*    width: 80px;*/
-/*    padding: 6px;*/
-/*    color: white;*/
-/*    background: #0E2C4B;*/
-/*    font-size: 14px;*/
-/*    border-radius: 10px;*/
-/*    cursor: pointer;*/
-/*}*/
-/*.man_search_box_sachi button:hover{*/
-/*    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);*/
-/*    background-color: white;*/
-/*    color: #0E2C4B;*/
-/*    border-color: #0E2C4B;*/
-/*}*/
 
 /*------------------------------------------------------------*/
 
