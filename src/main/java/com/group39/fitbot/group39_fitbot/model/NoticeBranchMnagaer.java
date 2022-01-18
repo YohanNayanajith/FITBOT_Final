@@ -2,19 +2,17 @@ package com.group39.fitbot.group39_fitbot.model;
 
 import java.sql.Date;
 
-public class Notice {
+public class NoticeBranchMnagaer {
     private String title;
     private Date dates;
     private String description;
+    private String branchmanager_id;
 
-    public Notice(){
-
-    }
-
-    public Notice(String title, Date dates, String description) {
+    public NoticeBranchMnagaer(String title, Date dates, String description, String branchmanager_id) {
         this.title = title;
         this.dates = dates;
         this.description = description;
+        this.branchmanager_id = branchmanager_id;
     }
 
     public String getTitle() {
@@ -41,12 +39,21 @@ public class Notice {
         this.description = description;
     }
 
+    public String getBranchmanager_id() {
+        return branchmanager_id;
+    }
+
+    public void setBranchmanager_id(String branchmanager_id) {
+        this.branchmanager_id = branchmanager_id;
+    }
+
     @Override
     public String toString() {
-        return "Notice{" +
+        return "NoticeBranchMnagaer{" +
                 "title='" + title + '\'' +
                 ", dates=" + dates +
                 ", description='" + description + '\'' +
+                ", branchmanager_id='" + branchmanager_id + '\'' +
                 '}';
     }
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="MANAGER_ADD_NEW_EQUIPMENT.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+      <section class="home-section">
+
+        <div class="add_equipment_view" id="add_equipment_view">
+            <div class="equipment_add_container">
+              <div class="equipment_title">
+                <h2>Add a New Equipment</h2>
+              </div>
+
+              <form action="" class="equipment_form" id="equipment_form">
+
+                  <div class="form_row">
+<!--                    <div class="form_lable">-->
+<!--                      <label for="equipment_id">Equipment ID</label><br>-->
+<!--                      <input type="text" id="equipment_id" name="equipment_id" class="equipment_label equipment_id" placeholder="Enter equipment id" >-->
+<!--                  </div>-->
+                  <div class="form_lable">
+                      <label for="category">Equipment Type</label><br>
+                      <input type="text" id="category" name="category" class="equipment_label category" placeholder="Enter equipment name" >
+                  </div>
+
+                      <div class="form_lable_right">
+                          <label for="serial_no">Serial Number</label><br>
+                          <input type="text" id="serial_no" name="serial_no" class="equipment_label serial_no" placeholder="Enter serial no" >
+                      </div>
+                  </div>
+
+<!--                  <div class="form_row">-->
+<!--                      <div class="form_lable">-->
+                          <label for="description">Description</label><br>
+                          <textarea rows="4" column="40" id="description" name="description" class="equipment_label description" placeholder="Enter description" ></textarea>
+<!--                      </div>-->
+<!--                  </div>-->
+
+                  <div class="form_row">
+<!--                    <div class="form_lable">-->
+<!--                      <label for="last_modified_date">Last Modified Date</label><br>-->
+<!--                      <input type="date" id="last_modified_date" name="last_modified_date" class="equipment_label last_modified_date" placeholder="Enter Last Modified Date" >-->
+<!--                  </div>-->
+                          <div class="form_lable">
+                              <label for="purchase_date">Purchased Date</label><br>
+                              <input type="date" id="purchase_date" name="purchase_date" class="equipment_label purchase_date" placeholder="Enter Purchased Date" >
+                          </div>
+<!--                      <div class="form_lable_right">-->
+<!--                -->
+<!--                      <label for="next_maintenance_date">Next Maintenance Date</label><br>-->
+<!--                      <input type="date" id="next_maintenance_date" name="next_maintenance_date" class="equipment_label next_maintenance_date" placeholder="Enter Next Maintenance Date" >-->
+<!--                  -->
+<!--                  </div>-->
+                  </div>
+
+<!--                  <div class="form_row">-->
+<!--                    <div class="form_lable">-->
+<!--                      <label for="purchase_date">Purchased Date</label><br>-->
+<!--                      <input type="date" id="purchase_date" name="purchase_date" class="equipment_label purchase_date" placeholder="Enter Purchased Date" >-->
+<!--                  </div> -->
+                  <!-- <div class="form_lable_right">
+                    <label for="contactno2">Secondary Contact Number</label><br>
+                    <input type="text" name="contactno2" class="branch_label contactno2" placeholder="Enter Primary Contact" >
+                </div> -->
+<!--                  </div>-->
+                    
+                  <div class="add_btn_class">
+                      <input type="button" class="btn_add_equip" value="Submit" onclick="submitaddequip()"><br>
+                      <input type="button" class="btn_cancel_equip" value="Cancel" onclick="canceladdequip()"><br>
+                  </div>
+              </form>
+           
+          
+          </div>
+        </div>
+  
+        
+      </section>
+      
+      </body>
+      </html>
+

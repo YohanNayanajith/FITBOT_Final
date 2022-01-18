@@ -17,7 +17,6 @@ public class Manager {
         this.branch_id = branch_id;
     }
 
-
     public Manager(String branchmanager_id,String first_name,String last_name, String email, String NIC,String dob, String gender,  String branch_id ){
         this.branchmanager_id = branchmanager_id;
         this.first_name = first_name;

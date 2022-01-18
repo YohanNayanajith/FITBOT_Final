@@ -1,0 +1,199 @@
+.equip_title a{
+    text-decoration: none;
+}
+
+.manager_equipmentlist{
+    margin: 30px 72px 30px 72px;
+}
+
+.add_new_equip{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.add_new_equip i{
+    font-size: 22px;
+}
+
+  /* -------------------------------search bar--------------------------- */
+  .search_box_equipment{
+      width: 330px;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .search_box_equipment input{
+      padding: 6px;
+      font-size: 14px;
+      border-radius: 10px;
+      width: 250px;
+  }
+  
+  /*.search_box_equipment button{*/
+  /*    width: 80px;*/
+  /*    padding: 6px;*/
+  /*    color: white;*/
+  /*    background: #0E2C4B;*/
+  /*    font-size: 14px;*/
+  /*    border-radius: 10px;*/
+  /*    cursor: pointer;*/
+  /*}*/
+  
+  /*.search_box_equipment button:hover{*/
+  /*    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);*/
+  /*    background-color: white;*/
+  /*    color: #0E2C4B;*/
+  /*    border-color: #0E2C4B;*/
+  /*} */
+
+/* -------------------------table----------------------------------------- */
+.manager_equip_view {
+    background-color:#d6d4d4;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.title_man_equip_view{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.title_equip_name_view{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-top: 30px;
+}
+
+.title_equip_name_view span{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ins_manager_equip_details {
+    overflow-x: auto;
+}
+.manager_equipment_table{
+    width:92%;
+    margin: 35px 4% 10px;
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+
+.manager_equipment_row, .manager_equipment_header  {
+    background-color: white;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.manager_equipment_row:hover {
+    background-color:#75CDFF;
+    color: white;
+}
+
+
+
+/*---------------------upcoming maintainance table---------------------------*/
+.upcoming_maintainance{
+    background-color:#d6d4d4;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.upcoming_title{
+    display: flex;
+    justify-content: space-between;
+    width: max-content;
+    margin: 30px 0 0 30px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.upcoming_maintainance_view {
+    overflow-x: auto;
+}
+.upcoming_maintainance_table{
+    width:92%;
+    margin: 35px 4% 10px;
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+
+.upcoming_maintainance_row, .upcoming_maintainance_header  {
+    background-color: white;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.upcoming_maintainance_row:hover {
+    background-color:#75CDFF;
+    color: white;
+}
+
+
+
+
+.button_row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn_add {
+    margin:10px 0;
+    display:inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 70px;
+    background-color: #0E2C4B;
+    color: white;
+    padding:8px 10px;
+}
+
+.add_btn_class{
+    text-align: center;
+}
+
+.btn_add:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    color: #0E2C4B;
+    border-color: #0E2C4B;
+}
+
+
+/* ----------------reject button---------------------------- */
+
+.btn_reject {
+    margin:10px 0;
+    display:inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #B52121;
+    color: white;
+    width: 70px;
+    padding:8px 10px;
+}
+
+.reject_btn_class{
+    text-align: center;
+}
+
+.btn_reject:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    color: #B52121;
+    border-color: #B52121;
+}
