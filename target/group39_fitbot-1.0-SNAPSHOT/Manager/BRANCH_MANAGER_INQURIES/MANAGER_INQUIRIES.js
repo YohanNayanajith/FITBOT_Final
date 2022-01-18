@@ -52,3 +52,31 @@ function searchInquiry(){
         });
     });
 }
+
+
+
+function initiateInquiryNextButtons(result,chunk) {
+    //initiate the buttons
+    $(`[id^=next-button]*`).each(function () {
+        console.log(this)
+        $(this).on("click", function () {
+            // console.log($(this).html())
+            let pageno = parseInt($(this).html());
+            $("#see_inquiry_table1_tbody").html(' ')
+            $.map(result.slice(pageno * chunk - chunk, pageno * chunk), function (x) {
+                $('#see_inquiry_table1_tbody').append(
+                    `<tr class="see_inquiry_row">
+              <td> ${x.first_name} </td>
+              <td> ${x.inquiry_date} </td>
+              <td> ${x.inquiry_time} </td>
+              <td> ${x.status} </td>
+<!--               '<td>'+ x.inquiry_title + '</td>'+-->
+              <td><div id="inquiry_title_btn_a" onclick="add_inquiry_popup(${x.inquiry_id})"><i class=\'bx bxs-lock-open-alt\'></i></div></td>
+              </tr>`
+                );
+            })
+        })
+    })
+}
+
+

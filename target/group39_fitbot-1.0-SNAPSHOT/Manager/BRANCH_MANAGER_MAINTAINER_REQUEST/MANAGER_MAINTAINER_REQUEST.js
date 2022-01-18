@@ -132,9 +132,9 @@ function updaterequest_table() {
         console.log(result);
         let chunk = 5;
         nextbuttons(result,chunk);
-        initiateRequestNextButtons(result,chunk);
+        initiateRequestNextButtons(result,chunk)
         $("#manager_request_table_tbody").html(' ')
-        $.map(result, function (x) {
+        $.map(result.slice(0,chunk), function (x) {
             $('#manager_request_table_tbody').append(
                 '<tr class="manager_request_row">' +
                 '<td>' + x.equipment_id + '</td>' +

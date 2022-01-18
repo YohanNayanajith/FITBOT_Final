@@ -97,7 +97,10 @@ function updateequipmenttable() {
     }).done(function (result) {
         console.log(result);
         // $("#manager_equipment_table_tbody").html(' ')
-        $.map(result, function (x) {
+        let chunk = 5;
+        nextbuttons(result,chunk);
+        initiateEquipmentNextButtons(result,chunk)
+        $.map(result.slice(0,chunk), function (x) {
             $('#manager_equipment_table_tbody').append(
                 '<tr class="manager_equipment_row">' +
                 '<td>' + x.equipment_id + '</td>' +
@@ -157,3 +160,36 @@ function searchEquipment(){
         });
     });
 }
+
+
+
+
+
+function initiateEquipmentNextButtons(result,chunk) {
+    //initiate the buttons
+    $(`[id^=next-button]*`).each(function () {
+        console.log(this)
+        $(this).on("click", function () {
+            // console.log($(this).html())
+            let pageno = parseInt($(this).html());
+            $("#manager_equipment_table_tbody").html(' ')
+            $.map(result.slice(pageno * chunk - chunk, pageno * chunk), function(x) {
+                $('#manager_equipment_table_tbody').append(
+                    '<tr class="manager_equipment_row">' +
+                    '<td>' + x.equipment_id + '</td>' +
+                    '<td>' + x.category + '</td>' +
+                    '<td>' + x.purchase_date + '</td>' +
+                    '<td>' + x.last_modified_date + '</td>' +
+                    '<td>' + x.next_maintenance_date + '</td>' +
+                    '<td>' + '<div class="button_row"><div class="add_btn_class"><input type="button" class="btn_add" value="Update" onclick=""></div> <div class="reject_btn_class"><input type="button" class="btn_reject" value="Disable" onClick=""></div></div>' + '</td>' +
+                    '</tr>'
+                );
+
+
+            })
+        })
+    })
+}
+
+
+

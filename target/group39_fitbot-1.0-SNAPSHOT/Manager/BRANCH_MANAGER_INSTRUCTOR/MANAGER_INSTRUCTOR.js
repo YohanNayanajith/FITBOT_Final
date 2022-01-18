@@ -18,3 +18,28 @@ function searchinstructor(){
         });
     });
 }
+
+
+function initiateInstructorNextButtons(result,chunk) {
+    //initiate the buttons
+    $(`[id^=next-button]*`).each(function () {
+        console.log(this)
+        $(this).on("click", function () {
+            // console.log($(this).html())
+            let pageno = parseInt($(this).html());
+            $("#ins_manager_details_table_tbody").html(' ')
+            $.map(result.slice(pageno * chunk - chunk, pageno * chunk), function (x) {
+                $('#ins_manager_details_table_tbody').append(
+                    '<tr class="manager_instructor_row">' +
+                    '<td>' + (x.first_name + " " + x.last_name) + '</td>' +
+                    '<td>' + x.mem_count + '</td>' +
+                    '<td>' + x.appoinment_count + '</td>' +
+                    '<td>' + '<input type="checkbox" class="ins_atte"/>' +
+                    '</td>' +
+                    '</tr>'
+                );
+            })
+        })
+    })
+}
+

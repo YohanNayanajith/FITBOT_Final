@@ -537,9 +537,11 @@ function managerins_view(){
     dataType: 'json',
   }).done(function (result) {
     console.log(result);
-
     $("#ins_manager_details_table_tbody").html(' ')
-    $.map(result, function (x) {
+    let chunk = 5;
+    nextbuttons(result,chunk);
+    initiateInstructorNextButtons(result,chunk)
+    $.map(result.slice(0,chunk), function (x) {
       $('#ins_manager_details_table_tbody').append(
           '<tr class="manager_instructor_row">' +
           '<td>' + (x.first_name + " " + x.last_name) + '</td>' +
@@ -601,8 +603,11 @@ function member_view(){
     dataType: 'json',
   }).done(function (result) {
     console.log(result);
+    let chunk = 5;
+    nextbuttons(result,chunk);
+    initiateMmeberNextButtons(result,chunk)
     $("#ins_manager_mem_details_table_tbody").html(' ')
-    $.map(result, function (x) {
+    $.map(result.slice(0,chunk), function (x) {
       $('#ins_manager_mem_details_table_tbody').append(
           '<tr class="manager_member_row">' +
           '<td>' + (x.firstname + " " + x.lastname) + '</td>' +
@@ -660,7 +665,10 @@ function inquiry_view() {
     console.log(result);
     console.log("sachi sithuuu");
     $("#see_inquiry_table1_tbody").html(' ')
-    $.map(result, function (x) {
+    let chunk = 5;
+    nextbuttons(result,chunk);
+    initiateInquiryNextButtons(result,chunk)
+    $.map(result.slice(0,chunk), function (x) {
       $('#see_inquiry_table1_tbody').append(
           `<tr class="see_inquiry_row">
               <td> ${x.first_name} </td>
