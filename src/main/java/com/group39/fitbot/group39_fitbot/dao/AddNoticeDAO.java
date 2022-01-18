@@ -1,7 +1,9 @@
 package com.group39.fitbot.group39_fitbot.dao;
 
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
+//import com.group39.fitbot.group39_fitbot.model.AddNotice;
 import com.group39.fitbot.group39_fitbot.model.Notice;
+//import com.group39.fitbot.group39_fitbot.model.Notice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,4 +41,5 @@ public class AddNoticeDAO {
         return notices;
 
     }
+
 }

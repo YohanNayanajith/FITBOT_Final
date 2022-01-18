@@ -2,6 +2,7 @@ package com.group39.fitbot.group39_fitbot.controller;
 
 import com.google.gson.Gson;
 import com.group39.fitbot.group39_fitbot.dao.AddNoticeDAO;
+//import com.group39.fitbot.group39_fitbot.model.AddNotice;
 import com.group39.fitbot.group39_fitbot.model.Notice;
 
 import javax.servlet.RequestDispatcher;
