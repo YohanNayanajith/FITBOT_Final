@@ -223,3 +223,12 @@
 .messages_physical_container_left_search_icon i {
     font-size: 22px;
 }
+
+.workout_container_header_search_cant_find img{
+    width: 100%;
+    height:auto;
+}
+
+.payment_history_container_row_checkbox {
+    padding: 10px;
+}

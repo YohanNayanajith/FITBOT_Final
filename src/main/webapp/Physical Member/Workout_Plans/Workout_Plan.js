@@ -15,12 +15,16 @@ function virtual_workoutplan_open(){
 function close_virtual_workoutplan_Popup(){
     $('#virtual_workout_packages').hide();
 }
+function close_virtual_workoutplan_Popup1(){
+    $('.virtual_workout_packages_popup_image_detial').remove();
+    $('#virtual_workout_packages1').hide();
+}
 function physical_workoutplan_open(){
-    $('#physical_workout_packages').show();
+    $('#physical_workout_packages1').show();
 }
-function close_physical_workoutplan_Popup(){
-    $('#physical_workout_packages').hide();
-}
+// function close_physical_workoutplan_Popup(){
+//     $('#physical_workout_packages1').hide();
+// }
 
 let data_arr = [];
 function open_virtual_workout_plan(value_attri,num_plan){
@@ -58,6 +62,7 @@ function physical_workout_back(){
             alert("Error: " + xhr.status + ": " + xhr.statusText);
         }
         checkWorkoutData();
+        $('#workout_container_header_search_cant_find').hide();
     });
 }
 
@@ -79,7 +84,7 @@ function getVirtualWorkoutData(num_plan){
                     <td>${x.workout_type}</td>
                     <td>${x.total_reps}</td>
                     <td>${x.duration}</td>
-                    <td><input type="checkbox" id="virtualWorkoutCheckbox" onclick="checkBoxChecked()"></td>
+                    <td><input type="checkbox" id="virtualWorkoutCheckbox" class="payment_history_container_row_checkbox" onclick="checkBoxChecked()"></td>
                 </tr>`
             );
         });
@@ -96,14 +101,24 @@ $(document).ready(function (){
 
 function checkBoxChecked(){
     $('input[type="checkbox"]').click(function(){
-        if($('#virtualWorkoutCheckbox').prop("checked") == true) {
-            alert("Checkbox is checked.");
-            console.log("virtualWorkoutCheckbox is checked");
-            // $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
-            $('#payment_history_container_row').css("background-color", "#0E2C4B");
-            // $('#payment_history_container_row').css("box-shadow", "0 10px 10px rgba(0, 0, 0, 0.25)");
-            // $("#payment_history_container_row").attr("disabled", true);
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Workout is not completed,You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#0E2C4B',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, go back!'
+        }).then((result) => {
+            if($('.payment_history_container_row_checkbox').prop("checked") == true) {
+                alert("Checkbox is checked.");
+                console.log("virtualWorkoutCheckbox is checked");
+                // $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
+                $('#payment_history_container_row').css("background-color", "#0E2C4B");
+                // $('#payment_history_container_row').css("box-shadow", "0 10px 10px rgba(0, 0, 0, 0.25)");
+                // $("#payment_history_container_row").attr("disabled", true);
+            }
+        })
     });
 }
 
@@ -112,8 +127,12 @@ function load_virtual_detail_popup(workout_description,workout_img_url,exercise_
     // alert(workout_description);
     console.log(workout_img_url);
     console.log(workout_description);
+    $('#virtual_workout_packages_popup_image').append(
+        `<img src="${workout_img_url}" class="virtual_workout_packages_popup_image_detial" alt="workout-image">`
+    );
     $('#virtual_workout_packages_header_h1').html(exercise_name);
-    $('#virtual_workout_packages').show();
+    $('#virtual_workout_packages_popup_description').html(workout_description);
+    $('#virtual_workout_packages1').show();
 }
 
 function close_virtual_workoutplan_Popup(){
@@ -183,6 +202,15 @@ function physical_customize_save_workoutplan(){
 function searchWorkout(){
     $('#workout_physical_container_left_search_text_input').keyup(function(){
         // alert("yohan2");
+        let value = $(this).val().toLowerCase();
+        $('.workout_physical_container_exercise_name').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+
+function searchDefaultWorkout(){
+    $('#workout_physical_container_left_search_text_input1').keyup(function(){
         let value = $(this).val().toLowerCase();
         $('.workout_physical_container_exercise_name').filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

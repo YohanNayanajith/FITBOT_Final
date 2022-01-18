@@ -47,6 +47,7 @@ $(document).ready(function(){
         }
         // viewMonthlyGoalReports();
         getRightSidebarDetail();
+
       });
 
     }else {
@@ -142,6 +143,7 @@ $(document).ready(function(){
       alert("Error: " + xhr.status + ": " + xhr.statusText);
   });
   viewBMI("viewBMI");
+  // window.addEventListener("popstate",showDetail());
   load[0] += 1;
 });
 
@@ -173,6 +175,8 @@ $(document).ready(function(){
         alert("Error: " + xhr.status + ": " + xhr.statusText);
       }
       getRegisterDetails();
+      $('#profile_physical_container_edit_monthly_goal_input_h5').hide();
+      $('#profile_physical_container_edit_monthly_goal_input_h51').hide();
 
       });
       load[1] += 1;
@@ -249,6 +253,7 @@ $(document).ready(function(){
         }
 
         checkWorkoutData();
+        $('#workout_container_header_search_cant_find').hide();
       });
       load[4] += 1;
 
@@ -716,9 +721,11 @@ function checkInstructorBelongs(){
     // let result_val = result["instructor_id"];
     // if(Object.entries(result).length === 0){
     if(result.toString().trim() == "1"){
-      alert("instructorGetData");
+      // alert("instructorGetData");
+      //no instructor belongs to member
       instructorGetData();
     }else{
+      //he has an instructor
       // alert("instructorFullDetailView");
       // $('#instructors_physical_container_header').hide();
       $('#instructors_physical_container_second').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Instructors/InstructorProfile.html #instructors_physical_container_detail_popup_new',function(responseTxt, statusTxt, xhr){
@@ -906,19 +913,25 @@ function checkWorkoutData(){
     // contentType:"application/json",
   }).done(function(result){
     let total_reps_phy = result.total_reps;
-    // console.log(result);
+    let count = 0;
+    console.log(result);
     $.map(result,function(x){
+      count += 1;
       $('#workout_container_table').append(
-
-          '<tr class="payment_history_container_row">'+
-          '<td>'+x.exercise+'</td>'+
-          '<td>'+x.workout_type+'</td>'+
-          '<td>'+x.total_reps+'</td>'+
-          '<td>'+x.duration+'</td>'+
-          '<td>'+'<input type="checkbox">'+'</td>'+
-          '</tr>'
+          `<tr class="payment_history_container_row" onclick="load_virtual_detail_popup('${x.workout_description}','${x.workout_img_url}','${x.exercise}')">'+
+          <td>${x.exercise}</td>
+          <td>${x.workout_type}</td>
+          <td>${x.total_reps}</td>
+          <td>${x.duration}</td>
+          <td><input type="checkbox" class="payment_history_container_row_checkbox" onclick="checkBoxChecked()"></td>
+          </tr>`
       );
     });
+    if(count == 0){
+      $('#workout_container_details').hide();
+      $('#workout_container_header_search').hide();
+      $('#workout_container_header_search_cant_find').show();
+    }
 
     // alert(result);
   }).fail(function(a,b,err){
@@ -1048,7 +1061,7 @@ function getAppointmentData(){
           '<td>'+x.appointment_date["year"]+"-"+("0" + x.appointment_date["month"]).slice(-2)+"-"+("0" + x.appointment_date["day"]).slice(-2)+'</td>'+
           '<td>'+("0" + x.start_time["hour"]).slice(-2)+":"+("0" + x.start_time["minute"]).slice(-2)+":"+("0" + x.start_time["second"]).slice(-2)+'</td>'+
           '<td>'+("0" + x.finish_time["hour"]).slice(-2)+":"+("0" + x.finish_time["minute"]).slice(-2)+":"+("0" + x.finish_time["second"]).slice(-2)+'</td>'+
-          '<td>'+x.equipment+'</td>'+
+          // '<td>'+x.equipment+'</td>'+
           '<td>'+'<a href="#" class="show_more_button">SHOW MORE</a>'+'</td>'+
           '</tr>'
       );
@@ -1114,21 +1127,38 @@ function viewReport(){
         i += 1;
       });
 
-      // let xValues = [100,200,300,400,500,600,700,800,900,1000];
-
       new Chart("myChart", {
         type: "line",
         data: {
-          labels: arrDate,
+          labels: arrDate.reverse(),
           datasets: [{
+            label: "Weight",
             // data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-            data: arrWeight,
+            data: arrWeight.reverse(),
             borderColor: "red",
             fill: false
           }]
         },
         options: {
-          legend: {display: true}
+          title: {
+            display: true,
+            text: "Weight vs Time"
+          },
+          legend: {display: true},
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Weight'
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Time'
+              }
+            }]
+          }
         }
       });
     },
@@ -1204,11 +1234,11 @@ function viewBMI(chartName){
           new Chart(chartName, {
             type: "line",
             data: {
-              labels: arrWeight,
+              labels: arrDate.reverse(),
               datasets: [{
                 label: 'BMI ',
                 // data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-                data: arrBMI,
+                data: arrBMI.reverse(),
                 borderColor: "blue",
                 fill: false
               }]
@@ -1255,6 +1285,7 @@ function viewCaloriesBurned(){
     data: {
       labels: xValues,
       datasets: [{
+        label: "Calories",
         data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
         borderColor: "red",
         fill: false
@@ -1269,7 +1300,25 @@ function viewCaloriesBurned(){
       }]
     },
     options: {
-      legend: {display: false}
+      title: {
+        display: true,
+        text: "Calories Burned"
+      },
+      legend: {display: true},
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Weight'
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Time'
+          }
+        }]
+      }
     }
   });
 }
@@ -1281,6 +1330,7 @@ function viewWorkoutPlanReports(){
     data: {
       labels: xValues,
       datasets: [{
+        label:"Workout",
         data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
         borderColor: "red",
         fill: false
@@ -1295,13 +1345,30 @@ function viewWorkoutPlanReports(){
       }]
     },
     options: {
-      legend: {display: false}
+      title: {
+        display: true,
+        text: "Calories Burned"
+      },
+      legend: {display: true},
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Weight'
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Time'
+          }
+        }]
+      }
     }
   });
 }
 
 function viewMonthlyGoalReports(){
-    // alert("mama load venava");
     let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
     new Chart("monthly_goal_chart", {
@@ -1309,6 +1376,7 @@ function viewMonthlyGoalReports(){
         data: {
             labels: xValues,
             datasets: [{
+                label: "Workout",
                 data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
                 borderColor: "red",
                 fill: false
@@ -1322,8 +1390,109 @@ function viewMonthlyGoalReports(){
                 fill: false
             }]
         },
-        options: {
-            legend: {display: false}
+      options: {
+        title: {
+          display: true,
+          text: "Calories Burned"
+        },
+        legend: {display: true},
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Weight'
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Time'
+            }
+          }]
         }
+      }
     });
 }
+
+
+
+
+$(document).ready(function(){
+
+  let length = history.length;
+  let length1 = window.history.length;
+
+  console.log("Length"+length);
+  console.log("Length1"+length1);
+  console.log("History back"+window.history.back);
+  console.log("History forward"+window.history.forward);
+  console.log("History"+window.history);
+
+  // $(window).backDetect(function(){
+  //   // Callback function
+  //   alert("Look forward to the future, not the past!");
+  // });
+  // $(window).load(function(){
+  //
+  // });
+
+  // window.addEventListener('popstate', function(event) {
+  //   // The popstate event is fired each time when the current history entry changes.
+  //
+  //   console.log(event);
+  //   var r = confirm("You pressed a Back button! Are you sure?!");
+  //
+  //   if (r == true) {
+  //     // Call Back button programmatically as per user confirmation.
+  //     history.back();
+  //     // Uncomment below line to redirect to the previous page instead.
+  //     // window.location = document.referrer // Note: IE11 is not supporting this.
+  //   } else {
+  //     // Stay on the current page.
+  //     history.pushState(null, null, window.location.pathname);
+  //   }
+  //
+  //   history.pushState(null, null, window.location.pathname);
+  //
+  // }, false);
+  // $(window).on('popstate', function(event) {
+  //
+  //   alert('Back button was pressed.');
+  //   console.log(event);
+  //
+  //   if(history.back){
+  //     alert("Back");
+  //   }else if(history.forward){
+  //     alert("forward");
+  //   }
+  //
+  // });
+
+  // if (window.history && window.history.pushState) {
+    // alert("Pushstate click");
+    // window.history.pushState('forward', null, './physicalMember');
+    // window.history.pushState('backward', null, './physicalMember');
+
+  // }
+  // $(window).onclick(function(){
+  //
+  // });
+
+
+});
+
+// function showDetail(){
+//   var r = confirm("You pressed a Back button! Are you sure?!");
+//
+//     if (r == true) {
+//       // Call Back button programmatically as per user confirmation.
+//       history.back();
+//       // Uncomment below line to redirect to the previous page instead.
+//       // window.location = document.referrer // Note: IE11 is not supporting this.
+//     } else {
+//       // Stay on the current page.
+//       history.pushState(null, null, window.location.pathname);
+//     }
+//
+//     history.pushState(null, null, window.location.pathname);
+// }

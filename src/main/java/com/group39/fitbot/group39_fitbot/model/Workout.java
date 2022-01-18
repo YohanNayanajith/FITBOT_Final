@@ -11,11 +11,12 @@ public class Workout {
     private String exercise;
     private String equipment_type;
     private String workout_img_url;
+    private int calories_burn;
 
     public Workout() {
     }
 
-    public Workout(int workout_id, String workout_description, String total_reps, String workout_gender, String rest_time, String workout_type, String duration, String exercise, String equipment_type, String workout_img_url) {
+    public Workout(int workout_id, String workout_description, String total_reps, String workout_gender, String rest_time, String workout_type, String duration, String exercise, String equipment_type, String workout_img_url, int calories_burn) {
         this.workout_id = workout_id;
         this.workout_description = workout_description;
         this.total_reps = total_reps;
@@ -26,6 +27,7 @@ public class Workout {
         this.exercise = exercise;
         this.equipment_type = equipment_type;
         this.workout_img_url = workout_img_url;
+        this.calories_burn = calories_burn;
     }
 
     public String getWorkout_img_url() {
@@ -106,6 +108,14 @@ public class Workout {
 
     public void setEquipment_type(String equipment_type) {
         this.equipment_type = equipment_type;
+    }
+
+    public int getCalories_burn() {
+        return calories_burn;
+    }
+
+    public void setCalories_burn(int calories_burn) {
+        this.calories_burn = calories_burn;
     }
 
     @Override

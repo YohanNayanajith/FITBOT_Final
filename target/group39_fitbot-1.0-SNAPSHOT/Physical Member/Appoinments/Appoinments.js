@@ -14,6 +14,7 @@ function makeAppointmentPhysical(){
     // alert("Make appointment");
     // $('#appointment_details_popup').show();
     $('#appointment_details_popup').fadeIn(500);
+    editProfileBackgroundOn();
     // $(document).css("background-color","black");
     // $('.edit_profile_container_detail').fadeTo(500, 0.5);
     $('#appointment_date_error').hide();
@@ -23,6 +24,7 @@ function makeAppointmentPhysical(){
 function close_appointment_Popup(){
     // $('#appointment_details_popup').hide();
     $('#appointment_details_popup').fadeOut(500);
+    editProfileBackgroundOff();
     // $(".edit_profile_container_detail").fadeOut(500);
 }
 

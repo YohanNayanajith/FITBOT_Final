@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -29,12 +30,14 @@ public class WorkoutController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        PrintWriter out = new PrintWriter();
         System.out.println("Workout post method called");
+        HttpSession session = req.getSession();
+        String memberID = (String) session.getAttribute("MemberID");
 
         Workout workout = new Workout();
         try {
             List<Workout> all_workouts = new ArrayList<>();
-            all_workouts = WorkoutDAO.getWorkout();
-//            System.out.println(all_workouts);
+            all_workouts = WorkoutDAO.getWorkout(memberID);
+
             Gson gson = new Gson();
             String workoutJSON = gson.toJson(all_workouts);
             resp.setContentType("application/json");

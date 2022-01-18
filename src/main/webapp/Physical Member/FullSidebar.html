@@ -64,49 +64,63 @@
           </a>
           <span class="tooltip">Profile</span>
         </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_instructors()" id="phy_mem_instructors">
-              <i class='bx bx-male side_icon' id="phy_mem_instructors_i"></i>
-            <span class="links_name" id="physical_member_instructors_text">Instructors</span>
-          </a>
-          <span class="tooltip">Instructors</span>
-        </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_messages()" id="phy_mem_messages">
-            <i class='bx bx-chat side_icon' id="phy_mem_messages_i"></i>
-            <span class="links_name" id="physical_member_messages_text">Messages</span>
-          </a>
-          <span class="tooltip">Messages</span>
-          </li>
 
-          <li>
-          <a class="side_bar_anchor_tag" onclick="Workout_plan_dashboard()" id="phy_mem_workout">
-              <i class='bx bx-notepad side_icon' id="phy_mem_workout_i"></i>
-            <span class="links_name" id="physical_member_workout_text">Workout Plans</span>
-          </a>
-          <span class="tooltip">Workout Plans</span>
-        </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="Diet_plan_dashboard()" id="phy_mem_diet_plan">
-              <i class='bx bx-receipt side_icon' id="phy_mem_diet_plan_i"></i>
-              <span class="links_name" id="physical_member_diet_plan_text">Diet Plans</span>
-          </a>
-          <span class="tooltip">Diet Plans</span>
-          </li>
-          <li>
-          <a href="#" class="side_bar_anchor_tag" onclick="physical_member_payments()" id="phy_mem_payments">
-            <i class='bx bx-credit-card side_icon' id="phy_mem_payment_i"></i>
-            <span class="links_name" id="physical_member_payment_text">Payments</span>
-          </a>
-          <span class="tooltip">Payments</span>
-        </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_reports()" id="phy_mem_reports">
-            <i class='bx bx-pie-chart-alt-2 side_icon' id="phy_mem_reports_i"></i>
-            <span class="links_name" id="physical_member_reports_text">Reports</span>
-          </a>
-          <span class="tooltip">Reports</span>
-        </li>
+            <li>
+                <a class="side_bar_anchor_tag" onclick="physical_member_appointments()" id="phy_mem_appointments">
+                    <i class='bx bxs-book-open side_icon' id="phy_mem_appointments_i"></i>
+                    <span class="links_name" id="physical_member_appointments_text">Appointments</span>
+                </a>
+                <span class="tooltip">Appointments</span>
+            </li>
+
+            <li>
+                <a class="side_bar_anchor_tag" onclick="Workout_plan_dashboard()" id="phy_mem_workout">
+                    <i class='bx bx-notepad side_icon' id="phy_mem_workout_i"></i>
+                    <span class="links_name" id="physical_member_workout_text">Workout Plans</span>
+                </a>
+                <span class="tooltip">Workout Plans</span>
+            </li>
+
+            <li>
+                <a class="side_bar_anchor_tag" onclick="Diet_plan_dashboard()" id="phy_mem_diet_plan">
+                    <i class='bx bx-receipt side_icon' id="phy_mem_diet_plan_i"></i>
+                    <span class="links_name" id="physical_member_diet_plan_text">Diet Plans</span>
+                </a>
+                <span class="tooltip">Diet Plans</span>
+            </li>
+
+            <li>
+                <a class="side_bar_anchor_tag" onclick="physical_member_messages()" id="phy_mem_messages">
+                    <i class='bx bx-chat side_icon' id="phy_mem_messages_i"></i>
+                    <span class="links_name" id="physical_member_messages_text">Messages</span>
+                </a>
+                <span class="tooltip">Messages</span>
+            </li>
+
+            <li>
+              <a class="side_bar_anchor_tag" onclick="physical_member_instructors()" id="phy_mem_instructors">
+                  <i class='bx bx-male side_icon' id="phy_mem_instructors_i"></i>
+                <span class="links_name" id="physical_member_instructors_text">Instructors</span>
+              </a>
+              <span class="tooltip">Instructors</span>
+            </li>
+
+            <li>
+                <a class="side_bar_anchor_tag" onclick="physical_member_reports()" id="phy_mem_reports">
+                    <i class='bx bx-pie-chart-alt-2 side_icon' id="phy_mem_reports_i"></i>
+                    <span class="links_name" id="physical_member_reports_text">Reports</span>
+                </a>
+                <span class="tooltip">Reports</span>
+            </li>
+
+            <li>
+              <a href="#" class="side_bar_anchor_tag" onclick="physical_member_payments()" id="phy_mem_payments">
+                <i class='bx bx-credit-card side_icon' id="phy_mem_payment_i"></i>
+                <span class="links_name" id="physical_member_payment_text">Payments</span>
+              </a>
+              <span class="tooltip">Payments</span>
+            </li>
+
         <li>
           <a class="side_bar_anchor_tag" onclick="physical_member_branch_messages()" id="phy_mem_branch_messages">
           <i class='bx bx-podcast side_icon' id="phy_mem_branch_messages_i"></i>
@@ -114,13 +128,7 @@
           </a>
           <span class="tooltip">Branch Messages</span>
         </li>
-        <li>
-          <a class="side_bar_anchor_tag" onclick="physical_member_appointments()" id="phy_mem_appointments">
-              <i class='bx bxs-book-open side_icon' id="phy_mem_appointments_i"></i>
-              <span class="links_name" id="physical_member_appointments_text">Appointments</span>
-          </a>
-          <span class="tooltip">Appointments</span>
-        </li>
+
         <li>
           <div class="social_media_icons_width_menu">
             <a class="side_bar_anchor_tag">
@@ -328,9 +336,12 @@
   <script src="Physical Member/RightSidebar/RightSidebar.js" defer></script>
   <script src="asserts/JSLibrary/sweetalert2.all.min.js" defer></script>
   <script src="asserts/Calender/lib/main.js" defer></script>
+<!--  <script src="asserts/jquery-backDetect-master/jquery.backDetect.min.js" defer></script>-->
 
   <script src="Physical Member/Workout_Plans/Workout_Drag_N_Drop.js" defer></script>
   <script src="Physical Member/Notification/notification.js" defer></script>
+
+  <script src="Landing/Login/BackButtonDetect.js"></script>
 <!--  <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js" defer></script>-->
 
   </body>
