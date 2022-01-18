@@ -474,5 +474,157 @@
         <url-pattern>/maintainerEquipmentPageBranchName</url-pattern>
     </servlet-mapping>
 
+<!--    manager   -->
+    <servlet>
+        <servlet-name>manager</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manager</servlet-name>
+        <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>notice</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.NoticeManagerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>notice</servlet-name>
+        <url-pattern>/notice</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addnotice</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.AddNoticeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addnotice</servlet-name>
+        <url-pattern>/addnotice</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>equipment</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerEquipmentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>equipment</servlet-name>
+        <url-pattern>/equipment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addequipment</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerEquipmentFormController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addequipment</servlet-name>
+        <url-pattern>/addequipment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mandashboard</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerDashboardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mandashboard</servlet-name>
+        <url-pattern>/mandashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mandashboardappoinment</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerDashboardAppoinmentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mandashboardappoinment</servlet-name>
+        <url-pattern>/mandashboardappoinment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mandashboardattendence</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerDashboardAttendenceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mandashboardattendence</servlet-name>
+        <url-pattern>/mandashboardattendence</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>equipUpcomingMaintain</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.EquipmentUpcomingMaintainController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>equipUpcomingMaintain</servlet-name>
+        <url-pattern>/equipUpcomingMaintain</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>inquiryview</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerViewInquiryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>inquiryview</servlet-name>
+        <url-pattern>/inquiryview</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>detailinquiryview</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerViewInquiryDetailsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>detailinquiryview</servlet-name>
+        <url-pattern>/detailinquiryview</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerpayment</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerPaymentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerpayment</servlet-name>
+        <url-pattern>/managerpayment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managermember</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerMemberViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managermember</servlet-name>
+        <url-pattern>/managermember</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerrequest</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerRequestController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerrequest</servlet-name>
+        <url-pattern>/managerrequest</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>manageraddrequest</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerAddRequestController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manageraddrequest</servlet-name>
+        <url-pattern>/manageraddrequest</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerinstructorview</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerInstructorViewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerinstructorview</servlet-name>
+        <url-pattern>/managerinstructorview</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerinstructorview_count</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.ManagerInstructorViewCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerinstructorview_count</servlet-name>
+        <url-pattern>/managerinstructorview_count</url-pattern>
+    </servlet-mapping>
 </web-app>

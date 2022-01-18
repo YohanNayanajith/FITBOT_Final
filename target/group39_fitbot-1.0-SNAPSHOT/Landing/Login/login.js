@@ -405,7 +405,16 @@ $(document).ready(function (){
                     }, 2000);
                 }else if(result == "4"){
                     //manager
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully login',
+                        text: 'Manager !',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
+                    }, 2000);
                 }else if(result == "5"){
                     //owner
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
