@@ -1,0 +1,98 @@
+
+  /* Content below header in home-section */
+  .home-section .dashboard_admin{
+      position: relative;
+      margin-top:30px;
+      margin-left: 72px;
+      margin-right: 72px;
+      background-color:#fff;
+  }
+
+  .dashboard_admin .user_employees {
+    /*width:(100%-144px);*/
+    display:flex;
+    justify-content: space-evenly;
+    gap:20px;
+    padding: 10px;
+  }
+
+
+  .dashboard_admin .users {
+    flex:50%;
+    background-color: #E5E5E5;
+    border-radius: 15px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dashboard_admin .employees {
+    flex:30%;
+    background-color: #E5E5E5;
+    padding:10px;
+    border-radius: 15px;
+  }
+
+  .members_chart{
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .memberchart{
+    padding:20px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .memberchart canvas {
+    height:300px;
+    width:300px;
+  }
+
+  /*.myChart {*/
+  /*  width:1px;*/
+  /*  height: 1px;*/
+  /*}*/
+
+  .dashboard_admin .employees .title_employees {
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .dashboard_admin .employees .list_employees {
+    display:flex;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    margin: 20px;
+  }
+
+  .dashboard_admin .employees .list_employees .branch_managers {
+    display:flex;
+    /* padding:10px; */
+    margin-top: 10px;
+    background-color: #fff;
+  }
+
+  .dashboard_admin .employees .list_employees .branch_managers .employee{
+    font-size: 30px;
+    padding: 15px;
+    background-color: rgb(239, 39, 12);
+    color: white;
+
+  }
+
+  .dashboard_admin .employees .list_employees .branch_managers .employee_type {
+    background-color: #fff;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .dashboard_admin .employees .list_employees .branch_managers .employee_type > div {
+    margin-left:10px;
+  }
+  
+  

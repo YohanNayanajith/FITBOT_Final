@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/Admin/Members/members.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+
+              
+          </div> --> 
+        <!-- Content below the header -->
+        <div class="memberview_admin" id="memberview_admin">
+            <div class="overview-boxes">
+                <a href="#" onclick="printmembers('physical')">
+                <div class="box">
+                    <div class ="left-side">
+                        <div class="box-topic"> Physical Members</div>
+                        <div class= "number" id="physicalcount">125</div>
+                    </div>
+                    <i class='bx bxs-user member'></i>
+                </div>
+                </a>
+
+                <a href="#" onclick="printmembers('virtual')">
+            <div class="box">
+                <div class ="left-side">
+                    <div class="box-topic"> Virtual Members</div>
+                    <div class= "number" id="virtualcount">25</div>
+                </div>
+                <i class='bx bxs-user member'></i>
+            </div>
+                </a>
+
+                <a href="#" onclick="printbannedmembers()">
+            <div class="box">
+                <div class ="left-side">
+                    <div class="box-topic"> Banned Members</div>
+                    <div class= "number" id="bannedcount">12</div>
+                </div>
+                <i class='bx bxs-user member'></i>
+            </div>
+                </a>
+
+            <div class="box">
+                <div class ="left-side">
+                    <div class="box-topic"> Total members</div>
+                    <div class= "number" id="all_member_count">500</div>
+                </div>
+                <i class='bx bxs-group member'></i>
+            </div>
+        </div>
+
+        <div class="all_members">
+          <div class="title_members">
+              <div class="all_gym_members">
+                <h4 id="member_title_table">All Members</h4>
+              </div>
+              <div class="search-container">
+                <form action="">
+                  <input type="text" placeholder="Search for a member" name="search_member" id="search_member">
+                  <button type="submit"><i class='bx bx-search'></i></button>
+                </form>
+              </div>
+              
+          </div>
+
+            <div class="member-details">
+                <table id="member_list_table">
+                    <tr class ="member_info_header">
+                      <th>Member ID</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Branch</th>
+                      <th>Membership</th>
+                      <th>Payment Due Date</th>
+                        <th></th>
+                    </tr>
+                    <tbody id ="member_list_table_body">
+                   <tr class ="member_info">
+                    <td>M0001</td>
+                    <td>Shalani Chethana</td>
+                    <td>Nugegoda</td>
+                    <td>Physical</td>
+                    <td>Female</td>
+                    <td>shalanichethana@gmail.com</td></a>
+                    </tr>
+                    <tr class ="member_info">
+                        <td>M0011</td>
+                        <td>Sachinka Gunasekara</td>
+                        <td>Dehiwela</td>
+                        <td>Physical</td>
+                        <td>Female</td>
+                        <td>sachinka.gun@gmail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                        <td>M0211</td>
+                        <td>Dineth Tharushan</td>
+                        <td>-</td>
+                        <td>Virtual</td>
+                        <td>Male</td>
+                        <td>dineth077@gmail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                        <td>M0011</td>
+                        <td>Sithumina Fonseka</td>
+                        <td>Dehiwela</td>
+                        <td>Phsyical</td>
+                        <td>Male</td>
+                        <td>sithumfon00@gmail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                        <td>M0023</td>
+                        <td>Dulaj Prabasha</td>
+                        <td>-</td>
+                        <td>Virtual</td>
+                        <td>Male</td>
+                        <td>dulajpabasara@ymail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                        <td>M0099</td>
+                        <td>Ashfaq Ahamed</td>
+                        <td>-</td>
+                        <td>Virtual</td>
+                        <td>Male</td>
+                        <td>ashfaaqraaz@gmail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                      <td>M0098</td>
+                      <td>Isuru Mendis</td>
+                      <td>Dehiwela</td>
+                      <td>Physical</td>
+                      <td>Male</td>
+                      <td>isumendis@gmail.com</td>
+                    </tr>
+                    <tr class ="member_info">
+                      <td>M0056</td>
+                      <td>Dinil Ratnayake</td>
+                      <td>Maradana</td>
+                      <td>Physical</td>
+                      <td>Male</td>
+                      <td>dinilr@gmail.com</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+        </div>
+
+            <div class="memberview_container" id="member_view">
+                <div class="memberview_container_popup" >
+                    <div class="memberview_container_header">
+                        <div id="member_name_head"></div>
+                        <div onclick="close_memberview_Popup()" class="close_memberview_btn">
+                            <i class='bx bx-x close_btn_forgot'></i>
+                        </div>
+                    </div>
+                    <div class="member_personal">
+                        <div class ="member_titles">
+                            <ul>
+                                <!--                                <li>User ID</li>-->
+                                <li>Name</li>
+                                <li>Gender</li>
+                                <li>Contact No</li>
+                                <li>Email</li>
+                                <li>Branch</li>
+                                <li>Type</li>
+                                <li>Membership</li>
+                                <li>Payment Due</li>
+                                <div id="banned_values">
+
+                                </div>
+
+                            </ul>
+                        </div>
+                        <div class="member_title-values"  id="member_title_values">
+                            <ul>
+                                <!--                                <li>IN001</li>-->
+                                <li>Keshara Muthumala</li>
+                                <li>952733449V</li>
+                                <li>Male</li>
+                                <li>k.muthumatal@gmail.com</li>
+                                <li>07782334171</li>
+                                <li>29/09/1995</li>
+                                <li>30</li>
+                                <li>Maharagama</li>
+                                <li>Instructor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ban_button" id="ban_buttons_visibile">
+                        <div id ="ban_button">
+                        <input type="button" class =" banned_button" value="Ban" onclick="banning()">
+                        </div>
+                        <div >
+                            <input type="button" class =" banned_button" value="Cancel" >
+                        </div>
+                    </div>
+
+                    <div class ="banning_reason" id="banning_reason">
+                        <span class="reason">Reason for Banning the employee </span>
+                        <div class ="reason_form">
+                        <input type="text" name="ban_reason" id="ban_reason" class="" placeholder="Enter reason for banning" ><br>
+                        </div>
+                        <div class="buttonsforbanning" id="buttonsforbanning">
+                        <input type="button" class =" banned_button" value="Submit" onclick="">
+                        <input type="button" class =" banned_button" value="Cancel" onclick="">
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+    </div>
+        
+
+
+
+      <script src="http://127.0.0.1:5500/Admin/Members/members.js"></script>
+      </body>
+      </html>
