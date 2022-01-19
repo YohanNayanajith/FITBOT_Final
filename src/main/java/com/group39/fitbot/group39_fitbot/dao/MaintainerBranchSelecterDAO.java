@@ -24,8 +24,14 @@ public class MaintainerBranchSelecterDAO  {
         while (resultSet.next()) {
             if(resultSet != null) {
                 branch_list.add(new Branch(
-                    resultSet.getString(1),
-                    resultSet.getString(2)
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getDate(5).toLocalDate(),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getString(8)
                 ));
             }
         }

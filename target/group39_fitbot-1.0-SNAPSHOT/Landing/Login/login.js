@@ -417,10 +417,28 @@ $(document).ready(function (){
                     }, 2000);
                 }else if(result == "5"){
                     //owner
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Owner!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/owner';
+                    }, 2000);;
                 }else if(result == "6") {
                     //admin
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Admin!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/admin';
+                    }, 2000);
                 }else if(result == "7"){
                     //maintainer
                     Swal.fire({
