@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons icons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fitbot</title>
+    <link rel="shortcut icon" href="image/fitbot.png">
+    <link rel="stylesheet" href="MANAGER_NOTICES.css">
+    <link rel="stylesheet" href="leftbar.css">
+    <!-- <link rel="stylesheet" href="rightbar.css"> -->
+    
+</head>
+<body>
+    
+  <section class="home_section_manager_equip">
+
+    <!-- -----------------------home ----------------------------------------------- -->
+ 
+    <div class="maintainer_notice_home" id="maintainer_notice_home">
+        <div class="manager_notice">
+            <div class="title_man_notice">
+                <div class="title_notice_name">
+                    <span>Recent Notices</span>
+
+<!--                    <div class= "search_box_sachi">-->
+<!--                        <input type ="text" placeholder="Search for a equipment">-->
+<!--                        <button type="submit">Search</button>-->
+<!--                    </div>-->
+
+                    <div class="notice_title">
+                        <a value = "Add a new notice" id="notice_title_btn_a" onclick="add_notice_popup()">Add a new notice<i class='bx bxs-plus-circle'></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ins_manager_notice_details" id="ins_manager_notice_details">
+                <table class="manager_notice_table" id="manager_notice_table">
+
+                    <tr class="manager_notice_header">
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Description</th>
+
+                    </tr>
+                    <tbody id="manager_notice_table_tbody">
+                            <tr class="manager_notice_row">
+                                <td>Closure</td>
+                                <td>26/10/2021</td>
+                                <td>The Gym will be closed on 25th of December 2021</td>
+                            </tr>
+                            <tr class="manager_notice_row">
+                                <td>Closure</td>
+                                <td>26/10/2021</td>
+                                <td>The Gym will be closed on 25th of December 2021</td>
+                            </tr>
+                    </tbody>
+                </table>
+
+                <div class="next_buttons" id="next_buttons"></div>
+
+            </div>
+        </div>
+
+
+<!-----------------------------pop up form------->
+
+
+            <div class="add_notice_container" id="add_notice_container">
+
+                    <div onclick="close_add_notice_Popup()" class="close_add_notice_btn">
+                        <i class='bx bx-x close_btn_forgot'></i>
+                    </div>
+
+                    <div class="notice_form_div" id="notice_form_div">
+                        <form method="post" action="notice" class="maintainer_notice_form" id="maintainer_notice_form">
+                            <div class="notice_title_name">Notice</div>
+
+<!--                            <label for="notice_no">Notice No</label><br>-->
+<!--                            <input type="text" id="notice_no" name="notice_no" class="notice_label notice_no" ><br>-->
+
+                            <label for="title">Title</label><br>
+                            <input type="text" id="title" name="title" class="notice_label title" ><br>
+                            <h6 id ="validation_noticetitle_id" class="validation_notice_label">Notice title cannot be empty</h6>
+
+                            <label for="dates">Date</label><br>
+                            <input type="date" id="dates" name="dates" class="notice_label dates" ><br>
+                            <h6 id ="validation_noticedate_id" class="validation_notice_label">Date cannot be empty</h6>
+
+                            <label for="description">Description</label><br>
+                            <textarea id="description" name="description" class="notice_label description"  rows="4" cols="50"></textarea>
+                                <h6 id ="validation_noticedescription_id" class="validation_notice_label">Description cannot be empty</h6>
+                            <br>
+
+<!--                            <div class="submit_btn_class">-->
+<!--                                <input type="submit" class="btn_submit" id="submitbutton" value="Submit" onClick="edit_profile_submit"><br>-->
+<!--                            </div>-->
+
+                        </form>
+
+                        <div class="submit_btn_class">
+                            <button class="btn_submit" id="submitbutton" onclick="submitNoticeForm()">Submit</button><br>
+                        </div>
+
+                    </div>
+
+            </div>
+
+    </div>
+
+</section>
+
+    <script src="http://localhost:8080/group39_fitbot_war_exploded/Manager/BRANCH_MANAGER_NOTICES/MANAGER_NOTICES.js" defer></script>
+
+   
+</body>
+</html>

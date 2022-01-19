@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons icons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fitbot</title>
+    <link rel="shortcut icon" href="image/fitbot.png">
+    <link rel="stylesheet" href="MANAGER_MAINTAINER_REQUEST.css">
+    <link rel="stylesheet" href="leftbar.css">
+    <!-- <link rel="stylesheet" href="rightbar.css"> -->
+    
+</head>
+<body>
+
+    <!-- -----------------------home ----------------------------------------------- -->
+ 
+    <div class="maintainer_request_home" id="maintainer_request_home">
+
+        <div class="manager_request_maintainer">
+            <div class="title_man_request_maintainer">
+                <div class="title_request_name_maintainer">
+                    <span>Maintainer Requests</span>
+
+                    <!--                    <div class= "search_box_sachi">-->
+                    <!--                        <input type ="text" placeholder="Search for a equipment">-->
+                    <!--                        <button type="submit">Search</button>-->
+                    <!--                    </div>-->
+
+                    <div class="request_title">
+                        <a value = "Add a new request" id="request_title_btn_a" onclick="add_request_popup()">Add a new request<i class='bx bxs-plus-circle'></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="ins_manager_request_details">
+                <table class="manager_request_table" id="manager_request_table">
+
+                    <tr class="manager_request_header">
+                        <th>Equipment ID</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+
+                    <tbody class="manager_request_table_tbody" id="manager_request_table_tbody">
+<!--                    <tr class="manager_request_row">-->
+<!--                        <td>E01</td>-->
+<!--                        <td>Threadmill</td>-->
+<!--                        <td>Progress</td>-->
+<!--                        <td>26/10/2021</td>-->
+<!--                    </tr>-->
+                    </tbody>
+                </table>
+                   <div class="next_buttons" id="next_buttons"></div>
+            </div>
+        </div>
+
+
+       <!-----------------------------pop up form--------------------->
+        <div class="add_request_container" id="add_request_container">
+
+                <div onclick="close_add_request_Popup()" class="close_add_request_btn">
+                    <i class='bx bx-x close_btn_forgot'></i>
+                </div>
+
+                <div class="request_form_div" id="request_form_div">
+                    <form method="post" action="manageraddrequest" class="maintainer_request_form" id="maintainer_request_form">
+                        <div class="title_name">Request</div>
+
+                        <label for="equipment_id">Equipment ID</label><br>
+                        <input type="text" id="equipment_id" name="equipment_id" class="form_label equipment_id" ><br>
+                        <h6 id ="validation_equipmentrequest_id" class="validation_label">Equipment ID cannot be empty</h6>
+<!--                        <select name="equipment_id" id="equipment_id" class="form_label equipment_id">-->
+<!--                            <option value="E1">E1</option>-->
+<!--                            <option value="E2">E2</option>-->
+<!--                            <option value="E3">E3</option>-->
+<!--                            <option value="E4">E4</option>-->
+<!--                            <option value="E5">E5</option>-->
+<!--                            <option value="E6">E6</option>-->
+<!--                            <option value="E7">E7</option>-->
+<!--                            <option value="E8">E8</option>-->
+<!--                            <option value="E9">E9</option>-->
+<!--                            <option value="E10">E10</option>-->
+<!--                            <option value="E11">E11</option>-->
+<!--                            <option value="E12">E12</option>-->
+<!--                            <option value="E13">E13</option>-->
+<!--                            <option value="E14">E14</option>-->
+<!--                            <option value="E15">E15</option>-->
+<!--                        </select>-->
+
+
+                        <label for="category">Equipment Type</label><br>
+                        <select name="category" id="category" class="form_label category">
+                            <option value="Treadmill">Treadmill</option>
+                            <option value="Smith_Machine">Smith Machine</option>
+                            <option value="Exercise_bikes">Exercise bikes</option>
+                            <option value="Rowing">Rowing</option>
+                            <option value="Bars">Bars</option>
+                            <option value="Squat racks">Squat racks</option>
+                        </select>
+                        <h6 id ="validation_equipmentrequest_type" class="validation_label">Equipment type cannot be empty</h6>
+
+                        <label for="description">Description</label><br>
+                        <textarea id="description" name="description" class="form_label description"  rows="4" cols="50"></textarea> <br>
+                        <h6 id ="validation_equipmentrequest_description" class="validation_label">Description cannot be empty</h6>
+
+                        <div class="req_timedate" id="req_timedate">
+                                <div class="req_date" id="req_date">
+                                    <label for="re_date">Date of requested</label><br>
+                                    <input type="date" id="re_date" name="re_date" class="form_label_new re_date"><br>
+                                    <h6 id ="validation_equipmentrequest_date" class="validation_label">Date cannot be empty</h6>
+                                </div>
+
+                                <div class="req_time" id="req_time">
+                                    <label for="re_time">Time of requested</label><br>
+                                    <input type="time" id="re_time" name="re_time" class="form_label_new re_time"><br>
+                                    <h6 id ="validation_equipmentrequest_time" class="validation_label">Time cannot be empty</h6>
+                                </div>
+                        </div>
+                    </form>
+
+                    <div class="submit_btn_class">
+                        <button class="btn_submit" id="btn_submit" onclick="submit_requestmaintain_form()">Submit</button><br>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+       
+
+
+    <script src="leftbar.js"></script>
+
+   
+</body>
+</html>

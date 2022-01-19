@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons icons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fitbot</title>
+    <link rel="shortcut icon" href="image/fitbot.png">
+    <link rel="stylesheet" href="MANAGER_INQUIRIES.css">
+    <link rel="stylesheet" href="leftbar.css">
+    <!-- <link rel="stylesheet" href="rightbar.css"> -->
+    
+</head>
+<body>
+
+
+    
+  <section class="home-section">
+
+    <!-- -----------------------home ----------------------------------------------- -->
+      
+    <div class="manager_inquiry" id="manager_inquiry">
+        <div class="see_inquiry">
+            <div class="see_inquiry_header">
+                <span>Inquiries</span>
+                <div class= "search_box_inquiry">
+                    <input type ="text" id="manager_inquiry_search" onclick="searchInquiry()" placeholder="Search for a member">
+<!--                    <button type="submit">Search</button>-->
+                </div>
+            </div>
+            
+            <div class="see_inquiry_details">
+                <table class="see_inquiry_table1" id="see_inquiry_table1">
+
+                        <tr class="see_inquiry_table_header">
+    <!--                        <th>Inquiry ID</th>-->
+                            <th>Member Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Title</th>
+    <!--                        <th>Status</th>-->
+                            <th></th>
+                        </tr>
+
+                    <tbody class="see_inquiry_table1_tbody" id="see_inquiry_table1_tbody">
+<!--                        <tr class="see_inquiry_row">-->
+<!--    &lt;!&ndash;                        <td>I-002</td>&ndash;&gt;-->
+<!--                            <td>Shalanika</td>-->
+<!--                            <td>30/10/2021</td>-->
+<!--                            <td>13:40</td>-->
+<!--                            <td>Complaint</td>-->
+<!--&lt;!&ndash;                            <td>Replied</td>&ndash;&gt;-->
+<!--                            <td><a id="inquiry_title_btn_a" onclick="add_inquiry_popup()"><i class='bx bxs-lock-open-alt'></i></a></td>-->
+<!--                        </tr>-->
+                    </tbody>
+                </table>
+                <div class="next_buttons" id="next_buttons"></div>
+            </div>
+        </div>
+
+
+        <div class="add_inquiry_container" id="add_inquiry_container">
+
+             <div onclick="close_add_inquiry_Popup()" class="close_add_inquiry_btn">
+                   <i class='bx bx-x close_btn_forgot'></i>
+             </div>
+
+            <div class="inquiryview" id="inquiryview">
+                    <div class="inquiry_left_detail" id="inquiry_left_detail">
+                        <p>Member Name</p>
+                        <p>Date</p>
+                        <p>Time</p>
+                        <p>Title</p>
+                        <p>Description</p>
+                    </div>
+                    <div class="inquiry_right_detail" id="inquiry_right_detail">
+<!--                        <p>Sachinka</p>-->
+<!--                        <p>2021/12/30</p>-->
+<!--                        <p>08.30</p>-->
+<!--                        <p>Suggestions</p>-->
+<!--                        <p>Suggestions</p>-->
+                    </div>
+            </div>
+        </div>
+
+
+<!--        <div class="add_inquiry_container" id="add_inquiry_container">-->
+
+<!--            <div onclick="close_add_inquiry_Popup()" class="close_add_inquiry_btn">-->
+<!--                <i class='bx bx-x close_btn_forgot'></i>-->
+<!--            </div>-->
+
+<!--                <div class="inquiry_view_form_div">-->
+<!--                    <form class="manager_inquiry_view_form" id="manager_inquiry_view_form">-->
+<!--                        <div class="inquiry_title_name">-->
+<!--                            <div class="titlename"> Inquiry</div>-->
+<!--&lt;!&ndash;                            <div class="inquiry_id">0001</div>&ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        <label for="member_name">Member Name</label><br>-->
+<!--                        <input type="text" id="member_name" name="member_name" class="inquiry_view_label member_name" ><br>-->
+
+<!--                        <label for="in_title">Title</label><br>-->
+<!--                        <input type="text" id="in_title" name="in_title" class="inquiry_view_label in_title" ><br>-->
+
+<!--                        <label for="message">Message</label><br>-->
+<!--                        <textarea id="message" name="message" class="inquiry_view_label message"  rows="4" cols="50"></textarea>-->
+<!--                        <br>-->
+
+<!--                        <label for="response">Response</label><br>-->
+<!--                        <textarea id="response" name="response" class="inquiry_view_label response"  rows="4" cols="50"></textarea>-->
+<!--                        <br>-->
+
+
+<!--                        <div class="submit_btn_class">-->
+<!--                            <input type="submit" class="btn_submit" value="Submit" onclick=""><br>-->
+<!--                        </div>-->
+
+<!--                    </form>-->
+<!--                </div>-->
+<!--        </div>-->
+    </div>
+    
+
+
+  </section>
+
+    <script src="leftbar.js"></script>
+   
+</body>
+</html>

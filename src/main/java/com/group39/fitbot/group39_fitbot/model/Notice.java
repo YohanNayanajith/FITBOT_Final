@@ -1,27 +1,20 @@
 package com.group39.fitbot.group39_fitbot.model;
 
+import java.sql.Date;
+
 public class Notice {
-    private String notice_no;
     private String title;
+    private Date dates;
     private String description;
 
     public Notice(){
 
     }
 
-    public Notice(String notice_no, String title, String description) {
-        this.notice_no = notice_no;
+    public Notice(String title, Date dates, String description) {
         this.title = title;
+        this.dates = dates;
         this.description = description;
-    }
-
-
-    public String getNotice_no() {
-        return notice_no;
-    }
-
-    public void setNotice_no(String notice_no) {
-        this.notice_no = notice_no;
     }
 
     public String getTitle() {
@@ -32,6 +25,14 @@ public class Notice {
         this.title = title;
     }
 
+    public Date getDates() {
+        return dates;
+    }
+
+    public void setDates(Date dates) {
+        this.dates = dates;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -40,12 +41,11 @@ public class Notice {
         this.description = description;
     }
 
-
     @Override
     public String toString() {
         return "Notice{" +
-                "notice_no=" + notice_no +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
+                ", dates=" + dates +
                 ", description='" + description + '\'' +
                 '}';
     }

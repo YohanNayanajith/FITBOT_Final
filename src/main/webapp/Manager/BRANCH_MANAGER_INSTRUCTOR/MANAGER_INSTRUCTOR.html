@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons icons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fitbot</title>
+    <link rel="shortcut icon" href="image/fitbot.png">
+    <link rel="stylesheet" href="MANAGER_INSTRUCTOR.css">
+    <link rel="stylesheet" href="leftbar.css">
+    <!-- <link rel="stylesheet" href="rightbar.css"> -->
+    
+</head>
+<body>
+
+
+  <section class="home_section_manager">
+        
+    <!-- -----------------------home ----------------------------------------------- -->
+<div class="instructor_manager_home" id="instructor_manager_home">
+                <div class="overview_boxes_manager_instructor_sachi">
+
+                        <div class="box_ins boxcolour1">
+                            <i class='bx bxs-user'></i>
+<!--                            <div class="line"></div>-->
+                            <div class ="inside_sachi">
+                                <div class="box-topic">Instructors Present</div>
+                                <div class= "presentnumber" id="presentnumber"></div>
+                            </div> 
+                        </div>
+
+                        <div class="box_ins boxcolour2">
+                            <i class='bx bxs-user'></i>
+<!--                            <div class="line"></div>-->
+                            <div class ="inside_sachi">
+                                <div class="box-topic">Instructors Absent</div>
+                                <div class= "absentnumber" id="absentnumber"></div>
+                            </div>   
+                        </div>
+                    
+
+                      <div class="box_ins boxcolour3">
+                        <i class='bx bxs-user'></i>
+<!--                          <div class="line"></div>-->
+                          <div class ="inside_sachi">
+                              <div class="box-topic">Total Instructors</div>
+                              <div class= "total_number" id="total_number"></div>
+                          </div>
+                      </div>
+          
+                </div>
+
+              <div class="manager_instructor_sachi">
+                  <div class="manager_instructor_view">
+                          <div class="ins_title_sachi">
+                              <span>Instructors</span>
+                              <div class= "man_search_box_sachi">
+                                  <input type ="text" id="manager_instructor_search" onclick="searchinstructor()" placeholder="Search for a instructor">
+<!--                                  <button type="submit">Search</button>-->
+                              </div>
+                          </div>
+
+                          <div class="ins_manager_details">
+                              <table class="ins_manager_details_table">
+
+                                      <tr class="manager_instructor_header">
+<!--                                      <th>Instructor ID</th>-->
+                                          <th>Name</th>
+                                          <th>No. of students</th>
+                                          <th>Appoinments</th>
+                                          <th>Attendance</th>
+                                      </tr>
+
+                                  <tbody id="ins_manager_details_table_tbody" class="ins_manager_details_table_tbody">
+                                      <tr class="manager_instructor_row">
+<!--                                      <td>IN-2201</td>-->
+<!--                                      <td>Kalindu</td>-->
+<!--                                      <td>15</td>-->
+<!--                                      <td><input type="checkbox" class="ins_atte"/></td>-->
+<!--                                      <td>2</td>-->
+                                      </tr>
+                                  </tbody>
+                                </table>
+                              <div class="next_buttons" id="next_buttons"></div>
+                          </div>
+                  </div>
+              </div>
+</div>
+
+  </section>
+
+    <script src="leftbar.js"></script>
+
+   
+</body>
+</html>

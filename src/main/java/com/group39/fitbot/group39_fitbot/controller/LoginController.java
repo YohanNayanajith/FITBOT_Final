@@ -79,7 +79,7 @@ public class LoginController extends HttpServlet {
                     case "instructor":
                         out.print("3");
                         break;
-                    case "Manager":
+                    case "manager":
                         out.print("4");
                         break;
                     case "Owner":

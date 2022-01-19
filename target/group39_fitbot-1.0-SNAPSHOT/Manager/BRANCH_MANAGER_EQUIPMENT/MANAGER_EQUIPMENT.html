@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons icons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fitbot</title>
+    <link rel="shortcut icon" href="image/fitbot.png">
+    <link rel="stylesheet" href="MANAGER_EQUIPMENT.css">
+    <link rel="stylesheet" href="leftbar.css">
+    <!-- <link rel="stylesheet" href="rightbar.css"> -->
+    
+</head>
+<body>
+
+  <section class="home_section_manager_equip">
+        
+    <!-- -----------------------home ----------------------------------------------- -->
+ 
+    <div class="manager_equipmentlist" id="manager_equipmentlist">
+
+            <div class="manager_equip_view">
+                <div class="title_man_equip_view">
+
+                    <div class="title_equip_name_view">
+                            <span>Equipment</span>
+
+                            <div class= "search_box_equipment">
+                                <input type ="text" id="manager_equipment_search" onclick="searchEquipment()" placeholder="Search for an equipment">
+<!--                                <button type="submit" >Search</button>-->
+                            </div>
+
+                            <div class="equip_title">
+                                <a href="#" class="add_new_equip_form" id="add_new_equip_form">
+                                    <div class="add_new_equip" id="add_new_equip">Add a new equipment <i class='bx bxs-plus-circle'></i></div>
+                                </a>
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="ins_manager_equip_details">
+                    <table class="manager_equipment_table" id="manager_equipment_table">
+
+                            <tr class="manager_equipment_header">
+                                <th>Equipment ID</th>
+                                <th>Type</th>
+                                <th>Purchased</th>
+                                <th>Last Modified Date</th>
+                                <th>Next Maintenance Date</th>
+
+                                <th></th>
+                            </tr>
+                           <tbody id="manager_equipment_table_tbody" class="manager_equipment_table_tbody">
+<!--                                <tr class="manager_equipment_row">-->
+<!--                                    <td>E01</td>-->
+<!--                                    <td>Threadmill</td>-->
+<!--                                    <td>06/10/2021</td>-->
+<!--                                    <td>28/12/2021</td>-->
+<!--                                    <td>16/01/2021</td>-->
+<!--                                    <td>-->
+<!--                                        <div class="button_row">-->
+<!--                                            <div class="add_btn_class">-->
+<!--                                                <input type="button" class="btn_add" value="Update" onClick="">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="reject_btn_class">-->
+<!--                                                <input type="button" class="btn_reject" value="Delete" onClick="">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+                           </tbody>
+                    </table>
+                    <div class="next_buttons" id="next_buttons"></div>
+                </div>
+            </div>
+
+
+
+        <div class="upcoming_maintainance">
+            <div class="upcoming_title">Preventive Upcoming Maintenance</div>
+            <div class="upcoming_maintainance_view">
+                <table class="upcoming_maintainance_table" id="upcoming_maintainance_table">
+
+                    <tr class="upcoming_maintainance_header">
+                        <th>Equipment ID</th>
+                        <th>Type</th>
+                        <th>Next Maintenance</th>
+                    </tr>
+
+                  <tbody id="upcoming_maintainance_table_tbody">
+<!--                        <tr class="upcoming_maintainance_row">-->
+<!--                            <th>E01</th>-->
+<!--                            <th>ThreadMill</th>-->
+<!--                            <th>28/12/2021</th>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="upcoming_maintainance_row">-->
+<!--                            <th>E02</th>-->
+<!--                            <th>Smith machine</th>-->
+<!--                            <th>22/12/2021</th>-->
+<!--                        </tr>-->
+                  </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+  </section>
+
+    <script src="leftbar.js"></script>
+
+   
+</body>
+</html>
