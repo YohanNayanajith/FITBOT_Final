@@ -428,3 +428,86 @@ function updateRealWeight(weightVal,currentDate,previous_weight){
         }
     });
 }
+
+function send_goal_weight(){
+    let weight = $('#profile_physical_container_edit_monthly_goal_input1').val();
+    $('#profile_physical_container_edit_monthly_goal_input_h5').hide();
+
+    if(weight == ''){
+        $('#profile_physical_container_edit_monthly_goal_input_h5').show();
+        $('#profile_physical_container_edit_monthly_goal_input_h5').css("color","red")
+    }else {
+        $.ajax({
+            method:"POST",
+            url:"memberGoal",
+            data:{profile_physical_container_edit_monthly_goal_input1:weight,profile_physical_container_edit_monthly_goal_input2:"0"},
+            // dataType:"json",
+            // contentType:"application/json",
+            success: function (result){
+                console.log(result);
+                $('#profile_physical_container_edit_monthly_goal_input1').val('');
+                if(result.trim().toString() == "1"){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully set the goal',
+                        // text: 'Password is successfully updated!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Try Again',
+                        text: 'Goal set unsuccessfully!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#932828',
+                    })
+                }
+            },
+            error: function(error){
+                console.log(error+"edit profile");
+            }
+        });
+    }
+}
+
+function send_goal_calory(){
+    let calory = $('#profile_physical_container_edit_monthly_goal_input2').val();
+
+    if(calory == ''){
+        $('#profile_physical_container_edit_monthly_goal_input_h51').show();
+        $('#profile_physical_container_edit_monthly_goal_input_h51').css("color","red")
+    }else {
+        $.ajax({
+            method:"POST",
+            url:"memberGoal",
+            data:{profile_physical_container_edit_monthly_goal_input1:"0",profile_physical_container_edit_monthly_goal_input2:calory},
+            // dataType:"json",
+            // contentType:"application/json",
+            success: function (result){
+                console.log(result);
+                $('#profile_physical_container_edit_monthly_goal_input2').val('');
+                if(result.trim().toString() == "1"){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully set the goal',
+                        // text: 'Password is successfully updated!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Try Again',
+                        text: 'Goal set unsuccessfully!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#932828',
+                    })
+                }
+            },
+            error: function(error){
+                console.log(error+"edit profile");
+            }
+        });
+    }
+}

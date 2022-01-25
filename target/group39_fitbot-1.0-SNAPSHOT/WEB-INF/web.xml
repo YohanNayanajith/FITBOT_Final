@@ -344,4 +344,13 @@
         <servlet-name>InstructorGetRating</servlet-name>
         <url-pattern>/instructorGetRating</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberGoal</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.MemberGoalController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberGoal</servlet-name>
+        <url-pattern>/memberGoal</url-pattern>
+    </servlet-mapping>
 </web-app>
