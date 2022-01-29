@@ -49,9 +49,6 @@ public class LoginController extends HttpServlet {
             e.printStackTrace();
         }
 
-//        System.out.println(login_password);
-//        System.out.println(login_username);
-
         Login login = new Login();
         login.setUser_name(login_username);
         login.setPassword(login_password); //pass the hashing password
@@ -61,42 +58,49 @@ public class LoginController extends HttpServlet {
 
             Login loginData = LoginDAO.getLoginData(login);
 
-            HttpSession session = req.getSession(true);
-            session.setAttribute("MemberID",loginData.getMember_id());
-            session.setAttribute("userName",loginData.getUser_name());
-            session.setAttribute("userType",loginData.getUserType());
+            assert loginData != null;
+            int status = loginData.getStatus();
 
-            String userType = loginData.getUserType();
+            if(status == 1){
+                HttpSession session = req.getSession(true);
+                session.setAttribute("MemberID",loginData.getMember_id());
+                session.setAttribute("userName",loginData.getUser_name());
+                session.setAttribute("userType",loginData.getUserType());
 
-            if(checkLogin(login,loginData)) {
-                switch (userType) {
-                    case "physical_member":
-                        out.print("1");
-                        break;
-                    case "virtual_member":
-                        out.print("2");
-                        break;
-                    case "Instructor":
-                        out.print("3");
-                        break;
-                    case "Manager":
-                        out.print("4");
-                        break;
-                    case "Owner":
-                        out.print("5");
-                        break;
-                    case "admin":
-                        out.print("6");
-                        break;
-                    case "Maintainer":
-                        out.print("7");
-                    default:
-                        //                        out.print("You can't log now..please contact our administration");
-                        out.print("8");
-                        break;
+                String userType = loginData.getUserType();
+
+                if(checkLogin(login,loginData)) {
+                    switch (userType) {
+                        case "physical_member":
+                            out.print("1");
+                            break;
+                        case "virtual_member":
+                            out.print("2");
+                            break;
+                        case "Instructor":
+                            out.print("3");
+                            break;
+                        case "Manager":
+                            out.print("4");
+                            break;
+                        case "Owner":
+                            out.print("5");
+                            break;
+                        case "admin":
+                            out.print("6");
+                            break;
+                        case "Maintainer":
+                            out.print("7");
+                        default:
+                            //                        out.print("You can't log now..please contact our administration");
+                            out.print("8");
+                            break;
+                    }
+                }else {
+                    out.print("8");
                 }
             }else {
-                out.print("8");
+                out.print("9");
             }
 
         } catch (SQLException e) {

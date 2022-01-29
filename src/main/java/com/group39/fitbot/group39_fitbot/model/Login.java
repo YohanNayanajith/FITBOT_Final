@@ -5,15 +5,18 @@ public class Login {
     private String user_name;
     private String password;
     private String userType;
+    //private String user_image_url;
+    private int status;
 
     public Login() {
     }
 
-    public Login(String user_name, String password, String userType, String member_id) {
+    public Login(String user_name, String password, String userType, String member_id,int status) {
         this.user_name = user_name;
         this.password = password;
         this.userType = userType;
         this.member_id = member_id;
+        this.status = status;
     }
 
     public String getUser_name() {
@@ -46,6 +49,14 @@ public class Login {
 
     public void setMember_id(String member_id) {
         this.member_id = member_id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override

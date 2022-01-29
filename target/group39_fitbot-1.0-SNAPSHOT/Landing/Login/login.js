@@ -413,6 +413,14 @@ $(document).ready(function (){
                         confirmButtonText:"Ok",
                         confirmButtonColor: '#932828',
                     })
+                }else if(result == '9'){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login unsuccessfully!',
+                        text: 'You are bang! Please contact our administration!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#932828',
+                    })
                 }else {
                     Swal.fire({
                         icon: 'error',
