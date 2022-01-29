@@ -20,6 +20,8 @@
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.8" />
           <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-api:0.11.2" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.5" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

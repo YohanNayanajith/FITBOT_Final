@@ -889,10 +889,10 @@ function searchInstructors(){
                 '</div>'+
                 '<div>'+
                 '<div class="instructor_search_data_physical">'+ x["first_name"]+' '+x["last_name"] +'</div>'+
-                '<div>'+'dumy messages ...'+'</div>'+
+                // '<div>'+'dumy messages ...'+'</div>'+
                 '</div>'+
                 '<div>'+
-                '<div>13:15</div>'+
+                // '<div>13:15</div>'+
                 '</div>'+
                 '</div>'
             );

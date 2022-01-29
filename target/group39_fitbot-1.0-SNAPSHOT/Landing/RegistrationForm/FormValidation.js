@@ -217,6 +217,40 @@ $(document).ready(function () {
         }
     }
 
+    function checkEmailDetails(user_email){
+        $.ajax({
+            method:"POST",
+            url:"checkEmail",
+            data: {user_email:user_email},
+            // dataType:"json",
+            // contentType:"application/json",
+            success: function (result){
+                if(result.trim() == "1"){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Email already exist!',
+                        text: 'Please check your email',
+                        confirmButtonText: "Ok",
+                        confirmButtonColor: '#932828',
+                    })
+                    emailError = false;
+                    setTimeout(function() {
+                        window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+
+                    },1000);
+                    return true;
+                    //window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+                }else{
+                    emailError = true;
+                    return false;
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+
     // Validate Password
     $('#password_check').hide();
     let passwordError = false;
@@ -263,8 +297,6 @@ $(document).ready(function () {
         }
 
     }
-
-
 
     // Submitt button
     // $('#form_container').submit(function(e)
@@ -316,7 +348,7 @@ $(document).ready(function () {
         if(membership_type == "physical_member"){
             branch_type = $('#branch_type').val();
         }
-
+        // checkEmailDetails(email);
 
         if ((usernameError == true) && (passwordError == true) && (confirmPasswordError == true) && (emailError == true) && (dobError == true) && (phoneNumberError == true) && (heightError == true) && (weightError == true)) {
             console.log("Form submit success");
@@ -325,53 +357,89 @@ $(document).ready(function () {
             let new_expire_date = parseInt(date.getFullYear())+1;
             new_expire_date = new_expire_date + "-" +("0"+(date.getMonth()+1)).slice(-2)+"-"+("0"+date.getDate()).slice(-2);
             e.preventDefault();
+
             $.ajax({
-                method:'POST',
-                url:"register",
-                data:{first_name:first_name,last_name:last_name,date_of_birth:date_of_birth,phone_number:phone_number,selected_country:selected_country,height:height,weight:weight,email:email,reg_password:reg_password,confirm_password:confirm_password,address:address,gender:gender, membership_type:membership_type, membership_category:membership_category, branch_type:branch_type, fullDate:fullDate, new_expire_date:new_expire_date},
+                method:"POST",
+                url:"checkEmail",
+                data: {user_email:email},
                 // dataType:"json",
-                // contentType:"application/json; charset=utf-8",
-                success:function(result) {
-                    // alert(result);
-                    if (result.trim() == "1") {
-                        setTimeout(function() {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Successful',
-                                // text: 'Password is successfully updated!',
-                                confirmButtonText:"Next",
-                                confirmButtonColor: '#0E2C4B',
-                              })
-                            }, 1500);
-                        window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/medical";
-                    } else {
+                // contentType:"application/json",
+                success: function (result){
+                    if(result.trim() == "1"){
                         Swal.fire({
                             icon: 'error',
-                            title: "Can't register...",
-                            text: 'Something went wrong!',
-                            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!',
-                            confirmButtonColor: '#0E2C4B',
-                            footer: '<a href="register">Register again</a>'
+                            title: 'Email already exist!',
+                            text: 'Please check your email',
+                            confirmButtonText: "Ok",
+                            confirmButtonColor: '#932828',
                         })
+                        emailError = false;
+                        setTimeout(function() {
+                            window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+
+                        },1000);
+                        return true;
+                        //window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+                    }else{
+                        emailError = true;
+                        $.ajax({
+                            method:'POST',
+                            url:"register",
+                            data:{first_name:first_name,last_name:last_name,date_of_birth:date_of_birth,phone_number:phone_number,selected_country:selected_country,height:height,weight:weight,email:email,reg_password:reg_password,confirm_password:confirm_password,address:address,gender:gender, membership_type:membership_type, membership_category:membership_category, branch_type:branch_type, fullDate:fullDate, new_expire_date:new_expire_date},
+                            success:function(result) {
+                                console.log("Registration result "+result);
+                                if (result.trim() == "1") {
+                                    setTimeout(function() {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Successful',
+                                            // text: 'Password is successfully updated!',
+                                            confirmButtonText:"Next",
+                                            confirmButtonColor: '#0E2C4B',
+                                        })
+                                    }, 1500);
+                                    $('#verify_email_register').show();
+                                    //window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/medical";
+                                }else if(result.trim() == "2"){
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: "Can't register...",
+                                        text: 'Please check your email again!',
+                                        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!',
+                                        confirmButtonColor: '#0E2C4B',
+                                        footer: '<a href="register">Register again</a>'
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: "Can't register...",
+                                        text: 'Supply details is wrong!',
+                                        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!',
+                                        confirmButtonColor: '#0E2C4B',
+                                        footer: '<a href="register">Register again</a>'
+                                    })
+                                    // window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+                                }
+                            }
+                        }).fail(function(a,b,err){
+                            Swal.fire({
+                                icon: 'error',
+                                title: "Can't register...",
+                                text: 'Something went wrong!',
+                                confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!!!',
+                                confirmButtonColor: '#0E2C4B',
+                                footer: '<a href="register">Register again</a>'
+                            });
+                            console.log(a,b,err);
+                            window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+                        });
+                        return false;
                     }
+                },
+                error: function(err){
+                    console.log(err);
                 }
-            }).fail(function(a,b,err){
-                // e.preventDefault();
-                // alert(err);
-                Swal.fire({
-                    icon: 'error',
-                    title: "Can't register...",
-                    text: 'Something went wrong!',
-                    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!!!',
-                    confirmButtonColor: '#0E2C4B',
-                    footer: '<a href="register">Register again</a>'
-                });
-                console.log(a,b,err);
             });
-            // xhttp.open("POST","http://localhost:8080/group39_fitbot_war_exploded/MedicalForm/MedicalForm.js");
-            // xhttp.send();
-            // $("#w3s").attr("href", "https://www.w3schools.com/jquery/");
-            // location.replace("http://localhost:8080/group39_fitbot_war_exploded/medical");
 
         } else {
             e.preventDefault();
