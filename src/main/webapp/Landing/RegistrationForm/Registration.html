@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Landing/RegistrationForm/Registration.css">
+    <link rel="stylesheet" href="Physical Member/Profile/Profile.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -365,15 +366,47 @@
                 </div>
                 <br>
                 <div class="btn_group_reg_form">
-
                     <div><input type="button" class="btn_next reg_btn_class" id="reg_back_btn" value="Back"></div>
                     <div><input type="submit" class="btn_next reg_btn_class" id="reg_submit_btn" value="Next"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--    verify email popup model-->
+<div class="profile_physical_container_edit_profile">
+    <div class="edit_profile_container" id="verify_email_register">
+        <div class="edit_profile_container_header">
+            <h1>Verify Email</h1>
+            <div onclick="close_verify_email_register()" class="close_edit_profile_btn">
+                <i class='bx bx-x close_btn_forgot'></i>
+            </div>
+        </div>
+        <div class="edit_profile_container_detail">
+            <form action="verifyEmail" method="post">
+                <div class="edit_profile_container_detail_input1">
+                    <div>
+                        <label for="verify_detail_name">Verify Code</label><br>
+                        <input type="number" name="verify_detail_name" class="edit_profile_container_detail_name" id="verify_detail_name">
+                    </div>
+
+                    <!--                        <div>-->
+                    <!--                            <label for="edit_profile_container_detail_last_name">Confirm Password</label><br>-->
+                    <!--                            <input type="password" name="edit_profile_container_detail_last_name" class="edit_profile_container_detail_last_name" id="edit_profile_container_change_confirm_password">-->
+                    <!--                        </div>-->
+                </div>
+
+                <div class="edit_profile_container_detail_input4">
+                    <a class="edit_profile_container_detail_input4_btn1" onclick="back_verify_email_register()">Cancel</a>
+                    <a class="edit_profile_container_detail_input4_btn2" onclick="forward_verify_email_register()">Save</a>
                 </div>
 
             </form>
         </div>
     </div>
 </div>
+
 <script src="Landing/RegistrationForm/Registration.js" defer></script>
 <script src="Landing/RegistrationForm/FormValidation.js" defer></script>
 <script src="asserts/JSLibrary/sweetalert2.all.min.js" defer></script>

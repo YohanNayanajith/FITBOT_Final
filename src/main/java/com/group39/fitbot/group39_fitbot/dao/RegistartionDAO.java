@@ -37,7 +37,7 @@ public class RegistartionDAO {
 
     public static boolean addRegistrationToUserTable(Registartion register) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "INSERT INTO users VALUES(?,?,?,?)";
+        String query = "INSERT INTO users(user_name,password,user_type,member_id,status) VALUES(?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
 //        pst.setString(1,register.getFirst_name());
@@ -45,6 +45,16 @@ public class RegistartionDAO {
         pst.setString(2,register.getPassword());
         pst.setString(3,register.getMember_type());
         pst.setString(4,register.getMember_id());
+        pst.setInt(5,1);
+        return pst.executeUpdate() > 0;
+    }
+
+    public static boolean addRegistrationToUserTableStatus() throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "INSERT INTO users(status) VALUES(?)";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        pst.setInt(1,1);
         return pst.executeUpdate() > 0;
     }
 

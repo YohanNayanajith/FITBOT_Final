@@ -353,4 +353,22 @@
         <servlet-name>MemberGoal</servlet-name>
         <url-pattern>/memberGoal</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VerifyEmail</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.EmailVerifyController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerifyEmail</servlet-name>
+        <url-pattern>/verifyEmail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckEmail</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.CheckEmailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckEmail</servlet-name>
+        <url-pattern>/checkEmail</url-pattern>
+    </servlet-mapping>
 </web-app>

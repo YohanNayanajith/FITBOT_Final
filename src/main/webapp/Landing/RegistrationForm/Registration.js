@@ -94,3 +94,84 @@ function branch_select(){
     }
 
 }
+
+$(document).ready(function(){
+    $('#verify_email_register').hide();
+
+});
+
+function close_verify_email_register(){
+    $('#verify_email_register').hide();
+}
+
+function back_verify_email_register(){
+    $('#verify_email_register').hide();
+}
+
+function forward_verify_email_register(){
+    //open_confirm_password_Popup();
+
+    let verify_code = $('#verify_detail_name').val();
+
+    $.ajax({
+        method:"POST",
+        url:"verifyEmail",
+        data: {verify_code:verify_code},
+        // dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            if(result.trim() == "1"){
+
+                Swal.fire({
+                    title: 'Email Verified',
+                    // text: "Registration is not completed,You won't be able to revert this!",
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#0E2C4B',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/medical";
+                    }
+                    // else if (result.isDenied){
+                    //     // Swal.fire('Changes are not saved', '', 'info')
+                    //     console.log("Log out cancel");
+                    // }
+                })
+
+                // Swal.fire({
+                //     icon: 'success',
+                //     title: 'Email Verified',
+                //     // text: 'Password is successfully updated!',
+                //     confirmButtonText:"Ok",
+                //     confirmButtonColor: '#0E2C4B',
+                // })
+                // console.log("verify email is correct");
+                // $('#reset_new_password_container').hide();
+                // window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/medical";
+            }else{
+                console.log(result);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Try Again',
+                    text: 'Your verify code is incorrect!',
+                    confirmButtonText:"Ok",
+                    confirmButtonColor: '#932828',
+                })
+                // window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+            }
+        },
+        error: function(err){
+            console.log("phone number wrong", err);
+            window.location.href ="http://localhost:8080/group39_fitbot_war_exploded/register";
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Try Again',
+            //     text: 'System issue!',
+            //     confirmButtonText:"Ok",
+            //     confirmButtonColor: '#932828',
+            // })
+        }
+    });
+}

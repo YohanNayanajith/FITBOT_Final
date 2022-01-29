@@ -3,6 +3,8 @@ package com.group39.fitbot.group39_fitbot.controller;
 import com.group39.fitbot.group39_fitbot.dao.GetMemberCountDAO;
 import com.group39.fitbot.group39_fitbot.dao.MembershipDAO;
 import com.group39.fitbot.group39_fitbot.dao.RegistartionDAO;
+import com.group39.fitbot.group39_fitbot.dao.SendEmailDAO;
+import com.group39.fitbot.group39_fitbot.model.EmailUser;
 import com.group39.fitbot.group39_fitbot.model.Membership;
 import com.group39.fitbot.group39_fitbot.model.Registartion;
 
@@ -27,6 +29,7 @@ import static com.group39.fitbot.group39_fitbot.controller.PasswordHashingContro
 import static java.lang.Integer.parseInt;
 
 public class RegistrationController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Registartion get contoller called");
@@ -95,6 +98,8 @@ public class RegistrationController extends HttpServlet {
         boolean added1 = false;
         boolean added2 = false;
         boolean added3 = false;
+        boolean added4 = false;
+        boolean added5 = false;
 
         try {
             reg_password = toHexStr(obtainSHA(reg_password));
@@ -153,7 +158,9 @@ public class RegistrationController extends HttpServlet {
                     discount_price
             ));
 
-            boolean added4 = MembershipDAO.membershipAlterTableInsertData(member_id, membership_id, payment_id);
+            added4 = MembershipDAO.membershipAlterTableInsertData(member_id, membership_id, payment_id);
+
+            added5 = processRequest(req,resp,first_name,email);
 
             HttpSession session = req.getSession(true);
             session.setAttribute("MemberID",member_id);
@@ -161,14 +168,23 @@ public class RegistrationController extends HttpServlet {
 //            session.setAttribute("membership_id",member_id);
 
 //            resp.setContentType("application/json");
+            resp.setContentType("text/plain");
             resp.setCharacterEncoding("UTF-8");
 
-            if((added1 && added2) && added3 && added4){
+            System.out.println("Added1 "+added1);
+            System.out.println("Added2 "+added2);
+            System.out.println("Added3 "+added3);
+            System.out.println("Added4 "+added4);
+            System.out.println("Added5 "+added5);
+
+            if((added1 && added2) && (added3 && added4) && added5){
                 System.out.println("Added");
 //            req.setAttribute("message","Successfully added");
                 out.print("1");
 //                resp.getWriter().write("1");
-
+            }else if(!added5){
+                System.out.println("Verify");
+                out.print("2");
             }else{
                 System.out.println("Not added");
 //            req.setAttribute("message","Not Added");
@@ -179,8 +195,6 @@ public class RegistrationController extends HttpServlet {
             throwables.printStackTrace();
         }
 
-//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("medical");
-//        requestDispatcher.forward(req, resp);
     }
 
     private int checkMembershipFee(String membership_category){
@@ -197,5 +211,48 @@ public class RegistrationController extends HttpServlet {
         }else {
             return 0;
         }
+    }
+
+    private boolean processRequest(HttpServletRequest request, HttpServletResponse response,String name,String email) throws ServletException, IOException {
+//        response.setContentType("text/html;charset=UTF-8");
+
+        System.out.println("Verify function1");
+//        try (PrintWriter out = response.getWriter()) {
+//
+//        }
+        //feth form value
+        //String name = request.getParameter("username");
+        //String email = request.getParameter("useremail");
+
+        //create instance object of the SendEmail Class
+        SendEmailDAO sm = new SendEmailDAO();
+        System.out.println("Verify function2");
+        //get the 6-digit code
+        String code = sm.getRandom();
+        System.out.println("Verify function3");
+
+        //create new user using all information
+        EmailUser user = new EmailUser(name,email,code);
+        System.out.println("Verify function4");
+
+        //call the send email method
+        boolean test = sm.sendEmail(user);
+        boolean added = false;
+        System.out.println("Verify function5");
+
+        //check if the email send successfully
+        if(test){
+            HttpSession session  = request.getSession();
+            session.setAttribute("authcode", user);
+            //response.sendRedirect("verify.jsp");
+
+            System.out.println("Verify function6");
+            added = true;
+        }
+        else{
+//                out.println("Failed to send verification email");
+            System.out.println("Verify function7");
+        }
+        return added;
     }
 }
