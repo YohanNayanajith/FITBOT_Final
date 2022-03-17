@@ -1,39 +1,43 @@
-
-/* ----------------------------------------------------home ---------------------------------------- */
-
-.dash_report_name{
-    margin: 10px;
-    /*font-weight: bold;*/
-    font-size: 20px;
+.overview_boxes1_manager_dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    /*margin-bottom: 10px;*/
 }
 
+/*.overview_boxes1_manager_dashboard>* {*/
+/*    flex: 1 1 160px;*/
+/*    margin: 10px;*/
+/*}*/
+
+/*!* ----------------------------------------------------home ---------------------------------------- *!*/
 .home_content_dashboard {
     background-color: white;
     position: relative;
-    margin: 30px 72px 30px 72px;
+    margin: 30px 100px 30px 100px;
 }
 
 .dashboard{
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
-    margin: 30px 0 30px 70px;
+    margin-bottom: 30px;
 }
 
-
-
-.home_content_dashboard .overview_boxes1_manager_dashboard{
-    display: flex;
+.overview_boxes2_manager_dashboard{
+    /*display: flex;*/
+    /*flex-direction: row;*/
     width:100%;
     margin-bottom: 10px;
-    justify-content: space-around;
+    /*justify-content: space-between;*/
 }
 
- .box i{
+ .box, .dash_attendence i{
     font-size: 60px;
 }
 
 .box{
-    padding: 15px 14px;
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +45,11 @@
     box-shadow: 5px 5px 5px #888888;
     background-color: #F2F2F2;
     text-align: right;
-    width: 300px;
+    width: 280px;
+    height: 130px;
+    margin-bottom: 20px;
 }
+
  .box-topic {
     font-size: 20px;
     font-weight: 500;
@@ -51,114 +58,113 @@
 .revenue_number,.branchnumber,.equipnumber,.instructornumber ,.new_member_number{
     font-size : 30px;
     font-weight :500;
-    margin-top: 5px;
+    margin-top: 3px;
     display:inline-block;
 }
- .box .member{
-    font-size:50px;
-    font-weight:bold;
-    height:50px;
-    width:50px;
-    line-height:50px;
-    text-align:center;
-    border-radius:12px;
-}
+/*!* .box .member{*!*/
+/*!*    font-size:50px;*!*/
+/*!*    font-weight:bold;*!*/
+/*!*    height:50px;*!*/
+/*!*    width:50px;*!*/
+/*!*    line-height:50px;*!*/
+/*!*    text-align:center;*!*/
+/*!*    border-radius:12px;*!*/
+/*!*}*!*/
 
- .overview_boxes2_manager_dashboard{
-     display: flex;
-     width:100%;
-     /*background-color: #F66B6B;*/
- }
+/* !*.overview_boxes2_manager_dashboard{*!*/
+/* !*    display: flex;*!*/
+/* !*    width:100%;*!*/
+/* !*    !*background-color: #F66B6B;*!*!*/
+/* !*}*!*/
 
-.box2_leftside_dash{
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    width: 67%;
-}
+/*!*.box2_leftside_dash{*!*/
+/*!*    display: flex;*!*/
+/*!*    background-color: white;*!*/
+/*!*    flex-direction: column;*!*/
+/*!*    align-items: center;*!*/
+/*!*    width: 100%;*!*/
+/*!*}*!*/
 
-.overview_dash_row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 30px;
-    background-color: white;
-    width: 100%;
-}
+/*.overview_dash_row{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 30px;*/
+/*    background-color: white;*/
+/*    !*width: 100%;*!*/
+/*}*/
 
-.overview_dash_report{
-    width: 85%;
-    height: 450px;
-    /*background-color: #C4C4C4;*/
-    margin-top: 40px;
-}
+/*.overview_dash_report{*/
+/*    width: 100%;*/
+/*    height: 450px;*/
+/*    margin-top: 40px;*/
+/*    !*flex-direction: column;*!*/
+/*}*/
 
-.box2_rightside_dash{
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    width: 33%;
-}
+/*.box2_rightside_dash{*/
+/*    display: flex;*/
+/*    background-color: white;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    width: 33%;*/
+/*}*/
 
-/*----------------------------appoinments-----------------------------------*/
-.dash_appoinment{
-    display: flex;
-    background-color: #F2F2F2;
-    border-radius:12px;
-    box-shadow: 5px 5px 5px #888888;
-    flex-direction: column;
-    width: 300px;
-    height: 400px;
-    margin-top: 30px;
-}
+/*!*----------------------------appoinments-----------------------------------*!*/
+/*.dash_appoinment{*/
+/*    display: flex;*/
+/*    background-color: #F2F2F2;*/
+/*    border-radius:12px;*/
+/*    box-shadow: 5px 5px 5px #888888;*/
+/*    flex-direction: column;*/
+/*    width: 300px;*/
+/*    height: max-content;*/
+/*    margin-top: 30px;*/
+/*}*/
 
-.dash_appoinment_title{
-    display: flex;
-    justify-content: space-around;
-    background-color: #F2F2F2;
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0 40px 0;
-    color: #0E2C4B;
-}
+/*.dash_appoinment_title{*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    background-color: #F2F2F2;*/
+/*    width: 100%;*/
+/*    font-size: 20px;*/
+/*    font-weight: bold;*/
+/*    margin: 10px 0 40px 0;*/
+/*    color: #0E2C4B;*/
+/*}*/
 
-.appoinment_count{
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: bold;
-}
+/*.appoinment_count{*/
+/*    text-align: center;*/
+/*    margin-bottom: 20px;*/
+/*    font-size: 30px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.app_icon i{
-    font-size: 24px;
-}
+/*.app_icon i{*/
+/*    font-size: 24px;*/
+/*}*/
 
-.dash_appoinment_info {
-    display: flex;
-    justify-content: space-around;
-    background-color: #F2F2F2;
-    width: 100%;
+/*.dash_appoinment_info {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    background-color: #F2F2F2;*/
+/*    width: 100%;*/
+/*}*/
 
-}
+/*.app_no,.app_name{*/
+/*    font-size: 20px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-.app_no,.app_name{
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-/*-----------------------------attendence-------------------------------*/
+/*!*-----------------------------attendence-------------------------------*!*/
 .dash_attendence{
     display: flex;
     background-color: #F2F2F2;
     border-radius:12px;
     box-shadow: 5px 5px 5px #888888;
     flex-direction: column;
-    width: 300px;
-    height: 180px;
-    margin: 30px 0 30px 0;
+    width: 280px;
+    height: 130px;
+    margin-bottom: 20px;
 }
 
 .dash_attendence_title{
@@ -168,7 +174,7 @@
     width: 100%;
     font-size: 20px;
     font-weight: bold;
-    margin: 20px 0 40px 0;
+    margin: 10px 0 10px 0;
     color: #0E2C4B;
 }
 
@@ -186,15 +192,19 @@
 }
 
 
+/*!*---------------------------report-----------------------*!*/
+.dash_report_name{
+    margin: 10px;
+    font-size: 20px;
+}
 
-/*---------------------------report-----------------------*/
 .reports_manager_dashboard_container {
+    display: flex;
+    flex-direction: column;
     background-color: #F2F2F2;
     border-radius:5px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin:30px 0;
-    display: flex;
-    flex-direction: column;
 }
 .reports_manager_dashboard_container_header {
     color:#0E2C4B;

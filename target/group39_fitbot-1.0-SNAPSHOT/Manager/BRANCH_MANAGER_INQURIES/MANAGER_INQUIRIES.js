@@ -70,7 +70,7 @@ function initiateInquiryNextButtons(result,chunk) {
               <td> ${x.inquiry_time} </td>
               <td> ${x.status} </td>
 <!--               '<td>'+ x.inquiry_title + '</td>'+-->
-              <td><div id="inquiry_title_btn_a" onclick="add_inquiry_popup(${x.inquiry_id})"><i class=\'bx bxs-lock-open-alt\'></i></div></td>
+              <td><div id="inquiry_title_btn_a" onclick="add_inquiry_popup(${x.inquiry_id})"><i class=\'bx bxs-show bx-tada bx-flip-horizontal view_popup\'></i></div></td>
               </tr>`
                 );
             })

@@ -13,133 +13,117 @@
 
 </head>
 <body>
-
-
     <!-- -----------------------home ----------------------------------------------- -->
     <div class="home_content_dashboard" id="home_content_dashboard">
         <div class="dashboard" id="dashboard"></div>
 
-                <div class="overview_boxes1_manager_dashboard">
+        <div class="overview_boxes1_manager_dashboard">
 
-                        <div class="box">
-                            <i class='bx bx-money'></i>
-<!--                            <div class="line"></div>-->
-                            <div class ="inside_dashbox">
-                                <div class="box-topic">Monthly Branch Revenue</div>
-                                <div class= "revenue_number" id="revenue_number"></div>
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <i class='bx bxs-user'></i>
-<!--                            <div class="line"></div>-->
-                            <div class ="inside_dashbox">
-                                <div class="box-topic">New Branch Members</div>
-                                <div class= "new_member_number" id="new_member_number"></div>
-                            </div>
-                        </div>
-
-
-                        <div class="box">
-                            <i class='bx bxs-user'></i>
-<!--                            <div class="line"></div>-->
-                            <div class ="inside_dashbox">
-                                <div class="box-topic"> Branch Members</div>
-                                <div class= "branchnumber" id="branchnumber"></div>
-                            </div>
-                        </div>
-
+            <div class="box">
+                <i class='bx bx-money'></i>
+                <!--<div class="line"></div>-->
+                <div class ="inside_dashbox">
+                    <div class="box-topic">Monthly Branch Revenue</div>
+                    <div class= "revenue_number" id="revenue_number"></div>
                 </div>
-
-
-        <div class="overview_boxes2_manager_dashboard">
-              <div class="box2_leftside_dash">
-
-                      <div class="overview_dash_row">
-                              <div class="box">
-                                  <i class='bx bx-male'></i>
-                                  <!--                                  <div class="line"></div>-->
-                                  <div class ="inside_dashbox">
-                                      <div class="box-topic">Branch Instructors</div>
-                                      <div class= "instructornumber" id="instructornumber"></div>
-                                  </div>
-                              </div>
-
-                              <div class="box">
-                                  <i class='bx bx-dumbbell'></i>
-<!--                                  <div class="line"></div>-->
-                                  <div class ="inside_dashbox">
-                                      <div class="box-topic">Branch Equipments</div>
-                                      <div class= "equipnumber" id="equipnumber"></div>
-                                  </div>
-                              </div>
-
-
-                      </div>
-
-                     <div class="overview_dash_report">
-                             <div class="reports_manager_dashboard_container">
-                                 <div class="reports_manager_dashboard_container_header">
-                                     <span>Monthly Branch Revenue</span>
-                                 </div>
-                                 <div class="reports_manager_dashboard_container_chart1">
-                                     <canvas class="reports_manager_dashboard_container_canvas" id="revenue_manager"></canvas>
-                                 </div>
-                             </div>
-                     </div>
-
-
-              </div>
-
-            <div class="box2_rightside_dash">
-
-                <div class="dash_attendence">
-                    <div class="dash_attendence_title">
-                        <div class="att_name">Attendence</div>
-                        <div class="att_icon"><i class='bx bxs-calendar-check'></i></div>
-                    </div>
-
-                    <div class="dash_attendence_info">
-                        <div class="att_name">Members</div>
-                        <div class="mem_att_no" id="mem_att_no"></div>
-                    </div>
-
-                    <div class="dash_attendence_info">
-                        <div class="att_name">Instructors</div>
-                        <div class="ins_att_no" id="ins_att_no"></div>
-                    </div>
-                </div>
-
-
-                <div class="dash_appoinment">
-
-                      <div class="dash_appoinment_title">
-                          <div class="app_name">Today's Appoinments</div>
-                          <div class="app_icon"><i class='bx bxs-calendar'></i></div>
-                      </div>
-
-                      <div class="appoinment_count" id="appoinment_count"></div>
-
-                      <div class="dash_appoinment_info">
-                          <div class="app_name" id="app_name"></div>
-                          <div class="app_no" id="app_no"></div>
-                      </div>
-<!--                      <div class="dash_appoinment_info">-->
-<!--                          <div class="app_name">Shalanika</div>-->
-<!--                          <div class="app_no">10:00</div>-->
-<!--                      </div>-->
-                  </div>
             </div>
+
+            <div class="box">
+                <i class='bx bxs-user'></i>
+                <!--  <div class="line"></div>-->
+                <div class ="inside_dashbox">
+                    <div class="box-topic">New Branch Members</div>
+                    <div class= "new_member_number" id="new_member_number"></div>
+                </div>
+            </div>
+
+
+            <div class="box">
+                <i class='bx bxs-user'></i>
+                <!-- <div class="line"></div>-->
+                <div class ="inside_dashbox">
+                    <div class="box-topic"> Branch Members</div>
+                    <div class= "branchnumber" id="branchnumber"></div>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class='bx bx-male'></i>
+                <!--<div class="line"></div>-->
+                <div class ="inside_dashbox">
+                    <div class="box-topic">Branch Instructors</div>
+                    <div class= "instructornumber" id="instructornumber"></div>
+                </div>
+            </div>
+
+            <div class="box">
+                <i class='bx bx-dumbbell'></i>
+                <!--  <div class="line"></div>-->
+                <div class ="inside_dashbox">
+                    <div class="box-topic">Branch Equipments</div>
+                    <div class= "equipnumber" id="equipnumber"></div>
+                </div>
+            </div>
+
+            <div class="dash_attendence">
+                <div class="dash_attendence_title">
+                    <div class="att_name">Attendence</div>
+                    <div class="att_icon"><i class='bx bxs-calendar-check'></i></div>
+                </div>
+
+                <div class="dash_attendence_info">
+                    <div class="att_name">Members</div>
+                    <div class="mem_att_no" id="mem_att_no"></div>
+                </div>
+
+                <div class="dash_attendence_info">
+                    <div class="att_name">Instructors</div>
+                    <div class="ins_att_no" id="ins_att_no"></div>
+                </div>
+            </div>
+
         </div>
 
 
+        <div class="overview_boxes2_manager_dashboard">
+<!--            <div class="box2_rightside_dash">-->
+
+                <div class="overview_dash_report">
+                    <div class="reports_manager_dashboard_container">
+                        <div class="reports_manager_dashboard_container_header">
+                            <span>Monthly Branch Revenue</span>
+                        </div>
+                        <div class="reports_manager_dashboard_container_chart1">
+                            <canvas class="reports_manager_dashboard_container_canvas" id="revenue_manager"></canvas>
+                        </div>
+                    </div>
+                </div>
 
 
+<!--                <div class="dash_appoinment">-->
+
+<!--                    <div class="dash_appoinment_title">-->
+<!--                        <div class="app_name">Today's Appoinments</div>-->
+<!--                        <div class="app_icon"><i class='bx bxs-calendar'></i></div>-->
+<!--                    </div>-->
+<!--                    <div class="appoinment_count" id="appoinment_count"></div>-->
+<!--                    <div class="dash_appoinment_info">-->
+<!--                        <div class="app_name" id="app_name"></div>-->
+<!--                        <div class="app_no" id="app_no"></div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                      <div class="dash_appoinment_info">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                          <div class="app_name">Shalanika</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                          <div class="app_no">10:00</div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
     </div>
 
 
 
-<script src="leftbar.js"></script>
+
+    <script src="leftbar.js"></script>
 
 
 </body>

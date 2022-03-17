@@ -8,19 +8,19 @@
 }
 
 .home_content_dashboard .text_name{
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
     color: black;
     /*margin-left: 100px;*/
 }
 
-.instructor_dashboard_sachi {
+.instructor_dashboard_fit {
     display: flex;
     flex-direction: column;
     background-color: white;
   }
   
-  .instructor_dashboard_sachi .first_flex_sachi{
+  .instructor_dashboard_fit .first_flex_fit{
     display: flex;
     background-color: white;
     width: 100%;
@@ -33,37 +33,40 @@
  
 
   /* ---------------------to add a calendar----------------- */
-  .instructor_dashboard_sachi .second_flex_sachi{
-    display: flex;
-    background-color: lightgray;
-      border-radius: 10px;
-      margin: 0 auto;
-    width: 80%;
-    height: 500px;
-  }
+  /*.instructor_dashboard_fit .second_flex_fit{*/
+  /*    display: flex;*/
+  /*    flex-direction: column;*/
+  /*}*/
 
-  .calender{
-      margin: 20px;
-      font-size: 20px;
-  }
 
   /* ---------------two boxes------------------------- */
- .first_flex_sachi .physical_sachi, .virtual_sachi {
+.first_flex_fit .physical_fit, .virtual_fit ,.total_fit{
       margin: 10px;
       width: 280px;
-      background-color: #FBFAFA;
+      height: 130px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius:12px;
       box-shadow: 5px 10px 8px #888888;
-  } 
+  }
 
- .first_flex_sachi i{
+.physical_fit{
+    background-color: #9BDBFF;
+}
+.virtual_fit{
+    background-color: #F66B6B;
+}
+.total_fit{
+    background-color: #D7904F;
+}
+
+
+ .first_flex_fit i{
       font-size: 90px;
   }
 
- .first_flex_sachi .line{ 
+ .first_flex_fit .line{ 
     position: absolute;
     width: 250px;
     top: 160px;
@@ -71,16 +74,41 @@
     background-color:black;
   } 
    
- .first_flex_sachi .box-topic_sachi{
+ .first_flex_fit .box-topic_fit{
     text-align: right;
     font-size: 20px;
     font-weight: bold;
   }
 
-.first_flex_sachi .number_sachi{
+.first_flex_fit .phy_number_fit, .vir_number_fit, .tot_number_fit{
     text-align: right;
     font-size : 30px;
     font-weight :bold;
     margin-top: 5px;
   }
 
+
+/*calendar*/
+.instructor_dashboard_calender {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius:5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin:30px 0;
+    display: flex;
+    flex-direction: column;
+}
+.reports_physical_container_header {
+    color:#0E2C4B;
+    font-size:22px;
+    font-weight: bold;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.reports_physical_container_canvas {
+    font-size: 20px;
+}
+.reports_physical_container_chart1_calender, .reports_physical_container_canvas {
+    max-width:100%;
+    max-height:80vh;
+    padding: 2rem;
+}

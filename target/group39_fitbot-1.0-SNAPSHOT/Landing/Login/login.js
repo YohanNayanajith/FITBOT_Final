@@ -420,7 +420,16 @@ $(document).ready(function (){
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
                 }else if(result == "6") {
                     //admin
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Successfully login',
+                    //     text: 'Admin!',
+                    //     confirmButtonText:"Ok",
+                    //     confirmButtonColor: '#0E2C4B',
+                    // })
+                    // setTimeout(function() {
+                    //     window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/admin';
+                    // }, 2000);
                 }else if(result == "7"){
                     //maintainer
                     Swal.fire({

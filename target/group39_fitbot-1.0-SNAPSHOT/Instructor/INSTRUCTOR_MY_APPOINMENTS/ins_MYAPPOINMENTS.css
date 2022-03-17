@@ -5,17 +5,17 @@
     margin: 30px 72px 30px 72px;
 }
 
-.overview_boxes_appoinment_sachi {
+.overview_boxes_appoinment_fitbot {
       display: flex;
       width:100%;
       justify-content: space-between;
   }
 
-  .overview_boxes_appoinment_sachi .box i{
+  .overview_boxes_appoinment_fitbot .box i{
     font-size: 50px;
   }
 
-  /* .overview_boxes_appoinment_sachi .box .line{
+  /* .overview_boxes_appoinment_fitbot .box .line{
     position: absolute;
     width: 200px;
     top: 80px;
@@ -23,7 +23,7 @@
     background-color:black;
   } */
 
-.overview_boxes_appoinment_sachi .box{
+.overview_boxes_appoinment_fitbot .box{
       padding: 15px 14px;
       display: flex;
       justify-content: center;
@@ -34,12 +34,12 @@
       text-align: right;
   }
 
- .overview_boxes_appoinment_sachi .box-topic {
+ .overview_boxes_appoinment_fitbot .box-topic {
       font-size: 20px;
       font-weight: 500;
   }
 
-.overview_boxes_appoinment_sachi .number {
+.overview_boxes_appoinment_fitbot .number {
       font-size : 30px;
       font-weight :500;
       margin-top: 5px;
@@ -48,7 +48,7 @@
 
   /* ----------------table-------- */
 
- .appoinment_sachi {
+ .appoinment_fitbot {
       background-color: #d6d4d4;
       border-radius: 10px;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -62,13 +62,13 @@
       width: 100%;
   }
 
-.title_appoinment_sachi{
+.title_appoinment_fitbot{
       display: flex;
       justify-content: space-between;
       width: 95%;
       margin: 30px 0 0 30px;
   }
-.title_appoinment_sachi span {
+.title_appoinment_fitbot span {
       font-size: 30px;
       font-weight: bold;
 }

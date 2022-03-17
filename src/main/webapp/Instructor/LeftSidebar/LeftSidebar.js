@@ -122,6 +122,9 @@ $(document).ready(function(){
 
     if(statusTxt == "error")
       alert("Error: " + xhr.status + ": " + xhr.statusText);
+
+    dashboardcount();
+    getDashboardCalender();
   });
 });
 
@@ -154,6 +157,8 @@ $(document).ready(function(){
       
       if(statusTxt == "error")
           alert("Error: " + xhr.status + ": " + xhr.statusText);
+        profileins();
+        instructorProfileSkill();
       });
       load[1] += 1;
     }else{
@@ -291,23 +296,6 @@ $('#ins_leave').click(function(){
     }
   });
 
-  //Appointments
-  // $('#phy_mem_appointments').click(function(){
-  //   page_select(sideBar_links_variable);
-  //   sideBar_links_variable = "#physical_member_appoinments";
-    
-  //   if(load[8] == 0){
-  //     $(sideBar_links_variable).load('http://127.0.0.1:5500/Instructor/Appoinments/Appoinments.html #appointments_physical',function(responseTxt, statusTxt, xhr){
-  //     if(statusTxt == "error")
-  //         alert("Error: " + xhr.status + ": " + xhr.statusText);
-  //     });
-  //     load[8] += 1;
-  //   }else{
-  //     $('#physical_member_appoinments').show();
-  //   }
-  //   //other links
-  // });
-    
 });
 
 //close button - its called in rigtsidebar.html
@@ -419,4 +407,142 @@ function getCalender(){
   });
   calendar.render();
   // });
+}
+
+
+
+
+function dashboardcount(){
+  $.ajax({
+    method: 'POST',
+    url: "instructordashboard",
+    dataType: 'json',
+  }).done(function (result) {
+    console.log(result);
+    // console.log("mallika");
+    $('#text_name').html('');
+    $('#phy_number_fit').html('');
+    $('#vir_number_fit').html('');
+    $('#tot_number_fit').html('');
+
+    $('#text_name').append(
+        '<p>'+ 'Hello ' + (result[0].d_firstname + " " + result[0].d_lastname) + ' !' + '</p>'
+    );
+
+    $('#phy_number_fit').append(
+        '<p>' + result[0].phy_meme_count + '</p>'
+    );
+
+    $('#vir_number_fit').append(
+        '<p>' + result[0].vir_mem_count + '</p>'
+    );
+
+    $('#tot_number_fit').append(
+        '<p>' + (result[0].phy_meme_count + result[0].vir_mem_count) + '</p>'
+    );
+
+  }).fail(function (a, b, err) {
+    alert("Error");
+    console.log(a, b, err);
+  });
+
+}
+
+
+
+function profileins() {
+  $.ajax({
+    method: 'POST',
+    url: "instructorprofile",
+    dataType: 'json',
+  }).done(function (result) {
+    console.log("danika");
+    console.log(result);
+
+    $('#text_name').html('');
+    $('#phy_number_fit').html('');
+    $('#vir_number_fit').html('');
+    $('#tot_number_fit').html('');
+
+      $('#ins_name_profile').append(
+          '<p>'+ result[0].p_first_name + " " + result[0].p_last_name + '</p>'
+      );
+
+      $('#box2').append(
+          '<p>'+ result[0].p_country + '</p>' +
+          '<p>'+ result[0].p_language +'</p>' +
+          '<p>'+ 'Rs : ' + result[0].p_price +'</p>' +
+          '<p>'+ result[0].p_duration +'</p>'
+      );
+
+      $('#bio').append(
+          '<p>'+result[0].bio+'</p>'
+      );
+
+      $('#instructor_offers').append(
+          '<p>'+ 'What ' + result[0].p_first_name+ " " +result[0].p_last_name+ ' offers' + '</p>'
+      );
+
+  }).fail(function (a, b, err) {
+    alert("Error");
+    console.log(a, b, err);
+  });
+}
+
+
+
+function getDashboardCalender(){
+  // alert("Calender");
+  // document.addEventListener('DOMContentLoaded', function() {
+  let calendarEl = document.getElementById("calendar");
+  let calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: { center: 'dayGridMonth,timeGridWeek' }, // buttons for switching between views
+
+    views: {
+      dayGridMonth: { // name of view
+        titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+        // other view-specific options here
+      },
+      timeGridWeek: { // name of view
+        titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+        // other view-specific options here
+      }
+    }
+  });
+  calendar.batchRendering(function() {
+    calendar.changeView('dayGridMonth');
+    calendar.addEvent({ title: 'new event', start: '2021-12-08' });
+  });
+  calendar.render();
+  // });
+}
+
+
+
+
+
+
+
+
+function instructorProfileSkill(instructor_id){
+  console.log("sethni");
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorSkills",
+    data:{instructor_id:instructor_id},
+    // dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+//  console.log("sethaaaaaa");
+    $.map(result,function(x){
+      $('#instructors_profile_skils').append(
+          '<p>'+x.skills+'</p>'
+      );
+    });
+
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
 }

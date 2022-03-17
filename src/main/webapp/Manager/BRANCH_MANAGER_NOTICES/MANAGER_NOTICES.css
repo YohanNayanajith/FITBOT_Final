@@ -19,9 +19,12 @@
 .notice_title{
     display: inline-block;
     /*background-color: white;*/
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: bold;
 }
-
+.notice_title i{
+    font-size: 26px;
+}
 .notice_title a{
     text-decoration: none;
     cursor: pointer;
@@ -52,7 +55,7 @@
 }
 
 .title_notice_name span{
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 

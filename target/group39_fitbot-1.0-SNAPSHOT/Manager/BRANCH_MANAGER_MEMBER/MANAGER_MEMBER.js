@@ -20,6 +20,26 @@ function searchmember(){
 }
 
 
+function markattendence(member_id){
+    console.log("apeee boodima");
+    console.log(member_id);
+    $.ajax({
+        method:'POST',
+        url:"mark_attendence_checkbox",
+        dataType:'json',
+        data:{member_id:member_id,date:date,start_time:start_time,status:status},
+        success:function (result){
+            // event.preventDefault();
+            alert("Done");
+        },
+        fail:function (error){
+            alert(error);
+        }
+    })
+}
+
+
+
 
 function initiateMembeNextButtons(result,chunk) {
     //initiate the buttons

@@ -8,7 +8,8 @@
 .request_title{
     display: inline-block;
     /*background-color: white;*/
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 .request_title a{
@@ -17,7 +18,6 @@
 }
 
 /*------------------------table---------------------------*/
-
 .manager_request_maintainer {
     background-color:#d6d4d4;
     border-radius: 10px;
@@ -40,7 +40,7 @@
 }
 
 .title_request_name_maintainer span{
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 

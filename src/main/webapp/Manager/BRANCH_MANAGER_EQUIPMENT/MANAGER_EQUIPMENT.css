@@ -7,13 +7,14 @@
 }
 
 .add_new_equip{
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .add_new_equip i{
-    font-size: 22px;
+    font-size: 26px;
 }
 
   /* -------------------------------search bar--------------------------- */
@@ -69,7 +70,7 @@
 }
 
 .title_equip_name_view span{
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 

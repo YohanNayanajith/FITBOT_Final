@@ -1,14 +1,14 @@
 
 /* ----------------------------------------------------home ---------------------------------------- */
 
-.home_content_workout_sachi{
+.home_content_workout_fitworkout{
     display: flex;
     background-color: white;
     margin: 30px 72px 30px 72px;
     flex-direction: row;
 }
 
-.home_content_workout_sachi .workout1_sachi ,.workout2_sachi{
+.home_content_workout_fitworkout .workout1_fitworkout ,.workout2_fitworkout{
     display: flex;
     flex-wrap: wrap;
     background-color: white;
@@ -19,7 +19,7 @@
 }
 
 
-.workout1_sachi .create_new{
+.workout1_fitworkout .create_new{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -28,7 +28,7 @@
     /*box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);*/
 }
 
-.workout1_sachi .create_new .workout_header{
+.workout1_fitworkout .create_new .workout_header{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -40,7 +40,7 @@
 }
 
 
-.workout1_sachi .create_new .drag_space_sachi{
+.workout1_fitworkout .create_new .drag_space_fitworkout{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -51,7 +51,7 @@
     font-weight: bold;
 }
 
-.drag_space_sachi .drag_box_sachi{
+.drag_space_fitworkout .drag_box_fitworkout{
    width: 90%;
    background-color: grey;
    margin: 30px;
@@ -60,7 +60,7 @@
 }
 
 
-.workout1_sachi .history{
+.workout1_fitworkout .history{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -68,7 +68,7 @@
     flex: 50%;
 }
 
-.history .history_header_sachi{
+.history .history_header_fitworkout{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -80,29 +80,29 @@
 }
 
 
-.workout2_sachi{
+.workout2_fitworkout{
   background-color: #F2F2F2;
   margin: 30px;
 }
 
-.workout2_sachi .workout_right_sachi{
+.workout2_fitworkout .workout_right_fitworkout{
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
 }
 
 
-.workout2_sachi .workout_right2_sachi{
+.workout2_fitworkout .workout_right2_fitworkout{
   font-size: 22px;
   font-weight: bold;
   margin-left: auto;
 }
 
-.workout_right2_sachi a{
+.workout_right2_fitworkout a{
     text-decoration: none;
 }
 
-.workout2_sachi .workout_right2_sachi i{
+.workout2_fitworkout .workout_right2_fitworkout i{
   font-size: 25px;
 }
 
@@ -155,12 +155,12 @@
   }
 
 
-  .history_info .workout_info1_sachi{
+  .history_info .workout_info1_fitworkout{
       display: inline-block;
       padding-right: 30px;
   }
 
-  .history_title .acco_table_sachi td{
+  .history_title .acco_table_fitworkout td{
        text-align: right;
        padding-right: 90px;
   }
@@ -172,14 +172,14 @@
   }
 
 
-  .acco_table_sachi a{
+  .acco_table_fitworkout a{
     color: #7CD0FF;
   }
 
 
 /* ---------------------search box left------------------------------ */
 
-.search_box_workout_sachi{
+.search_box_workout_fitworkout{
     width: 330px;
     display: flex;
     justify-content: space-between;
@@ -187,14 +187,14 @@
 }
 
 
-.search_box_workout_sachi input{
+.search_box_workout_fitworkout input{
     padding: 6px;
     font-size: 14px;
     border-radius: 10px;
     width: 250px;
 }
 
-.search_box_workout_sachi button{
+.search_box_workout_fitworkout button{
     width: 80px;
     padding: 6px;
     color: white;
@@ -204,7 +204,7 @@
     cursor: pointer;
 }
 
- .search_box_workout_sachi button:hover{
+ .search_box_workout_fitworkout button:hover{
      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
      background-color: white;
      color: #0E2C4B;
@@ -214,7 +214,7 @@
 
 /* ---------------------------search box right---------------------------- */
 
-.search_box_workout_right_sachi{
+.search_box_workout_right_fitworkout{
     border-radius: 10px;
     margin:auto;
     width: 90%;
@@ -222,14 +222,14 @@
     display: inline-block;
 }
 
-.search_box_workout_right_sachi input{
+.search_box_workout_right_fitworkout input{
     padding: 6px;
     font-size: 14px;
     border-radius: 10px;
     width: 250px;
 }
 
-.search_box_workout_right_sachi button{
+.search_box_workout_right_fitworkout button{
     width: 100px;
     float: right;
     padding: 6px;
@@ -242,7 +242,7 @@
 
 }
 
-.search_box_workout_right_sachi button:hover{
+.search_box_workout_right_fitworkout button:hover{
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     background-color: white;
     color: #0E2C4B;

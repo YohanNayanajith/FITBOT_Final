@@ -4,18 +4,18 @@
     margin: 30px 72px 30px 72px;
   }
 
-.home_section_instructor_students .home-content .overview_boxes_sachi {
+.home_section_instructor_students .home-content .overview_boxes_fitstudent {
       display: flex;
       width:100%;
       justify-content: space-between;
       /*margin-top: 30px;*/
   }
 
-.overview_boxes_sachi .box i{
+.overview_boxes_fitstudent .box i{
     font-size: 50px;
   }
 
-  /*.overview_boxes_sachi .box .line{*/
+  /*.overview_boxes_fitstudent .box .line{*/
   /*  position: absolute;*/
   /*  width: 200px;*/
   /*  top: 80px;*/
@@ -23,7 +23,7 @@
   /*  background-color:black;*/
   /*}*/
 
-  .home_section_instructor_students .home-content .overview_boxes_sachi .box{
+  .home_section_instructor_students .home-content .overview_boxes_fitstudent .box{
       padding: 15px 14px;
       display: flex;
       justify-content: center;
@@ -33,19 +33,19 @@
       background-color: #FBFAFA;
       text-align: right;
   }
-  .home_section_instructor_students .home-content .overview_boxes_sachi .box-topic {
+  .home_section_instructor_students .home-content .overview_boxes_fitstudent .box-topic {
       font-size: 20px;
       font-weight: 500;
   }
 
-  .home_section_instructor_students .home-content .overview_boxes_sachi .number {
+  .home_section_instructor_students .home-content .overview_boxes_fitstudent .number {
       font-size : 30px;
       font-weight :500;
       margin-top: 5px;
       display:inline-block;
   }
 
-  .home_section_instructor_students .home-content .overview_boxes_sachi .box .member{
+  .home_section_instructor_students .home-content .overview_boxes_fitstudent .box .member{
       font-size:50px;
       font-weight:bold;
       height:50px;
@@ -57,7 +57,7 @@
 
 /* --------------------------------table---------------------------------- */
 
-.student_sachi {
+.student_fitstudent {
     background-color: #d6d4d4;
     border-radius: 10px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -70,14 +70,14 @@
     width: 100%;
 }
 
-.title_student_sachi {
+.title_student_fitstudent {
     display: flex;
     justify-content: space-between;
     width: 95%;
     margin: 30px 0 0 30px;
 }
 
-.title_student_sachi span {
+.title_student_fitstudent span {
     font-size: 30px;
     font-weight: bold;
 }
@@ -108,21 +108,21 @@
 
 /* ---------------------------search box--------------------------------------- */
 
-  .search_box_student_sachi{
+  .search_box_student_fitstudent{
       width: 330px;
       display: flex;
       justify-content: space-between;
       flex-direction: row;
   }
 
-  .search_box_student_sachi input{
+  .search_box_student_fitstudent input{
       padding: 6px;
       font-size: 14px;
       border-radius: 10px;
       width: 250px;
   }
 
-  .search_box_student_sachi button{
+  .search_box_student_fitstudent button{
       width: 80px;
       padding: 6px;
       color: white;
@@ -132,7 +132,7 @@
       cursor: pointer;
   }
 
-  .search_box_student_sachi button:hover{
+  .search_box_student_fitstudent button:hover{
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
       background-color: white;
       color: #0E2C4B;

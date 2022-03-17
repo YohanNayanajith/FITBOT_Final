@@ -124,7 +124,7 @@ $(document).ready(function(){
     branchidsession();
     dashboardattendence();
     managerdashboard();
-    dashboardappoinment();
+    // dashboardappoinment();
     manager_branch_revenue();
   });
 });
@@ -200,29 +200,29 @@ function dashboardattendence(){
   });
 }
 
-function dashboardappoinment(){
-  const date = new Date();
-  let today = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
-  console.log(today);
-
-  $.ajax({
-    method: 'POST',
-    url: "mandashboardappoinment",
-    dataType: 'json',
-    data:{today:today},
-  }).done(function (result) {
-    console.log(result);
-
-    $.map(result, function (x) {
-      $('#app_name').append('<div class="app_name" id="app_name">' + x.mem_firstname +'</div>');
-      $('#app_no').append('<div class="app_no" id="app_no">' + x.appoin_starttime + '</div>');
-    });
-
-  }).fail(function (a, b, err) {
-    alert("Error");
-    console.log(a, b, err);
-  });
-}
+// function dashboardappoinment(){
+//   const date = new Date();
+//   let today = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+//   console.log(today);
+//
+//   $.ajax({
+//     method: 'POST',
+//     url: "mandashboardappoinment",
+//     dataType: 'json',
+//     data:{today:today},
+//   }).done(function (result) {
+//     console.log(result);
+//
+//     $.map(result, function (x) {
+//       $('#app_name').append('<div class="app_name" id="app_name">' + x.mem_firstname +'</div>');
+//       $('#app_no').append('<div class="app_no" id="app_no">' + x.appoin_starttime + '</div>');
+//     });
+//
+//   }).fail(function (a, b, err) {
+//     alert("Error");
+//     console.log(a, b, err);
+//   });
+// }
 
 
 function managerdashboard(){
@@ -234,7 +234,8 @@ function managerdashboard(){
     console.log(result);
 
     $('#dashboard').append(
-        '<p>'+ 'Hello' + " " + (result[0].manager_firstname + " " + result[0].manager_lastname) + ' !'+ '</p>'
+        `<div class="dashboard" id="dashboard">` + 'Hello' + " " + (result[0].manager_firstname + " " + result[0].manager_lastname) + ' !'+ `</div>`
+        // '<p>'+ 'Hello' + " " + (result[0].manager_firstname + " " + result[0].manager_lastname) + ' !'+ '</p>'
     );
 
     $('#branchnumber').append(
@@ -285,6 +286,7 @@ $('#man_member').click(function(){
 
       member_view();
       managerpayment_view();
+      managermember_attendence();
 
     });
     load[1] += 1;
@@ -586,8 +588,6 @@ function managerins_view_count(){
         '<p>'+ (result[0].total_instructor_count - result[0].instructor_present_count) + '</p>'
     );
 
-
-
   }).fail(function (a, b, err) {
     alert("Error");
     console.log(a, b, err);
@@ -609,13 +609,12 @@ function member_view(){
     initiateMembeNextButtons(result,chunk)
     $.map(result.slice(0,chunk), function (x) {
       $('#ins_manager_mem_details_table_tbody').append(
-          '<tr class="manager_member_row">' +
-          '<td>' + (x.firstname + " " + x.lastname) + '</td>' +
-          '<td>' + ((x.membertype).replace("_", " ")) + '</td>' +
-          '<td>' + x.intructorname + '</td>' +
-          '<td>' + '<input type="checkbox" class="atte"/>' +
-          '</td>' +
-          '</tr>'
+          `<tr class="manager_member_row"> 
+          <td> ${x.firstname + " " + x.lastname} </td>
+          <td> ${x.membertype.replace("_", " ")} </td>
+          <td> ${x.intructorname} </td>
+          <td> <input type="checkbox" class="atte" onclick="manager_member_attendence(${x.member_id})" value="Select" /> </td> 
+          </tr>`
       );
     });
 
@@ -655,6 +654,30 @@ function managerpayment_view(){
   });
 }
 
+console.log(member_id);
+function manager_member_attendence(member_id){
+  console.log(member_id);
+  const date = new Date();
+  let currentDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+  console.log(currentDate);
+
+  var today = new Date();
+  var currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  console.log(currentTime);
+
+  $.ajax({
+    method: 'POST',
+    url: "mark_attendence_checkbox",
+    data:{currentDate:currentDate,currentTime:currentTime},
+    dataType: 'json',
+  }).done(function (result) {
+    // console.log(result);
+    console.log("pansiluu");
+  }).fail(function (a, b, err) {
+    alert("Error");
+    console.log(a, b, err);
+  });
+}
 
 function inquiry_view() {
   $.ajax({
@@ -676,7 +699,7 @@ function inquiry_view() {
               <td> ${x.inquiry_time} </td>
               <td> ${x.status} </td>
 <!--               '<td>'+ x.inquiry_title + '</td>'+-->
-              <td><div id="inquiry_title_btn_a" onclick="add_inquiry_popup(${x.inquiry_id})"><i class=\'bx bxs-lock-open-alt\'></i></div></td>
+              <td><div id="inquiry_title_btn_a" onclick="add_inquiry_popup(${x.inquiry_id})"><i class=\'bx bxs-show bx-tada bx-flip-horizontal view_popup\'></i></div></td>
               </tr>`
       );
     });

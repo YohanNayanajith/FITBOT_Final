@@ -6,14 +6,14 @@
 
 /* ----------------------------------------------------home ---------------------------------------- */
 
-.home_content_diet_sachi{
+.home_content_diet_fit{
     display: flex;
     background-color: white;
     margin: 30px 72px 30px 72px;
     flex-direction: row;
 }
 
-.home_content_diet_sachi .diet1_sachi ,.diet2_sachi{
+.home_content_diet_fit .diet1_fit ,.diet2_fit{
     display: flex;
     flex-wrap: wrap;
     background-color: white;
@@ -24,7 +24,7 @@
 }
 
 
-.diet1_sachi .create_new{
+.diet1_fit .create_new{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -32,7 +32,7 @@
     flex: 50%;
 }
 
-.diet1_sachi .create_new .diet_header{
+.diet1_fit .create_new .diet_header{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -44,7 +44,7 @@
 }
 
 
-.diet1_sachi .create_new .drag_space_sachi{
+.diet1_fit .create_new .drag_space_fit{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -55,7 +55,7 @@
     font-weight: bold;
 }
 
-.drag_space_sachi .drag_box_sachi{
+.drag_space_fit .drag_box_fit{
    width: 90%;
    /*margin: 0 auto;*/
    background-color: grey;
@@ -65,7 +65,7 @@
 }
 
 
-.diet1_sachi .history{
+.diet1_fit .history{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -73,7 +73,7 @@
     flex: 50%;
 }
 
-.history .history_header_sachi{
+.history .history_header_fit{
     display: flex;
     flex-wrap: wrap;
     background-color: #F2F2F2;
@@ -85,29 +85,29 @@
 }
 
 
-.diet2_sachi{
+.diet2_fit{
   background-color: #F2F2F2;
   margin: 30px;
 }
 
-.diet2_sachi .diet_right_sachi{
+.diet2_fit .diet_right_fit{
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
 }
 
 
-.diet2_sachi .diet_right2_sachi{
+.diet2_fit .diet_right2_fit{
   font-size: 22px;
   font-weight: bold;
   margin-left: auto;
 }
 
-.diet_right2_sachi a{
+.diet_right2_fit a{
     text-decoration: none;
 }
 
-.diet2_sachi .diet_right2_sachi i{
+.diet2_fit .diet_right2_fit i{
   font-size: 25px;
 }
 
@@ -160,14 +160,14 @@
   }
 
 
-  .history_info .diet_info1_sachi{
+  .history_info .diet_info1_fit{
       display: inline-block;
       padding-right: 30px;
   }
 
 
 
-  .history_title .acco_table_sachi td{
+  .history_title .acco_table_fit td{
       column-gap: 30px;
        text-align: right;
        padding-right: 90px;
@@ -179,14 +179,14 @@
     position: relative;
   }
 
-  .acco_table_sachi a{
+  .acco_table_fit a{
     color: #7CD0FF;
   }
 
 
 /* ---------------------search box left------------------------------ */
 
-.search_box_sachi{
+.search_box_fit{
     width: 330px;
     display: flex;
     justify-content: space-between;
@@ -194,14 +194,14 @@
 }
 
 
-.search_box_sachi input{
+.search_box_fit input{
     padding: 6px;
     font-size: 14px;
     border-radius: 10px;
     width: 250px;
 }
 
-.search_box_sachi button{
+.search_box_fit button{
     width: 80px;
     padding: 6px;
     color: white;
@@ -211,7 +211,7 @@
     cursor: pointer;
 }
 
- .search_box_sachi button:hover{
+ .search_box_fit button:hover{
      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
      background-color: white;
      color: #0E2C4B;
@@ -221,7 +221,7 @@
 
 /* ---------------------------search box right---------------------------- */
 
-.search_box_diet_right_sachi{
+.search_box_diet_right_fit{
   border-radius: 10px;
   margin:auto;
   width: 90%;
@@ -229,14 +229,14 @@
 }
 
 
-.search_box_diet_right_sachi input{
+.search_box_diet_right_fit input{
     padding: 6px;
     font-size: 14px;
     border-radius: 10px;
     width: 250px;
 }
 
-.search_box_diet_right_sachi button{
+.search_box_diet_right_fit button{
 width: 100px;
 float: right;
 padding: 6px;
@@ -249,7 +249,7 @@ cursor: pointer;
 
 }
 
-.search_box_diet_right_sachi button:hover{
+.search_box_diet_right_fit button:hover{
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   background-color: white;
   color: #0E2C4B;

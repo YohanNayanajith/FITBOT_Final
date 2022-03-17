@@ -15,188 +15,185 @@
 </head>
 <body>
 
-    <!-- --------------------------------left bar------------------------------- -->
-    <!-- <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bxl-c-plus-plus icon'></i>
-            <div class="logo_name">FitBot</div>
-            <i class='bx bx-menu' id="btn" ></i>
-        </div>
-        <ul class="nav-list"> -->
-            <!-- <li>
-                <i class='bx bx-search' ></i>
-              <input type="text" placeholder="Search...">
-              <span class="tooltip">Search</span>
-            </li> -->
-<!-- 
-            <li>
-              <a href="#">
-                <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Dashboard</span>
-              </a>
-              <span class="tooltip">Dashboard</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bx-user' ></i>
-              <span class="links_name">My profile</span>
-            </a>
-            <span class="tooltip">My profile</span>
-            </li>
-
-            <li>
-            <a href="#">
-                <i class='bx bx-male'></i>
-              <span class="links_name">My students</span>
-            </a>
-            <span class="tooltip">My students</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bx-chat' ></i>
-              <span class="links_name">Chat</span>
-            </a>
-            <span class="tooltip">Chat</span>
-            </li>
-
-            <li>
-            <a href="#">
-                <i class='bx bx-notepad'></i>
-              <span class="links_name">My appoinments</span>
-            </a>
-            <span class="tooltip">My appoinments</span>
-            </li>
-
-            <li>
-            <a href="#">
-                <i class='bx bx-receipt'></i>
-                <span class="links_name">Workout Plan</span>
-            </a>
-            <span class="tooltip">Workout Plan</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bx-credit-card'></i>
-              <span class="links_name">Diet plan</span>
-            </a>
-            <span class="tooltip">Diet plan</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bx-pie-chart-alt-2' ></i>
-              <span class="links_name">Reports</span>
-            </a>
-            <span class="tooltip">Reports</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bx-cog' ></i>
-              <span class="links_name">Setting</span>
-            </a>
-            <span class="tooltip">Setting</span>
-            </li>
-
-            <li>
-            <a href="#">
-              <i class='bx bxs-book-alt'></i>
-              <span class="links_name">Conditions</span>
-            </a>
-            <span class="tooltip">Conditions</span>
-            </li>
-
-        </ul> 
-    </div> -->
-
-     <!-- <li class="profile">
-            <div class="profile-details">
-              <img src="#" alt="profileImg">
-              <div class="name_job">
-                <div class="name">Yohan Nayanajith</div>
-                <div class="job">Physical Member</div>
-              </div>
-            </div>
-            <i class='bx bx-log-out' id="log_out" ></i>
-        </li> -->
-
-          
-
-    
   <section class="home-section">
-
-      
-        
     <!-- -----------------------home ----------------------------------------------- -->
-    <div class="home_content_profile" id="home_content_profile">
+      <div class="home_content_profile" id="home_content_profile">
+          <div class="profile_instructor_btn">
+              <a value="Edit Profile" id="profile_instructor_btn_a" onclick="edit_profile_instructor_popup()">Edit Profile</a>
+          </div>
+<!--          <a href="#"><div class="edit_profile">Edit Profile</div></a>-->
+          <div class="text">My profile</div>
+          <div class="flex-container_fitinsprofile">
 
+              <div class="first_fitinsprofile">
+                  <div class="leftcontainer_fitinsprofile">
+                      <div class="image_instructor"><img src="Instructor/Images/instructor1.jpg" class="ins_image"></div>
+                      <div class="line"></div>
+                  </div>
 
-        <a href="#"><div class="edit_profile">Edit Profile</div></a>
+                  <div class="rightcontainer_fitinsprofile">
+                      <div class="ins_name_profile" id="ins_name_profile"></div>
+                      <div class="details_instructor">
+                          <div class="box1">
+                              <p>Country</p>
+                              <p>Languages</p>
+                              <p>Payment</p>
+                              <p>Duration</p>
+                          </div>
+                          <div class="box2" id="box2">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-        <div class="text">My profile</div>
+              <div class="second_fitinsprofile">
+                  <div class="word_bio"><p>Bio</p></div>
 
-          <div class="flex-container_sachi">
+                  <div class="bio" id="bio">
+                      <p></p>
+                  </div>
+              </div>
 
-            <div class="first_sachi">
-                <div class="leftcontainer_sachi">
-                    <div class="image_instructor"><img src="Instructor/Images/instructor1.jpg" class="ins_image"></div>
-                    <div class="line"></div>
-                </div>
-
-                <div class="rightcontainer_sachi">
-                    <div class="kalindu">Kalindu Rathnayaka de Silva</div>
-                    <div class="details_instructor">
-                        <div class="box1">
-                            <p>Country</p>
-                            <p>Languages</p>
-                            <p>Payment</p>
-                            <p>Duration</p>
-                        </div>
-                        <div class="box2">
-                            <p>Sri Lanka</p>
-                            <p>Sinhala, English</p>
-                            <p>Rs. 5000 per year</p>
-                            <p> From 2021/08/20 to 2022/08/20</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-          <div class="second_sachi">
-              <div class="word_bio"><p>Bio</p></div>
-                  
-              <div class="bio">
-                  <p>I have been a competitive athlete for over 10 years where I have represented Sri Lanka in water polo and swimming. I’m a Sport Scientist by profession with many years of experience in training the State Junior (20 & under) Soccer teams, as a rehabilitation specialist and a high performance coach. I hold a Bachelor of Science degree in Exercise and Health (Sport Science) from the University of Western Australia.</p>
+              <div class="third_fitinsprofile">
+                  <div class="instructor_offers" id="instructor_offers">
+                      <p></p>
+                  </div>
+              <div class="instructors_profile_skils" id="instructors_profile_skils">
+<!--                  <div class="offer1">Strength & Conditioning</div>-->
+<!--                  <div class="offer2">Daily Burn</div>-->
+<!--                  <div class="offer3">Toining</div>-->
+<!--                  <div class="offer4">Workout</div>-->
+<!--                  <div class="offer5">Weight Gaining</div>-->
+<!--                  <div class="offer6">Life Style Modification</div>-->
+<!--                  <div class="offer7">Diet</div>-->
+              </div>
               </div>
           </div>
 
-          <div class="third_sachi">
-              <div class="instructor_offers">
-                  <p>What Kalindu Rathnayaka de Silva offers</p>
+
+
+
+          <!-- pop-up model -->
+          <div class="profile_physical_container_edit_profile" id="profile_physical_container_edit_profile">
+              <div class="edit_profile_container" id="edit_profile_container">
+                  <div class="edit_profile_container_header">
+                      <h1>Edit Profile</h1>
+                      <div onclick="close_edit_profile_Popup()" class="close_edit_profile_btn">
+                          <i class='bx bx-x close_btn_forgot'></i>
+                      </div>
+                  </div>
+                  <div class="edit_profile_container_detail" id="edit_profile_container_detail">
+                      <form action="physicalMember" method="post">
+                          <div class="edit_profile_container_detail_input1">
+                              <div>
+                                  <label for="edit_profile_container_detail_name">First Name</label><br>
+                                  <input type="text" name="edit_profile_container_detail_name" class="edit_profile_container_detail_name" id="edit_profile_container_detail_name">
+                              </div>
+
+                              <div>
+                                  <label for="edit_profile_container_detail_last_name">Last Name</label><br>
+                                  <input type="text" name="edit_profile_container_detail_last_name" class="edit_profile_container_detail_last_name" id="edit_profile_container_detail_last_name">
+                              </div>
+                          </div>
+
+
+                          <div class="edit_profile_container_detail_input2">
+                              <div>
+                                  <label for="edit_profile_container_detail_last_conatct">Contact Number</label><br>
+                                  <input type="tel" name="edit_profile_container_detail_last_conatct" class="edit_profile_container_detail_last_conatct" id="edit_profile_container_detail_last_conatct">
+                                  <h5 id="edit_profile_error_contact_number"></h5>
+                              </div>
+                              <div>
+                                  <label for="edit_profile_container_detail_last_profile_image">Profile Image</label><br>
+                                  <input type="file" name="edit_profile_container_detail_last_profile_image" class="edit_profile_container_detail_last_profile_image" id="edit_profile_container_detail_last_profile_image">
+                                  <h5 id="edit_profile_error_profile_image"></h5>
+                              </div>
+                              <!--                            <div>-->
+                              <!--                                <label for="edit_profile_container_detail_weight">Weight</label><br>-->
+                              <!--                                <input type="number" name="edit_profile_container_detail_weight" class="edit_profile_container_detail_weight" id="edit_profile_container_detail_weight">-->
+                              <!--                                <h5 id="edit_profile_error_weight"></h5>-->
+                              <!--                            </div>-->
+
+                              <!--                            <div>-->
+                              <!--                                <label for="edit_profile_container_detail_last_height">Height</label><br>-->
+                              <!--                                <input type="number" name="edit_profile_container_detail_last_height" class="edit_profile_container_detail_last_height" id="edit_profile_container_detail_last_height">-->
+                              <!--                                <h5 id="edit_profile_error_height"></h5>-->
+                              <!--                            </div>-->
+                          </div>
+
+                          <div class="edit_profile_container_detail_input3">
+                              <div>
+                                  <label for="edit_profile_container_detail_bio">Bio</label><br>
+                                  <input type="text" name="edit_profile_container_detail_bio" class="edit_profile_container_detail_bio" id="edit_profile_container_detail_bio">
+                              </div>
+                          </div>
+
+                          <div class="edit_profile_container_detail_input4">
+                              <h5>Noted: Every field is not compulsory to fill</h5>
+                              <!--                            <div>-->
+                              <!--                                <label for="edit_profile_container_detail_dob">Date of Birth</label><br>-->
+                              <!--                                <input type="date" name="edit_profile_container_detail_dob" class="edit_profile_container_detail_dob" id="edit_profile_container_detail_dob">-->
+                              <!--                                <h5 id="edit_profile_error_dob"></h5>-->
+                              <!--                            </div>-->
+
+                              <!--                            <div>-->
+                              <!--                                <label for="edit_profile_container_detail_last_conatct">Contact Number</label><br>-->
+                              <!--                                <input type="tel" name="edit_profile_container_detail_last_conatct" class="edit_profile_container_detail_last_conatct" id="edit_profile_container_detail_last_conatct">-->
+                              <!--                                <h5 id="edit_profile_error_contact_number"></h5>-->
+                              <!--                            </div>-->
+                          </div>
+
+                          <div class="edit_profile_container_detail_input5">
+                              <a class="edit_profile_container_detail_input5_btn1" onclick="edit_profile_change_password()">Change Password</a>
+                              <a class="edit_profile_container_detail_input4_btn2" onclick="edit_profile_submit()">Save Changes</a>
+                          </div>
+
+                      </form>
+                  </div>
               </div>
 
-              <div class="offer1">Strength & Conditioning</div>
-              <div class="offer2">Daily Burn</div>
-              <div class="offer3">Toining</div>
-              <div class="offer4">Workout</div>
-              <div class="offer5">Weight Gaining</div>
-              <div class="offer6">Life Style Modification</div>
-              <div class="offer7">Diet</div>
-          </div>  
-        </div>
+          </div>
 
-    </div>
-  
+          <div class="profile_physical_container_edit_profile">
+              <div class="edit_profile_container" id="edit_profile_change_password_container">
+                  <div class="edit_profile_container_header">
+                      <h1>Change Password</h1>
+                      <div onclick="close_edit_profile_change_password_Popup()" class="close_edit_profile_btn">
+                          <i class='bx bx-x close_btn_forgot'></i>
+                      </div>
+                  </div>
+                  <div class="edit_profile_container_detail">
+                      <form action="physicalMember" method="post">
+                          <div class="edit_profile_container_detail_input1">
+                              <div>
+                                  <label for="edit_profile_container_detail_name">New Password</label><br>
+                                  <input type="password" name="edit_profile_container_detail_name" class="edit_profile_container_detail_name" id="edit_profile_container_change_new_password">
+                              </div>
+
+                              <div>
+                                  <label for="edit_profile_container_detail_last_name">Confirm Password</label><br>
+                                  <input type="password" name="edit_profile_container_detail_last_name" class="edit_profile_container_detail_last_name" id="edit_profile_container_change_confirm_password">
+                              </div>
+                          </div>
+
+                          <div class="edit_profile_container_detail_input4">
+                              <a class="edit_profile_container_detail_input4_btn1" onclick="edit_profile_change_password_back()">Back</a>
+                              <a class="edit_profile_container_detail_input4_btn2" onclick="edit_profile_change_password_submit()">Save Changes</a>
+                          </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
 
 
+      </div>
 
   </section>
-
     <script src="leftbar.js"></script>
-
-   
 </body>
 </html>

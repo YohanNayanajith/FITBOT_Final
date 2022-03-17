@@ -10,7 +10,6 @@ import java.sql.Time;
 
 public class ManagerAddRequestDAO {
 
-
     public static boolean addNewRequest(ManagerAddRequest manrequest) throws SQLException,ClassNotFoundException{
         Connection connection = DBConnection.getInstance().getConnection();
         String query = "INSERT INTO form (equipment_id,equipment_type,status,description,re_date,re_time,branchmanager_id,branch_id) VALUES (?,?,?,?,?,?,?,?)";

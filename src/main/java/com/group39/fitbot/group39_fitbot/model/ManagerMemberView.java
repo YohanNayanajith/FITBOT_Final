@@ -1,16 +1,26 @@
 package com.group39.fitbot.group39_fitbot.model;
 
 public class ManagerMemberView {
+    private String member_id;
     private String firstname;
     private String lastname;
     private String membertype;
     private String intructorname;
 
-    public ManagerMemberView(String firstname, String lastname, String membertype, String intructorname) {
+    public ManagerMemberView(String member_id, String firstname, String lastname, String membertype, String intructorname) {
+        this.member_id = member_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.membertype = membertype;
         this.intructorname = intructorname;
+    }
+
+    public String getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(String member_id) {
+        this.member_id = member_id;
     }
 
     public String getFirstname() {
@@ -48,7 +58,8 @@ public class ManagerMemberView {
     @Override
     public String toString() {
         return "ManagerMemberView{" +
-                "firstname='" + firstname + '\'' +
+                "member_id='" + member_id + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", membertype='" + membertype + '\'' +
                 ", intructorname='" + intructorname + '\'' +

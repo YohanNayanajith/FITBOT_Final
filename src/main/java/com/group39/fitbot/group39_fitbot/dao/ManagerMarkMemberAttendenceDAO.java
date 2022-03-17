@@ -11,22 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerMarkMemberAttendenceDAO {
-    public static List<ManagerMarkMemberAttendence> getManagerMarkMemberAttendence(String brnachID) throws SQLException,ClassNotFoundException{
-        List<ManagerMarkMemberAttendence> all_mark_attendence = new ArrayList<>();
+    private static String memberId;
+
+    public static boolean markAttendence(ManagerMarkMemberAttendence mark_mem_attendence) throws SQLException,ClassNotFoundException{
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE member_attendance SET `status`=1 WHERE attendance_id='1'";
-
+        String query = "INSERT INTO member_attendance (member_id,date,start_time,status) VALUES (?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
-        ResultSet resultSet = pst.executeQuery();
+        System.out.println("is attendence part worked?");
 
-        while (resultSet.next()){
-            if (resultSet != null){
-                all_mark_attendence.add(new ManagerMarkMemberAttendence(
-                        resultSet.getBoolean(1)
-                ));
-            }
-    }
-        System.out.println(all_mark_attendence);
-        return all_mark_attendence;
+        int status = 1;
+        pst.setString(1,memberId);
+        pst.setDate(2,mark_mem_attendence.getDate());
+        pst.setTime(3,mark_mem_attendence.getStart_time());
+        pst.setInt(4,status);
+
+        return pst.executeUpdate() > 0;
 }
 }
