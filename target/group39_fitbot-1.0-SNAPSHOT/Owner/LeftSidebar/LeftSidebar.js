@@ -148,7 +148,9 @@ $(document).ready(function(){
   $('#owner_dashboard_implementation').load('http://localhost:8080/group39_fitbot_war_exploded/Owner/Dashboard/dashboard.html #dashboard_owner',function(responseTxt, statusTxt, xhr){
   if(statusTxt == "error")
       alert("Error: " + xhr.status + ": " + xhr.statusText);
+    dashboardcount();
     ownerincomechart();
+    memberRegisteringCharts();
   });
 
 });
@@ -171,103 +173,106 @@ $(document).ready(function(){
   });
 
   // //payments
-  $('#owner_employees').click(function(){
-    page_select(sideBar_links_variable);
-    sideBar_links_variable = "#own_employees";
-    
-    if(load[6] == 0){
-      $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Employees/employees.html #employeeview_owner',function(responseTxt, statusTxt, xhr){
-      if(statusTxt == "error")
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
-      });
-
-      load[6] += 1;
-    }else{
-      $('#own_employees').show();
-    }
-  });
-
-  $('#owner_members').click(function(){
-    page_select(sideBar_links_variable);
-    sideBar_links_variable = "#own_members";
-    
-    if(load[7] == 0){
-      $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Members/members.html #memberview_owner',function(responseTxt, statusTxt, xhr){
-      
-      if(statusTxt == "error")
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
-      });
-      load[7] += 1;
-    }else{
-      $('#own_members').show();
-    }
-  });
-
-
-  $('#owner_branches').click(function(){
-    page_select(sideBar_links_variable);
-    sideBar_links_variable = "#own_branches";
-    
-    if(load[5] == 0){
-      $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Branches/branches.html #home-content-branch',function(responseTxt, statusTxt, xhr){
-      
-      if(statusTxt == "error")
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
-      });
-      load[5] += 1;
-    }else{
-      $('#own_branches').show();
-    }
-  });
-
-  
-  // $('#owner_add_employees').click(function(){
-  //   alert("Sachinka");
-  //   // console.log("Faalil");
-  //   page_select(sideBar_links_variable);
-  //   sideBar_links_variable = "#own_add_employees";
-    
-  //   if(load[4] == 0){
-  //     $(sideBar_links_variable).load('http://127.0.0.1:5500/owner/AddEmployees/employee_add.html #add_employee_view',function(responseTxt, statusTxt, xhr){
-      
-  //     if(statusTxt == "error")
-  //         alert("Error: " + xhr.status + ": " + xhr.statusText);
-  //     });
-  //     load[4] += 1;
-  //   }else{
-  //     $('#own_add_employees').show();
-  //   }
-  // });
-
-//   $('#employeeview_owner').on("click", 'owner_add_employees', function() {
-//     alert("You have just clicked on ");
+//   $('#owner_employees').click(function(){
+//     page_select(sideBar_links_variable);
+//     sideBar_links_variable = "#own_employees";
+//
+//     if(load[6] == 0){
+//       $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Employees/employees.html #employeeview_owner',function(responseTxt, statusTxt, xhr){
+//       if(statusTxt == "error")
+//           alert("Error: " + xhr.status + ": " + xhr.statusText);
+//       });
+//
+//       load[6] += 1;
+//     }else{
+//       $('#own_employees').show();
+//     }
+//   });
+//
+//   $('#owner_members').click(function(){
+//     page_select(sideBar_links_variable);
+//     sideBar_links_variable = "#own_members";
+//
+//     if(load[7] == 0){
+//       $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Members/members.html #memberview_owner',function(responseTxt, statusTxt, xhr){
+//
+//       if(statusTxt == "error")
+//           alert("Error: " + xhr.status + ": " + xhr.statusText);
+//       });
+//       load[7] += 1;
+//     }else{
+//       $('#own_members').show();
+//     }
+//   });
+//
+//
+//   $('#owner_branches').click(function(){
+//     page_select(sideBar_links_variable);
+//     sideBar_links_variable = "#own_branches";
+//
+//     if(load[5] == 0){
+//       $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Branches/branches.html #home-content-branch',function(responseTxt, statusTxt, xhr){
+//
+//       if(statusTxt == "error")
+//           alert("Error: " + xhr.status + ": " + xhr.statusText);
+//       });
+//       load[5] += 1;
+//     }else{
+//       $('#own_branches').show();
+//     }
+//   });
+//
+//
+//   // $('#owner_add_employees').click(function(){
+//   //   alert("Sachinka");
+//   //   // console.log("Faalil");
+//   //   page_select(sideBar_links_variable);
+//   //   sideBar_links_variable = "#own_add_employees";
+//
+//   //   if(load[4] == 0){
+//   //     $(sideBar_links_variable).load('http://127.0.0.1:5500/owner/AddEmployees/employee_add.html #add_employee_view',function(responseTxt, statusTxt, xhr){
+//
+//   //     if(statusTxt == "error")
+//   //         alert("Error: " + xhr.status + ": " + xhr.statusText);
+//   //     });
+//   //     load[4] += 1;
+//   //   }else{
+//   //     $('#own_add_employees').show();
+//   //   }
+//   // });
+//
+// //   $('#employeeview_owner').on("click", 'owner_add_employees', function() {
+// //     alert("You have just clicked on ");
+// // });
+//
+// $(function () {
+//   $(document).on("click", '#owner_add_employees', function () {
+//     page_select(sideBar_links_variable);
+//     sideBar_links_variable = "#own_add_employees";
+//
+//     if(load[4] == 0){
+//           $("#own_add_employees").load('http://127.0.0.1:5500/Owner/AddEmployees/employee_add.html #add_employee_view',function(responseTxt, statusTxt, xhr){
+//
+//           if(statusTxt == "error")
+//               alert("Error: " + xhr.status + ": " + xhr.statusText);
+//           });
+//           load[4] += 1;
+//         }else{
+//           $('#own_add_employees').show();
+//          }
+//   });
 // });
-
-$(function () {
-  $(document).on("click", '#owner_add_employees', function () {
-    page_select(sideBar_links_variable);
-    sideBar_links_variable = "#own_add_employees";
-
-    if(load[4] == 0){
-          $("#own_add_employees").load('http://127.0.0.1:5500/Owner/AddEmployees/employee_add.html #add_employee_view',function(responseTxt, statusTxt, xhr){
-          
-          if(statusTxt == "error")
-              alert("Error: " + xhr.status + ": " + xhr.statusText);
-          });
-          load[4] += 1;
-        }else{
-          $('#own_add_employees').show();
-         } 
-  });
-});
 
   $('#owner_reports').click(function(){
     page_select(sideBar_links_variable);
     sideBar_links_variable = "#own_reports";
     
     if(load[3] == 0){
-      $(sideBar_links_variable).load('http://127.0.0.1:5500/Owner/Reports/reports.html #report_view_owner',function(responseTxt, statusTxt, xhr){
-      
+      $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Owner/Reports/reports.html #report_view_owner',function(responseTxt, statusTxt, xhr){
+        EmployeeCountChart();
+        viewChart2();
+        viewChart3();
+
       if(statusTxt == "error")
           alert("Error: " + xhr.status + ": " + xhr.statusText);
       });
@@ -277,33 +282,7 @@ $(function () {
     }
   });
 
-  // //Appointments
-  // $('#phy_mem_appointments').click(function(){
-  //   page_select(sideBar_links_variable);
-  //   sideBar_links_variable = "#physical_member_appoinments";
-    
-  //   if(load[8] == 0){
-  //     $(sideBar_links_variable).load('http://127.0.0.1:5500/Physical%20Member/Appoinments/Appoinments.html #appointments_physical',function(responseTxt, statusTxt, xhr){
-  //     if(statusTxt == "error")
-  //         alert("Error: " + xhr.status + ": " + xhr.statusText);
-  //     });
-  //     load[8] += 1;
-  //   }else{
-  //     $('#physical_member_appoinments').show();
-  //   }
-  //   //other links
-  // });
+
     
 });
 
-//close button - its called in rigtsidebar.html
-// function closeNav() {
-//   let right_sidebar = document.querySelector(".right_side_nav");
-//   console.log("mokada meee");
-//   if (right_sidebar.className === "right_side_nav") {
-//     right_sidebar.className += "_active";
-//     console.log("mokada meee1");
-//   } else {
-//     right_sidebar.classList.remove = "right_side_nav_active";
-//   }
-// }

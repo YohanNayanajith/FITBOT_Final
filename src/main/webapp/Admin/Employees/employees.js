@@ -252,7 +252,6 @@ function printbranchmanager(){
 
 function searchemployee(){
   $('#search_employee').keyup(function(){
-    // alert("yohan2");
     let value = $(this).val().toLowerCase();
     $('.employee_info').filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

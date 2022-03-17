@@ -782,4 +782,31 @@
         <servlet-name>branchequipmentcount</servlet-name>
         <url-pattern>/branchequipmentcount</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ownerdashboardcount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.OwnerDashboardCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ownerdashboardcount</servlet-name>
+        <url-pattern>/ownerdashboardcount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>memberregisteringcount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.MemberRegisterCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>memberregisteringcount</servlet-name>
+        <url-pattern>/memberregisteringcount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>employeetypecount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.EmployeeTypeCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>employeetypecount</servlet-name>
+        <url-pattern>/employeetypecount</url-pattern>
+    </servlet-mapping>
 </web-app>
