@@ -13,23 +13,23 @@ public class PhysicalPaymentDAO {
 //        3- payment_method
 //        7- authorization_token
 //        8- payment_status
-        String query = "INSERT INTO online_payment(payment_id,payment_date,previous_expire_date,currency,payment_amount,cus_first_name,cus_last_name,cus_address,cus_city,new_expire_date,alter_table_payment_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO online_payment(payment_id, payment_date, payment_method, previous_expire_date, currency, payment_amount, payment_status, cus_first_name, cus_last_name, cus_address, cus_city, new_expire_date, alter_table_payment_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setInt(1,physicalPayment.getPayment_id());
         pst.setDate(2, Date.valueOf(physicalPayment.getPayment_date()));
-//        pst.setString(3,physicalPayment.getPayment_method());
-        pst.setDate(3, Date.valueOf(physicalPayment.getPrevious_expire_date()));
-        pst.setString(4,physicalPayment.getCurrency());
-        pst.setDouble(5,physicalPayment.getPayment_amount());
+        pst.setString(3,physicalPayment.getPayment_method());
+        pst.setDate(4, Date.valueOf(physicalPayment.getPrevious_expire_date()));
+        pst.setString(5,physicalPayment.getCurrency());
+        pst.setDouble(6,physicalPayment.getPayment_amount());
 //        pst.setString(7,null); //Authorization token
-//        pst.setString(8,"2"); //physicalPayment.getPayment_status()
-        pst.setString(6,physicalPayment.getCus_first_name());
-        pst.setString(7,physicalPayment.getCus_last_name());
-        pst.setString(8,physicalPayment.getCus_address());
-        pst.setString(9,physicalPayment.getCus_city());
-        pst.setDate(10, Date.valueOf(physicalPayment.getNew_expire_date()));
-        pst.setInt(11,physicalPayment.getAlter_table_payment_id());
+        pst.setString(7,physicalPayment.getPayment_status()); //physicalPayment.getPayment_status()
+        pst.setString(8,physicalPayment.getCus_first_name());
+        pst.setString(9,physicalPayment.getCus_last_name());
+        pst.setString(10,physicalPayment.getCus_address());
+        pst.setString(11,physicalPayment.getCus_city());
+        pst.setDate(12, Date.valueOf(physicalPayment.getNew_expire_date()));
+        pst.setInt(13,physicalPayment.getAlter_table_payment_id());
 
         System.out.println("Payment added addPaymentDetails");
 

@@ -45,11 +45,17 @@ public class PhysicalPaymentController extends HttpServlet {
         String payhere_currency = req.getParameter("currency");
         double payhere_amount = Double.parseDouble(req.getParameter("payment_amount"));
         System.out.println("Payment 01");
+        //****
+        String payment_status = req.getParameter("payment_status");
+        //****
         String cus_first_name = req.getParameter("cus_first_name");
         String cus_last_name = req.getParameter("cus_last_name");
         String cus_address = req.getParameter("cus_address");
         String cus_city = req.getParameter("cus_city");
         LocalDate new_expire_date = LocalDate.parse(req.getParameter("new_expire_date"));
+        //**
+        String payment_method = req.getParameter("payment_method");
+        //**
 
         System.out.println("Payment 1");
 //        System.out.println(merchant_id+" "+order_id+" "+payhere_amount+" "+status_code+" "+md5sig);
@@ -81,29 +87,46 @@ public class PhysicalPaymentController extends HttpServlet {
         physicalPayment.setCurrency(payhere_currency);
         physicalPayment.setPayment_amount(payhere_amount);
 //        physicalPayment.setAuthorization_token(authorization_token);
-//        physicalPayment.setPayment_status(status_code);
+
+        physicalPayment.setPayment_status(payment_status);
+
         physicalPayment.setCus_first_name(cus_first_name);
         physicalPayment.setCus_last_name(cus_last_name);
         physicalPayment.setCus_address(cus_address);
         physicalPayment.setCus_city(cus_city);
         physicalPayment.setNew_expire_date(new_expire_date);
         physicalPayment.setAlter_table_payment_id(parseInt(alter_table_payment_id));
+
+        physicalPayment.setPayment_method(payment_method);
+
         System.out.println(physicalPayment);
 
 
         try {
             boolean b = PhysicalPaymentDAO.addPaymentDetails(physicalPayment);
-            boolean b1 = PhysicalPaymentDAO.updateMembershipRenewalDetails(parseInt(membershipID), 0);
+            if(payment_method.equals("Online Payment")){
+                boolean b1 = PhysicalPaymentDAO.updateMembershipRenewalDetails(parseInt(membershipID), 0);
 //            boolean b2 = MembershipDAO.membershipAlterTableInsertData(memberID, parseInt(membershipID), parseInt(payment_id));
-            System.out.println("Payment 3");
-            resp.setCharacterEncoding("UTF-8");
-            if(b && b1){
-                System.out.println("Payment added");
-                out.print("1");
+                System.out.println("Payment 3");
+                resp.setCharacterEncoding("UTF-8");
+                if(b && b1){
+                    System.out.println("Online Payment added");
+                    out.print("1");
+                }else {
+                    System.out.println("Online Payment not added");
+                    out.print("0");
+                }
             }else {
-                System.out.println("Payment not added");
-                out.print("0");
+                if(b){
+                    //membership renewal part eka branch manager handle karanna one
+                    System.out.println("Cash Payment added");
+                    out.print("1");
+                }else {
+                    System.out.println("Cash Payment not added");
+                    out.print("0");
+                }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

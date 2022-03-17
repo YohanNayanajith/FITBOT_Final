@@ -960,8 +960,8 @@ function displayPaymentsData(){
     if(parseInt(data.renewal) == 0){
       $('#payhere-payment').unbind("click");
       $('#payhere-payment').unbind("mouseenter mouseleave");
-      // $('#payhere-payment').attr("disabled", true);
-      // $('#payhere-payment').prop("disabled", true);
+      $('#payhere-payment').attr("disabled", true);
+      $('#payhere-payment').prop("disabled", true);
       // $('#payhere-payment').css("background-color", "2px solid grey");
       $('#payhere-payment').css("background-color", "grey");
     }
@@ -983,13 +983,13 @@ function displayPaymentsData(){
     $.map(result,function(x){
 
       $('#payment_history_container_table').append(
-          '<tr class="payment_history_container_row">'+
-            '<td>'+x.previous_expire_date["year"]+"-"+x.previous_expire_date["month"]+"-"+x.previous_expire_date["day"]+'</td>'+
-            '<td>'+x.currency+'</td>'+
-            '<td>'+x.payment_method+'</td>'+
-            '<td>'+x.payment_amount+'</td>'+
-            '<td><a href="#" class="view_bill_button" onClick="pay_bill_view()">VIEW BILL</a></td>'+
-          '</tr>'
+          `<tr class="payment_history_container_row">
+            <td>${x.previous_expire_date["year"]}-${x.previous_expire_date["month"]}-${x.previous_expire_date["day"]}</td>'+
+            <td>${x.currency}</td>
+            <td>${x.payment_method}</td>
+            <td>${x.payment_amount}</td>
+            <td><a href="#" class="view_bill_button" onClick="pay_bill_view('${x.payment_id}','${x.cus_first_name}','${x.cus_last_name}','${x.cus_address}','${x.payment_amount}','${x.payment_date["year"]}','${x.payment_date["month"]}','${x.payment_date["day"]}','${x.cus_city}')">VIEW BILL</a></td>'+
+          </tr>`
       );
 
       if(paymentId < x.payment_id){

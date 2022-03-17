@@ -79,10 +79,13 @@ function branch_select(){
         $("#branch_type").attr("disabled", true);
         $('#branch_type').css("border-bottom", "2px solid grey");
         $('#branch_type_label').css("color", "grey");
+        document.getElementById("branch_type").value = "none";
 
         $("#membership_category").attr("disabled", true);
         $('#membership_category').css("border-bottom", "2px solid grey");
         $('#membership_category_label').css("color", "grey");
+        document.getElementById("membership_category").value = "none";
+
     }else if(member_type == "physical_member"){
         $("#branch_type").attr("disabled", false);
         $('#branch_type').css("border-bottom", "2px solid #0E2C4B");

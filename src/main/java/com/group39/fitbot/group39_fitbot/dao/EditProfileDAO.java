@@ -44,7 +44,8 @@ public class EditProfileDAO {
 
         Connection connection = DBConnection.getInstance().getConnection();
 
-        String query = "SELECT first_name,last_name,dob,phone_number,height,weight FROM register WHERE member_id= ?";
+        //String query = "SELECT first_name,last_name,dob,phone_number,height,weight FROM register WHERE member_id= ?";
+        String query = "SELECT first_name,last_name,dob,phone_number,address,height,weight,email FROM register WHERE member_id= ?";
         PreparedStatement pst = connection.prepareStatement(query);
         pst.setString(1, member_id);
 //        pst.setString(3,login.getUserType());
@@ -56,8 +57,10 @@ public class EditProfileDAO {
             register.setLast_name(resultSet.getString(2));
             register.setDate_of_birth((resultSet.getDate(3)).toLocalDate());
             register.setContact_number(resultSet.getInt(4));
-            register.setHeight(resultSet.getInt(5));
-            register.setWeight(resultSet.getInt(6));
+            register.setAddress(resultSet.getString(5));
+            register.setHeight(resultSet.getInt(6));
+            register.setWeight(resultSet.getInt(7));
+            register.setEmail(resultSet.getString(8));
             return register;
         } else {
             return null;

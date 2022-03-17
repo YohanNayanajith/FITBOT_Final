@@ -371,4 +371,22 @@
         <servlet-name>CheckEmail</servlet-name>
         <url-pattern>/checkEmail</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>saveNotification</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.NotificationSaveController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>saveNotification</servlet-name>
+        <url-pattern>/saveNotification</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>branchDetails</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.BranchDetailsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>branchDetails</servlet-name>
+        <url-pattern>/branchDetails</url-pattern>
+    </servlet-mapping>
 </web-app>

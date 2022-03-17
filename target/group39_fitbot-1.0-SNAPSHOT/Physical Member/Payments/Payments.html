@@ -59,7 +59,10 @@
                     </table>
                 </div>
             </div>
+
         </div>
+
+        <div id="payment_physical_big_container_background" class="payment_physical_big_container_background"></div>
 
         <div class="payment_popup_details" id="payment_popup_details">
             <div class="payment_detail_header">
@@ -141,13 +144,13 @@
                         <div class="payment_detail_container_input">
                             <div>
                                 <label for="email">Email</label><br>
-                                <input type="email" name="email" id="email" value="samanp@gmail.com"><br>
+                                <input type="email" name="email" id="email"><br>
                                 <h5 id="payment_error3"></h5>
                             </div>
 
                             <div>
                                 <label for="phone">Contact Number</label><br>
-                                <input type="tel" name="phone" id="phone" value="0771234567"><br>
+                                <input type="tel" name="phone" id="phone"><br>
                                 <h5 id="payment_error4"></h5>
                             </div>
                         </div>
@@ -155,19 +158,19 @@
                         <div class="payment_detail_container_input">
                             <div>
                                 <label for="address">Address</label><br>
-                                <input type="text" name="address" id="address" value="No.1, Galle Road"><br>
+                                <input type="text" name="address" id="address"><br>
                             </div>
 
                             <div>
                                 <label for="city">City</label><br>
-                                <input type="text" name="city" id="city" value="Colombo"><br>
+                                <input type="text" name="city" id="city"><br>
                             </div>
                         </div>
                     </div>
 
                     <input type="hidden" name="country" value="Sri Lanka"><br>
                     <div class="payment_detail_container_input_submit">
-                        <input type="button" value="Cash Payment" onclick="payment_cash()">
+                        <input type="submit" value="Cash Payment" onclick="payment_cash()">
                         <input type="submit" value="Online Payment" onclick = "payment_online()">
                     </div>
                 </form>
@@ -186,73 +189,39 @@
             <div class="payment_detail_container">
                 <form method="post" action="" class="payment_detail_container_form">
 
-                    <div class="payment_detail_container_form_headers"><span>Membership Details</span><br></div>
+<!--                    <div class="payment_detail_container_form_headers"><span>Membership Details</span><br></div>-->
 
-                    <div class="payment_detail_container_mem_details">
-                        <div class="payment_detail_container_input">
-                            <div>
-                                <span>Branch Name</span><br>
-                                <span>Malabe Branch</span>
-                            </div>
+<!--                    <div class="payment_detail_container_mem_details">-->
+<!--                        <div class="payment_detail_container_input" id="payment_detail_container_input">-->
+<!--                            <div>-->
+<!--                                <span>Branch Name</span><br>-->
+<!--                                <span>Malabe Branch</span>-->
+<!--                            </div>-->
 
-                            <div>
-                                <span>Membership Category</span><br>
-                                <span>Family Membership</span>
-                                <!-- <input type="text" name="items" value="Door bell wireless"><br> -->
-                            </div>
-                        </div>
+<!--                            <div>-->
+<!--                                <span>Membership Category</span><br>-->
+<!--                                <span>Family Membership</span>-->
+<!--                                &lt;!&ndash; <input type="text" name="items" value="Door bell wireless"><br> &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="payment_detail_container_input">
-                            <div>
-                                <span>Currency</span><br>
-                                <span>LKR</span>
-                            </div>
+<!--                        <div class="payment_detail_container_input">-->
+<!--                            <div>-->
+<!--                                <span>Currency</span><br>-->
+<!--                                <span>LKR</span>-->
+<!--                            </div>-->
 
-                            <div>
-                                <span>Membership Fee</span><br>
-                                <span>5000/=</span>
-                            </div>
-                        </div>
-                    </div>
+<!--                            <div>-->
+<!--                                <span>Membership Fee</span><br>-->
+<!--                                <span>5000/=</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="payment_detail_container_form_headers"><span>Customer Details</span></div>
 
-                    <div class="payment_detail_container_cus_details">
-                        <div class="payment_detail_container_input">
-                            <div>
-                                <span>First Name</span><br>
-                                <span>Saman</span>
-                            </div>
+                    <div class="payment_detail_container_cus_details" id="payment_detail_container_cus_details">
 
-                            <div>
-                                <span>Last Name</span><br>
-                                <span>Perera</span>
-                            </div>
-                        </div>
-
-                        <div class="payment_detail_container_input">
-                            <div>
-                                <span>Email</span><br>
-                                <span>samanp@gmail.com</span>
-                            </div>
-
-                            <div>
-                                <span>Contact Number</span><br>
-                                <span>0758565750</span>
-                            </div>
-                        </div>
-
-                        <div class="payment_detail_container_input">
-                            <div>
-                                <span>Address</span><br>
-                                <span>No.1, Galle Road</span>
-                            </div>
-
-                            <div>
-                                <span>City</span><br>
-                                <span>Colombo</span>
-                            </div>
-                        </div>
                     </div>
                 </form>
             </div>
