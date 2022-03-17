@@ -212,9 +212,9 @@ public class AdminMemberDAO {
             virtual_member.setContact_no(resultSet.getString(4));
             virtual_member.setGender(resultSet.getString(5));
             virtual_member.setBranch_name(branch);
-            virtual_member.setMembership(resultSet.getString(7));
-            virtual_member.setEmail(resultSet.getString(8));
-            virtual_member.setDue_date(resultSet.getDate(9).toLocalDate());
+            virtual_member.setMembership(resultSet.getString(6));
+            virtual_member.setEmail(resultSet.getString(7));
+            virtual_member.setDue_date(resultSet.getDate(8).toLocalDate());
             virtual_member.setType(virtualtype);
 
 

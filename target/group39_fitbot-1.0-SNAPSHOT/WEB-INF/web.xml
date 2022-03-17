@@ -764,4 +764,22 @@
         <servlet-name>adminmemberview</servlet-name>
         <url-pattern>/adminmemberview</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>branchmembercount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.BranchMembersCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>branchmembercount</servlet-name>
+        <url-pattern>/branchmembercount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>branchequipmentcount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.BranchEquipmentCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>branchequipmentcount</servlet-name>
+        <url-pattern>/branchequipmentcount</url-pattern>
+    </servlet-mapping>
 </web-app>

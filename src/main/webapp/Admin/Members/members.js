@@ -131,20 +131,20 @@ function membercount(){
 
     $('#physicalcount').append(
 
-        `<p>${result[1]}</p>`
+        `<p>${result[0]}</p>`
     );
     $('#virtualcount').append(
 
-        `<p>${result[3]}</p>`
+        `<p>${result[1]}</p>`
     );
     $('#bannedcount').append(
 
-        `<p>${result[0]+result[2]}</p>`
+        `<p>${result[2]}</p>`
     );
 
     $('#all_member_count').append(
 
-        `<p>${result[0]+result[1]+result[2]+result[3]}</p>`
+        `<p>${result[0]+result[1]+result[2]}</p>`
     );
 
 
