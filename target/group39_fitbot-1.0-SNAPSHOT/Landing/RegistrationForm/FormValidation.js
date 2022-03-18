@@ -337,7 +337,8 @@ $(document).ready(function () {
         let gender = $('#gender').val();
         let membership_type = $('#membership_type').val();
         let membership_category = $('#membership_category').val();
-        let selected_country = $('#selected_country').val();
+        //let selected_country = $('#selected_country').val();
+        let selected_country = "Sri Lanka";
         let height = $('#height').val();
         let weight = $('#weight').val();
         let email = $('#email').val();

@@ -376,7 +376,7 @@ $(document).ready(function (){
                     })
                     setTimeout(function() {
                         window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
-                    }, 2000);
+                    }, 1000);
 
                 }else if(result == "2"){
                     //virtual member
@@ -389,7 +389,7 @@ $(document).ready(function (){
                     })
                     setTimeout(function() {
                         window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/virtualMember';
-                    }, 2000);
+                    }, 1000);
                 }else if(result == "3"){
                     //instructor
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
