@@ -286,7 +286,7 @@ $('#man_member').click(function(){
 
       member_view();
       managerpayment_view();
-      managermember_attendence();
+      manager_member_attendence();
 
     });
     load[1] += 1;
@@ -597,25 +597,42 @@ function managerins_view_count(){
 
 
 function member_view(){
+
+  const date = new Date();
+  let currentDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+  console.log(currentDate);
+
   $.ajax({
     method: 'POST',
     url: "managermember",
     dataType: 'json',
   }).done(function (result) {
+    let count = 0;
     console.log(result);
     $("#ins_manager_mem_details_table_tbody").html(' ')
     let chunk = 5;
     nextbuttons(result,chunk);
     initiateMembeNextButtons(result,chunk)
     $.map(result.slice(0,chunk), function (x) {
-      $('#ins_manager_mem_details_table_tbody').append(
-          `<tr class="manager_member_row"> 
+      let currentDate1 = x.date["year"]+"-"+("0" + (x.date["month"] + 1)).slice(-2)+"-"+("0" + x.date["day"]).slice(-2);
+
+      if(currentDate1 == currentDate && x.status.toString() == "1" ){
+        console.log("check if clause");
+      }
+      else{
+        alert(x.member_id);
+        $('#ins_manager_mem_details_table_tbody').append(
+            `<tr class="manager_member_row"> 
           <td> ${x.firstname + " " + x.lastname} </td>
           <td> ${x.membertype.replace("_", " ")} </td>
           <td> ${x.intructorname} </td>
-          <td> <input type="checkbox" class="atte" onclick="manager_member_attendence(${x.member_id})" value="Select" /> </td> 
+          <td> <input type="checkbox" class="atte" id="atte${count}" onclick="manager_member_attendence('${x.member_id}','atte${count}')" value="Select" /> </td> 
           </tr>`
-      );
+        );
+      }
+
+
+      count += 1;
     });
 
   }).fail(function (a, b, err) {
@@ -654,30 +671,37 @@ function managerpayment_view(){
   });
 }
 
-console.log(member_id);
-function manager_member_attendence(member_id){
-  console.log(member_id);
-  const date = new Date();
-  let currentDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
-  console.log(currentDate);
 
-  var today = new Date();
-  var currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log(currentTime);
+function manager_member_attendence(member_id,id_check){
+  //if($('.atte').prop("checked") == true){
+  if($('#'+id_check).prop("checked") == true){
+    console.log(member_id);
 
-  $.ajax({
-    method: 'POST',
-    url: "mark_attendence_checkbox",
-    data:{currentDate:currentDate,currentTime:currentTime},
-    dataType: 'json',
-  }).done(function (result) {
-    // console.log(result);
-    console.log("pansiluu");
-  }).fail(function (a, b, err) {
-    alert("Error");
-    console.log(a, b, err);
-  });
+    const date = new Date();
+    let currentDate = date.getFullYear()+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+    console.log(currentDate);
+
+    let today = new Date();
+    //let currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let currentTime = ("0" + (today.getHours() + 1)).slice(-2)+":"+("0" + today.getMinutes()).slice(-2)+":"+("0" + today.getSeconds()).slice(-2);
+    console.log(currentTime);
+
+    $.ajax({
+      method: 'POST',
+      url: "mark_attendence_checkbox",
+      data:{currentDate:currentDate,currentTime:currentTime,member_id:member_id},
+      //dataType: 'json',
+    }).done(function (result) {
+      // console.log(result);
+      console.log("pansiluu");
+    }).fail(function (a, b, err) {
+      alert("Error");
+      console.log(a, b, err);
+    });
+  }
+
 }
+
 
 function inquiry_view() {
   $.ajax({

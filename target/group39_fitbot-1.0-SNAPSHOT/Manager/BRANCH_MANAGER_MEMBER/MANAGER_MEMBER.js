@@ -55,7 +55,7 @@ function initiateMembeNextButtons(result,chunk) {
                     '<td>' + (x.firstname + " " + x.lastname) + '</td>' +
                     '<td>' + ((x.membertype).replace("_", " ")) + '</td>' +
                     '<td>' + x.intructorname + '</td>' +
-                    '<td>' + '<input type="checkbox" class="atte"/>' +
+                    '<td>' + ' <input type="checkbox" class="atte" onclick="manager_member_attendence(${x.member_id})" value="Select" />' +
                     '</td>' +
                     '</tr>'
                 );

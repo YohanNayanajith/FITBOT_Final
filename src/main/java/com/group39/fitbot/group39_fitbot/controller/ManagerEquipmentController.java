@@ -32,12 +32,10 @@ public class ManagerEquipmentController extends HttpServlet {
         String branchID = (String) session.getAttribute("BranchID");
         System.out.println(branchID);
 
-//        Equipment equipments = new Equipment();
         List<ManagerEquipment> all_equipments = new ArrayList<>();
 
         try{
             all_equipments = ManagerEquipmentDAO.getManagerEquipment(branchID);
-//            equipments = EquipmentDAO.getEquipment();
             System.out.println(all_equipments);
             Gson gson = new Gson();
             String equipmentJSON = gson.toJson(all_equipments);
