@@ -28,7 +28,6 @@ public class AdminMemberController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter out = new PrintWriter();
         String type = req.getParameter("type");
         System.out.println(type);
         System.out.println("Member post method called");
@@ -44,9 +43,10 @@ public class AdminMemberController extends HttpServlet {
                     all_members = AdminMemberDAO.getPhysicalMember();
                     System.out.println(all_members);
                 } else if (Objects.equals(type, "Virtual")) {
-                    all_members = AdminMemberDAO.getPhysicalMember();
+                    all_members = AdminMemberDAO.getVirtualMember();
                     System.out.println(all_members);
                 } else if (Objects.equals(type, "Banned")) {
+                    System.out.println("Into Banned");
                     all_members = AdminMemberDAO.getBannedMembers();
                     System.out.println(all_members);
                 }

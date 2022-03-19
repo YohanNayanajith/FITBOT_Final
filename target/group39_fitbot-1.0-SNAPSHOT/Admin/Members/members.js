@@ -156,14 +156,16 @@ function membercount(){
   });
 }
 
-function printmembers(name){
-    let value = name.toLowerCase();
-    $('.member_info').filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-}
+// function printmembers(name){
+//     let value = name.toLowerCase();
+//     $('.member_info').filter(function() {
+//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//     });
+// }
 
 
+
+//function to print the banned members
 function printbannedmembers()
 {
   $.ajax({
@@ -194,7 +196,15 @@ function printbannedmembers()
 
 function ban_member(member_id){
 
+
   let banned_reason = $('#ban_reason').val();
+
+  if (banned_reason.length=="")
+  {
+    $('#validation_ban_id').show();
+    return false;
+
+  }
 
   alert(member_id);
   $.ajax({
@@ -208,7 +218,7 @@ function ban_member(member_id){
   }).done(function (result) {
 
     if (result == "1") {
-      $('#ban_reason input[type="text"]').val('');
+      $('#banning_reason input[type="text"]').val('');
       Swal.fire({
         icon: 'success',
         title: "Successfully Banned",
@@ -217,8 +227,9 @@ function ban_member(member_id){
         confirmButtonColor: '#0E2C4B',
         footer: '<a href="#">View Employee</a>'
       });
-      employeecount();
-      printemployee();
+      $('#member_view').hide();
+      membercount();
+      printmember();
     }
     if (result == "0") {
       Swal.fire({
@@ -244,6 +255,65 @@ function ban_member(member_id){
     });
     console.log(a, b, err);
   });
+}
+
+//Function to print the physical members
+function printphysicalmember(){
+  $.ajax({
+    method:'POST',
+    url:"adminmember",
+    dataType:'json',
+    data: {
+      type: "Physical"
+    },
+    // contentType:"application/json",
+  }).done(function(result){
+    $('#member_list_table_body').html('');
+    document.getElementById("member_title_table").innerHTML = "Physical Members";
+    console.log(result);
+    $.map(result,function(x){
+      $('#member_list_table_body').append(
+          `<tr class="member_info"><td>${x.member_id}</td><td>${x.first_name + ' ' + x.last_name}</td><td>${x.type}</td><td>${x.branch_name}</td><td>${x.membership}</td><td>${x.due_date["day"] + '/'+x.due_date["month"] + '/'+x.due_date["year"]}</td><td><a onclick="memberview_popup('${x.member_id}','Unbanned','${x.type}')"><i class='bx bxs-show bx-tada bx-flip-horizontal view_popup' ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>`
+      );
+
+    });
+    searchmember();
+
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+
+}
+
+
+//function to print the virtual members
+function printvirtualmember(){
+  $.ajax({
+    method:'POST',
+    url:"adminmember",
+    dataType:'json',
+    data: {
+      type: "Virtual"
+    },
+    // contentType:"application/json",
+  }).done(function(result){
+    $('#member_list_table_body').html('');
+    document.getElementById("member_title_table").innerHTML = "VirtualMembers";
+    console.log(result);
+    $.map(result,function(x){
+      $('#member_list_table_body').append(
+          `<tr class="member_info"><td>${x.member_id}</td><td>${x.first_name + ' ' + x.last_name}</td><td>${x.type}</td><td>${x.branch_name}</td><td>${x.membership}</td><td>${x.due_date["day"] + '/'+x.due_date["month"] + '/'+x.due_date["year"]}</td><td><a onclick="memberview_popup('${x.member_id}','Unbanned','${x.type}')"><i class='bx bxs-show bx-tada bx-flip-horizontal view_popup' ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>`
+      );
+
+    });
+    searchmember();
+
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+
 }
 
 

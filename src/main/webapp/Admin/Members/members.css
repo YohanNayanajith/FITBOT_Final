@@ -139,7 +139,7 @@
       background-color:#F2F2F2;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       position: absolute;
-      top: 30%;
+      top: 35%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 600px;
@@ -250,3 +250,7 @@
  .a{
       text-decoration: none;
   }
+
+ #validation_ban_id{
+     display: none;
+ }

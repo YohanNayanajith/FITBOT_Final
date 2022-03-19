@@ -256,7 +256,7 @@ $(document).ready(function() {
             let branch_email = $("#branch_email").val();
             let contactno1_branch = $("#contactno1_branch").val();
             let contactno2_branch =$("#contactno2_branch").val();
-            let branch_pic = $("#branch_id").val();
+            let branch_pic = $("#branch_pic").val();
 
 
             let branch_id_error=false;
@@ -353,7 +353,7 @@ $(document).ready(function() {
           }).done(function (result) {
 
             if (result.trim() == 1) {
-              $('#branch_form input[type="text"],input[type="email"],input[type="date"]').val('');
+              $('#branch_form input[type="text"],input[type="email"],input[type="date"],input[type="file"]').val('');
               Swal.fire({
                 icon: 'success',
                 title: "Successfully Added",
@@ -683,9 +683,6 @@ $(document).ready(function() {
     }
   }
 
-  // function employeeid (){
-  //   alert(maintainercount);
-  //   document.getElementById("employee_id").defaulValue = maintainercount;
-  // }
+
 
 
