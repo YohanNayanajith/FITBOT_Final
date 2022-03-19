@@ -201,18 +201,18 @@
                         <input type="button" class =" banned_button" value="Ban" onclick="banning()">
                         </div>
                         <div >
-                            <input type="button" class =" banned_button" value="Cancel" >
+                            <input type="button" class =" banned_button" value="Cancel" onclick="closepopup()" >
                         </div>
                     </div>
 
                     <div class ="banning_reason" id="banning_reason">
-                        <span class="reason">Reason for Banning the employee </span>
+                        <span class="reason" id="banunban_reason">Reason for Banning the employee </span>
                         <div class ="reason_form" id="reason_form"><input type="text" name="ban_reason" id="ban_reason" class="" placeholder="Enter reason for banning" ><br>
-                            <h6 id ="validation_ban_id" class="validation_label">Reason for banning cannot be empty</h6>
+                            <h6 id ="validation_ban_id" class="validation_label">Reason cannot be empty</h6>
                         </div>
                         <div class="buttonsforbanning" id="buttonsforbanning">
                         <input type="button" class =" banned_button" value="Submit" onclick="">
-                        <input type="button" class =" banned_button" value="Cancel" onclick="">
+                        <input type="button" class =" banned_button" value="Cancel" onclick="closepopup()">
                         </div>
                     </div>
 

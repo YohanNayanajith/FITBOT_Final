@@ -9,6 +9,13 @@ function adm_members() {
 }
 
 function banning(){
+  document.getElementById("banunban_reason").innerHTML ="Why do you want to ban this member ?"
+  $("#banning_reason").show();
+  $("#ban_buttons_visibile").hide();
+}
+
+function unbanning(){
+  document.getElementById("banunban_reason").innerHTML ="Why do you want to unban this member ?"
   $("#banning_reason").show();
   $("#ban_buttons_visibile").hide();
 }
@@ -48,8 +55,12 @@ function memberview_popup(memberid,status,type){
           `<ul><li>${result.first_name + ' ' + result.last_name}</li><li>${result.gender}</li><li>${result.contact_no}</li><li>${result.email}</li><li>${result.branch_name}</li><li>${result.type}</li><li>${result.membership}</li><li>${result.due_date["day"] + '/' + result.due_date["month"] + '/' + result.due_date["year"]}</li><li>${result.banned_reason}</li><li>${result.banned_date["day"] + '/' + result.banned_date["month"] + '/' + result.banned_date["year"]}</li></ul>`
       );
       $('#ban_button').append(
-          ` <input type="button" class =" banned_button" value="UnBan" onclick="banning()">`
+          ` <input type="button" class =" banned_button" value="UnBan" onclick="unbanning()">`
       );
+
+      $('#buttonsforbanning').append(
+          `<input type="button" class=" banned_button" value="Submit" onclick="unban_member('${result.member_id}')">
+        <input type="button" class=" banned_button" value="Cancel" onclick="closepopup()">`);
     }
     else {
       $('#member_title_values').append(
@@ -197,6 +208,7 @@ function printbannedmembers()
   });
 }
 
+//function to ban the member
 function ban_member(member_id){
 
 
@@ -209,10 +221,100 @@ function ban_member(member_id){
 
   }
 
+  Swal.fire({
+    title: 'Are you sure you want to ban this member?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#0E2C4B',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Ban!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      alert(member_id);
+      $.ajax({
+        method: 'POST',
+        url: "adminbanmember",
+        data: {
+          member_id: member_id,
+          banned_reason: banned_reason
+        },
+        // contentType:"application/json",
+      }).done(function (result) {
+
+        if (result == "1") {
+          $('#banning_reason input[type="text"]').val('');
+          Swal.fire({
+            icon: 'success',
+            title: "Successfully Banned",
+            text: 'Member Banned!',
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Success',
+            confirmButtonColor: '#0E2C4B',
+            footer: '<a href="#">View Member</a>'
+          });
+          $('#member_view').hide();
+          $("#banning_reason").hide();
+          membercount();
+          printmember();
+        }
+        if (result == "0") {
+          Swal.fire({
+            icon: 'error',
+            title: "Cannot be Banned",
+            // text: 'Check for Primary Values',
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again',
+            confirmButtonColor: '#0E2C4B',
+            // footer: '<a href="#" onclick=">View Employee</a>'
+          });
+        }
+
+      }).fail(function (a, b, err) {
+
+        // alert("Faalil");
+        Swal.fire({
+          icon: 'error',
+          title: "Can't register...",
+          text: 'Something went wrong!',
+          confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!!!',
+          confirmButtonColor: '#0E2C4B',
+          footer: '<a>Try again</a>'
+        });
+        console.log(a, b, err);
+      });
+    } else if (result.isDenied) {
+      // Swal.fire('Changes are not saved', '', 'info')
+      console.log("Banning cancelled");
+    }
+  })
+  }
+
+//function to unban the member
+function unban_member(member_id){
+
+
+  let banned_reason = $('#ban_reason').val();
+
+  if (banned_reason.length=="")
+  {
+    $('#validation_ban_id').show();
+    return false;
+
+  }
+
+  Swal.fire({
+    title: 'Are you sure you want to unban this member?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#0E2C4B',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, unBan!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+
   alert(member_id);
   $.ajax({
     method: 'POST',
-    url: "adminbanmember",
+    url: "adminunbanmember",
     data: {
       member_id: member_id,
       banned_reason: banned_reason
@@ -224,13 +326,14 @@ function ban_member(member_id){
       $('#banning_reason input[type="text"]').val('');
       Swal.fire({
         icon: 'success',
-        title: "Successfully Banned",
-        text: 'Employee Banned!',
+        title: "Successfully Unbanned",
+        text: 'Member Unbanned!',
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Success',
         confirmButtonColor: '#0E2C4B',
         footer: '<a href="#">View Employee</a>'
       });
       $('#member_view').hide();
+      $("#banning_reason").hide();
       membercount();
       printmember();
     }
@@ -258,6 +361,11 @@ function ban_member(member_id){
     });
     console.log(a, b, err);
   });
+    } else if (result.isDenied) {
+      // Swal.fire('Changes are not saved', '', 'info')
+      console.log("Banning cancelled");
+    }
+  })
 }
 
 //Function to print the physical members

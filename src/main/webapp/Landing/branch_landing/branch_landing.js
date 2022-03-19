@@ -12,10 +12,22 @@ function branchesviewlanding (){
         $.map(result,function(x){
             $('#branch_landing_view').append(
 
-                ` <a href="#" onclick="branchdetails('${x.branch_id}')"><div class ="branch01">
-                      <div class ="branch01_id">${x.branch_id}</div>
-                      <div class ="branch01_name">${x.branch_name}</div>
-                    </div> </a>`);
+                ` <div class="branch_view1">
+            <div class="content_branch">
+                <div class="image_branch1"><img src="${x.branch_image}"> </div>
+                <div class="name"><p>${x.branch_name}</p></div>
+                <div class="rectangle"></div>
+                <div class="cantact_no">
+                    <ul>
+                        <li>Office-<span>${x.branch_primary_contact}</span></li>
+                        <li>${x.branch_secondary_contact}</li> 
+                    </ul>
+                </div>
+            </div>
+            <div class="eye_mark">
+                <i class="fas fa-eye"></i>
+            </div>
+        </div>`);
         });
 
     }).fail(function(a,b,err){

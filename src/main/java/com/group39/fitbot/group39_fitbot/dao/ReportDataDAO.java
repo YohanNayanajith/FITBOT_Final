@@ -15,7 +15,7 @@ public class ReportDataDAO {
     public static List<BranchMemberCount> getBranchMemberCount() throws SQLException,ClassNotFoundException {
         List<BranchMemberCount> branchmembercount = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = " SELECT br.branch_name, COUNT(r.member_id) FROM  branch br INNER JOIN register r ON r.branch_id=br.branch_id GROUP BY br.branch_id";
+        String query = " SELECT br.branch_name, COUNT(CASE WHEN u.status = '1' then 1 ELSE NULL END) as \"UnBan\", COUNT(CASE WHEN u.status = '0' then 1 ELSE NULL END) as \"Ban\" FROM  branch br INNER JOIN register r ON r.branch_id=br.branch_id INNER JOIN users u ON u.member_id=r.member_id GROUP BY br.branch_id";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();
@@ -25,7 +25,8 @@ public class ReportDataDAO {
             {
                 branchmembercount.add(new BranchMemberCount(
                         resultSet.getString(1),
-                        resultSet.getInt(2)
+                        resultSet.getInt(2),
+                        resultSet.getInt(3)
                 ));
 
             }
@@ -36,7 +37,7 @@ public class ReportDataDAO {
     public static List<BranchEquipmentCount> getEquipmentCount() throws SQLException,ClassNotFoundException {
         List<BranchEquipmentCount> equipmentcount = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = " SELECT br.branch_name, COUNT(r.member_id) FROM  branch br INNER JOIN register r ON r.branch_id=br.branch_id GROUP BY br.branch_id";
+        String query = "SELECT br.branch_name , count(e.equipment_id) FROM branch br INNER JOIN equipment e ON e.branch_id=br.branch_id GROUP BY br.branch_id";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();

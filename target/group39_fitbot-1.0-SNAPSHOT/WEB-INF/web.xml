@@ -757,6 +757,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>adminunbanmember</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.UnBanMemberController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminunbanmember</servlet-name>
+        <url-pattern>/adminunbanmember</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>adminmemberview</servlet-name>
         <servlet-class>com.group39.fitbot.group39_fitbot.controller.AdminMemberViewController</servlet-class>
     </servlet>
