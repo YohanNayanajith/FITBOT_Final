@@ -818,4 +818,13 @@
         <servlet-name>employeetypecount</servlet-name>
         <url-pattern>/employeetypecount</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>incomemembertype</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.IncomeMemberTypeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>incomemembertype</servlet-name>
+        <url-pattern>/incomemembertype</url-pattern>
+    </servlet-mapping>
 </web-app>

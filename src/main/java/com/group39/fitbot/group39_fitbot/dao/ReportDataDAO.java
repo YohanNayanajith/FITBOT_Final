@@ -58,7 +58,7 @@ public class ReportDataDAO {
     public static List<MemberRegisterCount> getMemberRegisterCount() throws SQLException,ClassNotFoundException {
         List<MemberRegisterCount> memberregistercount = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = " SELECT MONTHNAME(joined_date), count(member_id) FROM register GROUP BY CONCAT(MONTH(joined_date),YEAR(joined_date)) ORDER BY joined_date ";
+        String query = "SELECT CONVERT(MONTHNAME(joined_date),char(3)) as Month, count(member_id) FROM register GROUP BY CONCAT(MONTH(joined_date),YEAR(joined_date)) ORDER BY joined_date ";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();
@@ -96,5 +96,27 @@ public class ReportDataDAO {
             }
         }
         return employeetypecount;
+    }
+
+    public static List<EmployeeTypeCount> getIncomeMemberType() throws SQLException,ClassNotFoundException {
+        List<EmployeeTypeCount> incomemembertype = new ArrayList<>();
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = " SELECT MONTHNAME(p.payment_date), SUM(CASE WHEN r.membership_sign =\"physical_member\" then p.payment_amount else 0 END),SUM(CASE WHEN r.membership_sign =\"virtual_member\" then p.payment_amount else 0 END) FROM online_payment p INNER JOIN payment_paidmember_membership pp ON p.alter_table_payment_id=pp.payment_id INNER JOIN register r ON r.member_id =pp.member_id GROUP BY CONCAT(MONTH(p.payment_date),YEAR(p.payment_date))";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        ResultSet resultSet = pst.executeQuery();
+
+        while(resultSet.next()){
+            if(resultSet!=null)
+            {
+                incomemembertype .add(new EmployeeTypeCount(
+                        resultSet.getString(1),
+                        resultSet.getInt(2),
+                        resultSet.getInt(3)
+                ));
+
+            }
+        }
+        return incomemembertype;
     }
 }

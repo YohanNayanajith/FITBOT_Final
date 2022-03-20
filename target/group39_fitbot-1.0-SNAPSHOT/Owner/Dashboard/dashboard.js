@@ -9,27 +9,53 @@ function own_dashboard() {
   }
 
 function ownerincomechart() {
-    var xValues = ["Physical Members", "Virtual Members"];
-    var yValues = [55, 49];
-    var barColors = [
-        "#b91d47",
-        "#00aba9"
-    ];
+    $.ajax({
+        method: "POST",
+        url: "incomemembertype",
+        dataType: "json",
+        // contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let arrMonth = new Array();
+            let arrPhysicalCount = new Array();
+            let arrVirtualCount = new Array();
+            var barColors = ["blue", "green","yellow","orange","brown"];
+            i =0;
 
-    new Chart("myIncomeChart", {
-        type: "line",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
+            $.map(result, function (x) {
+                arrMonth[i] = x["branch_name"];
+                arrPhysicalCount[i] = x["instructor_count"];
+                arrVirtualCount[i] = x["branchmanager_count"];
+                i += 1;
+            });
+
+
+
+            new Chart("myIncomeChart", {
+                type: "line",
+                data: {
+                    labels: arrMonth,
+                    datasets: [{
+                        label:"Physical",
+                        data: arrPhysicalCount,
+                        backgroundColor: barColors
+                    },
+                        {
+                            label:"Virtual",
+                            data: arrVirtualCount,
+                            backgroundColor:barColors
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: false
+                    }
+                }
+            });
         },
-        options: {
-            title: {
-                display: true,
-                text: "Members"
-            }
+        error: function (error) {
+            console.log(error );
         }
     });
 }
@@ -48,7 +74,7 @@ function memberRegisteringCharts() {
             i =0;
 
             $.map(result, function (x) {
-                arrMonth[i] = x[",month"];
+                arrMonth[i] = x["month"];
                 arrCount[i] = x["member_count"];
                 i += 1;
             });
@@ -107,7 +133,7 @@ function dashboardcount(){
 
         $('#income_gym').append(
 
-            `<p>${result[3]}</p>`
+            `<p>Rs.${result[3]}</p>`
         );
 
 
