@@ -6,10 +6,7 @@ import com.group39.fitbot.group39_fitbot.model.Login;
 import com.group39.fitbot.group39_fitbot.model.Registartion;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -33,7 +30,7 @@ public class EditPasswordController extends HttpServlet {
 //        int edit_profile_container_detail_last_height = Integer.parseInt(req.getParameter("edit_profile_container_detail_last_height"));
 //        LocalDate edit_profile_container_detail_dob = LocalDate.parse(req.getParameter("edit_profile_container_detail_dob"));
         int edit_profile_container_detail_last_conatct = Integer.parseInt(req.getParameter("edit_profile_container_detail_last_conatct"));
-        String edit_profile_container_detail_last_profile_image = req.getParameter("edit_profile_container_detail_last_profile_image");
+        //Part edit_profile_container_detail_last_profile_image = req.getPart("edit_profile_container_detail_last_profile_image");
 
         System.out.println(edit_profile_container_detail_name);
         System.out.println(edit_profile_container_detail_last_name);
@@ -57,9 +54,10 @@ public class EditPasswordController extends HttpServlet {
         boolean accept_new;
         try {
             accept = EditProfileDAO.updateMemberDetails(registartion);
-            accept_new = EditProfileDAO.updateLoginDetails(registartion,edit_profile_container_detail_last_profile_image);
+            //accept_new = EditProfileDAO.updateLoginDetails(registartion,edit_profile_container_detail_last_profile_image);
 
-            if(accept && accept_new){
+            //if(accept && accept_new){
+            if(accept){
                 out.print("1");
             }else {
                 out.print("0");

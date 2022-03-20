@@ -15,16 +15,14 @@ function edit_profile_popup(){
     editProfileBackgroundOn();
 }
 
-function edit_profile_submit(){
-    let first_name = $('#edit_profile_container_detail_name').val().trim();
-    let last_name = $('#edit_profile_container_detail_last_name').val().trim();
-    let weight = $('#edit_profile_container_detail_weight').val().trim();
-    let height = $('#edit_profile_container_detail_last_height').val().trim();
-    let date_of_birth = $('#edit_profile_container_detail_dob').val().trim();
-    let contact_number = $('#edit_profile_container_detail_last_conatct').val().trim();
-
-    // alert(first_name);
-}
+// function edit_profile_submit(){
+//     let first_name = $('#edit_profile_container_detail_name').val().trim();
+//     let last_name = $('#edit_profile_container_detail_last_name').val().trim();
+//     let weight = $('#edit_profile_container_detail_weight').val().trim();
+//     let height = $('#edit_profile_container_detail_last_height').val().trim();
+//     let date_of_birth = $('#edit_profile_container_detail_dob').val().trim();
+//     let contact_number = $('#edit_profile_container_detail_last_conatct').val().trim();
+// }
 
 function close_edit_profile_Popup(){
     $('#edit_profile_container').hide();
@@ -66,21 +64,54 @@ function editProfileBackgroundOff(){
     $('#profile_physical_big_container_background').css('display','none');
 }
 
+function saveImage(imageData){
+    let edit_profile_container_detail_name = $('#edit_profile_container_detail_name').val().trim();
+    let edit_profile_container_detail_last_name = $('#edit_profile_container_detail_last_name').val().trim();
+    let edit_profile_container_detail_last_conatct = $('#edit_profile_container_detail_last_conatct').val().trim();
+    //let edit_profile_container_detail_last_profile_image = null;
+
+    let fd = new FormData();
+    let files = $('#edit_profile_container_detail_last_profile_image')[0].files;
+
+    // Check file selected or not
+    if(files.length > 0 ){
+        fd.append('file',files[0]);
+
+        $.ajax({
+            url: 'upload',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                if(response != 0){
+                    $("#img").attr("src",response);
+                    $(".preview img").show(); // Display image element
+                }else{
+                    alert('file not uploaded');
+                }
+            },
+        });
+    }else{
+        alert("Please select a file.");
+    }
+}
+
 function edit_profile_submit(){
     let edit_profile_container_detail_name = $('#edit_profile_container_detail_name').val().trim();
     let edit_profile_container_detail_last_name = $('#edit_profile_container_detail_last_name').val().trim();
-    // let edit_profile_container_detail_weight = $('#edit_profile_container_detail_weight').val().trim();
-    // let edit_profile_container_detail_last_height = $('#edit_profile_container_detail_last_height').val().trim();
-    // let edit_profile_container_detail_dob = $('#edit_profile_container_detail_dob').val().trim();
     let edit_profile_container_detail_last_conatct = $('#edit_profile_container_detail_last_conatct').val().trim();
-    let edit_profile_container_detail_last_profile_image = null;
+    //let edit_profile_container_detail_last_profile_image = null;
 
-    console.log("Image type: "+edit_profile_container_detail_last_profile_image);
+    //console.log("Image type: "+edit_profile_container_detail_last_profile_image);
 
-    var completed_flag = "1";
+    var completed_flag = 1;
     var result_object;
+    // files.length <= 0
+    let fd = new FormData();
+    let files = $('#edit_profile_container_detail_last_profile_image')[0].files;
 
-    if(edit_profile_container_detail_name == '' && edit_profile_container_detail_last_name == '' &&  edit_profile_container_detail_last_profile_image == '' && edit_profile_container_detail_last_conatct == ''){
+    if(edit_profile_container_detail_name == '' && edit_profile_container_detail_last_name == '' && edit_profile_container_detail_last_profile_image == '' && edit_profile_container_detail_last_conatct == ''){
         Swal.fire({
             icon: 'error',
             title: 'Update Unsuccessfully!',
@@ -88,22 +119,138 @@ function edit_profile_submit(){
             confirmButtonText: "Ok",
             confirmButtonColor: '#932828',
         })
-        completed_flag = "0";
-        return;
-    }else {
+        completed_flag = 0;
+    }else if(files.length > 0){
+        //alert("Yohan");
+        fd.append('edit_profile_container_detail_last_profile_image',files[0]);
+        //console.log(fd);
+        //let dataval = new FormData($("#image-form")[0]);
+        //let dataval = new FormData($("#image-form")[0]);
+        console.log(fd);
+        //doesnt upload a image
+        $.ajax({
+            method: "POST",
+            url: "saveImageData",
+            data: fd,
+            // data: dataval,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
+            // dataType:"json",
+            // contentType:"application/json",
+            success: function (result) {
+                // alert(result);
+                console.log(result);
+                if(result.trim() == "1"){
+                    console.log("Image save success");
+                }else {
+                    console.log("Image save unsuccessful");
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 
+
+    if(completed_flag == 1){
         $.ajax({
             method:"POST",
             url:"memberDetails",
             dataType:"json",
             // contentType:"application/json",
             success: function (result){
-                // alert(result);
                 console.log(result);
-                console.log(typeof(result));
                 result_object = result;
-                console.log(result_object.weight);
-                console.log(typeof(result_object));
+
+                $('#edit_profile_error_contact_number').hide();
+                $('#edit_profile_error_dob').hide();
+                $('#edit_profile_error_profile_image').hide();
+
+                console.log(result_object);
+                if(edit_profile_container_detail_name == ''){
+                    edit_profile_container_detail_name = result_object.first_name.toString();
+                }
+
+                if(edit_profile_container_detail_last_name == ''){
+                    edit_profile_container_detail_last_name = result_object.last_name.toString();
+                }
+
+                let regexPattern = new RegExp(/^[0-9-+]+$/);
+                if(edit_profile_container_detail_last_conatct == ''){
+                    edit_profile_container_detail_last_conatct = result_object.contact_number.toString();
+                }else if(!regexPattern.test(edit_profile_container_detail_last_conatct)){
+                    $('#edit_profile_error_contact_number').show();
+                    $('#edit_profile_error_contact_number').html("**Phone number can contain only numbers from 0-9 and + or - sign");
+                    $('#edit_profile_error_contact_number').css("color","red");
+                    return false;
+                }else if('+' == edit_profile_container_detail_last_conatct[0]){
+                    $('#edit_profile_error_contact_number').show();
+                    $('#edit_profile_error_contact_number').html("**Phone number doesnt start with country code");
+                    $('#edit_profile_error_contact_number').css("color","red");
+                    return false;
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "editProfile",
+                    data: {
+                        edit_profile_container_detail_name: edit_profile_container_detail_name,
+                        edit_profile_container_detail_last_name: edit_profile_container_detail_last_name,
+
+                        edit_profile_container_detail_last_conatct: edit_profile_container_detail_last_conatct
+                        // edit_profile_container_detail_last_profile_image: fd,
+                    },
+                    // dataType:"json",
+                    // contentType:"application/json",
+                    success: function (result) {
+                        // alert(result);
+                        console.log(result);
+                        console.log(typeof (result));
+                        result.toString();
+                        console.log(typeof (result));
+                        if (result.trim() == "1") {
+                            // alert(result);
+                            editProfileBackgroundOff();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Successfully Updated',
+                                text: 'Profile Updated!',
+                                confirmButtonText: "Ok",
+                                confirmButtonColor: '#0E2C4B',
+                            })
+                            // setTimeout(function() {
+                            //     window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                            // }, 2000);
+                            $('#edit_profile_container_detail').find("input[type=text], input[type=number], input[type=date], input[type=tel]").val("");
+                            $('#edit_profile_container').hide();
+
+                            //after update data profile page update
+                            getRegisterDetails();
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Update Unsuccessfully!',
+                                text: 'Cannot update, System issue!',
+                                confirmButtonText: "Ok",
+                                confirmButtonColor: '#932828',
+                            })
+                        }
+
+                    },
+                    error: function (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Update Unsuccessfully!',
+                            text: 'Check the details!',
+                            confirmButtonText: "Ok",
+                            confirmButtonColor: '#932828',
+                        })
+                    }
+                });
 
             },
             error: function(error){
@@ -111,21 +258,7 @@ function edit_profile_submit(){
             }
         });
 
-        $('#edit_profile_error_contact_number').hide();
-        // $('#edit_profile_error_weight').hide();
-        // $('#edit_profile_error_height').hide();
-        $('#edit_profile_error_dob').hide();
-        $('#edit_profile_error_profile_image').hide();
 
-        // alert(result_object);
-        console.log(result_object);
-        if(edit_profile_container_detail_name == ''){
-            edit_profile_container_detail_name = result_object.first_name.toString();
-        }
-
-        if(edit_profile_container_detail_last_name == ''){
-            edit_profile_container_detail_last_name = result_object.last_name.toString();
-        }
 
         // if(edit_profile_container_detail_last_profile_image == ''){
         //     edit_profile_container_detail_last_profile_image = result_object.weight.toString();
@@ -136,103 +269,31 @@ function edit_profile_submit(){
         //     return false;
         // }
 
-        let image_value = $("#edit_profile_container_detail_last_profile_image").val();
-        if (image_value.files && image_value.files[0]) {
-            let reader = new FileReader();
-
-            edit_profile_container_detail_last_profile_image = "http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/"+this.files[0]["name"];
-
-            console.log(image_value.files[0]);
-            console.log(image_value.files[0]["name"]);
-            console.log(image_value.files[0]["type"]);
-            console.log(image_value.files[0]["size"]);
-
-            reader.onload = function (e) {
-                $('#imgshow').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(image_value.files[0]);
-        }
+        // let image_value = $("#edit_profile_container_detail_last_profile_image").val();
+        // if (image_value.files && image_value.files[0]) {
+        //     let reader = new FileReader();
+        //
+        //     edit_profile_container_detail_last_profile_image = "http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/"+this.files[0]["name"];
+        //
+        //     console.log(image_value.files[0]);
+        //     console.log(image_value.files[0]["name"]);
+        //     console.log(image_value.files[0]["type"]);
+        //     console.log(image_value.files[0]["size"]);
+        //
+        //     reader.onload = function (e) {
+        //         $('#imgshow').attr('src', e.target.result);
+        //     }
+        //     reader.readAsDataURL(image_value.files[0]);
+        // }
         // $("#edit_profile_container_detail_last_profile_image").change(function () {
         //
         //
         // });
-
-        let regexPattern = new RegExp(/^[0-9-+]+$/);
-        if(edit_profile_container_detail_last_conatct == ''){
-            edit_profile_container_detail_last_conatct = result_object.contact_number.toString();
-        }else if(!regexPattern.test(edit_profile_container_detail_last_conatct)){
-            $('#edit_profile_error_contact_number').show();
-            $('#edit_profile_error_contact_number').html("**Phone number can contain only numbers from 0-9 and + or - sign");
-            $('#edit_profile_error_contact_number').css("color","red");
-            return false;
-        }else if('+' == edit_profile_container_detail_last_conatct[0]){
-            $('#edit_profile_error_contact_number').show();
-            $('#edit_profile_error_contact_number').html("**Phone number doesnt start with country code");
-            $('#edit_profile_error_contact_number').css("color","red");
-            return false;
-        }
     }
 
-    if(completed_flag == "1") {
-        $.ajax({
-            method: "POST",
-            url: "editProfile",
-            data: {
-                edit_profile_container_detail_name: edit_profile_container_detail_name,
-                edit_profile_container_detail_last_name: edit_profile_container_detail_last_name,
-
-                edit_profile_container_detail_last_conatct: edit_profile_container_detail_last_conatct,
-                edit_profile_container_detail_last_profile_image: edit_profile_container_detail_last_profile_image
-            },
-            // dataType:"json",
-            // contentType:"application/json",
-            success: function (result) {
-                // alert(result);
-                console.log(result);
-                console.log(typeof (result));
-                result.toString();
-                console.log(typeof (result));
-                if (result.trim() == "1") {
-                    // alert(result);
-                    editProfileBackgroundOff();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successfully Updated',
-                        text: 'Profile Updated!',
-                        confirmButtonText: "Ok",
-                        confirmButtonColor: '#0E2C4B',
-                    })
-                    // setTimeout(function() {
-                    //     window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
-                    // }, 2000);
-                    $('#edit_profile_container_detail').find("input[type=text], input[type=number], input[type=date], input[type=tel]").val("");
-                    $('#edit_profile_container').hide();
-
-                    //after update data profile page update
-                    getRegisterDetails();
-
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Update Unsuccessfully!',
-                        text: 'Cannot update, System issue!',
-                        confirmButtonText: "Ok",
-                        confirmButtonColor: '#932828',
-                    })
-                }
-
-            },
-            error: function (error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Update Unsuccessfully!',
-                    text: 'Check the details!',
-                    confirmButtonText: "Ok",
-                    confirmButtonColor: '#932828',
-                })
-            }
-        });
-    }
+    // if(completed_flag == "1") {
+    //
+    // }
 }
 
 //leftsidebar repeated code
@@ -340,13 +401,14 @@ function close_edit_weight_submit(){
         // contentType:"application/json",
         success: function (result){
             console.log(result);
-            let previous_weight = result[0].new_weight;
-            let todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
-            let dateCount = result[0].daily_count;
-            if(result[0] != null) {
-                console.log(previous_weight," ",todayDateNew," ",dateCount);
 
-                console.log("todayDateNew"+todayDateNew+" currentDate"+currentDate);
+            if(result[0] != null) {
+                let previous_weight = result[0].new_weight;
+                let todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
+                let dateCount = result[0].daily_count;
+                //console.log(previous_weight," ",todayDateNew," ",dateCount);
+
+                //console.log("todayDateNew"+todayDateNew+" currentDate"+currentDate);
                 if(todayDateNew == currentDate ){
                     $('#edit_weight_detail_container_error').show();
                     $('#edit_weight_detail_container_error').html("**Could be updated only once");
@@ -376,7 +438,7 @@ function close_edit_weight_submit(){
                         let previous_weight_new = parseFloat(result.weight);
                         updateRealWeight(weightVal,currentDate,previous_weight_new);
                         console.log(result);
-                        console.log(previous_weight);
+                        //console.log(previous_weight);
                     },
                     error: function(error){
                         console.log(error+"edit profile");

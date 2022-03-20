@@ -177,6 +177,7 @@ $(document).ready(function(){
       getRegisterDetails();
       $('#profile_physical_container_edit_monthly_goal_input_h5').hide();
       $('#profile_physical_container_edit_monthly_goal_input_h51').hide();
+      setProfileImage();
 
       });
       load[1] += 1;
@@ -664,6 +665,42 @@ function getRegisterDetails(){
     },
     error: function(error){
       console.log(error+"edit profile");
+    }
+  });
+}
+function blobToFile(theBlob, fileName){
+  //A Blob() is almost a File() - it's just missing the two properties below which we will add
+  theBlob.lastModifiedDate = new Date();
+  theBlob.name = fileName;
+  return theBlob;
+}
+function setProfileImage(){
+  $.ajax({
+    method: "POST",
+    url: "getImageData",
+    data: {},
+    // data: dataval,
+    enctype: 'multipart/form-data',
+    processData: false,
+    contentType: false,
+    cache: false,
+    // dataType:"json",
+    // contentType:"application/json",
+    success: function (result) {
+      // alert(result);
+      console.log(result);
+      // let myBlob = new Blob();
+
+
+      let myFile = blobToFile(result, "my-image.png");
+
+      console.log("Image get success");
+      $('#profile_physical_container_details_image').append(
+          `<img src=${myFile} alt="profile_image" id="imgshow">`
+      );
+    },
+    error: function (error) {
+      console.log(error);
     }
   });
 }
@@ -1370,27 +1407,30 @@ function viewWorkoutPlanReports(){
 }
 
 function viewMonthlyGoalReports(){
-    let xValues = [100,200,300,400,500,600,700,800,900,1000];
+  //memberGoalGetData
+  $.ajax({
+    method:'POST',
+    url:"memberGoalGetData",
+    //data:{},
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+
+    let xValues = ["Weight","Calories"];
+    let barColors = ["red", "green"];
 
     new Chart("monthly_goal_chart", {
-        type: "line",
-        data: {
-            labels: xValues,
-            datasets: [{
-                label: "Workout",
-                data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-                borderColor: "red",
-                fill: false
-            }, {
-                data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-                borderColor: "green",
-                fill: false
-            }, {
-                data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-                borderColor: "blue",
-                fill: false
-            }]
-        },
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          label: "Weight",
+          data: [result["weight_goal"],result["calory_goal"]],
+          backgroundColor: barColors,
+          fill: false
+        }]
+      },
       options: {
         title: {
           display: true,
@@ -1413,6 +1453,11 @@ function viewMonthlyGoalReports(){
         }
       }
     });
+
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
 }
 
 

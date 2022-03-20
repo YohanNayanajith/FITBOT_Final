@@ -399,4 +399,31 @@
         <url-pattern>/requestWorkoutPlan</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>memberGoalGetData</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.MemberGoalGetDataController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>memberGoalGetData</servlet-name>
+        <url-pattern>/memberGoalGetData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetImageData</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.GetImageDataController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetImageData</servlet-name>
+        <url-pattern>/getImageData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveImageData</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.SaveImageDataController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveImageData</servlet-name>
+        <url-pattern>/saveImageData</url-pattern>
+    </servlet-mapping>
+
 </web-app>

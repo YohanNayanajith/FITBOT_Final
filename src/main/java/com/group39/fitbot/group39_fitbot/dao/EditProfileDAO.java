@@ -5,6 +5,9 @@ import com.group39.fitbot.group39_fitbot.model.PhysicalPayment;
 import com.group39.fitbot.group39_fitbot.model.Registartion;
 import com.group39.fitbot.group39_fitbot.model.UpdateWeight;
 
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,15 +31,39 @@ public class EditProfileDAO {
         return pst.executeUpdate() > 0;
     }
 
-    public static boolean updateLoginDetails(Registartion registartion,String edit_profile_container_detail_last_profile_image) throws SQLException, ClassNotFoundException {
+    public static boolean updateLoginDetails(String memberId, Part edit_profile_container_detail_last_profile_image) throws SQLException, ClassNotFoundException, IOException {
         Connection connection = DBConnection.getInstance().getConnection();
         String query = "UPDATE users SET user_image_url=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
 //        pst.setString(1,registartion.getFirst_name());
-        pst.setString(1,edit_profile_container_detail_last_profile_image);
-        pst.setString(2,registartion.getMember_id());
+        pst.setBlob(1,edit_profile_container_detail_last_profile_image.getInputStream());
+        pst.setString(2,memberId);
 
         return pst.executeUpdate() > 0;
+    }
+
+    public static Blob getImageData(String member_id) throws SQLException, ClassNotFoundException {
+        Registartion register = new Registartion();
+
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        //String query = "SELECT first_name,last_name,dob,phone_number,height,weight FROM register WHERE member_id= ?";
+        String query = "SELECT user_image_url FROM users WHERE member_id = ?";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, member_id);
+//        pst.setString(3,login.getUserType());
+
+        ResultSet resultSet = pst.executeQuery();
+
+//        Part filePart = null;
+        Blob filePart = null;
+
+        if (resultSet.next()) {
+            filePart = resultSet.getBlob(1);
+            return filePart;
+        } else {
+            return null;
+        }
     }
 
     public static Registartion retriveRegistration(String member_id) throws SQLException, ClassNotFoundException {

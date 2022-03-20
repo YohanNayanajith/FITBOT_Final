@@ -11,8 +11,8 @@
             </div>
 
             <div class="profile_physical_container_details">
-                <div class="profile_physical_container_details_image">
-                    <img src="http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/profile_image.jpg" alt="profile_image" id="imgshow">
+                <div class="profile_physical_container_details_image" id="profile_physical_container_details_image">
+<!--                    <img src="http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Images/profile_image.jpg" alt="profile_image" id="imgshow">-->
                 </div>
                 <div class="profile_physical_container_member_details">
                     <div class="profile_physical_container_member_details_line"></div>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="edit_profile_container_detail" id="edit_profile_container_detail">
-                    <form action="physicalMember" method="post">
+                    <form action="physicalMember" method="post" enctype="multipart/form-data">
                         <div class="edit_profile_container_detail_input1">
                             <div>
                                 <label for="edit_profile_container_detail_name">First Name</label><br>
@@ -106,7 +106,7 @@
                             </div>
                             <div>
                                 <label for="edit_profile_container_detail_last_profile_image">Profile Image</label><br>
-                                <input type="file" name="edit_profile_container_detail_last_profile_image" class="edit_profile_container_detail_last_profile_image" id="edit_profile_container_detail_last_profile_image">
+                                <form enctype="multipart/form-data" id="image-form"><input type="file" name="edit_profile_container_detail_last_profile_image" class="edit_profile_container_detail_last_profile_image" id="edit_profile_container_detail_last_profile_image"></form>
                                 <h5 id="edit_profile_error_profile_image"></h5>
                             </div>
 <!--                            <div>-->
