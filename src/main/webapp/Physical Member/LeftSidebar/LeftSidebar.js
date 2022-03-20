@@ -949,7 +949,8 @@ function displayPaymentsData(){
 
   }).done(function(data){
     // const data_object = JSON.parse(data);
-    // alert(data);
+    alert(data);
+    console.log(data);
     let date = data.expiry_day;
     let currectdate = date["year"]+"-"+date["month"]+"-"+date["day"];
     $('#payment_text').append(
@@ -1006,6 +1007,13 @@ function displayPaymentsData(){
           );
       }
     });
+    if(result.length == 0){
+      $('#payment_date_details').append(
+          '<span class="previous_payment_date">Next Payment Date</span><br>'+
+          '<span class="previous_payment_date_format">'+"There is no payment"+'</span><br>'+
+          '<span class="previous_payment_date_details">Last payment - '+"No previous payment date"+'</span>'
+      );
+    }
   }).fail(function(a,b,err){
     alert("Error");
     console.log(a,b,err);

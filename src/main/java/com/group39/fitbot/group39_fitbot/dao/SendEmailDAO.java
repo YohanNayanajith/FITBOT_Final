@@ -29,10 +29,16 @@ public class SendEmailDAO {
         boolean test = false;
 
         String toEmail = user.getEmail();
-//        String fromEmail = "yohannayanajith13@gmail.com";
-        String fromEmail = "fitbot@mail.com";
+        System.out.println(user.getEmail());
+        String fromEmail = "yohannayanajith40@gmail.com";
+        //String fromEmail = "fitbot@mail.com";
+        //String fromEmail = "fitbot39@mail.com";
+        //String fromEmail = "fitbot";
 //        String password = "0758657450";
-        String password = "fitbot0758657450+";
+        //String password = "fitbot0758657450+";
+        //String password = "fitbot123456789+-";
+        String password = "jqwxqnfclgsfphak";
+        //String password = "DNHMPCPAE3MLDVM7E5QY";
 
         try {
 
@@ -40,11 +46,15 @@ public class SendEmailDAO {
 
             // your host email smtp server details
             Properties pr = new Properties();
-            pr.setProperty("mail.smtp.host", "smtp.mail.com");
+            //pr.setProperty("mail.smtp.host", "smtp.mail.com");
+            pr.setProperty("mail.smtp.host", "smtp.gmail.com");
             pr.setProperty("mail.smtp.port", "587");
+//            pr.setProperty("mail.smtp.port", "465");
+            //pr.setProperty("mail.smtp.ssl.enable", "false");
             pr.setProperty("mail.smtp.auth", "true");
             pr.setProperty("mail.smtp.starttls.enable", "true");
             pr.put("mail.smtp.socketFactory.port", "587");
+            //pr.put("mail.smtp.socketFactory.port", "465");
             pr.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
             //get session to authenticate the host email address and password
