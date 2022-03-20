@@ -389,4 +389,14 @@
         <servlet-name>branchDetails</servlet-name>
         <url-pattern>/branchDetails</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>requestWorkoutPlan</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.WorkoutPlanRequestsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>requestWorkoutPlan</servlet-name>
+        <url-pattern>/requestWorkoutPlan</url-pattern>
+    </servlet-mapping>
+
 </web-app>

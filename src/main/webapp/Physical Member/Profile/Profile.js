@@ -340,13 +340,14 @@ function close_edit_weight_submit(){
         // contentType:"application/json",
         success: function (result){
             console.log(result);
-            let previous_weight = result[0].new_weight;
-            let todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
-            let dateCount = result[0].daily_count;
-            if(result[0] != null) {
-                console.log(previous_weight," ",todayDateNew," ",dateCount);
 
-                console.log("todayDateNew"+todayDateNew+" currentDate"+currentDate);
+            if(result[0] != null) {
+                let previous_weight = result[0].new_weight;
+                let todayDateNew = result[0].update_date["year"]+"-"+("0"+result[0].update_date["month"]).slice(-2)+"-"+("0"+result[0].update_date["day"]).slice(-2);
+                let dateCount = result[0].daily_count;
+                //console.log(previous_weight," ",todayDateNew," ",dateCount);
+
+                //console.log("todayDateNew"+todayDateNew+" currentDate"+currentDate);
                 if(todayDateNew == currentDate ){
                     $('#edit_weight_detail_container_error').show();
                     $('#edit_weight_detail_container_error').html("**Could be updated only once");
@@ -376,7 +377,7 @@ function close_edit_weight_submit(){
                         let previous_weight_new = parseFloat(result.weight);
                         updateRealWeight(weightVal,currentDate,previous_weight_new);
                         console.log(result);
-                        console.log(previous_weight);
+                        //console.log(previous_weight);
                     },
                     error: function(error){
                         console.log(error+"edit profile");

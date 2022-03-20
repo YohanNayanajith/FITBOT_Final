@@ -18,7 +18,7 @@ function countPaymentId(){
         $('#order_id').css("border", "2px solid grey");
         $('#order_id').css("color", "grey");
     }).fail(function(a,b,err){
-        alert("Error");
+        //alert("Error");
         console.log(a,b,err)
     });
 }
@@ -89,7 +89,7 @@ function payments_pay(){
                         }
                     });
                 }).fail(function(a,b,err){
-                    alert("Error");
+                    //alert("Error");
                     console.log(a,b,err)
                 });
             }
@@ -431,7 +431,12 @@ function afterOnlinePayment(data,status,payment_method){
     let payment_id = paymentId;
     let payment_date = data.current_date;
     // let payment_method = data.
-    let previous_expire_date = data.expiry_day;
+    let newExpireDate = data.expiry_day.split("-");
+    console.log(newExpireDate);
+    let previous_expire_date = newExpireDate[0]+"-"+("0"+newExpireDate[1]).slice(-2)+"-"+("0"+newExpireDate[2]).slice(-2);
+    console.log(previous_expire_date);
+    // let previous_expire_date = data.expiry_day;
+    //previous_expire_date = x.appointment_date["year"]+"-"+("0" + x.appointment_date["month"]).slice(-2)+"-"+("0" + x.appointment_date["day"]).slice(-2);
     let currency = data.currency;
     let payment_amount = data.amount;
     // let authorization_token

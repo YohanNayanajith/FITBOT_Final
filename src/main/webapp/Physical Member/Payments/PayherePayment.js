@@ -18,7 +18,7 @@ function countPaymentId(){
         $('#order_id').css("border", "2px solid grey");
         $('#order_id').css("color", "grey");
     }).fail(function(a,b,err){
-        alert("Error");
+        //alert("Error");
         console.log(a,b,err)
     });
 }
@@ -89,7 +89,7 @@ function payments_pay(){
                         }
                     });
                 }).fail(function(a,b,err){
-                    alert("Error");
+                    //alert("Error");
                     console.log(a,b,err)
                 });
             }

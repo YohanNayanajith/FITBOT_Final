@@ -1,12 +1,11 @@
 package com.group39.fitbot.group39_fitbot.dao;
 
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
+import com.group39.fitbot.group39_fitbot.model.Notification;
 import com.group39.fitbot.group39_fitbot.model.Workout;
+import com.group39.fitbot.group39_fitbot.model.WorkoutPlanRequests;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,4 +116,39 @@ public class WorkoutDAO {
 
         return workouts;
     }
+
+    public static boolean insertWorkoutRequestDetails(WorkoutPlanRequests workoutPlanRequests) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        String query = "INSERT INTO workout_plan_requests(instructor_id,has_assign,request_date,member_id) VALUES(?,?,?,?)";
+
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        pst.setString(1,workoutPlanRequests.getInstructor_id());
+        pst.setInt(2,workoutPlanRequests.getHas_assign());
+        pst.setDate(3,Date.valueOf(workoutPlanRequests.getRequest_date()));
+        pst.setString(4,workoutPlanRequests.getMember_id());
+
+        return pst.executeUpdate() > 0;
+    }
+
+    public static int checkWorkoutRequestDetails(String member_id,String instructor_id) throws SQLException, ClassNotFoundException {
+        Workout workout = new Workout();
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "SELECT has_assign FROM workout_plan_requests WHERE instructor_id = ? AND member_id = ?";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1,instructor_id);
+        pst.setString(2,member_id);
+
+        ResultSet resultSet = pst.executeQuery();
+
+        int has_assign = 2;
+
+        if(resultSet.next()){
+            has_assign = resultSet.getInt(1);
+            return has_assign;
+        }
+        return has_assign;
+    }
+
 }

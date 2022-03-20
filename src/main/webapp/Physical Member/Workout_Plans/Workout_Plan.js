@@ -20,8 +20,157 @@ function close_virtual_workoutplan_Popup1(){
     $('#virtual_workout_packages1').hide();
 }
 function physical_workoutplan_open(){
-    $('#physical_workout_packages1').show();
+    // $('#physical_workout_packages1').show();
+    //alert("Yohan");
+    //check member has an instructor
+    $.ajax({
+        method:'POST',
+        url:"memberInstructorDetail",
+        dataType:'json',
+        // contentType:"application/json",
+    }).done(function(result){
+        console.log(result);
+        if(result.toString().trim() == "1"){
+            //alert("instructorGetData");
+            //no instructor belongs to member
+            Swal.fire({
+                title: 'Do you want to get an instructor?',
+                // text: "Registration is not completed,You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0E2C4B',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("phy_mem_instructors").click();
+                }else if (result.isDenied){
+                    // Swal.fire('Changes are not saved', '', 'info')
+                    console.log("instructor buy cancel");
+                }
+            })
+
+            //instructorGetData();
+        }else{
+            //he has an instructor
+            //send notification to instructor
+            Swal.fire({
+                title: 'Do you want to send a request?',
+                // text: "Registration is not completed,You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0E2C4B',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((x) => {
+                if (x.isConfirmed) {
+                    const date = new Date();
+
+                    let user_id = result["instructor_id"]; //instructorID
+                    let notification_title = "Workout plan request";
+                    let notification_time = ("0" + date.getHours()).slice(-2)+":"+("0" + date.getMinutes()).slice(-2)+":"+("0" + date.getSeconds()).slice(-2);
+                    let notification_date = date.getFullYear()+"-"+("0" + (date.getMonth()+1)).slice(-2)+"-"+("0" + date.getDate()).slice(-2);
+                    let notification_type = "immediate";
+                    let notification_status = 0;
+
+                    console.log("Instructor ID "+user_id);
+                    let has_assign = 0;
+                    let request_date = notification_date;
+
+                    $.ajax({
+                        method:"POST",
+                        url:"requestWorkoutPlan",
+                        data: {user_id:user_id,has_assign:has_assign,request_date:request_date},
+                        // dataType:"json",
+                        // contentType:"application/json",
+                        success: function (result){
+                            if(result.trim() == "1"){
+                                console.log("requestWorkoutPlan is saved");
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Request Send to the Instructor!',
+                                    // text: 'Physical Member!',
+                                    confirmButtonText:"Ok",
+                                    confirmButtonColor: '#0E2C4B',
+                                })
+
+                                $.ajax({
+                                    method:"POST",
+                                    url:"saveNotification",
+                                    data: {user_id:user_id,notification_title:notification_title,notification_time:notification_time,notification_date:notification_date,notification_type:notification_type,notification_status:notification_status},
+                                    // dataType:"json",
+                                    // contentType:"application/json",
+                                    success: function (result){
+                                        if(result.trim() == "1"){
+                                            console.log("Notification is saved");
+                                        }else if(result.trim() == "0"){
+                                            console.log("Notification is not saved");
+                                        }else {
+                                            console.log("Notification is saved and error1");
+                                        }
+                                    },
+                                    error: function(error){
+                                        console.log(error);
+                                        console.log("Notification is saved and error2");
+                                    }
+                                });
+
+                            }else if(result.trim() == "0"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Request Send Unsuccessfully!',
+                                    //text: 'Payment cannot completed!',
+                                    confirmButtonText:"Ok",
+                                    confirmButtonColor: '#932828',
+                                })
+                            }else if(result.trim() == "2"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'You already sent a request!',
+                                    //text: 'Payment cannot completed!',
+                                    confirmButtonText:"Ok",
+                                    confirmButtonColor: '#932828',
+                                })
+                            }else {
+                                console.log("requestWorkoutPlan is saved and error1");
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Request Send Unsuccessfully!',
+                                    //text: 'Payment cannot completed!',
+                                    confirmButtonText:"Ok",
+                                    confirmButtonColor: '#932828',
+                                })
+                            }
+                        },
+                        error: function(error){
+                            console.log(error);
+                            console.log("requestWorkoutPlan error");
+                        }
+                    });
+
+                }else if (result.isDenied){
+                    // Swal.fire('Changes are not saved', '', 'info')
+                    console.log("instructor buy cancel");
+                }
+            })
+        }
+        // alert(result);
+    }).fail(function(a,b,err){
+        console.log(a,b,err);
+    });
+
 }
+
+// function sendWorkoutRequest(user_id,notification_date,notification_title,notification_time,notification_type,notification_status){
+//
+//
+// }
+
+// function saveNotificationWorkoutRequest(user_id,notification_date,notification_title,notification_time,notification_type,notification_status){
+//
+// }
+
 // function close_physical_workoutplan_Popup(){
 //     $('#physical_workout_packages1').hide();
 // }

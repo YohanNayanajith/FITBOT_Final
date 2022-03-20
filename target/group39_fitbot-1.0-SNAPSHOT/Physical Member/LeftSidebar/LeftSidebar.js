@@ -43,7 +43,7 @@ $(document).ready(function(){
     if(right_load == 0) {
       $('#right_side_bar_view').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/RightSidebar/RightSidebar.html #right_side_nav', function (responseTxt, statusTxt, xhr) {
         if (statusTxt == "error") {
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
+          console.log("Error: " + xhr.status + ": " + xhr.statusText);
         }
         // viewMonthlyGoalReports();
         getRightSidebarDetail();
@@ -140,7 +140,7 @@ function clear_dashboard_functions(full_background,dashboard_icon,dashboard_text
 $(document).ready(function(){
   $('#dashboard_implementation').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Dashboard/Dashboard.html #dashboard_middle',function(responseTxt, statusTxt, xhr){
   if(statusTxt == "error")
-      alert("Error: " + xhr.status + ": " + xhr.statusText);
+    console.log("Error: " + xhr.status + ": " + xhr.statusText);
   });
   viewBMI("viewBMI");
   // window.addEventListener("popstate",showDetail());
@@ -172,7 +172,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Profile/Profile.html #profile_physical',function(responseTxt, statusTxt, xhr){
 
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
       getRegisterDetails();
       $('#profile_physical_container_edit_monthly_goal_input_h5').hide();
@@ -197,7 +197,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Instructors/Instructors.html #instructors_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
         checkInstructorBelongs();
 
@@ -220,7 +220,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Messages/Messages.html #messages_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
       // $('#messages_physical_container_right').hide();
         $('#messages_physical_container_right_header').hide();
@@ -249,7 +249,7 @@ $(document).ready(function(){
 
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Workout_Plans/Workout_Plan.html #workout_plan_physical',function(responseTxt, statusTxt, xhr){
         if(statusTxt == "error") {
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
+          console.log("Error: " + xhr.status + ": " + xhr.statusText);
         }
 
         checkWorkoutData();
@@ -276,7 +276,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Diet_Plans/Diet_Plans.html #Diet_Plans_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
 
       });
@@ -299,7 +299,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Payments/Payments.html #payments_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error"){
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
         displayPaymentsData();
       });
@@ -321,7 +321,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Reports/Reports.html #reports_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
       getCalender();
       viewReport();
@@ -348,7 +348,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/BranchMessages/BranchMessages.html #branch_messages_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
       getBranchMessages();
 
@@ -370,7 +370,7 @@ $(document).ready(function(){
       sideBar_links_variable = "#physical_member_appoinments";
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Appoinments/Appoinments.html #appointments_physical',function(responseTxt, statusTxt, xhr){
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
       getAppointmentData();
         // $('#appointment_details_popup').hide();
@@ -393,7 +393,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Settings/Settings.html #settings_physical',function(responseTxt, statusTxt, xhr){
 
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
 
       });
@@ -415,7 +415,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Settings/Settings.html #settings_physical',function(responseTxt, statusTxt, xhr){
 
         if(statusTxt == "error") {
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
+          console.log("Error: " + xhr.status + ": " + xhr.statusText);
         }
 
       });
@@ -437,7 +437,7 @@ $(document).ready(function(){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Conditions/Conditions.html #conditions_physical',function(responseTxt, statusTxt, xhr){
       
       if(statusTxt == "error") {
-        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
 
       });
@@ -529,7 +529,6 @@ $(document).ready(function(){
 
   }).done(function(data){
     // const data_object = JSON.parse(data);
-    // alert(data);
     $('#dashboard_mambership_first_text').append(
         '<span class="dashboard_mambership_second_text"><b>'+data.membership_category+'</b></span>'
     );
@@ -549,7 +548,7 @@ $(document).ready(function(){
     );
     // alert(data);
   }).fail(function(a,b,err){
-    alert("Error");
+    //alert("Error");
     console.log(a,b,err)
   });
 
@@ -705,7 +704,7 @@ function instructorGetData(){
 
     // alert(result);
   }).fail(function(a,b,err){
-    alert("Physical Instructor Error");
+    //alert("Physical Instructor Error");
     console.log(a,b,err);
   });
 }
@@ -731,7 +730,7 @@ function checkInstructorBelongs(){
       $('#instructors_physical_container_second').load('http://localhost:8080/group39_fitbot_war_exploded/Physical%20Member/Instructors/InstructorProfile.html #instructors_physical_container_detail_popup_new',function(responseTxt, statusTxt, xhr){
 
         if(statusTxt == "error") {
-          alert("Error: " + xhr.status + ": " + xhr.statusText);
+          console.log("Error: " + xhr.status + ": " + xhr.statusText);
         }
         instructorFullDetailView(result["instructor_id"]);
         instructorLanguageDetail(result["instructor_id"]);
@@ -839,7 +838,7 @@ function instructorGetOtherViewDetail(instructor_id){
 
     // alert(result);
   }).fail(function(a,b,err){
-    alert("Physical Instructor Error");
+    //alert("Physical Instructor Error");
     console.log(a,b,err);
   });
 }
@@ -900,7 +899,7 @@ function searchInstructors(){
 
         // alert(result);
     }).fail(function(a,b,err){
-        alert("Physical Instructor Error");
+        //alert("Physical Instructor Error");
         console.log(a,b,err);
     });
 }
@@ -935,7 +934,7 @@ function checkWorkoutData(){
 
     // alert(result);
   }).fail(function(a,b,err){
-    alert("Error");
+    //alert("Error");
     console.log(a,b,err);
   });
 }
@@ -949,7 +948,8 @@ function displayPaymentsData(){
 
   }).done(function(data){
     // const data_object = JSON.parse(data);
-    // alert(data);
+    //alert(data);
+    console.log(data);
     let date = data.expiry_day;
     let currectdate = date["year"]+"-"+date["month"]+"-"+date["day"];
     $('#payment_text').append(
@@ -966,7 +966,7 @@ function displayPaymentsData(){
       $('#payhere-payment').css("background-color", "grey");
     }
   }).fail(function(a,b,err){
-    alert("Error");
+    //alert("Error");
     console.log(a,b,err)
   });
 
@@ -1006,8 +1006,15 @@ function displayPaymentsData(){
           );
       }
     });
+    if(result.length == 0){
+      $('#payment_date_details').append(
+          '<span class="previous_payment_date">Next Payment Date</span><br>'+
+          '<span class="previous_payment_date_format">'+"There is no payment"+'</span><br>'+
+          '<span class="previous_payment_date_details">Last payment - '+"No previous payment date"+'</span>'
+      );
+    }
   }).fail(function(a,b,err){
-    alert("Error");
+    //alert("Error");
     console.log(a,b,err);
   });
 }
@@ -1027,23 +1034,18 @@ function getAppointmentData(){
     $.map(result,function(x){
       $('.edit_profile_container_detail_input4_btn1').attr("disabled", false);
       if(countVal == 0){
-        // alert("Yanavada1");
         if(!(x.appointment_date["year"] == date.getFullYear())){
-          // alert("Yanavada2");
           countVal++;
         }
         if(!(x.appointment_date["month"] == (date.getMonth()+1)) || countVal != 0){
           console.log(x.appointment_date["month"]);
           console.log(date.getMonth());
-          // alert("Yanavada3");
           countVal++;
         }
         if (!(x.appointment_date["day"] >= date.getDate()) || countVal != 0){
-          // alert("Yanavada4");
           countVal++;
         }
         if(countVal == 0){
-          // alert("Yanavada5");
           let appoin_date = x.appointment_date["year"]+"-"+("0" + x.appointment_date["month"]).slice(-2)+"-"+("0" + x.appointment_date["day"]).slice(-2);
           let appoin_time = ("0" + x.start_time["hour"]).slice(-2)+":"+("0" + x.start_time["minute"]).slice(-2)+":"+("0" + x.start_time["second"]).slice(-2);
           $('#no_appointment').html('Has Appointment');
@@ -1070,7 +1072,7 @@ function getAppointmentData(){
 
     // alert(result);
   }).fail(function(a,b,err){
-    alert("Error");
+    //alert("Error");
     console.log(a,b,err);
   });
   $('#appointment_container_table').show();
@@ -1100,7 +1102,7 @@ function getBranchMessages(){
       );
     });
   }).fail(function(a,b,err){
-    alert("Error");
+    // alert("Error");
     console.log(a,b,err);
   });
 }
@@ -1168,7 +1170,6 @@ function viewReport(){
   });
 }
 function getCalender(){
-  // alert("Calender");
   // document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById("calendar");
     let calendar = new FullCalendar.Calendar(calendarEl, {
