@@ -61,6 +61,8 @@
 .branch_landing_sha .cantact_no {
     position: relative;
     font-size: 14px;
+    display: flex;
+    justify-content: space-evenly;
 } 
 
 .branch_landing_sha .cantact_no li{

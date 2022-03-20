@@ -78,7 +78,7 @@ function mychart() {
     // contentType:"application/json",
   }).done(function(result){
   var xValues = ["Physical Members", "Virtual Members"];
-  var yValues = [result[1], result[3]];
+  var yValues = [result[0], result[1]];
   var barColors = [
     "#b91d47",
     "#00aba9"

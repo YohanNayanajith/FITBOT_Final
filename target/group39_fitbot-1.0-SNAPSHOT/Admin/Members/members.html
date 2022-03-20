@@ -17,7 +17,7 @@
         <!-- Content below the header -->
         <div class="memberview_admin" id="memberview_admin">
             <div class="overview-boxes">
-                <a href="#" onclick="printmembers('physical')">
+                <a href="#" onclick="printphysicalmember()">
                 <div class="box">
                     <div class ="left-side">
                         <div class="box-topic"> Physical Members</div>
@@ -27,7 +27,7 @@
                 </div>
                 </a>
 
-                <a href="#" onclick="printmembers('virtual')">
+                <a href="#" onclick="printvirtualmember()">
             <div class="box">
                 <div class ="left-side">
                     <div class="box-topic"> Virtual Members</div>
@@ -47,6 +47,7 @@
             </div>
                 </a>
 
+                <a href="#" onclick="printmember()">
             <div class="box">
                 <div class ="left-side">
                     <div class="box-topic"> Total members</div>
@@ -54,7 +55,9 @@
                 </div>
                 <i class='bx bxs-group member'></i>
             </div>
+                </a>
         </div>
+
 
         <div class="all_members">
           <div class="title_members">
@@ -198,18 +201,18 @@
                         <input type="button" class =" banned_button" value="Ban" onclick="banning()">
                         </div>
                         <div >
-                            <input type="button" class =" banned_button" value="Cancel" >
+                            <input type="button" class =" banned_button" value="Cancel" onclick="closepopup()" >
                         </div>
                     </div>
 
                     <div class ="banning_reason" id="banning_reason">
-                        <span class="reason">Reason for Banning the employee </span>
-                        <div class ="reason_form">
-                        <input type="text" name="ban_reason" id="ban_reason" class="" placeholder="Enter reason for banning" ><br>
+                        <span class="reason" id="banunban_reason">Reason for Banning the employee </span>
+                        <div class ="reason_form" id="reason_form"><input type="text" name="ban_reason" id="ban_reason" class="" placeholder="Enter reason for banning" ><br>
+                            <h6 id ="validation_ban_id" class="validation_label">Reason cannot be empty</h6>
                         </div>
                         <div class="buttonsforbanning" id="buttonsforbanning">
                         <input type="button" class =" banned_button" value="Submit" onclick="">
-                        <input type="button" class =" banned_button" value="Cancel" onclick="">
+                        <input type="button" class =" banned_button" value="Cancel" onclick="closepopup()">
                         </div>
                     </div>
 

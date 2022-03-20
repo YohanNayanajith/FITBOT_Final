@@ -123,53 +123,69 @@ function removeemployee(employeeid,employee_type){
   alert(employeeid);
   alert(employee_type);
   alert("Faalil");
-  $.ajax({
-    method: 'POST',
-    url: "removeemployee",
-    data: {
-      employee_id: employeeid,
-      designation:employee_type,
-    },
-    }).done(function (result) {
+  Swal.fire({
+    title: 'Are you sure you want to remove this employee?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#0E2C4B',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Remove!'
+  }).then((result) => {
+    if (result.isConfirmed) {
 
-    if (result.trim() == 1) {
-      Swal.fire({
-        icon: 'success',
-        title: "Successfully Removed",
-        text: '',
-        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Success',
-        confirmButtonColor: '#0E2C4B',
-        footer: '<a href="#">View Branch</a>'
+      $.ajax({
+        method: 'POST',
+        url: "removeemployee",
+        data: {
+          employee_id: employeeid,
+          designation: employee_type,
+        },
+      }).done(function (result) {
+
+        if (result.trim() == 1) {
+          Swal.fire({
+            icon: 'success',
+            title: "Successfully Removed",
+            text: '',
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Success',
+            confirmButtonColor: '#0E2C4B',
+            footer: '<a href="#">View Branch</a>'
+          });
+          $('#employee_view').hide();
+          printemployee();
+          employeecount();
+        }
+        if (result.trim() == 0) {
+          Swal.fire({
+            icon: 'error',
+            title: "Cannot be Removed",
+            text: 'Some Errors',
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again',
+            confirmButtonColor: '#0E2C4B',
+            // footer: '<a href="#" onclick=">View Employee</a>'
+          });
+        }
+
+
+      }).fail(function (a, b, err) {
+
+        alert("Faalil");
+        Swal.fire({
+          icon: 'error',
+          title: "Can't remove...",
+          text: 'Something went wrong!',
+          confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!!!',
+          confirmButtonColor: '#0E2C4B',
+          footer: '<a>Register again</a>'
+        });
+        console.log(a, b, err);
       });
-      $('#employee_view').hide();
-      printemployee();
-      employeecount();
     }
-    if (result.trim() == 0) {
-      Swal.fire({
-        icon: 'error',
-        title: "Cannot be Removed",
-        text: 'Some Errors',
-        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again',
-        confirmButtonColor: '#0E2C4B',
-        // footer: '<a href="#" onclick=">View Employee</a>'
-      });
+    else if (result.isDenied){
+      // Swal.fire('Changes are not saved', '', 'info')
+      console.log("Log out cancel");
     }
-
-  }).fail(function (a, b, err) {
-
-    alert("Faalil");
-    Swal.fire({
-      icon: 'error',
-      title: "Can't remove...",
-      text: 'Something went wrong!',
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Try Again!!!',
-      confirmButtonColor: '#0E2C4B',
-      footer: '<a>Register again</a>'
-    });
-    console.log(a, b, err);
-  });
-
+  })
 }
 
 //Function to print the instructors
@@ -252,7 +268,6 @@ function printbranchmanager(){
 
 function searchemployee(){
   $('#search_employee').keyup(function(){
-    // alert("yohan2");
     let value = $(this).val().toLowerCase();
     $('.employee_info').filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

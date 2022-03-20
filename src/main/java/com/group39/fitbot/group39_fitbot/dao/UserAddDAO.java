@@ -38,7 +38,7 @@ public class UserAddDAO {
 
     public static boolean unbanUser(String member_id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "UPDATE User SET status=? WHERE member_id=?";
+        String query = "UPDATE users SET status=? WHERE member_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setInt(1,1);

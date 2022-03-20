@@ -46,9 +46,6 @@ function printbranches (){
                       <div class ="branch01_id">${x.branch_id}</div>
                       <div class ="branch01_name">${x.branch_name}</div>
                     </div> </a>`);
-      // $('#employee_branch_name').append(
-      //     `<option value="${x.branch_id}">${x.branch_name}</option>`
-      // );
     });
 
   }).fail(function(a,b,err){
