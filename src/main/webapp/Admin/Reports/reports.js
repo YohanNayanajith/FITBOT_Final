@@ -22,8 +22,8 @@ function viewBranchEquipmentCount(){
             i =0;
 
             $.map(result, function (x) {
-                arrBranch[i] = x["branch_name"];
-                arrCount[i] = x["equipment_count"];
+                arrBranch[i] = x['X'];
+                arrCount[i] = x['Y'];
                 i += 1;
             });
 

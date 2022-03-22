@@ -19,9 +19,19 @@
     </div>
 
     <div class="reports_physical_big_container">
-      <!--            calender-->
+      <div class="reports_physical_container">
+        <div class="reports_physical_container_header income_chart_owner">
+          <span>Income</span>
+          <span><select name ="type_of_branch"  id="type_of_branch" onchange="ViewIncome(value)">
+            <option value="1" >All Branches</option>
+            <option value="2" >Some Branches</option>
+          </select></span>
+        </div>
+        <div class="reports_physical_container_chart1">
+          <canvas class="reports_physical_container_canvas" id="income_chart"></canvas>
+        </div>
+      </div>
 
-      <!--            weight vs time-->
       <div class="reports_physical_container">
         <div class="reports_physical_container_header">
           <span>Employees</span>
@@ -38,18 +48,20 @@
           <span>Equipment</span>
         </div>
         <div class="reports_physical_container_chart1">
-          <canvas class="reports_physical_container_canvas" id="myChart2"></canvas>
+          <canvas class="reports_physical_container_canvas" id="equipmentcount"></canvas>
         </div>
       </div>
       <!--            workout plan-->
       <div class="reports_physical_container">
         <div class="reports_physical_container_header">
-          <span>Workout Plan Report</span>
+          <span>Members Statistics</span>
         </div>
         <div class="reports_physical_container_chart1">
-          <canvas class="reports_physical_container_canvas" id="myChart3"></canvas>
+          <canvas class="reports_physical_container_canvas" id="member_statistics"></canvas>
         </div>
       </div>
+
+
     </div>
   </div>
 </body>

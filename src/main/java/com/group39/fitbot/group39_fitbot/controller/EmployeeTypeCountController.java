@@ -2,8 +2,7 @@ package com.group39.fitbot.group39_fitbot.controller;
 
 import com.google.gson.Gson;
 import com.group39.fitbot.group39_fitbot.dao.ReportDataDAO;
-import com.group39.fitbot.group39_fitbot.model.EmployeeTypeCount;
-import com.group39.fitbot.group39_fitbot.model.MemberRegisterCount;
+import com.group39.fitbot.group39_fitbot.model.XYY;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +23,7 @@ public class EmployeeTypeCountController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Employee Type Count Post Method Called");
         try {
-            List<EmployeeTypeCount> employeetypecount= new ArrayList<>();
+            List<XYY> employeetypecount= new ArrayList<>();
             employeetypecount= ReportDataDAO.getEmployeeTypeCount();
             System.out.println(employeetypecount);
             Gson gson = new Gson();

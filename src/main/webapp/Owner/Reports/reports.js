@@ -10,7 +10,7 @@ function own_reports() {
 
 
 function EmployeeCountChart(){
-    alert("I am on the way");
+    // alert("I am on the way");
     $.ajax({
         method: "POST",
         url: "employeetypecount",
@@ -25,9 +25,9 @@ function EmployeeCountChart(){
             i =0;
 
             $.map(result, function (x) {
-                arrBranch[i] = x["branch_name"];
-                arrInsCount[i] = x["instructor_count"];
-                arrBMCount[i] = x["branchmanager_count"];
+                arrBranch[i] = x['X'];
+                arrInsCount[i] = x['Y1'];
+                arrBMCount[i] = x['Y2'];
                 i += 1;
             });
 
@@ -61,34 +61,53 @@ function EmployeeCountChart(){
         }
     });
 }
-function viewChart2(){
-    let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
-    new Chart("myChart3", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-                borderColor: "red",
-                fill: false
-            }, {
-                data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-                borderColor: "green",
-                fill: false
-            }, {
-                data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-                borderColor: "blue",
-                fill: false
-            }]
+function ViewBranchEquipmentCount(){
+    $.ajax({
+        method: "POST",
+        url: "branchequipmentcount",
+        dataType: "json",
+        // contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let arrBranch = new Array();
+            let arrCount = new Array();
+            i =0;
+
+            $.map(result, function (x) {
+                arrBranch[i] = x['X'];
+                arrCount[i] = x['Y'];
+                i += 1;
+            });
+
+
+            new Chart("equipmentcount", {
+                type: "bar",
+                data: {
+                    labels: arrBranch,
+                    datasets: [
+                        {
+                            label:"Equipments",
+                            data: arrCount,
+                            backgroundColor: "#2b5797"
+                        }]
+
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: false
+                    }
+                }
+            });
         },
-        options: {
-            legend: {display: false}
+        error: function (error) {
+            console.log(error );
         }
     });
 }
 
-function viewChart3() {
+function ViewBranchMemberCount(){
     $.ajax({
         method: "POST",
         url: "branchmembercount",
@@ -98,26 +117,115 @@ function viewChart3() {
             console.log(result);
             let arrBranch = new Array();
             let arrCount = new Array();
-            var barColors = ["blue", "green","yellow","orange","brown"];
+            let arrBanCount =new Array();
             i =0;
 
             $.map(result, function (x) {
                 arrBranch[i] = x["branch_name"];
-                arrCount[i] = x["branchmember_count"];
+                arrCount[i] = x["unbanmember_count"];
+                arrBanCount[i]=x["banmember_count"]
                 i += 1;
             });
 
             // let xValues = [100,200,300,400,500,600,700,800,900,1000];
 
-            new Chart("myChart2", {
+            new Chart("member_statistics", {
                 type: "bar",
                 data: {
                     labels: arrBranch,
                     datasets: [{
+                        label :"Active Members",
                         data: arrCount,
-                        backgroundColor: barColors
+                        backgroundColor: "#00aba9"
+                    },
+                        {
+                            label:"Banned Member",
+                            data: arrBanCount,
+                            backgroundColor: "#2b5797"
+                        }]
 
-                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: false
+                    }
+                }
+            });
+        },
+        error: function (error) {
+            console.log(error );
+        }
+    });
+}
+
+
+
+
+function printbranchesforchart () {
+    $.ajax({
+        method: 'POST',
+        url: "adminbranch",
+        dataType: 'json',
+        // contentType:"application/json",
+    }).done(function (result) {
+        $('#type_of_branch').html('');
+        $('#type_of_branch').append(
+            `<option value="Total">Total Income</option>
+             <option value="Virtual">Virtual</option>`
+        );
+        console.log(result);
+        $.map(result, function (x) {
+
+            $('#type_of_branch').append(
+                `<option value=${x.branch_id}>${x.branch_name}</option>`
+            );
+        });
+
+
+
+    }).fail(function (a, b, err) {
+        alert("Error");
+        console.log(a, b, err);
+    });
+}
+
+function ViewIncome(type){
+    let chartStatus = Chart.getChart("income_chart"); // <canvas> id
+    if (chartStatus != undefined) {
+        chartStatus.destroy();
+    }
+
+    $.ajax({
+        method: "POST",
+        url: "incomechart",
+        data: {
+            type: type
+        },
+        success: function (result) {
+            console.log(result);
+            let arrMonth= new Array();
+            let arrCount = new Array();
+            i =0;
+
+            $.map(result, function (x) {
+                arrMonth[i] = x['X'];
+                arrCount[i] = x['Y'];
+                i += 1;
+            });
+
+
+            new Chart("income_chart", {
+                type: "line",
+                data: {
+                    labels: arrMonth,
+                    datasets: [{
+                        label :"Income",
+                        data: arrCount,
+                        borderColor: "#00aba9",
+                        fill: false
+                        }]
+
                 },
                 options: {
                     legend: {display: false},

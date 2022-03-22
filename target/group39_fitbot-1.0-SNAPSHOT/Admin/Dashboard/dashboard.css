@@ -1,5 +1,4 @@
 
-  /* Content below header in home-section */
   .home-section .dashboard_admin{
       position: relative;
       margin-top:30px;
@@ -9,7 +8,6 @@
   }
 
   .dashboard_admin .user_employees {
-    /*width:(100%-144px);*/
     display:flex;
     justify-content: space-evenly;
     gap:20px;

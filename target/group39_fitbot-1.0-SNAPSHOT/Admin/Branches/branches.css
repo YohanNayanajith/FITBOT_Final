@@ -27,8 +27,6 @@
     gap:20px;
     border-radius: 10px;
     flex-wrap: wrap;
-    /* align-items: center; */
-    /* justify-content: space-between: */
     
   }
 
@@ -145,6 +143,9 @@
     padding: 0 20px;
 }
 
+.panel ul {
+    padding-top :10px;
+}
    .list_accordion {
        background-color: #E5E5E5;
        /*color: #444;*/
@@ -157,4 +158,36 @@
        outline: none;
        font-size: 20px;
        transition: 0.4s;
+   }
+
+   @media only screen and (max-width: 1000px) {
+    .branch_view {
+        flex-direction: column;
+    }
+
+       .branch_view .each_branch .branch_details .branch_info {
+           line-height: 35px;
+           margin-left: 8px;
+       }
+   }
+
+   @media only screen and (max-width: 768px) {
+       .branch_view {
+           flex-direction: column;
+       }
+
+       .branch_details {
+           flex-direction: column;
+           padding: 0px;
+           gap:0px;
+       }
+       .branch_view .each_branch .branch_details .line_vertical{
+           display: none;
+       }
+       .branch_view .each_branch .branch_details .branch_info {
+           font-size: 20px;
+           line-height: 35px;
+           margin-left: auto;
+           margin-right: auto;
+       }
    }

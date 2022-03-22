@@ -102,7 +102,7 @@ function branchmanager_branch (branch_id)
     $.map(result, function (x) {
       //alert(${x.branch_name});
       $('#branchmanager_list').append(
-          ` <li> ${x.firstname + ' ' + x.lastname} <li>`
+          ` <li> ${x.firstname + ' ' + x.lastname +' ' + ' -'+ ' ' + '  '+  x.primarycontact}</li>`
       );
     });
 
@@ -127,7 +127,7 @@ function instructor_branch (branch_id)
     $.map(result, function (x) {
       //alert(${x.branch_name});
       $('#instructor_list').append(
-          ` <li> ${x.firstname + ' ' + x.lastname} <li>`
+          ` <li> ${x.firstname + ' ' + x.lastname +' ' + ' -'+ ' ' + '  '+ x.primarycontact}</li>`
       );
     });
 

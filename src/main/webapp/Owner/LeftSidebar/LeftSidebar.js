@@ -21,20 +21,20 @@ function menuBtnChange() {
   }
 }
 
-function visibleSocialMedia(){
-  var social_media = document.querySelector(".social_media_icons_side_bar");
-  var social_media_active = document.querySelector(".social_media_icons_side_bar_active");
-  var width_social_media = document.querySelector(".social_media_icons_width_menu");
-  var width_social_media_active = document.querySelector(".social_media_icons_width_menu_active");
-  if (sidebar.classList.contains("open")) {
-    social_media_active.classList.replace("social_media_icons_side_bar_active","social_media_icons_side_bar");
-    width_social_media_active.classList.replace("social_media_icons_width_menu_active","social_media_icons_width_menu");
-  } else {
-    social_media.className += "_active";
-    width_social_media.classList.replace("social_media_icons_width_menu", "social_media_icons_width_menu_active");
-    
-  }
-}
+// function visibleSocialMedia(){
+//   var social_media = document.querySelector(".social_media_icons_side_bar");
+//   var social_media_active = document.querySelector(".social_media_icons_side_bar_active");
+//   var width_social_media = document.querySelector(".social_media_icons_width_menu");
+//   var width_social_media_active = document.querySelector(".social_media_icons_width_menu_active");
+//   if (sidebar.classList.contains("open")) {
+//     social_media_active.classList.replace("social_media_icons_side_bar_active","social_media_icons_side_bar");
+//     width_social_media_active.classList.replace("social_media_icons_width_menu_active","social_media_icons_width_menu");
+//   } else {
+//     social_media.className += "_active";
+//     width_social_media.classList.replace("social_media_icons_width_menu", "social_media_icons_width_menu_active");
+//
+//   }
+// }
 
 
 //logout_function
@@ -269,9 +269,11 @@ $(document).ready(function(){
     
     if(load[3] == 0){
       $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Owner/Reports/reports.html #report_view_owner',function(responseTxt, statusTxt, xhr){
+        printbranchesforchart();
         EmployeeCountChart();
-        viewChart2();
-        viewChart3();
+        ViewBranchMemberCount();
+        ViewBranchEquipmentCount();
+        ViewIncome("Total");
 
       if(statusTxt == "error")
           alert("Error: " + xhr.status + ": " + xhr.statusText);

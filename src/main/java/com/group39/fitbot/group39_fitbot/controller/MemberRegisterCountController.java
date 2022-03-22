@@ -2,8 +2,8 @@ package com.group39.fitbot.group39_fitbot.controller;
 
 import com.google.gson.Gson;
 import com.group39.fitbot.group39_fitbot.dao.ReportDataDAO;
-import com.group39.fitbot.group39_fitbot.model.BranchEquipmentCount;
 import com.group39.fitbot.group39_fitbot.model.MemberRegisterCount;
+import com.group39.fitbot.group39_fitbot.model.XY;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +24,7 @@ public class MemberRegisterCountController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Member RegisterCount Post Method Called");
         try {
-            List<MemberRegisterCount> memberregistercount= new ArrayList<>();
+            List<XY> memberregistercount= new ArrayList<>();
             memberregistercount = ReportDataDAO.getMemberRegisterCount();
             System.out.println(memberregistercount);
             Gson gson = new Gson();

@@ -8,7 +8,7 @@ public class MemberRegisterCount {
     }
 
     public MemberRegisterCount(String month, int member_count) {
-        month = month;
+        this.month = month;
         this.member_count = member_count;
     }
 
@@ -17,7 +17,7 @@ public class MemberRegisterCount {
     }
 
     public void setMonth(String month) {
-        month = month;
+        this.month = month;
     }
 
     public int getMember_count() {
@@ -31,7 +31,7 @@ public class MemberRegisterCount {
     @Override
     public String toString() {
         return "MemberRegisterCount{" +
-                "Month='" + month + '\'' +
+                "month='" + month + '\'' +
                 ", member_count=" + member_count +
                 '}';
     }
