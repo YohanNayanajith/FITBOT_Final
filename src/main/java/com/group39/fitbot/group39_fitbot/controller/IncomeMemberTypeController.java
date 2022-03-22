@@ -2,7 +2,8 @@ package com.group39.fitbot.group39_fitbot.controller;
 
 import com.google.gson.Gson;
 import com.group39.fitbot.group39_fitbot.dao.ReportDataDAO;
-import com.group39.fitbot.group39_fitbot.model.EmployeeTypeCount;
+import com.group39.fitbot.group39_fitbot.model.XYY;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class IncomeMemberTypeController extends HttpServlet {
         System.out.println("Icnome Member Type Count Post Method Called");
 
         try {
-            List<EmployeeTypeCount> incomemembertype= new ArrayList<>();
+            List<XYY> incomemembertype= new ArrayList<>();
             incomemembertype= ReportDataDAO.getIncomeMemberType();
             System.out.println(incomemembertype);
             Gson gson = new Gson();

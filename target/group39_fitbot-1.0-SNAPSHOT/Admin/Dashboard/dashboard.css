@@ -16,7 +16,7 @@
 
 
   .dashboard_admin .users {
-    width:50%;
+    flex:50%;
     background-color: #E5E5E5;
     border-radius: 15px;
     padding:10px;
@@ -25,7 +25,7 @@
   }
 
   .dashboard_admin .employees {
-    width:30%;
+    flex:30%;
     background-color: #E5E5E5;
     padding:10px;
     border-radius: 15px;

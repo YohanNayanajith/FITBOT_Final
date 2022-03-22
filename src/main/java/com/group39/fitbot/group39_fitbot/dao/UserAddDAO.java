@@ -1,7 +1,6 @@
 package com.group39.fitbot.group39_fitbot.dao;
 
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
-import com.group39.fitbot.group39_fitbot.model.Employee;
 import com.group39.fitbot.group39_fitbot.model.Login;
 
 import java.sql.Connection;

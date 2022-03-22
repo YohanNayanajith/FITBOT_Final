@@ -827,4 +827,13 @@
         <servlet-name>incomemembertype</servlet-name>
         <url-pattern>/incomemembertype</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>incomechart</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.IncomeChartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>incomechart</servlet-name>
+        <url-pattern>/incomechart</url-pattern>
+    </servlet-mapping>
 </web-app>

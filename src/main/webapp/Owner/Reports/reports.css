@@ -36,3 +36,16 @@
     max-height:80vh;
     padding: 2rem;
 }
+
+.income_chart_owner {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.income_chart_owner select {
+    padding:5px;
+    font-weight: bold;
+    width: 200px;
+
+}

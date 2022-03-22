@@ -23,9 +23,9 @@ function ownerincomechart() {
             i =0;
 
             $.map(result, function (x) {
-                arrMonth[i] = x["branch_name"];
-                arrPhysicalCount[i] = x["instructor_count"];
-                arrVirtualCount[i] = x["branchmanager_count"];
+                arrMonth[i] = x['X'];
+                arrPhysicalCount[i] = x["Y1"];
+                arrVirtualCount[i] = x["Y2"];
                 i += 1;
             });
 
@@ -38,12 +38,14 @@ function ownerincomechart() {
                     datasets: [{
                         label:"Physical",
                         data: arrPhysicalCount,
-                        backgroundColor: barColors
+                        borderColor: "#2b5797",
+                        fill: true
                     },
                         {
                             label:"Virtual",
                             data: arrVirtualCount,
-                            backgroundColor:barColors
+                            borderColor: "#00aba9",
+                            fill: true
                     }]
                 },
                 options: {
@@ -74,8 +76,8 @@ function memberRegisteringCharts() {
             i =0;
 
             $.map(result, function (x) {
-                arrMonth[i] = x["month"];
-                arrCount[i] = x["member_count"];
+                arrMonth[i] = x['X'];
+                arrCount[i] = x['Y'];
                 i += 1;
             });
 
@@ -86,13 +88,15 @@ function memberRegisteringCharts() {
                 data: {
                     labels: arrMonth,
                     datasets: [{
+                        label: "Members",
                         data: arrCount,
-                        backgroundColor: barColors
+                        borderColor: "#2b5797",
+                        fill: true
 
                     }]
                 },
                 options: {
-                    legend: {display: false},
+                    legend: {display: true},
                     title: {
                         display: false
                     }
