@@ -1,4 +1,10 @@
 
+.branch_topics {
+    margin:30px 72px;
+    font-size:25px;
+    color: #1d1b31;
+    font-weight: 500;
+}
    .branch_view {
     display:flex;
     justify-content: space-evenly;
@@ -14,19 +20,20 @@
     flex:50%;
     display: flex;
     flex-direction: column;
-    background-color:#E5E5E5;
+    background-color:#F2F2F2;
     padding:20px;
     border-radius: 10px;
-
+      box-shadow: 3px 3px 3px #888888;
   }
 
    .branch_view .each_branch .branch_details {
     display: flex;
     padding:10px;
-    background-color:#F2F2F2;
+    background-color:#FFFFFF;
     gap:20px;
     border-radius: 10px;
     flex-wrap: wrap;
+    color: red;
     
   }
 
@@ -41,12 +48,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+       color: #1d1b31;
   }
 
    .branch_view .each_branch .branch_details .branch_info {
     font-size: 20px;
     line-height: 35px;
     margin-left: 8px;
+       color: #1d1b31;
   }
 
   .branch_view .each_branch .branch_details .branch_info .branch_name {
@@ -55,7 +64,7 @@
   }
 
    .branch_view .each_branch .branch_managers, .instructors , .members {
-    background-color:#F2F2F2;
+    background-color:#FFFFFF;
     padding:10px;
     margin-top: 15px;
     border-radius: 10px;
@@ -67,6 +76,7 @@
     padding: 20px;
     background-color:#E5E5E5 ;
     border-radius: 10px;
+      box-shadow: 3px 3px 3px #888888;
   }
 
    .branch_view .branch_list .list_top {
@@ -114,10 +124,8 @@
     display:flex;
     padding: 20px 20px 20px 20px;
     font-size: 25px;
-    /*align-items: center;*/
     justify-content: space-between;
     background-color:#F2F2F2;
-    /*border-style:2px solid;*/
   }
    .branch01_name{
        align-items: flex-start;
@@ -147,8 +155,8 @@
     padding-top :10px;
 }
    .list_accordion {
-       background-color: #E5E5E5;
-       /*color: #444;*/
+       background-color: #F2F2F2;
+       box-shadow: 1px 1px 1px #888888;
        cursor: pointer;
        padding: 10px;
        width: 100%;

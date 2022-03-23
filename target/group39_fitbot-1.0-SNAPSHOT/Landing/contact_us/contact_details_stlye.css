@@ -6,30 +6,63 @@
 body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-.image_contact{
-    background-image: url(image/contact_us_image.jpg);
-    max-height: 90vh;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
+.slideshow_container {
+    max-width: 100vw;
     position: relative;
+
 }
 
-.rect_contact{
-    background-image: linear-gradient(to right,#0E2C4B 60%,rgba(0, 0, 0, 0) );
+.image_slides_text {
+    color: black;
+    font-size: 15px;
+    top:20%;
+    position: absolute;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    left: 15%;
+}
+
+.image_slides img {
+    vertical-align: middle;
+    width:100%;
     height: 90vh;
 }
 
-.rect_contact h1{
+.image_slides_text_header h1{
     color: #ffff;
     font-size: 78px;
     width: 50px;
     line-height: 91px;
     padding-left: 50px;
     padding-top: 150px;
+
 }
+
+/*.image_contact{*/
+/*    background-image: url(image/contact_us_image.jpg);*/
+/*    max-height: 90vh;*/
+/*    width: 100%;*/
+/*    background-position: center;*/
+/*    background-size: cover;*/
+/*    position: relative;*/
+/*}*/
+
+/*.rect_contact{*/
+/*    background-image: linear-gradient(to right,#0E2C4B 60%,rgba(0, 0, 0, 0) );*/
+/*    width: 50%;*/
+/*    height: 90vh;*/
+/*}*/
+
+/*.rect_contact h1{*/
+/*    color: #ffff;*/
+/*    font-size: 78px;*/
+/*    width: 50px;*/
+/*    line-height: 91px;*/
+/*    padding-left: 50px;*/
+/*    padding-top: 150px;*/
+/*}*/
 
 .contact_details{
     display: flex;
@@ -53,24 +86,13 @@ body{
     margin-top: 30px;
 }
 
-.contact_details li{
-    list-style-type: none;
+.below_of_icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.address p{
-    padding-left: 35%;
-    text-align: left;
-}
 
-.contact_details h2{
-    margin: 20px 10px;
-}
-.mail_contact a{
-    color: rgb(0, 0, 0);
-}
-a:hover {
-    color: #003452;
-}
 .location_contact:hover{
     border-color:#7CD0FF ;
     filter:  drop-shadow(1px 4px 4px #7CD0FF);

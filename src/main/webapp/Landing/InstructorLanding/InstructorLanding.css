@@ -1,25 +1,60 @@
-.rect_contact h1{
+/*.rect_contact h1{*/
+/*    color: #ffff;*/
+/*    font-size: 78px;*/
+/*    width: 50px;*/
+/*    line-height: 91px;*/
+/*    padding-left: 50px;*/
+/*    padding-top: 150px;*/
+/*}*/
+
+/*.image_about{*/
+/*    !* display: flex; *!*/
+/*    !* top: 0; *!*/
+/*    !* max-height: 90vh; *!*/
+/*    width: 100%;*/
+/*    background-image: url("http://localhost:8080/group39_fitbot_war_exploded/Landing/Images/image_slider_1.jpg");*/
+/*    background-position: center;*/
+/*    background-size: cover;*/
+/*    !* position: relative; *!*/
+/*}*/
+
+/*.rect_contact{*/
+/*    background-image: linear-gradient(to right,#0E2C4B 60%,rgba(0, 0, 0, 0) );*/
+/*    width: 50%;*/
+/*    height: 90vh;*/
+/*}*/
+
+.image_slides_text {
+    color: black;
+    font-size: 15px;
+    top:20%;
+    position: absolute;
+    width: 50%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    text-align: left;
+    left: 15%;
+}
+
+.image_slides img {
+    vertical-align: middle;
+    width:100%;
+    height: 90vh;
+}
+
+.image_slides_text_header h1{
     color: #ffff;
     font-size: 78px;
     width: 50px;
     line-height: 91px;
     padding-left: 50px;
     padding-top: 150px;
+
 }
 
-.image_about{
-    /* display: flex; */
-    /* top: 0; */
-    /* max-height: 90vh; */
-    width: 100%;
-    background-image: url("http://localhost:8080/group39_fitbot_war_exploded/Landing/Images/image_slider_1.jpg");
-    background-position: center;
-    background-size: cover;
-    /* position: relative; */
-}
 
-.rect_contact{
-    background-image: linear-gradient(to right,#0E2C4B 60%,rgba(0, 0, 0, 0) );
-    width: 50%;
-    height: 90vh;
+.slideshow_container {
+    max-width: 100vw;
+    position: relative;
+
 }

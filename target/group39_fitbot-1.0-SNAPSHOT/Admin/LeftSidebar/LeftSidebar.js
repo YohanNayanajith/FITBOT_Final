@@ -163,7 +163,8 @@ $(document).ready(function(){
   $('#admin_dashboard_implementation').load('http://localhost:8080/group39_fitbot_war_exploded/Admin/Dashboard/dashboard.html #dashboard_admin',function(responseTxt, statusTxt, xhr){
     if(statusTxt == "error")
       alert(`Error: ${xhr.status}: ${xhr.statusText}`);
-    employeecount_dashboard();
+    admindashboardcount();
+    employeechart();
     mychart();
   });
 });

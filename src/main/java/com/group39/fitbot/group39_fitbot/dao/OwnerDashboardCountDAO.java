@@ -26,4 +26,21 @@ public class OwnerDashboardCountDAO {
 
         return ownerdashboardcount;
     }
+
+    public static List<Integer> getAdminDashboardCount() throws SQLException, ClassNotFoundException{
+        List<Integer> admindashboardcount = new ArrayList<>();
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "SELECT (SELECT count(member_id) FROM register WHERE DATEDIFF(UTC_DATE(),joined_date)<31) AS NEWMEMBER,(SELECT count(member_id) FROM register) AS ALLMEMBERS,(SELECT Count(DISTINCT member_id) FROM Users WHERE user_type IN (\"Maintainer\",\"Branch Manager\",\"Instructor\") AND status=\"1\") AS ALLEMPLOYEES,(SELECT COUNT(*) FROM branch) AS BranchCount ;";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        ResultSet resultSet = pst.executeQuery();
+        if (resultSet.next()) {
+            admindashboardcount.add(resultSet.getInt(1));
+            admindashboardcount.add(resultSet.getInt(2));
+            admindashboardcount.add(resultSet.getInt(3));
+            admindashboardcount.add(resultSet.getInt(4));
+        }
+
+        return admindashboardcount;
+    }
 }
