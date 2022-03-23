@@ -201,6 +201,8 @@ $(document).ready(function(){
         console.log("Error: " + xhr.status + ": " + xhr.statusText);
       }
         checkInstructorBelongs();
+        $('#instructor_popup_details').hide();
+        $('#after_payment_popup_instructor_details').hide();
 
       });
       load[2] += 1;
@@ -715,47 +717,70 @@ function instructorGetData(){
   }).done(function(result){
     console.log(result);
     // alert("This is physical instructor");
+      //document.getElementById("instructor_id_hidden").value = x.instructor_id;
     $.map(result,function(x){
 
       $('#instructors_physical_container_first').append(
-          '<div class="instructors_physical_container_detail" id="instructors_physical_container_detail_1">'+
-          '<img src='+'"'+ x["profile_image_url"]+'"'+'alt="instructor image">'+
+          `<div class="instructors_physical_container_detail" id="instructors_physical_container_detail_1" onclick='instructorDetailsView("${x.instructor_id}")'>
+          <img src="${x["profile_image_url"]}" alt="instructor image">
 
-          '<div class="instructors_physical_container_detail_con" id="instructors_physical_container_detail_con">'+
-          '<h1>'+ x["first_name"]+' '+x["last_name"] +'</h1>'+
-          '<div class="instructors_physical_container_detail_line">'+'</div>'+
-          '<p class="instructors_physical_container_detail_title">'+x["main_skill"]+'</p>'+
-          '</div>'+
+          <div class="instructors_physical_container_detail_con" id="instructors_physical_container_detail_con">
+          <h1>${x["first_name"]} ${x["last_name"]}</h1>
+          <div class="instructors_physical_container_detail_line"></div>
+          <p class="instructors_physical_container_detail_title">${x["main_skill"]}</p>
+          </div>
 
-          '<div class="instructors_physical_container_detail_icon">'+
-          '<a href="#"><i class="bx bxl-facebook-circle bx-tada"></i></a>'+
-          '<a href="#"><i class="bx bxl-instagram-alt bx-tada"></i></a>'+
-          '<a href="#"><i class="bx bxl-youtube bx-tada"></i></a>'+
-          '</div>'+
-          '<div class="instructors_physical_container_detail_eye_icon">'+
-          '<a onClick="open_instructor_details()">'+'<i class="bx bx-show bx-tada">'+'</i>'+'</a>'+
-          '</div>'+
-          '</div>'
+          <div class="instructors_physical_container_detail_icon">
+          <a href="#"><i class="bx bxl-facebook-circle bx-tada"></i></a>
+          <a href="#"><i class="bx bxl-instagram-alt bx-tada"></i></a>
+          <a href="#"><i class="bx bxl-youtube bx-tada"></i></a>
+          </div>
+          <div class="instructors_physical_container_detail_eye_icon" id="instructors_physical_container_detail_eye_icon">
+          <a><i class="bx bx-show bx-tada"></i></a>
+          </div>
+          </div>`
       );
     });
-
-    // alert(result);
   }).fail(function(a,b,err){
-    //alert("Physical Instructor Error");
     console.log(a,b,err);
   });
 }
+
+// instructor detail popup
+function instructorDetailsView(instructor_id){
+  $('#instructor_popup_details').show();
+  editPaymentBackgroundOn();
+  instructorFullDetailViewDuplicate(instructor_id);
+  instructorLanguageDetail(instructor_id);
+  instructorSkillsDetail(instructor_id);
+  instructorGetOtherViewDetail(instructor_id);
+}
+
+function close_instructor_popup_details(){
+  $('#instructor_popup_details').hide();
+  editPaymentBackgroundOff();
+  //$('.instructors_physical_container_detail_image_section').remove();
+  //$('#instructors_physical_container_detail_offers_section_skils').remove();
+  $('.instructors_physical_container_detail_offers_section_skils_new').remove();
+  //$('#instructors_physical_container_detail_image').remove();
+  $('.instructor_image_new').remove();
+  $('.instructorBuyBtn').remove();
+}
+
+//var instructor_id_global = null;
 
 function checkInstructorBelongs(){
   $.ajax({
     method:'POST',
     url:"memberInstructorDetail",
     dataType:'json',
+    async: false,
     // contentType:"application/json",
   }).done(function(result){
     console.log(result);
     // let result_val = result["instructor_id"];
     // if(Object.entries(result).length === 0){
+    //instructor_id_global = result["instructor_id"];
     if(result.toString().trim() == "1"){
       // alert("instructorGetData");
       //no instructor belongs to member
@@ -791,8 +816,6 @@ function instructorFullDetailView(instructor_id){
   }).done(function(result){
     console.log(result);
     instructorRating(instructor_id);
-    // $('#instructors_physical_container_first').hide();
-    // $('#instructors_physical_container_detail_popup').show();
     $('#instructors_physical_container_header_h1').html("Your Personal Instructor");
 
     $('#instructors_physical_container_detail_view_section_box_detail_country').html(result["country"]);
@@ -805,6 +828,33 @@ function instructorFullDetailView(instructor_id){
     console.log(a,b,err);
   });
 }
+
+//check this for
+function instructorFullDetailViewDuplicate(instructor_id){
+  $.ajax({
+    method:'POST',
+    url:"memberInstructorDescription",
+    data:{instructor_id:instructor_id},
+    // dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+
+    $('#instructors_physical_container_detail_view_section_box_detail_country').html(result["country"]);
+
+    $('#instructors_physical_container_detail_view_section_box_detail_payment').html(result["price"]);
+    $('#instructors_physical_container_detail_view_section_box_detail_duration').html(result["duration"]);
+    $('#instructors_physical_container_detail_bio_section_detail').html(result["description"]);
+
+    $('#instructors_physical_container_detail_rate_section_instructor').append(
+        `<input type="button" class="instructorBuyBtn" value="Buy your instructor!!!!" onclick='instructorBuyProcess("${result.price}","${instructor_id}")'>`
+    );
+
+  }).fail(function(a,b,err){
+    console.log(a,b,err);
+  });
+}
+
 function instructorLanguageDetail(instructor_id){
   $.ajax({
     method:'POST',
@@ -843,7 +893,7 @@ function instructorSkillsDetail(instructor_id){
 
     $.map(result,function(x){
       $('#instructors_physical_container_detail_offers_section_skils').append(
-          `<div>${result[0]["language"]}</div>`
+          `<div class="instructors_physical_container_detail_offers_section_skils_new">${result[0]["language"]}</div>`
       );
     });
 
@@ -867,17 +917,58 @@ function instructorGetOtherViewDetail(instructor_id){
         $('#instructors_physical_container_detail_offers_section_header').html("What "+x["first_name"]+" "+x["last_name"] +" offers");
 
         $('#instructors_physical_container_detail_image').append(
-            `<img src="${x["profile_image_url"]}" alt="instructor image">`
+            `<img class="instructor_image_new" src="${x["profile_image_url"]}" alt="instructor image">`
         );
 
       }
     });
-
-    // alert(result);
   }).fail(function(a,b,err){
-    //alert("Physical Instructor Error");
     console.log(a,b,err);
   });
+}
+function close_after_payment_instructor_details(){
+  $('#after_payment_popup_instructor_details').hide();
+  $('#instructor_popup_details').show();
+}
+
+//instructorBuy
+function instructorBuyProcess(instructorPrice,instructor_id){
+
+  document.getElementById("instructor_id_hidden").value = instructor_id;
+
+  Swal.fire({
+    title: 'Do you want to buy a instructor?',
+    // text: "Registration is not completed,You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#0E2C4B',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $('#instructor_popup_details').hide();
+      $('#after_payment_popup_instructor_details').show();
+
+      //let instructorPrice = $('#instructors_physical_container_detail_view_section_box_detail_payment').val();
+
+      payments_pay_instructor(instructorPrice,instructor_id);
+      // $.ajax({
+      //   method:"POST",
+      //   url:"memberDetails",
+      //   dataType:"json",
+      //   // contentType:"application/json",
+      //   success: function (result){
+      //     console.log(result);
+      //
+      //   },
+      //   error: function(error){
+      //     console.log(error+"instructorBuyProcess");
+      //   }
+      // });
+    }else if (result.isDenied){
+      console.log("instructorBuyProcess cancel");
+    }
+  })
 }
 
 //messages
@@ -951,23 +1042,44 @@ function checkWorkoutData(){
     let total_reps_phy = result.total_reps;
     let count = 0;
     console.log(result);
-    $.map(result,function(x){
-      count += 1;
-      $('#workout_container_table').append(
-          `<tr class="payment_history_container_row" onclick="load_virtual_detail_popup('${x.workout_description}','${x.workout_img_url}','${x.exercise}')">'+
-          <td>${x.exercise}</td>
-          <td>${x.workout_type}</td>
-          <td>${x.total_reps}</td>
-          <td>${x.duration}</td>
-          <td><input type="checkbox" class="payment_history_container_row_checkbox" onclick="checkBoxChecked()"></td>
-          </tr>`
-      );
+
+    $.ajax({
+      method: "POST",
+      url: "completeWorkoutRetrieve",
+      data: "",
+      success: function (result1) {
+
+        $.map(result,function(x){
+
+          $.map(result1,function(y){
+            if(y.workout_id != x.workout_id){
+              count += 1;
+              $('#workout_container_table').append(
+                  `<tr class="payment_history_container_row" onclick="load_virtual_detail_popup('${x.workout_description}','${x.workout_img_url}','${x.exercise}')">'+
+                    <td>${x.exercise}</td>
+                    <td>${x.workout_type}</td>
+                    <td>${x.total_reps}</td>
+                    <td>${x.duration}</td>
+                    <td><input type="checkbox" id="payment_history_container_row_checkbox+${x.workout_id}" onclick='checkBoxChecked("${x.workout_id}","payment_history_container_row_checkbox",0)'></td>
+                    </tr>`
+                        );
+            }
+          });
+
+        });
+        if(count == 0){
+          $('#workout_container_details').hide();
+          $('#workout_container_header_search').hide();
+          $('#workout_container_header_search_cant_find').show();
+        }
+
+      },
+      error: function (error) {
+        console.log(error);
+      }
     });
-    if(count == 0){
-      $('#workout_container_details').hide();
-      $('#workout_container_header_search').hide();
-      $('#workout_container_header_search_cant_find').show();
-    }
+
+
 
     // alert(result);
   }).fail(function(a,b,err){

@@ -233,7 +233,7 @@ function getVirtualWorkoutData(num_plan){
                     <td>${x.workout_type}</td>
                     <td>${x.total_reps}</td>
                     <td>${x.duration}</td>
-                    <td><input type="checkbox" id="virtualWorkoutCheckbox" class="payment_history_container_row_checkbox" onclick="checkBoxChecked()"></td>
+                    <td><input type="checkbox" id="virtualWorkoutCheckbox+${x.workout_id}" class="payment_history_container_row_checkbox" onclick='checkBoxChecked("${x.workout_id}","virtualWorkoutCheckbox","${num_plan}")'></td>
                 </tr>`
             );
         });
@@ -248,27 +248,77 @@ $(document).ready(function (){
     $('#virtual_workout_packages').hide();
 });
 
-function checkBoxChecked(){
-    $('input[type="checkbox"]').click(function(){
+function checkBoxChecked(workout_id,id,num_plan){
+    //alert("venava");
+    console.log(workout_id);
+    console.log(id);
+    // if($('#'+id+workout_id).prop("checked") == true){
+        //alert("Workout working");
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Are you complete your workout?',
             text: "Workout is not completed,You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#0E2C4B',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, go back!'
+            confirmButtonText: 'Yes, Complete'
         }).then((result) => {
-            if($('.payment_history_container_row_checkbox').prop("checked") == true) {
-                alert("Checkbox is checked.");
-                console.log("virtualWorkoutCheckbox is checked");
-                // $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
-                $('#payment_history_container_row').css("background-color", "#0E2C4B");
-                // $('#payment_history_container_row').css("box-shadow", "0 10px 10px rgba(0, 0, 0, 0.25)");
-                // $("#payment_history_container_row").attr("disabled", true);
+            if (result.isConfirmed) {
+                $.ajax({
+                    method:"POST",
+                    url:"completeWorkout",
+                    data: {workout_id: workout_id},
+                    success: function(result){
+                        if(result.trim() == "1"){
+                            console.log("Workout is completed");
+                            $('.payment_history_container_row').remove();
+                            if(id == "virtualWorkoutCheckbox"){
+                                getVirtualWorkoutData(parseInt(num_plan));
+                            }else{
+                                checkWorkoutData();
+                            }
+                            //checkWorkoutData();
+                        }else {
+                            console.log("Workout is not completed");
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            }else if (result.isDenied){
+                console.log("workout not completed");
             }
+            // if($('.payment_history_container_row_checkbox').prop("checked") == true) {
+            //     alert("Checkbox is checked.");
+            //     console.log("virtualWorkoutCheckbox is checked");
+            //     // $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
+            //     $('#payment_history_container_row').css("background-color", "#0E2C4B");
+            //     // $('#payment_history_container_row').css("box-shadow", "0 10px 10px rgba(0, 0, 0, 0.25)");
+            //     // $("#payment_history_container_row").attr("disabled", true);
+            // }
         })
-    });
+    // }
+    // $('input[type="checkbox"]').click(function(){
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "Workout is not completed,You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#0E2C4B',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, go back!'
+    //     }).then((result) => {
+    //         if($('.payment_history_container_row_checkbox').prop("checked") == true) {
+    //             alert("Checkbox is checked.");
+    //             console.log("virtualWorkoutCheckbox is checked");
+    //             // $('#edit_profile_error_dob').html("**Your age should be 14 to 80");
+    //             $('#payment_history_container_row').css("background-color", "#0E2C4B");
+    //             // $('#payment_history_container_row').css("box-shadow", "0 10px 10px rgba(0, 0, 0, 0.25)");
+    //             // $("#payment_history_container_row").attr("disabled", true);
+    //         }
+    //     })
+    // });
 }
 
 function load_virtual_detail_popup(workout_description,workout_img_url,exercise_name){

@@ -2,7 +2,7 @@ let count = 0;
 var paymentId = 0;
 let checkStatus = 0;
 
-function countPaymentId(){
+function countPaymentId(order_id){
     $.ajax({
         method:'POST',
         url:"physicalPaymentCount",
@@ -13,12 +13,11 @@ function countPaymentId(){
         let resultStr = "Payment"+result;
         paymentId = result;
 
-        document.getElementById("order_id").value = resultStr;
+        document.getElementById(order_id.toString()).value = resultStr;
         // $('#'+result_value).attr("disabled", true);
-        $('#order_id').css("border", "2px solid grey");
-        $('#order_id').css("color", "grey");
+        $('#'+order_id.toString()).css("border", "2px solid grey");
+        $('#'+order_id.toString()).css("color", "grey");
     }).fail(function(a,b,err){
-        //alert("Error");
         console.log(a,b,err)
     });
 }
@@ -26,10 +25,10 @@ function countPaymentId(){
 //function fillCustomerDetails(){}
 
 function editPaymentBackgroundOn(){
-    $('#payment_physical_big_container_background').css('display','block');
+    $('.payment_physical_big_container_background').css('display','block');
 }
 function editPaymentBackgroundOff(){
-    $('#payment_physical_big_container_background').css('display','none');
+    $('.payment_physical_big_container_background').css('display','none');
 }
 
 function payments_pay(){
@@ -39,7 +38,7 @@ function payments_pay(){
     editPaymentBackgroundOn();
 
     //payment ID calculation
-    countPaymentId();
+    countPaymentId("order_id");
 
     $.ajax({
         method:"POST",
@@ -142,10 +141,10 @@ function pay_bill_view(payment_id,cus_first_name,cus_last_name,cus_address,payme
                                 <span>${cus_address}</span>
                             </div>
 
-                            <div>
-                                <span><b>City</b></span><br>
-                                <span>${cus_city}</span>
-                            </div>
+                            // <div>
+                            //     <span><b>City</b></span><br>
+                            //     <span>${cus_city}</span>
+                            // </div>
                         </div>`
     );
 
@@ -172,17 +171,15 @@ function checkDataValidate(form_data,idNamesCustomer,namesOFId){
         //console.log("Mavai hoyanne"+form_data);
         console.log(form_data);
         if(value.length == ''){
-            if(index != "city"){
-                console.log(index+" : "+value);
-                let idValue = idNamesCustomer[i];
-                let errorMsg = "**"+namesOFId[i]+" is missing";
-                $('#'+idValue).html(errorMsg);
-                $('#'+idValue).css("color", "red");
-                $('#'+idValue).show();
+            console.log(index+" : "+value);
+            let idValue = idNamesCustomer[i];
+            let errorMsg = "**"+namesOFId[i]+" is missing";
+            $('#'+idValue).html(errorMsg);
+            $('#'+idValue).css("color", "red");
+            $('#'+idValue).show();
 
-                i+=1;
-                count = 0;
-            }
+            i+=1;
+            count = 0;
         }
     });
     return count;
@@ -192,10 +189,19 @@ function hideErrors(){
     $('#payment_error2').hide();
     $('#payment_error3').hide();
     $('#payment_error4').hide();
+    $('#payment_error5').hide();
 }
+
+function hideErrors1(){
+    $('#payment_error11').hide();
+    $('#payment_error21').hide();
+    $('#payment_error31').hide();
+    $('#payment_error41').hide();
+    $('#payment_error51').hide();
+}
+
 $(document).ready(function(){
     hideErrors();
-    // $('#payment_detail_container_input_hide').hide();
 });
 
 //payment from payhere
@@ -224,10 +230,16 @@ function payment_cash(){
         let last_name = $('#last_name').val();
         let email = $('#email').val();
         let phone = $('#phone').val();
+        let city = $('#city').val();
 
         let returnVal = checkDataValidate(payment,idNamesCustomer,namesOFId);
         if(returnVal == 0){
             e.preventDefault();
+            return;
+        }
+
+        if(city == ''){
+            $('#payment_error5').html("**Can't be empty");
             return;
         }
 
@@ -372,10 +384,16 @@ function payment_online(){
         let last_name = $('#last_name').val();
         let email = $('#email').val();
         let phone = $('#phone').val();
+        let city = $('#city').val();
 
         let returnVal = checkDataValidate(payment,idNamesCustomer,namesOFId);
         if(returnVal == 0){
             e.preventDefault();
+            return;
+        }
+
+        if(city == ''){
+            $('#payment_error5').html("**Can't be empty");
             return;
         }
 
@@ -405,20 +423,79 @@ function payment_online(){
         }
         hideErrors();
 
-        //after get the payhere response then its check,
-        // if(paymentStatus == 2){}
-
-        //now suppose its get the every payment is done
-        // alert();
         //e.preventDefault();
         afterOnlinePayment(payment,checkStatus,"Online Payment");
 
     });
 }
-// const date = new Date();
-// let fullDate = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
-// console.log(fullDate);
+
+function instructor_payment_online(){
+    //alert("Yohan");
+    checkStatus = 1;
+    hideErrors1();
+    $('#payment_detail_container_form1').submit(function(e){
+        // e.preventDefault();
+        let form_data = $("form").serializeArray();
+        //console.log(form_data);
+        let payment = {};
+        $.each(form_data, function(i, field){
+            payment[field.name] = field.value;
+        });
+        payment["payment_id"] = paymentId.toString();
+        console.log(payment);
+        //console.log(payment["merchant_id"]);
+        // let idNamesCustomer = ["first_name","last_name","email","phone"];
+        let idNamesCustomer = ["payment_error11","payment_error21","payment_error31","payment_error41"];
+        let namesOFId = ["First Name","Last Name","Email","Contact Number"];
+
+        let first_name = $('#first_name1').val();
+        let last_name = $('#last_name1').val();
+        let email = $('#email1').val();
+        let phone = $('#phone1').val();
+        let instructor_id = $('#instructor_id_hidden').val();
+        console.log("Instructor ID"+instructor_id);
+
+        let returnVal = checkDataValidate(payment,idNamesCustomer,namesOFId);
+        if(returnVal == 0){
+            e.preventDefault();
+            return;
+        }
+
+        if(!email_regex_Validate(email)){
+            $('#payment_error31').html("**Enter valid email");
+            $('#payment_error31').css("color", "red");
+            e.preventDefault();
+            return;
+        }
+        if (!(/[a-z]/.test(first_name) || /[A-Z]/.test(first_name))){
+            $('#payment_error11').html("**First Name must only contain characters");
+            $('#payment_error11').css("color", "red");
+            e.preventDefault();
+            return;
+        }else if(!(/[a-z]/.test(last_name) || /[A-Z]/.test(last_name))){
+            $('#payment_error21').html("**Last Name must only contain characters");
+            $('#payment_error21').css("color", "red");
+            e.preventDefault();
+            return;
+        }
+        let isnum = /^\d+$/.test(phone);
+        if(!isnum){
+            $('#payment_error41').html("**Contact Number must only contain digit");
+            $('#payment_error41').css("color", "red");
+            e.preventDefault();
+            return;
+        }
+        hideErrors1();
+
+        e.preventDefault();
+        alert("yohan");
+        saveVirtualPhysicalTableData(instructor_id);
+        afterOnlinePayment(payment,checkStatus,"Instructor Payment");
+    });
+}
+
 function afterOnlinePayment(data,status,payment_method){
+    //alert("submit");
     const date = new Date();
     let fullDate = date.getFullYear()+"-"+(date.getMonth() + 1).toString().padStart(2, "0")+"-"+date.getDate().toString().padStart(2, "0");
     data["current_date"] = fullDate;
@@ -427,12 +504,12 @@ function afterOnlinePayment(data,status,payment_method){
     let new_expire_date = new_expire_date1 + "-" +(date.getMonth() + 1).toString().padStart(2, "0")+"-"+date.getDate().toString().padStart(2, "0");
     data["new_expire_date"] = new_expire_date;
 
-    console.log(data);
+    //console.log(data);
     let payment_id = paymentId;
     let payment_date = data.current_date;
     // let payment_method = data.
     let newExpireDate = data.expiry_day.split("-");
-    console.log(newExpireDate);
+    //console.log(newExpireDate);
     let previous_expire_date = newExpireDate[0]+"-"+("0"+newExpireDate[1]).slice(-2)+"-"+("0"+newExpireDate[2]).slice(-2);
     console.log(previous_expire_date);
     // let previous_expire_date = data.expiry_day;
@@ -444,8 +521,8 @@ function afterOnlinePayment(data,status,payment_method){
     let cus_first_name = data.first_name;
     let cus_last_name = data.last_name;
     let cus_address = data.address;
-    //let cus_city = data.city;
-    let cus_city = "None";
+    let cus_city = data.city;
+    //let cus_city = "None";
     // let new_expire_date = new_expire_date2;
 
     $.ajax({
@@ -457,6 +534,7 @@ function afterOnlinePayment(data,status,payment_method){
         success: function (result){
             if(result.trim() == "1"){
                 //alert(result);
+
                 if(checkStatus == 0){
                     Swal.fire({
                         icon: 'success',
@@ -506,6 +584,29 @@ function afterOnlinePayment(data,status,payment_method){
                 confirmButtonText:"Ok",
                 confirmButtonColor: '#932828',
             })
+        }
+    });
+}
+
+function saveVirtualPhysicalTableData(instructor_id){
+    alert("Save data");
+    $.ajax({
+        method:"POST",
+        url:"saveInstructorVirtualPhysicalData",
+        data: {instructor_id:instructor_id},
+        // dataType:"json",
+        // contentType:"application/json",
+        success: function (result){
+            console.log(result);
+            if(result.trim() == "1") {
+                //alert(result);
+                console.log("saveInstructorVirtualPhysicalData saved");
+            }else {
+                console.log("saveInstructorVirtualPhysicalData unsaved");
+            }
+        },
+        error: function (error){
+            console.log(error);
         }
     });
 }

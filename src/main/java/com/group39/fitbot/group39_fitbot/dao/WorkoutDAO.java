@@ -6,6 +6,7 @@ import com.group39.fitbot.group39_fitbot.model.Workout;
 import com.group39.fitbot.group39_fitbot.model.WorkoutPlanRequests;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,6 +150,38 @@ public class WorkoutDAO {
             return has_assign;
         }
         return has_assign;
+    }
+
+    public static boolean addCompleteExerciseData(String member_id,String workout_id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "INSERT INTO complete_exercise(complete_date,workout_id,member_id) VALUES(?,?,?)";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        pst.setDate(1, Date.valueOf(LocalDate.now()));
+        pst.setString(2,workout_id);
+        pst.setString(3,member_id);
+
+        return pst.executeUpdate() > 0;
+    }
+
+    public static List<Integer> retrieveCompleteExerciseData(String member_id) throws SQLException, ClassNotFoundException {
+        Workout workout = new Workout();
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "SELECT workout_id FROM complete_exercise WHERE member_id=?;";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1,member_id);
+
+        List<Integer> completeWorkouts = new ArrayList<>();
+
+        ResultSet resultSet = pst.executeQuery();
+
+        while(resultSet.next()){
+            if(resultSet != null){
+                completeWorkouts.add(resultSet.getInt(1));
+            }
+        }
+
+        return completeWorkouts;
     }
 
 }

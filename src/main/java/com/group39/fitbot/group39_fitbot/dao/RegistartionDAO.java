@@ -3,14 +3,17 @@ package com.group39.fitbot.group39_fitbot.dao;
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
 import com.group39.fitbot.group39_fitbot.model.Login;
 import com.group39.fitbot.group39_fitbot.model.Member;
+import com.group39.fitbot.group39_fitbot.model.PhysicalPayment;
 import com.group39.fitbot.group39_fitbot.model.Registartion;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegistartionDAO {
     public static boolean addRegistration(Registartion register) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = "INSERT INTO register VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO register VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(query);
 
         pst.setString(1,register.getFirst_name());
@@ -30,10 +33,29 @@ public class RegistartionDAO {
         pst.setString(14,register.getMember_id());
         pst.setString(15,register.getEmail());
         pst.setString(16,register.getBranch_type());
+        pst.setDate(17, Date.valueOf(register.getJoined_date()));
 
 //        System.out.println("Registration DAO");
         return pst.executeUpdate() > 0;
     }
+
+//    public static String retriveBranchDetails(String branchType) throws SQLException, ClassNotFoundException {
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String query = "SELECT branch_id FROM branch WHERE branch_location = ?";
+//        PreparedStatement pst = connection.prepareStatement(query);
+//        pst.setString(1,branchType);
+//
+//        ResultSet resultSet = pst.executeQuery();
+//
+//        String branchId = null;
+//
+//        if (resultSet.next()) {
+//            if (resultSet != null) {
+//                branchId = resultSet.getString(1);
+//            }
+//        }
+//        return branchId;
+//    }
 
     public static boolean addRegistrationToUserTable(Registartion register) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();

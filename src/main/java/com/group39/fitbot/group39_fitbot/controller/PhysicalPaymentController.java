@@ -64,6 +64,8 @@ public class PhysicalPaymentController extends HttpServlet {
         HttpSession session = req.getSession();
 //        String MembershipID = (String) session.getAttribute("MembershipID");
         String memberID = (String) session.getAttribute("MemberID");
+        String memberType = (String) session.getAttribute("userType");
+
         char[] ch = memberID.toCharArray();
         String membershipID = "";
         String alter_table_payment_id = "";
@@ -110,6 +112,32 @@ public class PhysicalPaymentController extends HttpServlet {
                 System.out.println("Payment 3");
                 resp.setCharacterEncoding("UTF-8");
                 if(b && b1){
+                    System.out.println("Online Payment added");
+                    out.print("1");
+                }else {
+                    System.out.println("Online Payment not added");
+                    out.print("0");
+                }
+            }else if(payment_method.equals("Instructor Payment")){
+                boolean b1 = PhysicalPaymentDAO.updateMembershipRenewalDetails(parseInt(membershipID), 0);
+                boolean b3 = PhysicalPaymentDAO.updateMembershipHasInstructor(parseInt(membershipID));
+//            boolean b2 = MembershipDAO.membershipAlterTableInsertData(memberID, parseInt(membershipID), parseInt(payment_id));
+
+//                switch (memberType) {
+//                    case "physical_member":
+//
+//                        //out.print("1");
+//                        break;
+//                    case "virtual_member":
+//                        //out.print("2");
+//                        break;
+//                    default:
+//                        break;
+//                }
+
+                System.out.println("Payment 3");
+                resp.setCharacterEncoding("UTF-8");
+                if((b && b1) && b3){
                     System.out.println("Online Payment added");
                     out.print("1");
                 }else {

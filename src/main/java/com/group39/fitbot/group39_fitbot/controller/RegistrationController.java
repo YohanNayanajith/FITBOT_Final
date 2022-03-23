@@ -59,8 +59,18 @@ public class RegistrationController extends HttpServlet {
         int height = Integer.parseInt(req.getParameter("height"));
         int weight = Integer.parseInt(req.getParameter("weight"));
         String branch_type = req.getParameter("branch_type");
+
+//        try {
+//            branch_type = checkBranchType(branch_type);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
         LocalDate fullDate = LocalDate.parse(req.getParameter("fullDate"));
         LocalDate new_expire_date = LocalDate.parse(req.getParameter("new_expire_date"));
+        LocalDate joined_date = LocalDate.now();
 
         String member_id = null;
         int payment_id = 0;
@@ -120,7 +130,8 @@ public class RegistrationController extends HttpServlet {
                             height,
                             member_id,
                             email,
-                            branch_type
+                            branch_type,
+                            joined_date
                     )
 
             );
@@ -141,7 +152,8 @@ public class RegistrationController extends HttpServlet {
                             weight,
                             member_id,
                             email,
-                            branch_type
+                            branch_type,
+                            joined_date
                     )
 
             );
@@ -198,11 +210,12 @@ public class RegistrationController extends HttpServlet {
     }
 
     private int checkMembershipFee(String membership_category){
-        if(Objects.equals(membership_category, "family_membership")){
-            return 12000;
-        }else if(Objects.equals(membership_category, "couple_membership")){
-            return 10000;
-        }else if(Objects.equals(membership_category, "platinum_membership")){
+//        if(Objects.equals(membership_category, "family_membership")){
+//            return 12000;
+//        }else if(Objects.equals(membership_category, "couple_membership")){
+//            return 10000;
+//        }else
+        if(Objects.equals(membership_category, "platinum_membership")){
             return 8000;
         }else if(Objects.equals(membership_category, "gold_membership")){
             return 5000;
@@ -212,6 +225,11 @@ public class RegistrationController extends HttpServlet {
             return 0;
         }
     }
+
+//    private String checkBranchType(String branchType) throws SQLException, ClassNotFoundException {
+//        String branchID = RegistartionDAO.retriveBranchDetails(branchType);
+//        return branchID;
+//    }
 
     private boolean processRequest(HttpServletRequest request, HttpServletResponse response,String name,String email) throws ServletException, IOException {
 //        response.setContentType("text/html;charset=UTF-8");

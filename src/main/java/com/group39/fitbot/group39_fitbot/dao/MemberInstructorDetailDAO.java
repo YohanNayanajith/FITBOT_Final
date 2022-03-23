@@ -14,23 +14,41 @@ import java.util.List;
 
 public class MemberInstructorDetailDAO {
     public static MemberInstructorDetail getInstructorDetail(String memberID) throws SQLException, ClassNotFoundException {
+
+//        char[] ch = memberID.toCharArray();
+//        String membershipID = "";
+//        int i = 0;
+//        for (char c : ch) {
+//            if(i>=3){
+//                membershipID += c;
+//            }
+//            i++;
+//        }
+
         Connection connection = DBConnection.getInstance().getConnection();
+        //SELECT has_instructor FROM membership WHERE membership_id = 60;
         String query = "SELECT * FROM physical_member WHERE member_id=?";
+        //String query = "SELECT has_instructor FROM membership WHERE membership_id=?";
         PreparedStatement pst = connection.prepareStatement(query);
         pst.setString(1,memberID);
 
         ResultSet resultSet = pst.executeQuery();
 
         MemberInstructorDetail memberInstructorDetail = new MemberInstructorDetail();
+        int hasInstructor = 0;
 
         if(resultSet.next()){
             memberInstructorDetail.setMember_id(resultSet.getString(1));
             memberInstructorDetail.setInstructor_id(resultSet.getString(2));
             memberInstructorDetail.setBranch_id(resultSet.getString(3));
+//            hasInstructor = resultSet.getInt(1);
             return memberInstructorDetail;
+
         }else {
             return null;
         }
+
+
     }
 
     public static MemberInstructorDetail getInstructorDetailVirtual(String memberID) throws SQLException, ClassNotFoundException {

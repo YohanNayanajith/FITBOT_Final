@@ -49,6 +49,36 @@ public class PhysicalPaymentDAO {
         return pst.executeUpdate() > 0;
     }
 
+    public static boolean updateMembershipHasInstructor(int membership_id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "UPDATE membership SET has_instructor=? WHERE membership_id=?";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        pst.setInt(1,1);
+        pst.setInt(2,membership_id);
+
+        System.out.println("Payment added updateMembershipHasInstructor");
+
+        return pst.executeUpdate() > 0;
+    }
+
+//    public static boolean addPhysicalMemberDetails(PhysicalPayment physicalPayment,String memberID) throws SQLException, ClassNotFoundException {
+//        Connection connection = DBConnection.getInstance().getConnection();
+////        3- payment_method
+////        7- authorization_token
+////        8- payment_status
+//        String query = "INSERT INTO physical_member VALUES(?,?,?)";
+//        PreparedStatement pst = connection.prepareStatement(query);
+//
+//        pst.setString(1,memberID);
+//        pst.setString(2,physicalPayment.getPayment_method());
+//        pst.setString(3,physicalPayment.getPayment_method());
+//
+//        System.out.println("Payment added addPaymentDetails");
+//
+//        return pst.executeUpdate() > 0;
+//    }
+
     public static List<PhysicalPayment> retrivePaymentDetails(int alter_table_payment_id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         String query = "SELECT * FROM online_payment WHERE alter_table_payment_id = ?";

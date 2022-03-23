@@ -426,4 +426,31 @@
         <url-pattern>/saveImageData</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SaveInstructorVirtualPhysicalData</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.SaveInstructorPhysicalVirtualDataController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveInstructorVirtualPhysicalData</servlet-name>
+        <url-pattern>/saveInstructorVirtualPhysicalData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CompleteWorkout</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.WorkoutCompleteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompleteWorkout</servlet-name>
+        <url-pattern>/completeWorkout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CompleteWorkoutRetrieve</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.WorkoutCompleteRetrieve</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompleteWorkoutRetrieve</servlet-name>
+        <url-pattern>/completeWorkoutRetrieve</url-pattern>
+    </servlet-mapping>
+
 </web-app>

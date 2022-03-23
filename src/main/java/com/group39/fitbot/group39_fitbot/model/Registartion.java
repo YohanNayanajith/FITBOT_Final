@@ -21,11 +21,12 @@ public class Registartion {
     private int weight;
     private int height;
     private String member_type;
+    private LocalDate joined_date;
 
     public Registartion() {
     }
 
-    public Registartion(String first_name, String last_name, LocalDate date_of_birth, int contact_number, String address, String country, String gender, String password, String confirm_password, String member_type, String membership_category, int weight, int height, String member_id,String email,String branch_type) {
+    public Registartion(String first_name, String last_name, LocalDate date_of_birth, int contact_number, String address, String country, String gender, String password, String confirm_password, String member_type, String membership_category, int weight, int height, String member_id,String email,String branch_type,LocalDate joined_date) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -44,6 +45,7 @@ public class Registartion {
         this.member_id = member_id;
         this.email= email;
         this.branch_type= branch_type;
+        this.joined_date = joined_date;
     }
 
     public String getFirst_name() {
@@ -180,6 +182,14 @@ public class Registartion {
 
     public void setBranch_type(String branch_type) {
         this.branch_type = branch_type;
+    }
+
+    public LocalDate getJoined_date() {
+        return joined_date;
+    }
+
+    public void setJoined_date(LocalDate joined_date) {
+        this.joined_date = joined_date;
     }
 
     @Override
