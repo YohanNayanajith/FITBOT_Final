@@ -127,7 +127,7 @@ public class EmployeeAddController extends HttpServlet {
         else {
             System.out.println("branch_manager");
             try {
-                String reg_password = toHexStr(obtainSHA(employee_id));
+                String reg_password = toHexStr(obtainSHA(nic));
                 added = EmployeeAddDAO.addbranchmanager(new Employee(
                         employee_id,
                         branch_name,

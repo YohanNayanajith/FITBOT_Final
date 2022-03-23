@@ -13,55 +13,117 @@
 <body>
 
         <div class="dashboard_admin" id="dashboard_admin">
-          <div class ="user_employees">
-            <div class = "users">
-              <div class="members_chart">Member Statistics</div>
-              <div class="memberchart">
-              <canvas id="myChart" class="myChart"></canvas>
+<!--          <div class ="user_employees">-->
+<!--            <div class = "users">-->
+<!--              <div class="members_chart">Member Statistics</div>-->
+<!--              <div class="memberchart">-->
+<!--              <canvas id="myChart" class="myChart"></canvas>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="employees">-->
+<!--              <div class ="title_employees">-->
+<!--                Employees-->
+<!--              </div>-->
+<!--              <div class ="list_employees">-->
+<!--                <div class ="branch_managers">-->
+<!--                  <i class='bx bx-male employee'></i>-->
+<!--                  <div class="employee_type">-->
+<!--                    <div>-->
+<!--                      <b>Branch Managers</b>-->
+<!--                    </div>-->
+<!--                    <div id="branchmanagercount_dashboard">-->
+<!--                      12-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class ="branch_managers">-->
+<!--                  <i class='bx bx-male employee'></i>-->
+<!--                  <div class="employee_type">-->
+<!--                    <div>-->
+<!--                      <b>Instructors</b>-->
+<!--                    </div>-->
+<!--                    <div id="instructorcount_dashboard">-->
+<!--                      20-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class ="branch_managers">-->
+<!--                  <i class='bx bx-male employee'></i>-->
+<!--                  <div class="employee_type">-->
+<!--                    <div>-->
+<!--                      <b>Maintainers</b>-->
+<!--                    </div>-->
+<!--                    <div id="maintainercount_dashboard">-->
+<!--                      10-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+          <div class ="dashboard_view_owner">
+
+            <div class="ownerview">
+              <div class="overview-boxes-owner">
+                <div class="box-owner">
+                  <div class ="left-side-owner">
+                    <div class="box-topic-owner"> New Members</div>
+                    <div class= "number-owner" id="new_members_admin">07</div>
+                    <br><hr>
+                    <div class="time">Last 30 days</div>
+                  </div>
+                  <i class='bx bx-user-plus bx-tada bx-flip-horizontal member-owner' ></i>
+                </div>
+
+
+                <div class="box-owner">
+                  <div class ="left-side-owner">
+                    <div class="box-topic-owner"> All Members</div>
+                    <div class= "number-owner" id="all_members_gym_admin">12</div>
+                    <br><hr>
+                    <div class="time">upto now</div>
+                  </div>
+                  <i class='bx bxs-user member-owner'></i>
+                </div>
+
+                <div class="box-owner">
+                  <div class ="left-side-owner">
+                    <div class="box-topic-owner"> All Employees</div>
+                    <div class= "number-owner" id="all_employees_gym_admin">50</div>
+                    <br><hr>
+                    <div class="time">upto now</div>
+                  </div>
+                  <i class='bx bx-male member-owner'></i>
+                </div>
+
+                <div class="box-owner">
+                  <div class ="left-side-owner">
+                    <div class="box-topic-owner"> Branches</div>
+                    <div class= "number-owner" id="branches_admin">5</div>
+                    <br><hr>
+                    <div class="time">upto now</div>
+                  </div>
+                  <i class='bx bxs-business side_icon member-owner'></i>
+                </div>
               </div>
-            </div>
-            <div class="employees">
-              <div class ="title_employees">
-                Employees
-              </div>
-              <div class ="list_employees">
-                <div class ="branch_managers">
-                  <i class='bx bx-male employee'></i>
-                  <div class="employee_type">
-                    <div>
-                      <b>Branch Managers</b>
-                    </div>
-                    <div id="branchmanagercount_dashboard">
-                      12
-                    </div>
+
+              <div>
+                <div class="owner-dashboard-chart">
+                  <div class ="income-chart">
+                    <h4>Income Variation </h4>
+                    <canvas id="myChart"  style="width:100%;max-width:310px;max-height: 300px" class="myChart_canvas"></canvas>
+                  </div>
+                  <div class ="member-chart">
+                    <h4>Employees</h4>
+                    <canvas id="Employees" style ="min-height: 300px" class="myChart"></canvas>
                   </div>
                 </div>
-                <div class ="branch_managers">
-                  <i class='bx bx-male employee'></i>
-                  <div class="employee_type">
-                    <div>
-                      <b>Instructors</b>
-                    </div>
-                    <div id="instructorcount_dashboard">
-                      20
-                    </div>
-                  </div>
-                </div>
-                <div class ="branch_managers">
-                  <i class='bx bx-male employee'></i>
-                  <div class="employee_type">
-                    <div>
-                      <b>Maintainers</b>
-                    </div>
-                    <div id="maintainercount_dashboard">
-                      10
-                    </div>
-                  </div>
-                </div>
               </div>
+
             </div>
           </div>
-        </div>
       </div>
             
         

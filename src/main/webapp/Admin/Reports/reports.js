@@ -44,7 +44,12 @@ function viewBranchEquipmentCount(){
                     legend: {display: false},
                     title: {
                         display: false
-                    }
+                    },
+                    scales: {
+                        xAxes: [{
+                            maxBarThickness: 100
+                        }]
+                    },
                 }
             });
         },

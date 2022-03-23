@@ -1,26 +1,43 @@
-function chart() {
-  var xValues = ["Physical Members", "Virtual Members"];
-  var yValues = [55, 49];
+function employeechart() {
+  $.ajax({
+    method:'POST',
+    url:"employeecount",
+    dataType:'json',
+    // contentType:"application/json",
+  }).done(function(result){
+  var xValues = ["Instructors", "Maintainers","Branch Managers"];
+  var yValues = [result.instructor_count,result.maintainer_count,result.branch_manager_count];
   var barColors = [
     "#b91d47",
     "#00aba9"
   ];
 
-  new Chart("myChart", {
-    type: "pie",
+  new Chart("Employees", {
+    type: "bar",
     data: {
       labels: xValues,
       datasets: [{
+        barPercentage: 0.4,
+        barThickness: 50,
         backgroundColor: barColors,
         data: yValues
       }]
     },
     options: {
+      plugins:{
+        legend: {
+          display: false
+        }
+      },
       title: {
         display: true,
         text: "Members"
       }
     }
+  });
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
   });
 }
 
@@ -36,29 +53,36 @@ function adm_dashboard() {
   dashboard_text.style.color = "black";
 }
 
-function employeecount_dashboard(){
+function admindashboardcount(){
+  alert("Faalil");
   $.ajax({
     method:'POST',
-    url:"employeecount",
+    url:"admindashboardcount",
     dataType:'json',
     // contentType:"application/json",
   }).done(function(result){
-    $('#instructorcount_dashboard').html('');
-    $('#maintainercount_dashboard').html('');
-    $('#branchmanagercount_dashboard').html('');
-    console.log(result);
-      $('#instructorcount_dashboard').append(
+    $('#new_members_admin').html('');
+    $('#all_employees_gym_admin').html('');
+    $('#all_members_gym_admin').html('');
+    $('#branches_admin').html('');
 
-          `<p>${result.instructor_count}</p>`
-      );
-      $('#maintainercount_dashboard').append(
+    $('#new_members_admin').append(
 
-          `<p>${result.maintainer_count}</p>`
-      );
-      $('#branchmanagercount_dashboard').append(
+        `<p>${result[0]}</p>`
+    );
+    $('#all_members_gym_admin').append(
 
-          `<p>${result.branch_manager_count}</p>`
-      );
+        `<p>${result[1]}</p>`
+    );
+    $('#all_employees_gym_admin').append(
+
+        `<p>${result[2]}</p>`
+    );
+
+    $('#branches_admin').append(
+
+        `<p>${result[3]}</p>`
+    );
 
 
     // alert(result);
@@ -93,7 +117,7 @@ function mychart() {
         data: yValues
       }]
     },
-    options: {
+    options :{
       title: {
         display: true,
         text: "Members"

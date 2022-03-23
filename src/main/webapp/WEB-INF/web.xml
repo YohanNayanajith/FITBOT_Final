@@ -836,4 +836,13 @@
         <servlet-name>incomechart</servlet-name>
         <url-pattern>/incomechart</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admindashboardcount</servlet-name>
+        <servlet-class>com.group39.fitbot.group39_fitbot.controller.OwnerDashboardCountController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admindashboardcount</servlet-name>
+        <url-pattern>/admindashboardcount</url-pattern>
+    </servlet-mapping>
 </web-app>
