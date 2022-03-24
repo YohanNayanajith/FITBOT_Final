@@ -369,7 +369,7 @@ $(document).ready(function (){
                     // alert(result);
                     Swal.fire({
                         icon: 'success',
-                        title: 'Successfully login',
+                        title: 'Login Success',
                         text: 'Physical Member!',
                         confirmButtonText:"Ok",
                         confirmButtonColor: '#0E2C4B',
@@ -382,7 +382,7 @@ $(document).ready(function (){
                     //virtual member
                     Swal.fire({
                         icon: 'success',
-                        title: 'Successfully login',
+                        title: 'Login Success',
                         text: 'Virtual Member!',
                         confirmButtonText:"Ok",
                         confirmButtonColor: '#0E2C4B',
@@ -392,18 +392,67 @@ $(document).ready(function (){
                     }, 1000);
                 }else if(result == "3"){
                     //instructor
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Instructor!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/instructor';
+                    }, 1000);
                 }else if(result == "4"){
                     //manager
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Manager!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
+                    }, 1000);
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/manager';
                 }else if(result == "5"){
                     //owner
-                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Owner!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/owner';
+                    }, 1000);
+                    // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/owner';
                 }else if(result == "6") {
                     //admin
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Admin!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/admin';
+                    }, 1000);
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
                 }else if(result == "7"){
                     //admin
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        text: 'Maintainer!',
+                        confirmButtonText:"Ok",
+                        confirmButtonColor: '#0E2C4B',
+                    })
+                    setTimeout(function() {
+                        window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/maintainer';
+                    }, 1000);
                     // window.location.href = 'http://localhost:8080/group39_fitbot_war_exploded/physicalMember';
                 }else if(result == '8'){
                     Swal.fire({
