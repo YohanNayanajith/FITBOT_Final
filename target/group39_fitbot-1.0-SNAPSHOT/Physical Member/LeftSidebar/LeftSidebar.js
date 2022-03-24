@@ -698,7 +698,7 @@ function setProfileImage(){
 
       console.log("Image get success");
       $('#profile_physical_container_details_image').append(
-          `<img src=${myFile} alt="profile_image" id="imgshow">`
+          `<img src="${myFile}" alt="profile_image" id="imgshow">`
       );
     },
     error: function (error) {
