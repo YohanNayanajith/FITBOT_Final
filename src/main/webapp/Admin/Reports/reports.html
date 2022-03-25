@@ -14,14 +14,14 @@
 <body>
 
   <div class ="report_view_admin" id="report_view_admin">
-    <div class ="report_views">
-      <h2> this is the report dashboard</h2>
-    </div>
+<!--    <div class ="report_views">-->
+<!--      <h2> this is the report dashboard</h2>-->
+<!--    </div>-->
 
     <div class="reports_physical_big_container">
-      <!--            calender-->
 
-      <!--            weight vs time-->
+
+      <!--     Members Count Chart-->
       <div class="reports_physical_container">
         <div class="reports_physical_container_header">
           <span>Members</span>
@@ -31,8 +31,17 @@
         </div>
       </div>
 
+      <!--     Employees Count Chart-->
+      <div class="reports_physical_container">
+        <div class="reports_physical_container_header">
+          <span>Employees</span>
+        </div>
+        <div class="reports_physical_container_chart1">
+          <canvas class="reports_physical_container_canvas" id="admin_employee"></canvas>
+        </div>
+      </div>
 
-      <!--            calories burned-->
+<!--     Equipment Report Chart-->
       <div class="reports_physical_container">
         <div class="reports_physical_container_header">
           <span>Equipment</span>
@@ -41,15 +50,8 @@
           <canvas class="reports_physical_container_canvas" id="branch_equipment_count"></canvas>
         </div>
       </div>
-      <!--            workout plan-->
-      <div class="reports_physical_container">
-        <div class="reports_physical_container_header">
-          <span>Workout Plan Report</span>
-        </div>
-        <div class="reports_physical_container_chart1">
-          <canvas class="reports_physical_container_canvas" id="myChart3"></canvas>
-        </div>
-      </div>
+
+
     </div>
   </div>
 </body>

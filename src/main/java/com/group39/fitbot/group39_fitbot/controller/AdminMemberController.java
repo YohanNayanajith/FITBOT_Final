@@ -22,8 +22,6 @@ import java.util.Objects;
 public class AdminMemberController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Member get method called");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Admin/Members/members.html");
-        requestDispatcher.forward(req, resp);
     }
 
     @Override

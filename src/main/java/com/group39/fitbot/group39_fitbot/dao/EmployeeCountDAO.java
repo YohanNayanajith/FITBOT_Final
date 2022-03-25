@@ -33,6 +33,60 @@ public class EmployeeCountDAO {
 
             return employeecount;
         }
+
+        public static int getBranchManagerCount() throws SQLException, ClassNotFoundException {
+            int branchmanagercount = 0;
+            Connection connection =DBConnection.getInstance().getConnection();
+            String query= "SELECT Count(*) FROM branch_manager";
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+
+            if(resultSet.next()) {
+                if (resultSet != null) {
+                    branchmanagercount = resultSet.getInt(1);
+                    System.out.println(branchmanagercount);
+                }
+
+            }
+
+            return branchmanagercount;
+        }
+
+    public static int getInstructorCount() throws SQLException, ClassNotFoundException {
+        int instructorcount = 0;
+        Connection connection =DBConnection.getInstance().getConnection();
+        String query= "SELECT Count(*) FROM instructor";
+        PreparedStatement pst = connection.prepareStatement(query);
+        ResultSet resultSet = pst.executeQuery();
+
+        if(resultSet.next()) {
+            if (resultSet != null) {
+                instructorcount = resultSet.getInt(1);
+                System.out.println(instructorcount);
+            }
+
+        }
+
+        return instructorcount;
+    }
+
+    public static int getMaintainerCount() throws SQLException, ClassNotFoundException {
+        int maintainercount = 0;
+        Connection connection =DBConnection.getInstance().getConnection();
+        String query= "SELECT Count(*) FROM maintainer";
+        PreparedStatement pst = connection.prepareStatement(query);
+        ResultSet resultSet = pst.executeQuery();
+
+        if(resultSet.next()) {
+            if (resultSet != null) {
+                maintainercount = resultSet.getInt(1);
+                System.out.println(maintainercount);
+            }
+
+        }
+
+        return maintainercount;
+    }
 }
 
 

@@ -30,4 +30,16 @@ public class ManagerEquipmentFormDAO {
         return pst.executeUpdate() > 0;
     }
 
+    public static boolean removeEquipment(String equipment_id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String query = "UPDATE equipment SET status=? WHERE equipment_id=?";
+        PreparedStatement pst = connection.prepareStatement(query);
+
+        pst.setInt(1,0);
+        pst.setString(2,equipment_id);
+        System.out.println("Equipment Removed Successfully");
+
+        return pst.executeUpdate() > 0;
+    }
+
 }

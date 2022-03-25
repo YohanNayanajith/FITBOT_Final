@@ -37,7 +37,7 @@
                   <div class="first_middle_last">
                     <div class="first_label">
                       <label for="designation">Designation<span class="require_star">*</span></label><br>
-                      <select name="designation" id="designation"  onchange="Branchvisibility()"  class="employee_label designation" >
+                      <select name="designation" id="designation"  onchange="Branchvisibility();getEmployeeId(value)"  class="employee_label designation"  >
                         <option value="Instructor">Instructor</option>
                         <option value="Maintainer">Maintainer</option>
                         <option value="Branch manager">Branch Manager</option>
@@ -46,7 +46,7 @@
 
                     <div class="middle_label">
                       <label for="employee_id">Employee ID<span class="require_star">*</span></label></br>
-                      <input type="text" name="employee_id" id="employee_id" class="employee_label employee_id" placeholder="Enter user ID" ><br>
+                      <input type="text" name="employee_id" id="employee_id" class="employee_label employee_id" placeholder="Enter user ID" disabled><br>
                         <h6 id ="validation_employee_id" class="validation_label">Employee ID cannot be empty</h6>
                     </div>
 

@@ -74,7 +74,7 @@
   .branch_view .branch_list {
     flex:30%;
     padding: 20px;
-    background-color:#E5E5E5 ;
+      background-color:#F2F2F2;
     border-radius: 10px;
       box-shadow: 3px 3px 3px #888888;
   }
@@ -82,6 +82,8 @@
    .branch_view .branch_list .list_top {
     display:flex;
     padding:10px;
+       box-shadow: 3px 3px 3px #888888;
+       border-radius: 5px;
     background-color: #fff;
     justify-content: space-between;
     align-items: center;
@@ -101,6 +103,8 @@
     margin-top: 10px;
     padding:10px;
     background-color: #fff;
+      box-shadow: 3px 3px 3px #888888;
+      border-radius: 5px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -115,7 +119,6 @@
   .branch_view .branch_list .list_bottom .branch_detail_list {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
   
   }
 
@@ -141,7 +144,7 @@
 
 }
 .branch_detail_list a:hover {
-    color: red;
+    color: #00aba9;
 }
 
 .panel{

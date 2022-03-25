@@ -1,13 +1,3 @@
-function adm_add_employees() {
-  let anchor_employees = document.getElementById("admin_employees");
-  let anchor_employees_i = document.getElementById("admin_employees_i");
-  let anchor_employees_text = document.getElementById("admin_employees_text");
-  // console.log("mokada meee dashboard");
-  anchor_employees.style.backgroundColor = "white";
-  anchor_employees_i.style.color = "black";
-  anchor_employees_text.style.color = "black";
-}
-
 function Branchvisibility(){
   var x =document.getElementById("designation").value;
   if (x=="Maintainer")
@@ -39,6 +29,25 @@ function printbranchesemployeeform (){
           `<option value=${x.branch_id}>${x.branch_name}</option>`
       );
     });
+
+  }).fail(function(a,b,err){
+    alert("Error");
+    console.log(a,b,err);
+  });
+
+}
+
+function getEmployeeId(value){
+  $.ajax({
+    method:'POST',
+    url:"employeeid",
+    data: {
+      designation: value
+    },
+    // contentType:"application/json",
+  }).done(function(result){
+    console.log(result);
+    document.getElementById("employee_id").value = result;
 
   }).fail(function(a,b,err){
     alert("Error");

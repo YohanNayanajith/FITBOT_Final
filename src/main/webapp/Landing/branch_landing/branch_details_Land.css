@@ -52,10 +52,11 @@
 
 .branch_view {
     background-color: #F2F2F2;
-    padding: 7px;
+    padding: 5px;
     align-items: center;
     border-radius: 6px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
+    filter:  drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.5));
 
 }
 
@@ -71,16 +72,26 @@
     border-radius: 6px;
     width: 300px;
     height: 230px;
-    margin: 20px 20px 5px 20px;
+    margin: 15px 20px 3px 20px;
 }
 
 .rectangle{
     background-color: #7CD0FF;
-    width: 200px;
+    width: 220px;
     height: 5px;
     border-radius: 50px;
     margin-bottom: 10px;
-    /*margin-top: 5px;*/
+}
+
+.contact_no {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.contact_info{
+    display: inline-block;
+    align-items: center;
 }
 
 .contact_no ul {
@@ -90,6 +101,7 @@
 .name {
     font-size: 20px;
     font-weight: 500;
+    color:#1d1b31;
 }
 
 /*.branch_landing_sha{*/

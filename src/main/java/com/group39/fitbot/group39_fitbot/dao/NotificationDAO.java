@@ -1,9 +1,6 @@
 package com.group39.fitbot.group39_fitbot.dao;
-
 import com.group39.fitbot.group39_fitbot.database.DBConnection;
 import com.group39.fitbot.group39_fitbot.model.Notification;
-import com.group39.fitbot.group39_fitbot.model.Workout;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

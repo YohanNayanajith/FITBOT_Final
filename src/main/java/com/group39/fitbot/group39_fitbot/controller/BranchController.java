@@ -20,8 +20,6 @@ public class BranchController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Branch get method called");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Admin/Branches/branches.html");
-        requestDispatcher.forward(req,resp);
     }
 
     @Override

@@ -19,8 +19,6 @@ public class BranchAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Branchadd get method called");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Admin/AddEmployees/branch_add.html");
-        requestDispatcher.forward(req, resp);
     }
 
     @Override

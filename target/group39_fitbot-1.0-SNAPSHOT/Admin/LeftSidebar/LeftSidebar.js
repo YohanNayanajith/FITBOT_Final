@@ -1,5 +1,4 @@
 
-let maintainercount =0;
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
@@ -433,6 +432,7 @@ $(document).ready(function() {
         if (load[4] == 0) {
           $("#adm_add_employees").load('http://localhost:8080/group39_fitbot_war_exploded/Admin/AddEmployees/employee_add.html #add_employee_view', function (responseTxt, statusTxt, xhr) {
             printbranchesemployeeform ();
+            getEmployeeId("Instructor");
             $("#validation_employee_id").hide();
             $("#validation_branch").hide();
             $("#validation_first_name").hide();
@@ -448,7 +448,6 @@ $(document).ready(function() {
             if (statusTxt == "error")
               alert(`Error: ${xhr.status}: ${xhr.statusText}`);
           });
-          alert(maintainercount);
 
           $(document).on('submit', '#employee_form', function (e) {
             // alert("Faalil");
@@ -610,6 +609,7 @@ $(document).ready(function() {
                   confirmButtonColor: '#0E2C4B',
                   footer: '<a href="#">View Employee</a>'
                 });
+                getEmployeeId(designation);
                 employeecount();
                 printemployee();
               }
@@ -655,7 +655,7 @@ $(document).ready(function() {
       if (load[3] == 0) {
         $(sideBar_links_variable).load('http://localhost:8080/group39_fitbot_war_exploded/Admin/Reports/reports.html #report_view_admin', function (responseTxt, statusTxt, xhr) {
           viewBranchMemberCount();
-          viewWorkoutPlanReports();
+          ViewAdminEmployee();
           viewBranchEquipmentCount();
           if (statusTxt == "error")
             alert(`Error: ${xhr.status}: ${xhr.statusText}`);

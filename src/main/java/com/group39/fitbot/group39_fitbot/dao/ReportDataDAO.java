@@ -79,7 +79,7 @@ public class ReportDataDAO {
     public static List<XYY> getEmployeeTypeCount() throws SQLException,ClassNotFoundException {
         List<XYY> employeetypecount = new ArrayList<>();
         Connection connection = DBConnection.getInstance().getConnection();
-        String query = " SELECT br.branch_name, COUNT(i.instructor_id), COUNT(b.branchmanager_id) FROM branch br INNER JOIN instructor i ON i.branch_id=br.branch_id INNER JOIN branch_manager b ON b.branch_id= br.branch_id GROUP BY br.branch_name";
+        String query = " SELECT br.branch_name, COUNT(DISTINCT i.instructor_id), COUNT(DISTINCT b.branchmanager_id) FROM branch br INNER JOIN instructor i ON i.branch_id=br.branch_id INNER JOIN branch_manager b ON b.branch_id= br.branch_id GROUP BY br.branch_name";
         PreparedStatement pst = connection.prepareStatement(query);
 
         ResultSet resultSet = pst.executeQuery();

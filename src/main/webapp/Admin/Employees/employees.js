@@ -7,7 +7,12 @@ function adm_employees() {
   anchor_employees_i.style.color = "black";
   anchor_employees_text.style.color = "black";
 }
-
+function editPaymentBackgroundOn(){
+  $('#payment_physical_big_container_background').css('display','block');
+}
+function editPaymentBackgroundOff(){
+  $('#payment_physical_big_container_background').css('display','none');
+}
 //employeecount function of ajax
 function employeecount(){
   $.ajax({
@@ -83,7 +88,6 @@ function close_employeeview_Popup() {
 
 //Popup of employeeview
 function employeeview_popup(name){
-  alert(name);
   $.ajax({
     method:'POST',
     url:"employee",
@@ -120,9 +124,7 @@ function employeeview_popup(name){
 }
 
 function removeemployee(employeeid,employee_type){
-  alert(employeeid);
-  alert(employee_type);
-  alert("Faalil");
+
   Swal.fire({
     title: 'Are you sure you want to remove this employee?',
     icon: 'warning',

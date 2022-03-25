@@ -8,8 +8,8 @@ function employeechart() {
   var xValues = ["Instructors", "Maintainers","Branch Managers"];
   var yValues = [result.instructor_count,result.maintainer_count,result.branch_manager_count];
   var barColors = [
-    "#b91d47",
-    "#00aba9"
+    "#00aba9",
+    "#2b5797"
   ];
 
   new Chart("Employees", {
@@ -54,7 +54,7 @@ function adm_dashboard() {
 }
 
 function admindashboardcount(){
-  alert("Faalil");
+  // alert("Faalil");
   $.ajax({
     method:'POST',
     url:"admindashboardcount",
@@ -104,8 +104,8 @@ function mychart() {
   var xValues = ["Physical Members", "Virtual Members"];
   var yValues = [result[0], result[1]];
   var barColors = [
-    "#b91d47",
-    "#00aba9"
+    "#00aba9",
+    "#2b5797"
   ];
 
   new Chart("myChart", {

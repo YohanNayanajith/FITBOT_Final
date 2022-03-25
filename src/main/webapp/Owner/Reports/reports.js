@@ -21,7 +21,6 @@ function EmployeeCountChart(){
             let arrBranch = new Array();
             let arrInsCount = new Array();
             let arrBMCount =new Array();
-            var barColors = ["blue", "green","yellow","orange","brown"];
             i =0;
 
             $.map(result, function (x) {

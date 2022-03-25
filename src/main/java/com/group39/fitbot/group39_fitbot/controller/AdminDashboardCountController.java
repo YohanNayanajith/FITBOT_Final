@@ -15,11 +15,13 @@ import java.util.List;
 public class AdminDashboardCountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Owner Dashboard Count Controller Called");
+        System.out.println("Admin Dashboard Count Controller Called");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("Admin Dashboard Post Method Called");
         try {
             List<Integer> dashboardcount = new ArrayList<>();
             dashboardcount= OwnerDashboardCountDAO.getAdminDashboardCount();

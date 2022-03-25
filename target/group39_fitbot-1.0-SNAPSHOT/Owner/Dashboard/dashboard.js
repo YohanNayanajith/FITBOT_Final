@@ -110,7 +110,6 @@ function memberRegisteringCharts() {
 }
 
 function dashboardcount(){
-    alert("Faalil");
     $.ajax({
         method:'POST',
         url:"ownerdashboardcount",
